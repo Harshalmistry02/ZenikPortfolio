@@ -8,6 +8,7 @@ import { Work } from "./pages/Work";
 import { About } from "./pages/About";
 import { Contact } from "./pages/Contact";
 import { Login } from "./pages/Login";
+import { SignUp } from "./pages/SignUp";
 import { User } from "./types";
 
 // ScrollToTop component ensuring smooth page transitions on navigation
@@ -19,6 +20,48 @@ function ScrollToTop() {
   }, [pathname]);
 
   return null;
+}
+
+function AppContent({
+  user,
+  onLogin,
+  onLogout
+}: {
+  user: User;
+  onLogin: (email: string) => void;
+  onLogout: () => void;
+}) {
+  const location = useLocation();
+  const isAuthPage = location.pathname === "/login" || location.pathname === "/signup";
+
+  return (
+    <div className="flex flex-col min-h-screen bg-white text-gray-800 antialiased font-sans">
+      {/* Hide header on /login or /signup */}
+      {!isAuthPage && <Navbar user={user} onLogout={onLogout} />}
+
+      {/* Core Screen Routes */}
+      <main className="flex-grow">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/work" element={<Work />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route
+            path="/login"
+            element={<Login user={user} onLogin={onLogin} onLogout={onLogout} />}
+          />
+          <Route
+            path="/signup"
+            element={<SignUp user={user} onLogin={onLogin} />}
+          />
+        </Routes>
+      </main>
+
+      {/* Hide footer on /login or /signup */}
+      {!isAuthPage && <Footer />}
+    </div>
+  );
 }
 
 export default function App() {
@@ -50,30 +93,7 @@ export default function App() {
   return (
     <Router>
       <ScrollToTop />
-      <div className="flex flex-col min-h-screen bg-white text-gray-800 antialiased font-sans">
-        
-        {/* Shared Navigation Header with authentication stats passed */}
-        <Navbar user={user} onLogout={handleLogout} />
-
-        {/* Core Screen Routes */}
-        <main className="flex-grow">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/work" element={<Work />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route
-              path="/login"
-              element={<Login user={user} onLogin={handleLogin} onLogout={handleLogout} />}
-            />
-          </Routes>
-        </main>
-
-        {/* Shared Interactive Footer */}
-        <Footer />
-
-      </div>
+      <AppContent user={user} onLogin={handleLogin} onLogout={handleLogout} />
     </Router>
   );
 }

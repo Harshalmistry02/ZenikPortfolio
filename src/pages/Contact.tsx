@@ -22,6 +22,58 @@ export function Contact() {
   });
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [activeFaqIdx, setActiveFaqIdx] = useState<number | null>(null);
+  const [selectedTechs, setSelectedTechs] = useState<string[]>([]);
+
+  const requirements = [
+    {
+      id: "Web Development",
+      label: "Web Apps",
+      desc: "Next.js, TypeScript, Headless Shopify",
+      projectSample: {
+        title: "Finova Dashboard",
+        client: "Finova Capital",
+        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&auto=format&fit=crop&q=80",
+        tech: ["Next.js", "TypeScript", "D3.js"]
+      }
+    },
+    {
+      id: "Mobile App Development",
+      label: "Mobile Apps",
+      desc: "React Native, Expo, iOS & Android",
+      projectSample: {
+        title: "MoveMate Fitness",
+        client: "MoveMate Inc",
+        image: "https://images.unsplash.com/photo-1510051646316-c3f15a0c64b1?w=400&auto=format&fit=crop&q=80",
+        tech: ["React Native", "Expo", "Node.js"]
+      }
+    },
+    {
+      id: "Cybersecurity",
+      label: "Cybersecurity",
+      desc: "ISO 27001, OWASP Security Audits",
+      projectSample: {
+        title: "SentinelX Monitoring",
+        client: "Sentinel Security",
+        image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=400&auto=format&fit=crop&q=80",
+        tech: ["Python", "Docker", "AWS OpenSearch"]
+      }
+    },
+    {
+      id: "UI/UX Design",
+      label: "UI/UX Design",
+      desc: "Interactive blueprints & high-fi Figma wireframes",
+      projectSample: {
+        title: "TrustComply Audit",
+        client: "TrustComply LLC",
+        image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&auto=format&fit=crop&q=80",
+        tech: ["Figma", "React", "Tailwind CSS"]
+      }
+    }
+  ];
+
+  const allTechPills = [
+    "Next.js", "React Native", "TypeScript", "Tailwind CSS", "D3.js", "Figma", "Stripe API", "AWS / Docker", "OWASP Loggers"
+  ];
 
   const budgetRanges = [
     "£10k - £25k",
@@ -59,6 +111,7 @@ export function Contact() {
           budget: "£10k - £25k",
           message: ""
         });
+        setSelectedTechs([]);
       }, 5000);
     }
   };
@@ -156,16 +209,98 @@ export function Contact() {
                   </div>
                   <div className="space-y-2">
                     <label className="text-[10px] uppercase font-bold tracking-widest text-gray-400 block font-mono">PRIMARY REQUIREMENT</label>
-                    <select
-                      value={formData.service}
-                      onChange={(e) => setFormData({...formData, service: e.target.value})}
-                      className="w-full bg-[#131720] text-xs border border-gray-800 focus:border-[#00BFA6] rounded-2xl p-4 outline-none text-white focus:ring-2 focus:ring-[#00BFA6]/20 transition-all cursor-pointer"
-                    >
-                      <option>Web Development</option>
-                      <option>Mobile App Development</option>
-                      <option>Cybersecurity</option>
-                      <option>Full Suite (All Three)</option>
-                    </select>
+                    <div className="grid grid-cols-2 gap-2">
+                      {requirements.map((req) => {
+                        const isSelected = formData.service === req.id || (formData.service === "Web Development" && req.id === "Web Development");
+                        return (
+                          <button
+                            key={req.id}
+                            type="button"
+                            onClick={() => setFormData({...formData, service: req.id})}
+                            className={`p-3 rounded-xl border text-left transition-all relative cursor-pointer ${
+                              isSelected
+                                ? "bg-[#131720] border-[#00BFA6] ring-1 ring-[#00BFA6] text-[#00BFA6]"
+                                : "bg-[#131720]/45 border-gray-850 hover:border-gray-750 text-white"
+                            }`}
+                          >
+                            <span className="text-[11px] font-black tracking-tight block">{req.label}</span>
+                            <span className="text-[8.5px] text-gray-500 font-semibold block mt-1 leading-snug">{req.desc}</span>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </div>
+
+                {/* DYNAMIC CASE STUDY REFERENCE DRAWER */}
+                {(() => {
+                  const activeRequirement = requirements.find(r => r.id === formData.service) || requirements[0];
+                  return (
+                    <div className="p-4 bg-[#131720] rounded-[24px] border border-gray-800 text-left relative overflow-hidden">
+                      <div className="absolute -right-2 -top-2 opacity-5 pointer-events-none select-none">
+                        <HanddrawnCrown className="w-24 h-24 text-[#00BFA6]" />
+                      </div>
+                      
+                      <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+                        <div className="w-full sm:w-24 h-16 rounded-xl overflow-hidden shrink-0 border border-gray-850 bg-gray-900">
+                          <img 
+                            className="w-full h-full object-cover select-none"
+                            src={activeRequirement.projectSample.image} 
+                            alt={activeRequirement.projectSample.title}
+                          />
+                        </div>
+                        
+                        <div className="space-y-1">
+                          <div className="flex items-center space-x-1.5 flex-wrap">
+                            <span className="text-[8px] uppercase font-bold tracking-wider text-[#00BFA6] bg-teal-950/40 px-2 py-0.5 rounded-md border border-teal-900">
+                              SIMILAR CASE STUDY REFERENCE EXECUTED
+                            </span>
+                          </div>
+                          <h4 className="text-[13px] font-black text-white tracking-tight">
+                            {activeRequirement.projectSample.title} <span className="text-gray-500 text-[10px] font-mono">({activeRequirement.projectSample.client})</span>
+                          </h4>
+                          <div className="flex items-center gap-1.5 flex-wrap">
+                            {activeRequirement.projectSample.tech.map(t => (
+                              <span key={t} className="text-[9px] font-mono text-gray-400 font-bold bg-[#1B212D] px-2 py-0.5 border border-gray-800 rounded-md">
+                                {t}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })()}
+
+                {/* 3. TECH STACK MULTI-TOGGLE PILLS */}
+                <div className="space-y-3">
+                  <label className="text-[10px] uppercase font-bold tracking-widest text-[#00BFA6] block font-mono">
+                    CHOOSE CORRESPONDING STACK PILLS (OPTIONAL SELECT)
+                  </label>
+                  <div className="flex flex-wrap gap-1.5">
+                    {allTechPills.map((tech) => {
+                      const isSelected = selectedTechs.includes(tech);
+                      return (
+                        <button
+                          key={tech}
+                          type="button"
+                          onClick={() => {
+                            if (isSelected) {
+                              setSelectedTechs(selectedTechs.filter(t => t !== tech));
+                            } else {
+                              setSelectedTechs([...selectedTechs, tech]);
+                            }
+                          }}
+                          className={`px-3 py-2 rounded-lg text-[9px] font-bold font-mono border transition-all cursor-pointer ${
+                            isSelected
+                              ? "bg-teal-500/10 text-[#00BFA6] border-[#00BFA6] scale-[1.02]"
+                              : "bg-[#131720]/80 text-gray-400 border-gray-850 hover:border-gray-750 hover:text-white"
+                          }`}
+                        >
+                          {tech} {isSelected ? "✓" : "+"}
+                        </button>
+                      );
+                    })}
                   </div>
                 </div>
 
@@ -177,7 +312,7 @@ export function Contact() {
                         key={val}
                         type="button"
                         onClick={() => setFormData({...formData, budget: val})}
-                        className={`text-xs font-bold py-3.5 rounded-2xl border transition-all ${
+                        className={`text-xs font-bold py-3.5 rounded-2xl border transition-all cursor-pointer ${
                           formData.budget === val
                             ? "bg-[#00BFA6] text-[#0D0F14] border-[#00BFA6] scale-[1.02] shadow-md shadow-teal-500/10"
                             : "bg-[#131720] text-gray-400 border-gray-800 hover:border-gray-700 hover:text-white"
@@ -206,7 +341,14 @@ export function Contact() {
                     type="submit"
                     className="w-full bg-[#00BFA6] text-[#0D0F14] font-extrabold py-4.5 rounded-2xl text-xs hover:bg-white hover:text-[#0D0F14] transition-all transform active:scale-98 shadow-lg hover:shadow-teal-500/5 cursor-pointer"
                   >
-                    Submit Project Details & Book Call
+                    <div className="flex items-center justify-center space-x-2">
+                      <span>Submit Project Details & Book Discovery Call</span>
+                      {selectedTechs.length > 0 && (
+                        <span className="bg-[#0D0F14] text-white text-[9px] px-1.5 py-0.5 rounded font-mono">
+                          {selectedTechs.length} Techs selected
+                        </span>
+                      )}
+                    </div>
                   </button>
                 </div>
               </form>

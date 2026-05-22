@@ -18,21 +18,21 @@ export function Home() {
 
   // Staggered animate counters upon component load
   useEffect(() => {
-    const duration = 1500;
+    const duration = 1200;
     const intervalTime = 30;
-    const steps = duration / intervalTime;
+    const stepsCount = duration / intervalTime;
     let step = 0;
 
     const timer = setInterval(() => {
       step++;
       setStats({
-        projects: Math.min(Math.round((80 / steps) * step), 80),
-        clients: Math.min(Math.round((45 / steps) * step), 45),
-        countries: Math.min(Math.round((12 / steps) * step), 12),
-        satisfaction: Math.min(Math.round((99 / steps) * step), 99),
+        projects: Math.min(Math.round((80 / stepsCount) * step), 80),
+        clients: Math.min(Math.round((45 / stepsCount) * step), 45),
+        countries: Math.min(Math.round((12 / stepsCount) * step), 12),
+        satisfaction: Math.min(Math.round((99 / stepsCount) * step), 99),
       });
 
-      if (step >= steps) {
+      if (step >= stepsCount) {
         clearInterval(timer);
       }
     }, intervalTime);
@@ -43,49 +43,124 @@ export function Home() {
   const services = [
     {
       title: "Web Development",
-      description: "High-performance websites and web applications engineered for scale, speed, and seamless user experience. Utilizing Next.js, React, and robust cloud scaling.",
-      icon: <Code2 className="w-8 h-8 text-[#00BFA6]" />,
+      description: "High-performance websites and web applications engineered for scale, speed and seamless user experience.",
+      icon: (
+        <svg className="w-8 h-8 text-[#00BFA6]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+          <line x1="8" y1="21" x2="16" y2="21" />
+          <line x1="12" y1="17" x2="12" y2="21" />
+          <path d="M10 8l-2 2 2 2" />
+          <path d="M14 8l2 2-2 2" />
+        </svg>
+      ),
       link: "/services",
     },
     {
       title: "Mobile Apps",
-      description: "Native and cross-platform mobile apps for iOS & Android that delight users and drive real business results. Crafted with precision design and smooth UI/UX.",
-      icon: <Smartphone className="w-8 h-8 text-[#00BFA6]" />,
+      description: "Native and cross-platform mobile apps that delight users and drive real business results.",
+      icon: (
+        <svg className="w-8 h-8 text-[#00BFA6]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
+          <line x1="12" y1="18" x2="12.01" y2="18" />
+        </svg>
+      ),
       link: "/services",
     },
     {
       title: "Cybersecurity",
-      description: "Protect your business with proactive security solutions, penetration testing, compliance audits (GDPR/HIPAA), and secure authentication architecture.",
-      icon: <Shield className="w-8 h-8 text-[#00BFA6]" />,
+      description: "Protect your business with proactive security solutions, audits and compliance expertise.",
+      icon: (
+        <svg className="w-8 h-8 text-[#00BFA6]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+          <rect x="9" y="11" width="6" height="5" rx="1" />
+          <path d="M12 8c1.1 0 2 .9 2 2v1H10v-1c0-1.1.9-2 2-2z" />
+        </svg>
+      ),
       link: "/services",
     },
   ];
 
-  const steps = [
-    { num: "01", name: "Discover", desc: "We learn about your goals, challenges, requirements, and user opportunities." },
-    { num: "02", name: "Plan", desc: "We create a tailored roadmap, secure technical architecture, and interactive UX wireframes." },
-    { num: "03", name: "Build", desc: "Our world-class engineering team builds with clean code, modern stacks, and continuous integration." },
-    { num: "04", name: "Launch", desc: "Rigorous automated testing, performance audits, security hardening, and production deployment." },
-    { num: "05", name: "Grow", desc: "We optimize, scale, monitor 24/7, and deploy continuous upgrades as you level up." },
+  const stepsList = [
+    { 
+      num: "1", 
+      name: "Discover", 
+      desc: "We learn about your goals, challenges and opportunities.",
+      icon: (
+        <svg className="w-6 h-6 text-gray-500 hover:text-[#00BFA6] transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <circle cx="11" cy="11" r="8" />
+          <line x1="21" y1="21" x2="16.65" y2="16.65" />
+        </svg>
+      )
+    },
+    { 
+      num: "2", 
+      name: "Plan", 
+      desc: "We create a tailored roadmap aligned with your vision.",
+      icon: (
+        <svg className="w-6 h-6 text-gray-500 hover:text-[#00BFA6] transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+          <polyline points="14 2 14 8 20 8" />
+          <line x1="16" y1="13" x2="8" y2="13" />
+          <line x1="16" y1="17" x2="8" y2="17" />
+          <polyline points="10 9 9 9 8 9" />
+        </svg>
+      )
+    },
+    { 
+      num: "3", 
+      name: "Build", 
+      desc: "Our team builds with precision, transparency and speed.",
+      icon: (
+        <svg className="w-6 h-6 text-gray-500 hover:text-[#00BFA6] transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <polyline points="16 18 22 12 16 6" />
+          <polyline points="8 6 2 12 8 18" />
+          <line x1="12" y1="2" x2="12" y2="22" strokeDasharray="3 3" />
+        </svg>
+      )
+    },
+    { 
+      num: "4", 
+      name: "Launch", 
+      desc: "We deliver, test and deploy for long-term success.",
+      icon: (
+        <svg className="w-6 h-6 text-gray-500 hover:text-[#00BFA6] transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M4.5 16.5c-1.5 1.5-2.5 3.5-2.5 5.5C4 22 6 21 7.5 19.5" />
+          <path d="M12 2C6.5 2 2 6.5 2 12c0 2 .5 3.5 1.5 4.5l8-8 C12.5 7.5 14 7 16 7c5.5 0 6-4.5 6-5s-4.5.5-5 6" opacity="0.3" />
+          <path d="M13.5 10.5l-8-8c0 0-3.5 3.5-3.5 6.5s3.5 3.5 3.5 3.5l8 8" />
+          <path d="M22 2s-3 3-5 5l-5-5 5-2 5 2z" />
+        </svg>
+      )
+    },
+    { 
+      num: "5", 
+      name: "Grow", 
+      desc: "We optimise, scale and support your continued growth.",
+      icon: (
+        <svg className="w-6 h-6 text-gray-500 hover:text-[#00BFA6] transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+          <polyline points="17 6 23 6 23 12" />
+        </svg>
+      )
+    },
   ];
 
   const testimonials = [
     {
-      quote: "Zenik Studio transformed our idea into a powerful, secure platform. Their team is exceptionally skilled, responsive, and a pleasure to work with.",
+      quote: "Zenik Studio transformed our idea into a powerful platform. Their team is skilled, responsive and a pleasure to work with.",
       author: "Tom Blomfield",
       role: "Co-founder",
       company: "Monzo",
       avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80",
     },
     {
-      quote: "They delivered our cross-platform mobile app ahead of schedule and beyond expectations. The engineering quality and attention to detail are truly outstanding.",
+      quote: "They delivered our mobile app on time and beyond expectations. The quality and attention to detail are outstanding.",
       author: "Shu Chen",
       role: "Product Lead",
       company: "Deliveroo",
       avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
     },
     {
-      quote: "Their cybersecurity expertise gave our enterprise complete peace of mind. Professional, proactive, highly recommended for compliance-critical sectors.",
+      quote: "Their cybersecurity expertise gave us complete peace of mind. Professional, proactive and highly recommended.",
       author: "James Worrall",
       role: "CTO",
       company: "BrewDog",
@@ -99,453 +174,498 @@ export function Home() {
     <div className="pt-20 bg-white min-h-screen overflow-hidden">
       
       {/* 1. HERO SECTION */}
-      <section className="relative py-12 md:py-24 bg-gradient-to-b from-teal-50/20 via-white to-white">
-        {/* Background blobs for premium depth */}
-        <div className="absolute top-20 right-10 w-96 h-96 bg-teal-200/20 rounded-full blur-3xl -z-10 animate-pulse duration-10000"></div>
-        <div className="absolute bottom-10 left-10 w-80 h-80 bg-orange-100/30 rounded-full blur-3xl -z-10"></div>
+      <section className="relative py-14 md:py-24 bg-gradient-to-b from-teal-50/15 via-white to-white">
+        <div className="absolute top-20 right-10 w-96 h-96 bg-teal-200/10 rounded-full blur-3xl -z-10"></div>
+        <div className="absolute bottom-10 left-10 w-80 h-80 bg-orange-100/15 rounded-full blur-3xl -z-10"></div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
             
-            {/* Left Hero Text Block */}
-            <div className="lg:col-span-7 space-y-6 text-left">
-              <div className="inline-flex items-center space-x-2 bg-teal-50 border border-teal-100 px-3.5 py-1.5 rounded-full text-xs font-semibold text-[#00BFA6] tracking-wide animate-fade-up">
-                <Sparkles size={12} className="animate-spin duration-3000" />
-                <span>Award-Winning UK & USA Tech Agency</span>
-                <Squiggle className="w-4 h-1 text-[#00BFA6]" />
+            {/* Left Column Text and CTAs */}
+            <div className="lg:col-span-6 space-y-6 text-left relative z-10">
+              
+              <div className="inline-flex items-center space-x-1 font-bold text-[#00BFA6] tracking-wider text-xs uppercase">
+                <span>WHAT WE DO</span>
+                {/* Custom curve waves svg doodle from mockup */}
+                <svg className="w-5 h-4 text-teal-400 opacity-90 inline-block" viewBox="0 0 20 12" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+                  <path d="M2,9 C5,6 9,6 12,9" />
+                  <path d="M5,5 C8,2 12,2 15,5" />
+                </svg>
               </div>
 
-              <h1 className="text-4xl sm:text-5xl md:text-6.5xl font-black text-[#0D0F14] tracking-tight leading-none animate-fade-up">
-                Building Digital <br className="hidden sm:inline" />
-                Products{" "}
-                <span className="relative inline-block text-[#00BFA6] px-3 font-black whitespace-nowrap">
-                  That Scale.
-                  <HanddrawnCircle className="text-[#00BFA6]" />
-                </span>
+              <h1 className="text-4xl sm:text-5xl md:text-[56px] font-black text-[#0D0F14] tracking-tight leading-[1.08]">
+                Building Digital <br />
+                Products That Scale<span className="text-[#00BFA6] font-black">.</span>
               </h1>
 
-              {/* Accent Overlays: Warm Orange Handwritten Script Accent */}
-              <div className="relative pt-2 pl-1 animate-fade-up">
-                <span className="font-script text-2.5xl md:text-3.5xl text-[#F4A24D] select-none block leading-tight font-extrabold">
+              {/* Accent Overlays: Warm Orange Handwritten Script Accent with underline */}
+              <div className="relative inline-block pt-1.5 pb-2">
+                <span className="font-script text-3xl md:text-4xl text-[#F4A24D] select-none block leading-none font-bold">
                   For brands ready to lead.
                 </span>
-                {/* Freehand loop/underline SVG effect */}
-                <div className="w-56 h-3 mt-1.5 text-[#F4A24D] opacity-90 relative">
-                  <HanddrawnUnderline />
+                <div className="absolute left-0 right-0 bottom-[-4px] h-2">
+                  <HanddrawnUnderline className="text-[#F4A24D]" />
                 </div>
               </div>
 
-              <p className="text-gray-600 text-base md:text-lg max-w-xl leading-relaxed font-normal pt-2">
-                Zenik Studio is a premier technology partner designing, developing, and securing enterprise-grade applications. We fuse world-class engineering with highly polished, soft, and creative interactive layouts.
+              <p className="text-gray-600 text-sm md:text-base max-w-lg leading-relaxed font-normal pt-2">
+                Zenik Studio is a UK & USA based tech agency helping ambitious companies build secure, modern and scalable web, mobile and cybersecurity solutions.
               </p>
 
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-5 pt-4 relative">
-                
-                {/* Sketchy pointer arrow annotation */}
-                <div className="absolute -left-12 -bottom-20 hidden xl:block text-[#F4A24D] select-none pointer-events-none rotate-[20deg]">
-                  <HanddrawnArrow className="w-14 h-14" />
-                  <span className="font-script text-base font-bold absolute whitespace-nowrap left-12 top-6 rotate-[-15deg]">
-                    Talk to our experts! ⚡
-                  </span>
-                </div>
-
+              {/* CTA Action Buttons */}
+              <div className="flex flex-row flex-wrap items-center gap-4 pt-4">
                 <Link
                   to="/contact"
-                  className="inline-flex items-center justify-center bg-[#0D0F14] hover:bg-[#00BFA6] text-white hover:text-white transition-all duration-300 font-bold px-8 py-4 rounded-full shadow-lg hover:shadow-xl hover:-translate-y-0.5 group text-center"
+                  className="inline-flex items-center justify-center bg-[#0D0F14] hover:bg-[#00BFA6] text-white hover:text-white transition-all duration-350 font-bold text-xs px-7 py-3.5 rounded-full shadow-md hover:shadow-lg hover:-translate-y-0.5 group"
                 >
                   <span>Start a Project</span>
-                  <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight size={14} className="ml-2 group-hover:translate-x-1 transition-transform" />
                 </Link>
+
                 <Link
                   to="/work"
-                  className="inline-flex items-center justify-center bg-transparent border-2 border-gray-100 hover:border-[#0D0F14] text-[#0D0F14] transition-all duration-300 font-bold px-8 py-4 rounded-full hover:bg-gray-50 text-center"
+                  className="inline-flex items-center justify-center bg-white border border-gray-200 hover:border-[#0D0F14] text-[#0D0F14] hover:bg-gray-50 transition-all duration-350 font-bold text-xs px-7 py-3.5 rounded-full shadow-sm group"
                 >
                   <span>View Our Work</span>
-                  <ArrowRight size={16} className="ml-2 opacity-50 text-gray-400 group-hover:translate-x-1" />
+                  <ArrowRight size={14} className="ml-2 text-gray-400 group-hover:translate-x-1 transition-transform" />
                 </Link>
-
-                {/* Small handwritten sub-caption indicator */}
-                <div className="hidden md:flex items-center gap-1.5 font-script text-lg text-teal-600 font-bold translate-y-1">
-                  <span>✨ 100% custom-crafted code</span>
-                </div>
               </div>
+
             </div>
 
-            {/* Right Hero Browser Mockup */}
-            <div className="lg:col-span-5 relative animate-fade-up">
-              {/* Outer Decorative Floating Ring */}
-              <div className="absolute -top-6 -left-6 w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center border border-orange-200 shadow-md transform -rotate-12">
-                <span className="font-script text-xl text-[#F4A24D] font-bold">UK</span>
-              </div>
-              <div className="absolute -bottom-6 -right-4 w-14 h-14 bg-teal-100 rounded-full flex items-center justify-center border border-teal-200 shadow-md transform rotate-12">
-                <span className="font-script text-xl text-[#00BFA6] font-bold">USA</span>
-              </div>
+            {/* Right Column Custom Mockups (Interactive overlap of code editor & browser) */}
+            <div className="lg:col-span-6 relative flex justify-center pt-8 lg:pt-0">
+              
+              {/* Outer container */}
+              <div className="relative w-full max-w-md md:max-w-lg">
+                
+                {/* Dual Screen 1: The Dark Code Editor Window */}
+                <div className="w-[88%] md:w-[92%] bg-[#0D0F14] rounded-2xl border border-gray-800 shadow-2xl relative z-10 p-5 font-mono text-xs text-gray-300">
+                  
+                  {/* Window Dot Indicators */}
+                  <div className="flex items-center justify-between border-b border-gray-800 pb-3 mb-4 select-none">
+                    <div className="flex items-center space-x-1.5">
+                      <span className="w-2.5 h-2.5 rounded-full bg-red-500/80 block"></span>
+                      <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/80 block"></span>
+                      <span className="w-2.5 h-2.5 rounded-full bg-green-500/80 block"></span>
+                    </div>
+                    <div className="text-[10px] text-gray-500 font-sans tracking-wide">App.tsx</div>
+                    <div className="w-8"></div>
+                  </div>
 
-              <div className="bg-[#0D0F14] rounded-2xl shadow-2xl overflow-hidden border border-gray-800">
-                {/* Browser top-bar */}
-                <div className="bg-[#151922] px-4 py-3 flex items-center justify-between border-b border-gray-800">
-                  <div className="flex items-center space-x-2">
-                    <span className="w-3 h-3 rounded-full bg-red-400 block"></span>
-                    <span className="w-3 h-3 rounded-full bg-yellow-400 block"></span>
-                    <span className="w-3 h-3 rounded-full bg-[#00BFA6] block"></span>
+                  {/* High Fidelity code mockup snippet matches browser display */}
+                  <div className="space-y-1.5 select-none leading-relaxed text-[11px] md:text-xs text-left">
+                    <div className="flex">
+                      <span className="w-6 text-gray-600 text-right pr-2 font-mono">1</span>
+                      <p className="text-gray-400 font-mono"><span className="text-[#00BFA6] font-mono">import</span> React <span className="text-pink-400 font-mono">from</span> <span className="text-emerald-400 font-mono">'react'</span>;</p>
+                    </div>
+                    
+                    <div className="flex">
+                      <span className="w-6 text-gray-600 text-right pr-2 font-mono">2</span>
+                      <p className="text-gray-400 font-mono"><span className="text-[#00BFA6] font-mono">import</span> &#123; <span className="text-orange-400 font-mono">Hero</span> &#125; <span className="text-pink-400 font-mono">from</span> <span className="text-emerald-400 font-mono">'@/components/Hero'</span>;</p>
+                    </div>
+
+                    <div className="flex">
+                      <span className="w-6 text-gray-600 text-right pr-2 font-mono">3</span>
+                      <p className="text-gray-400 font-mono"><span className="text-[#00BFA6] font-mono">import</span> &#123; <span className="text-orange-400 font-mono">Services</span> &#125; <span className="text-pink-400 font-mono">from</span> <span className="text-emerald-400 font-mono">'@/components/Services'</span>;</p>
+                    </div>
+
+                    <div className="flex">
+                      <span className="w-6 text-gray-600 text-right pr-2 font-mono">4</span>
+                      <p className="text-gray-500 font-mono"></p>
+                    </div>
+
+                    <div className="flex">
+                      <span className="w-6 text-gray-600 text-right pr-2 font-mono">5</span>
+                      <p className="text-gray-400 font-mono"><span className="text-pink-400 font-mono">export default function</span> <span className="text-blue-400 font-mono">Home</span>() &#123;</p>
+                    </div>
+
+                    <div className="flex">
+                      <span className="w-6 text-gray-600 text-right pr-2 font-mono">6</span>
+                      <p className="text-gray-400 font-mono">&nbsp;&nbsp;<span className="text-pink-400 font-mono">return</span> (</p>
+                    </div>
+
+                    <div className="flex">
+                      <span className="w-6 text-gray-600 text-right pr-2 font-mono">7</span>
+                      <p className="text-gray-400 font-mono">&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span className="text-teal-400 font-bold font-mono">main</span> className=<span className="text-emerald-400 font-mono">"min-h-screen"</span>&gt;</p>
+                    </div>
+
+                    <div className="flex bg-teal-500/10 border-l-2 border-[#00BFA6]">
+                      <span className="w-6 text-teal-400 text-right pr-2 font-semibold font-mono">8</span>
+                      <p className="text-white font-mono">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span className="text-[#00BFA6] font-bold font-mono">Hero</span> /&gt;</p>
+                    </div>
+
+                    <div className="flex">
+                      <span className="w-6 text-gray-600 text-right pr-2 font-mono">9</span>
+                      <p className="text-gray-400 font-mono">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span className="text-orange-400 font-bold font-mono">Services</span> /&gt;</p>
+                    </div>
+
+                    <div className="flex">
+                      <span className="w-6 text-gray-600 text-right pr-2 font-mono">10</span>
+                      <p className="text-gray-400 font-mono">&nbsp;&nbsp;&nbsp;&nbsp;&lt;/<span className="text-teal-400 font-bold font-mono">main</span>&gt;</p>
+                    </div>
+
+                    <div className="flex">
+                      <span className="w-6 text-gray-600 text-right pr-2 font-mono">11</span>
+                      <p className="text-gray-400 font-mono">&nbsp;&nbsp;);</p>
+                    </div>
+
+                    <div className="flex">
+                      <span className="w-6 text-gray-600 text-right pr-2 font-mono">12</span>
+                      <p className="text-gray-400 font-mono">&#125;</p>
+                    </div>
                   </div>
-                  <div className="bg-[#0D0F14] text-gray-500 text-[10px] px-8 py-1 rounded-md font-mono select-none">
-                    https://zenik.studio/app
-                  </div>
-                  <div className="w-8"></div>
+
                 </div>
 
-                {/* Simulated Editor Workspace */}
-                <div className="p-6 font-mono text-xs text-gray-300 space-y-4 leading-relaxed overflow-x-auto">
-                  <div className="flex items-center space-x-2 text-[10px] text-gray-500 border-b border-gray-800 pb-2">
-                    <span className="text-[#00BFA6]">App.tsx</span>
-                    <span>•</span>
-                    <span>Services.tsx</span>
-                    <span>•</span>
-                    <span>Config.json</span>
+                {/* Dual Screen 2: Foreground overlapping Browser window Mock */}
+                <div className="absolute right-[-10px] md:right-[-25px] bottom-[-25px] md:bottom-[-35px] w-[55%] md:w-[58%] bg-white rounded-2xl border border-gray-150 shadow-[0_20px_50px_rgba(0,0,0,0.06)] relative z-20 overflow-hidden text-left flex flex-col">
+                  
+                  {/* Browser simulated top header */}
+                  <div className="bg-gray-50 border-b border-gray-100 px-3 py-2 flex items-center justify-between select-none">
+                    <div className="flex items-center space-x-1.5">
+                      <span className="w-2 h-2 rounded-full bg-red-400/70 block"></span>
+                      <span className="w-2 h-2 rounded-full bg-yellow-400/70 block"></span>
+                      <span className="w-2 h-2 rounded-full bg-green-400/70 block"></span>
+                    </div>
+                    {/* URL bar mock */}
+                    <div className="flex items-center bg-gray-100 text-[8px] text-gray-500 py-1 px-3 rounded-md max-w-[130px] w-full mx-2 border border-gray-200/40 select-none font-mono">
+                      <span className="mr-1 text-[8px]">🔒</span> https://zenik.studio
+                    </div>
+                    <div className="w-3"></div>
                   </div>
-                  <div>
-                    <span className="text-pink-400">import</span> React <span className="text-pink-400">from</span> <span className="text-[#00BFA6]">'react'</span>;
-                  </div>
-                  <div>
-                    <span className="text-pink-400">const</span> <span className="text-blue-400">ZenikStudio</span> = () =&gt; &#123;
-                  </div>
-                  <div className="pl-4">
-                    <span className="text-pink-400">return</span> (
-                  </div>
-                  <div className="pl-8 text-gray-400">
-                    &lt;<span className="text-blue-400">Agency</span> <span className="text-yellow-400">status</span>=<span className="text-[#00BFA6]">"stellar"</span>&gt;
-                  </div>
-                  <div className="pl-12 text-gray-400">
-                    &lt;<span className="text-blue-400">Web</span> stack=<span className="text-[#00BFA6]">"Next.js/React/TS"</span> /&gt;
-                  </div>
-                  <div className="pl-12 text-gray-400">
-                    &lt;<span className="text-blue-400">Mobile</span> stack=<span className="text-[#00BFA6]">"React Native/Swift"</span> /&gt;
-                  </div>
-                  <div className="pl-12 text-gray-400">
-                    &lt;<span className="text-blue-400">Cybersecurity</span> audits=<span className="text-[#00BFA6]">"OWASP/GDPR/HIPAA"</span> /&gt;
-                  </div>
-                  <div className="pl-8 text-gray-400">
-                    &lt;/<span className="text-blue-400">Agency</span>&gt;
-                  </div>
-                  <div className="pl-4">);</div>
-                  <div>&#125;;</div>
 
-                  {/* High Quality Metrics graph overlay */}
-                  <div className="bg-[#151922] p-4 rounded-xl border border-gray-800 mt-4 space-y-2">
-                    <div className="flex justify-between items-center text-[10px]">
-                      <span className="text-gray-400 font-bold">CLIENT PERFORMANCE METRICS</span>
-                      <span className="text-[#00BFA6] font-bold">↑ 72%</span>
+                  {/* Browser content viewport */}
+                  <div className="p-4 flex-1 space-y-4 flex flex-col justify-between select-none bg-white">
+                    
+                    {/* Header */}
+                    <div className="flex justify-between items-center text-[10px] border-b border-gray-50 pb-1.5">
+                      <span className="font-extrabold text-gray-900 tracking-tight font-sans">Zenik Studio</span>
+                      <span className="text-gray-400 font-extrabold text-sm leading-none">☰</span>
                     </div>
-                    <div className="h-10 flex items-end space-x-1.5 pt-2">
-                      <div className="bg-[#00BFA6] h-4 w-full rounded-sm opacity-30"></div>
-                      <div className="bg-[#00BFA6] h-6 w-full rounded-sm opacity-40"></div>
-                      <div className="bg-[#00BFA6] h-5 w-full rounded-sm opacity-50"></div>
-                      <div className="bg-[#00BFA6] h-8 w-full rounded-sm opacity-70"></div>
-                      <div className="bg-[#00BFA6] h-10 w-full rounded-sm"></div>
+
+                    {/* Headline */}
+                    <div className="space-y-1 text-left">
+                      <h4 className="text-xs md:text-[13px] font-black text-gray-950 tracking-tight leading-tight">
+                        Secure. Scalable.<br />Built for Impact<span className="text-[#00BFA6] font-black font-sans">.</span>
+                      </h4>
                     </div>
+
+                    {/* Action button */}
+                    <div className="text-left">
+                      <button className="text-[9px] font-extrabold border border-gray-200 px-3.5 py-1 rounded-full text-gray-700 hover:border-[#00BFA6] hover:text-[#00BFA6] transition-colors leading-none inline-flex items-center gap-1 cursor-pointer">
+                        <span>Get Started</span> <span className="font-sans">→</span>
+                      </button>
+                    </div>
+
+                    {/* Performance mini chart card */}
+                    <div className="bg-[#FAF9F5] rounded-xl border border-orange-100/50 p-2.5 space-y-1 text-left">
+                      <span className="text-[8.5px] font-bold text-gray-400 block tracking-wide font-sans">Project Performance</span>
+                      <div className="flex items-baseline space-x-1 leading-none">
+                        <span className="text-[#00BFA6] font-black font-mono text-[11px]">↑ 72%</span>
+                        <span className="text-[7.5px] text-gray-400 font-semibold font-mono">vs last month</span>
+                      </div>
+                      
+                      {/* Live Area path chart in SVG */}
+                      <div className="h-10 pt-2 shrink-0">
+                        <svg className="w-full h-full overflow-visible" viewBox="0 0 100 30" preserveAspectRatio="none">
+                          <defs>
+                            <linearGradient id="areaGradient" x1="0" y1="0" x2="0" y2="1">
+                              <stop offset="0%" stopColor="#00BFA6" stopOpacity="0.45" />
+                              <stop offset="100%" stopColor="#00BFA6" stopOpacity="0.0" />
+                            </linearGradient>
+                          </defs>
+                          <path
+                            d="M0,25 Q15,10 30,18 T60,6 T90,12 L100,2 L100,30 L0,30 Z"
+                            fill="url(#areaGradient)"
+                          />
+                          <path
+                            d="M0,25 Q15,10 30,18 T60,6 T90,12 L100,2"
+                            fill="none"
+                            stroke="#00BFA6"
+                            strokeWidth="1.8"
+                            strokeLinecap="round"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+
                   </div>
+
                 </div>
+
               </div>
+
             </div>
 
           </div>
         </div>
       </section>
 
-      {/* 2. MARQUEE CLOCK / CLIENT LOGOS LIST */}
+      {/* 2. TRUSTED BY INNOVATIVE COMPANIES SECTION */}
       <Marquee />
 
       {/* 3. CORE SERVICE PREVIEW */}
-      <section className="py-24 bg-gradient-to-br from-teal-50/40 via-white to-orange-50/30 relative overflow-hidden">
-        {/* Organic hand-sketch elements */}
-        <div className="absolute top-10 left-10 text-orange-200 pointer-events-none -rotate-12 select-none">
+      <section className="py-24 bg-white relative overflow-hidden text-center">
+        {/* Subtle decorative stars */}
+        <div className="absolute top-12 left-10 text-orange-100/80 transform rotate-12 select-none pointer-events-none">
           <HanddrawnStar className="w-10 h-10" />
         </div>
-        <div className="absolute bottom-10 right-10 text-teal-200 pointer-events-none rotate-45 select-none">
-          <HanddrawnStar className="w-8 h-8" />
+        <div className="absolute bottom-16 right-10 text-teal-50/70 select-none pointer-events-none">
+          <HanddrawnStar className="w-12 h-12" />
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <div className="text-center max-w-3xl mx-auto space-y-4 mb-20 relative">
-            <div className="inline-flex items-center space-x-2 text-xs uppercase tracking-widest font-bold text-[#00BFA6]">
-              <Squiggle />
-              <span>Core Offering</span>
-              <Squiggle />
-            </div>
-            
-            <h2 className="text-3xl md:text-5.5xl font-black text-[#0D0F14] tracking-tight leading-tight">
-              A Studio Armed with <br className="md:hidden" />
-              <span className="relative inline-block text-[#00BFA6] px-3 font-black whitespace-nowrap">
-                Elite Skills
-                <HanddrawnCircle className="text-teal-400/80" />
-              </span>
+          {/* Section Header */}
+          <div className="text-center max-w-2xl mx-auto space-y-4 mb-20">
+            <span className="text-[10px] uppercase tracking-widest font-extrabold text-[#00BFA6] bg-teal-55/40 px-3 py-1 rounded-full border border-teal-100/55 select-none font-mono">
+              Core Offering
+            </span>
+            <h2 className="text-3xl md:text-5xl font-black text-[#0D0F14] tracking-tight leading-none mt-2">
+              Our Premier Services
             </h2>
-
-            {/* Orange handwritten accent script */}
-            <p className="font-script text-2xl text-[#F4A24D] -mt-1 font-bold">
-              engineered with surgical precision & friendly touch
-            </p>
-
-            <p className="text-gray-600 max-w-xl mx-auto">
-              We design and construct custom digital products tailored to survive high traffic, complex data pipelines, and intense security audits.
-            </p>
+            <div className="w-12 h-1.5 bg-[#00BFA6] rounded-full mx-auto mt-2"></div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
-            {services.map((svc, i) => {
-              // Custom handwritten style badges for Odoo SaaS feel
-              const badgeTexts = ["Most Requested 🚀", "Fast & Responsive 📱", "Military-Grade Auditing 🛡️"];
-              const pastelStyle = [
-                "bg-amber-50 text-amber-700 border-amber-200 font-bold",
-                "bg-indigo-50 text-indigo-700 border-indigo-200 font-bold",
-                "bg-rose-50 text-rose-700 border-rose-200 font-bold"
-              ];
-
-              return (
-                <div
-                  key={i}
-                  className="group bg-white rounded-[32px] p-8 md:p-10 border border-gray-100 hover:border-[#00BFA6] hover:shadow-[0_20px_50px_rgba(0,191,166,0.08)] transition-all duration-300 hover:-translate-y-2 flex flex-col justify-between relative overflow-hidden"
-                >
-                  {/* Scribble indicator sticker */}
-                  <div className="absolute top-4 right-4">
-                    <span className={`text-[10px] font-mono font-bold uppercase tracking-wider px-3 py-1 rounded-full border ${pastelStyle[i]}`}>
-                      {badgeTexts[i]}
-                    </span>
+          {/* Service Cards Grid Container */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10 text-left">
+            {services.map((svc, i) => (
+              <div
+                key={i}
+                className="group bg-white rounded-[28px] p-8 md:p-10 border border-gray-100 hover:border-[#00BFA6] hover:shadow-[0_20px_50px_rgba(0,191,166,0.05)] transition-all duration-350 hover:-translate-y-2 flex flex-col justify-between relative overflow-hidden"
+              >
+                
+                {/* Visual Icon Container */}
+                <div className="space-y-6">
+                  <div className="w-14 h-14 bg-teal-50/70 border border-teal-100/40 rounded-2xl flex items-center justify-center text-[#00BFA6] group-hover:scale-105 group-hover:bg-[#00BFA6] group-hover:text-white transition-all duration-300 shadow-sm">
+                    {svc.icon}
                   </div>
-
-                  <div className="space-y-6">
-                    <div className="w-16 h-16 bg-teal-50 rounded-2xl flex items-center justify-center group-hover:bg-[#00BFA6] group-hover:text-white transition-colors duration-300">
-                      {svc.icon}
-                    </div>
-                    <h3 className="text-2xl font-black text-[#0D0F14] tracking-tight">{svc.title}</h3>
-                    <p className="text-sm text-gray-600 leading-relaxed font-normal">{svc.description}</p>
-                  </div>
-
-                  <div className="pt-8 flex items-center justify-between border-t border-gray-50 mt-8">
-                    <Link
-                      to={svc.link}
-                      className="inline-flex items-center text-sm font-extrabold text-[#00BFA6] group-hover:text-[#0D0F14] transition-colors"
-                    >
-                      <span>Explore service details</span>
-                      <ArrowRight size={14} className="ml-1.5 group-hover:translate-x-1.5 transition-transform" />
-                    </Link>
-                    
-                    <span className="font-script text-base text-[#F4A24D] font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      View now!
-                    </span>
-                  </div>
+                  <h3 className="text-xl font-black text-[#0D0F14] tracking-tight">{svc.title}</h3>
+                  <p className="text-sm text-gray-500 leading-relaxed font-normal">{svc.description}</p>
                 </div>
-              );
-            })}
-          </div>
 
-          <div className="text-center pt-14">
-            <Link
-              to="/services"
-              className="inline-flex items-center text-sm font-extrabold text-[#0D0F14] hover:text-[#00BFA6] underline tracking-wide gap-1 group"
-            >
-              <span>Explore all Services & Engineering stack</span>
-              <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-            </Link>
+                {/* Footer details link */}
+                <div className="pt-6 border-t border-gray-50 mt-8 flex items-center justify-between">
+                  <Link
+                    to={svc.link}
+                    className="inline-flex items-center text-xs font-black uppercase text-[#00BFA6] tracking-wider group-hover:text-[#0D0F14] transition-colors"
+                  >
+                    <span>Learn more</span>
+                    <ArrowRight size={12} className="ml-1.5 group-hover:translate-x-1.5 transition-transform" />
+                  </Link>
+                </div>
+
+              </div>
+            ))}
           </div>
 
         </div>
       </section>
 
-      {/* 4. PROCESS STEP SECTION: How We Work Together */}
-      <section className="py-24 bg-[#FAF9F5] border-y border-orange-100/40 relative overflow-hidden">
-        {/* Background Sketchy grid lines or loops */}
-        <div className="absolute top-8 left-1/4 text-rose-300 opacity-20 pointer-events-none select-none">
-          <svg className="w-24 h-24" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M10,20 C40,5 60,80 90,40" strokeDasharray="4 4" />
-          </svg>
-        </div>
+      {/* 4. PROCESS STEP: HOW WE WORK TOGETHER */}
+      <section className="py-24 bg-[#FAF9F5] border-y border-orange-100/40 relative">
+        <div className="absolute inset-0 bg-[radial-gradient(#eedcd0_1.5px,transparent_1.5px)] [background-size:24px_24px] opacity-25"></div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
           
           <div className="text-center max-w-2xl mx-auto space-y-4 mb-20">
-            <span className="text-xs uppercase tracking-widest font-bold text-[#00BFA6] inline-flex items-center gap-1">
-              Our Process <Squiggle className="w-4 h-1" />
+            <span className="text-[10px] uppercase tracking-widest font-extrabold text-[#00BFA6] bg-teal-50 px-3.5 py-1.5 rounded-full border border-teal-100/70 select-none font-mono">
+              OUR PROCESS
             </span>
-            <h2 className="text-3xl md:text-5.5xl font-black text-[#0D0F14] tracking-tight">
-              How We Work Together
+            <h2 className="text-3xl md:text-5xl font-black text-[#0D0F14] tracking-tight mt-2">
+              Our Process
             </h2>
-            <p className="font-script text-2xl text-[#F4A24D] -mt-1 font-bold">
-              designed for structured momentum & transparent flow
-            </p>
+            <div className="w-12 h-1.5 bg-[#00BFA6] rounded-full mx-auto mt-2"></div>
           </div>
 
-          {/* Process steps horizontal alignment */}
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-8 relative z-10">
-            {/* Horizontal line background on tablets+ */}
+          {/* Dotted Connection line with step cards */}
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-8 relative">
             <div className="absolute top-10 left-12 right-12 h-0.5 border-t border-dashed border-teal-300/40 -z-10 hidden md:block"></div>
 
-            {steps.map((st, i) => {
-              const miniLabels = [
-                "We listen first! 👂",
-                "Strict scoping 🎯",
-                "Pure crafting 💻",
-                "OWASP checks 🛡️",
-                "Zero downtime 🚀"
-              ];
-              return (
-                <div key={i} className="text-center space-y-4 relative group bg-white/60 hover:bg-white p-6 rounded-3xl border border-transparent hover:border-orange-100 shadow-sm hover:shadow-md transition-all duration-300">
-                  <div className="relative inline-flex items-center justify-center w-14 h-14 rounded-full bg-white text-[#00BFA6] border-2 border-[#00BFA6]/10 font-mono font-bold text-sm shadow-sm group-hover:bg-[#00BFA6] group-hover:text-white group-hover:scale-110 transition-all duration-300">
-                    {st.num}
-                    <div className="absolute inset-0 rounded-full border border-dashed border-[#00BFA6]/40 scale-110 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                  </div>
-                  <h3 className="text-lg font-black text-[#0D0F14] tracking-tight">{st.name}</h3>
-                  <p className="text-xs text-gray-500 leading-relaxed max-w-[200px] mx-auto font-medium">{st.desc}</p>
-                  
-                  {/* Handwritten subtext underneath step */}
-                  <div className="font-script text-base text-[#F4A24D] font-bold block pt-1 select-none opacity-90">
-                    {miniLabels[i]}
-                  </div>
+            {stepsList.map((st, i) => (
+              <div
+                key={i}
+                className="flex flex-col items-center text-center space-y-4 relative group"
+              >
+                
+                {/* Numbered Header circle */}
+                <div className="w-7 h-7 bg-[#00BFA6] text-white font-mono font-bold text-xs rounded-full flex items-center justify-center shadow-md border-2 border-white select-none relative z-10">
+                  {st.num}
                 </div>
-              );
-            })}
+
+                {/* Primary round Line Icon container */}
+                <div className="w-16 h-16 rounded-full bg-white border border-gray-100 flex items-center justify-center shadow-sm relative group-hover:border-[#00BFA6] group-hover:scale-108 transition-all duration-300">
+                  {st.icon}
+                  <div className="absolute inset-0 rounded-full border border-dashed border-[#00BFA6]/40 scale-110 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                </div>
+
+                {/* Name */}
+                <h3 className="text-base font-black text-[#0D0F14] tracking-tight">{st.name}</h3>
+
+                {/* Short Brief */}
+                <p className="text-xs text-gray-500 leading-relaxed max-w-[170px] mx-auto font-semibold">
+                  {st.desc}
+                </p>
+
+              </div>
+            ))}
           </div>
 
         </div>
       </section>
 
-      {/* 5. STATS SUMMARY SECTION */}
-      <section className="py-20 bg-[#0D0F14] text-white relative overflow-hidden">
-        {/* Abstract doodle shapes in stats */}
-        <div className="absolute inset-0 bg-[radial-gradient(#151b26_1px,transparent_1px)] [background-size:16px_16px] opacity-40"></div>
-        <div className="absolute right-4 top-4 hidden md:block text-orange-400 opacity-20 pointer-events-none">
-          <HanddrawnCrown className="w-16 h-16" />
-        </div>
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 text-center">
-            
-            <div className="space-y-2 relative group cursor-default">
-              <div className="text-5xl md:text-6.5xl font-black text-[#00BFA6] font-mono tracking-tight group-hover:scale-105 transition-transform">
-                {stats.projects}+
-              </div>
-              <div className="text-xs uppercase tracking-widest font-bold text-gray-400">
-                Projects Delivered
-              </div>
-              <span className="font-script text-base text-[#F4A24D] block mt-1 font-bold select-none opacity-95">
-                and counting! 📈
-              </span>
-            </div>
-
-            <div className="space-y-2 relative group cursor-default">
-              <div className="text-5xl md:text-6.5xl font-black text-white font-mono tracking-tight group-hover:scale-105 transition-transform">
-                {stats.clients}+
-              </div>
-              <div className="text-xs uppercase tracking-widest font-bold text-gray-400">
-                Happy Clients
-              </div>
-              <span className="font-script text-base text-[#F4A24D] block mt-1 font-bold select-none opacity-95">
-                100% verified status ⭐
-              </span>
-            </div>
-
-            <div className="space-y-2 relative group cursor-default">
-              <div className="text-5xl md:text-6.5xl font-black text-[#00BFA6] font-mono tracking-tight group-hover:scale-105 transition-transform">
-                {stats.countries}+
-              </div>
-              <div className="text-xs uppercase tracking-widest font-bold text-gray-400">
-                Countries Served
-              </div>
-              <span className="font-script text-base text-[#F4A24D] block mt-1 font-bold select-none opacity-95">
-                Europe & NA hubs 🌍
-              </span>
-            </div>
-
-            <div className="space-y-2 relative group cursor-default">
-              <div className="text-5xl md:text-6.5xl font-black text-white font-mono tracking-tight group-hover:scale-105 transition-transform">
-                {stats.satisfaction}%
-              </div>
-              <div className="text-xs uppercase tracking-widest font-bold text-gray-400">
-                Client Satisfaction
-              </div>
-              <span className="font-script text-base text-[#F4A24D] block mt-1 font-bold select-none opacity-95">
-                industry-leading 🎯
-              </span>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* 6. TESTIMONIALS SLIDER SECTION */}
+      {/* 5. FLOATING METRICS SUMMARY ROW */}
       <section className="py-24 bg-white relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <div className="text-center max-w-2xl mx-auto space-y-4 mb-20 relative">
-            <span className="text-xs uppercase tracking-widest font-bold text-[#00BFA6] inline-flex items-center gap-1">
-              Testimonials <Squiggle className="w-4 h-1 text-[#00BFA6]" />
-            </span>
-            <h2 className="text-3xl md:text-5.5xl font-black text-[#0D0F14] tracking-tight">
-              What Our Clients Say
-            </h2>
-            <p className="font-script text-2xl text-[#F4A24D] font-bold">
-              trusted by pioneers in tech and finance
-            </p>
+          {/* Floating border container card */}
+          <div className="bg-white rounded-[32px] p-8 md:p-10 border border-gray-150/85 shadow-[0_15px_45px_rgba(0,0,0,0.02)] grid grid-cols-1 md:grid-cols-4 gap-8 divide-y md:divide-y-0 md:divide-x divide-gray-100">
+            
+            {/* Stat 1 */}
+            <div className="flex items-center space-x-5 text-left md:pl-0 pt-0">
+              <div className="w-12 h-12 rounded-xl bg-teal-50 flex items-center justify-center text-[#00BFA6] shrink-0">
+                <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                  <line x1="16" y1="2" x2="16" y2="6" />
+                  <line x1="8" y1="2" x2="8" y2="6" />
+                  <line x1="3" y1="10" x2="21" y2="10" />
+                  <path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01" />
+                </svg>
+              </div>
+              <div>
+                <div className="text-3xl font-black text-[#0D0F14] font-mono leading-none">{stats.projects}+</div>
+                <div className="text-[11px] uppercase tracking-wider font-extrabold text-gray-400 mt-1.5 leading-none">
+                  Projects Delivered
+                </div>
+              </div>
+            </div>
+
+            {/* Stat 2 */}
+            <div className="flex items-center space-x-5 text-left md:pl-8 pt-6 md:pt-0">
+              <div className="w-12 h-12 rounded-xl bg-teal-50 flex items-center justify-center text-[#00BFA6] shrink-0">
+                <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                </svg>
+              </div>
+              <div>
+                <div className="text-3xl font-black text-[#0D0F14] font-mono leading-none">{stats.clients}+</div>
+                <div className="text-[11px] uppercase tracking-wider font-extrabold text-gray-400 mt-1.5 leading-none">
+                  Happy Clients
+                </div>
+              </div>
+            </div>
+
+            {/* Stat 3 */}
+            <div className="flex items-center space-x-5 text-left md:pl-8 pt-6 md:pt-0">
+              <div className="w-12 h-12 rounded-xl bg-teal-50 flex items-center justify-center text-[#00BFA6] shrink-0">
+                <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="10" />
+                  <line x1="2" y1="12" x2="22" y2="12" />
+                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                </svg>
+              </div>
+              <div>
+                <div className="text-3xl font-black text-[#0D0F14] font-mono leading-none">{stats.countries}+</div>
+                <div className="text-[11px] uppercase tracking-wider font-extrabold text-gray-400 mt-1.5 leading-none">
+                  Countries Served
+                </div>
+              </div>
+            </div>
+
+            {/* Stat 4 */}
+            <div className="flex items-center space-x-5 text-left md:pl-8 pt-6 md:pt-0">
+              <div className="w-12 h-12 rounded-xl bg-teal-50 flex items-center justify-center text-[#00BFA6] shrink-0">
+                <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M8 14s1.5 2 4 2 4-2 4-2" />
+                  <line x1="9" y1="9" x2="9.01" y2="9" />
+                  <line x1="15" y1="9" x2="15.01" y2="9" />
+                </svg>
+              </div>
+              <div>
+                <div className="text-3xl font-black text-[#0D0F14] font-mono leading-none">{stats.satisfaction}%</div>
+                <div className="text-[11px] uppercase tracking-wider font-extrabold text-gray-400 mt-1.5 leading-none">
+                  Client Satisfaction
+                </div>
+              </div>
+            </div>
+
           </div>
 
-          {/* Testimonial Cards Layout or single slider */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
+        </div>
+      </section>
+
+      {/* 6. WHAT OUR CLIENTS SAY TESTIMONIALS */}
+      <section className="py-24 bg-white relative border-t border-gray-50 text-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div className="text-center max-w-2xl mx-auto space-y-4 mb-20 relative">
+            <span className="text-[10px] uppercase tracking-widest font-extrabold text-[#00BFA6] bg-teal-50 px-3.5 py-1.5  rounded-full border border-teal-100/70 inline-flex items-center gap-1 select-none font-mono">
+              WHAT OUR CLIENTS SAY
+              <svg className="w-5 h-4 text-teal-400 opacity-90 inline" viewBox="0 0 20 12" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+                <path d="M2,9 C5,6 9,6 12,9" />
+                <path d="M5,5 C8,2 12,2 15,5" />
+              </svg>
+            </span>
+            <div className="h-1"></div>
+          </div>
+
+          {/* Testimonial cards grid layout */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10 text-left">
             {testimonials.map((test, index) => (
               <div
                 key={index}
-                className={`p-10 rounded-[32px] border transition-all duration-350 flex flex-col justify-between cursor-pointer relative overflow-hidden ${
+                className={`p-10 rounded-[32px] border transition-all duration-350 flex flex-col justify-between cursor-pointer relative overflow-hidden bg-[#FAF9F6]/30 hover:bg-white ${
                   index === activeTestimonial
-                    ? "border-[#00BFA6] bg-teal-50/15 shadow-[0_20px_50px_rgba(0,191,166,0.06)] scale-102"
-                    : "border-gray-100 bg-white hover:border-gray-200 hover:shadow-md"
+                    ? "border-[#00BFA6] shadow-[0_20px_50px_rgba(0,191,166,0.04)]"
+                    : "border-gray-100 hover:border-gray-200"
                 }`}
                 onClick={() => setActiveTestimonial(index)}
               >
-                {index === activeTestimonial && (
-                  <div className="absolute -right-2 -top-2 w-12 h-12 text-[#F4A24D] opacity-25">
-                    <HanddrawnCrown />
-                  </div>
-                )}
-
                 <div className="space-y-6">
                   {/* Rating stars */}
-                  <div className="flex text-amber-500 space-x-1.5">
+                  <div className="flex text-[#00BFA6] space-x-1">
                     {[...Array(5)].map((_, idx) => (
-                      <Star key={idx} size={15} fill="currentColor" stroke="none" />
+                      <Star key={idx} size={14} fill="currentColor" stroke="none" />
                     ))}
                   </div>
 
-                  <p className="text-[#0D0F14] italic text-sm md:text-base leading-relaxed font-normal">
+                  <p className="text-gray-900 font-normal text-sm tracking-wide leading-relaxed">
                     "{test.quote}"
                   </p>
                 </div>
 
-                <div className="flex items-center space-x-4 pt-6 mt-8 border-t border-gray-50">
+                {/* Profile header */}
+                <div className="flex items-center space-x-3.5 pt-6 mt-8 border-t border-dashed border-gray-100 select-none">
                   <img
-                    className="w-12 h-12 rounded-full object-cover border-2 border-teal-400/35"
+                    className="w-11 h-11 rounded-full object-cover border-2 border-teal-200/50"
                     src={test.avatar}
                     alt={test.author}
                     referrerPolicy="no-referrer"
                   />
                   <div>
                     <h4 className="font-extrabold text-sm text-[#0D0F14]">{test.author}</h4>
-                    <p className="text-xs text-gray-500 font-medium">
-                      {test.role}, <span className="text-[#00BFA6] font-bold">{test.company}</span>
+                    <p className="text-[11px] text-gray-400 font-bold leading-normal mt-0.5">
+                      {test.role}, <span className="text-teal-600 font-extrabold">{test.company}</span>
                     </p>
                   </div>
                 </div>
+
               </div>
             ))}
           </div>
 
           {/* Testimonial slider indicators */}
-          <div className="flex justify-center space-x-2 mt-8">
+          <div className="flex justify-center space-x-2.5 mt-10">
             {testimonials.map((_, index) => (
               <button
                 key={index}
                 className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                  index === activeTestimonial ? "bg-[#00BFA6] w-6" : "bg-gray-200"
+                  index === activeTestimonial ? "bg-[#00BFA6] w-6" : "bg-gray-200/80"
                 }`}
                 onClick={() => setActiveTestimonial(index)}
                 aria-label={`Go to slide ${index + 1}`}
@@ -556,8 +676,54 @@ export function Home() {
         </div>
       </section>
 
-      {/* 7. REUSABLE CTA BANNER */}
-      <CtaBanner buttonText="Book a Free Call" linkTo="/contact" />
+      {/* 7. PRESERVED FULL CUSTOM CTA BANNER CORES WITH PURPLE STYLING */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          {/* Custom CTA Banner background with beautiful pastel colors */}
+          <div className="rounded-[40px] bg-gradient-to-r from-amber-50/75 via-pink-50/45 to-purple-50/70 border border-orange-100/50 p-10 md:p-14 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8 shadow-sm">
+            
+            {/* Soft decorative lightburst flare background */}
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,#fff9f0_10%,transparent_70%)] opacity-85 select-none pointer-events-none"></div>
+
+            {/* Left Header Handdrawn Script Text */}
+            <div className="space-y-3 relative z-10 text-center md:text-left">
+              <div className="inline-block transform -rotate-2">
+                <span className="font-script text-4xl md:text-5xl text-purple-600 select-none block leading-tight font-black tracking-tight">
+                  Have a project in mind?
+                </span>
+              </div>
+            </div>
+
+            {/* Right Subtext Title and Pill Black button */}
+            <div className="flex flex-col md:flex-row items-center gap-6 relative z-10 shrink-0 select-none">
+              <span className="text-sm text-gray-500 font-extrabold leading-none pb-1 md:pb-0 font-sans tracking-tight">
+                Let's build something amazing together.
+              </span>
+              
+              <div className="relative">
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center justify-center bg-[#0D0F14] hover:bg-[#00BFA6] text-white hover:text-white transition-all duration-350 font-black text-xs px-8 py-4 rounded-full shadow-lg hover:shadow-xl hover:-translate-y-0.5 group active:scale-95"
+                >
+                  <span>Start a Project</span>
+                  <ArrowRight size={14} className="ml-2 group-hover:translate-x-1.5 transition-transform" />
+                </Link>
+
+                {/* Handdrawn curved arrow decoration on the right pointing to start a project button */}
+                <div className="absolute top-12 right-[-20px] text-purple-400 rotate-[85deg] pointer-events-none opacity-85 translate-y-2 translate-x-2 md:block hidden">
+                  <svg className="w-12 h-12" viewBox="0 0 100 60" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+                    <path d="M10,12 C40,8 80,18 85,42 C85,44 78,44 75,38" />
+                    <polyline points="68,32 76,43 85,32" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
 
     </div>
   );

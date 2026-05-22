@@ -1,40 +1,48 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { 
-  Mail, Lock, Eye, EyeOff, ArrowLeft, Disc, AlertCircle, Check, HelpCircle
+  Mail, Lock, User as UserIcon, Eye, EyeOff, ArrowLeft, Disc, AlertCircle, Check
 } from "lucide-react";
-import { HanddrawnUnderline, HanddrawnCrown, Sparkles } from "../components/Squiggle";
+import { HanddrawnUnderline, Sparkles } from "../components/Squiggle";
 
-interface LoginProps {
+interface SignUpProps {
   user: { email: string; isLoggedIn: boolean };
   onLogin: (email: string) => void;
-  onLogout: () => void;
 }
 
-export function Login({ user, onLogin, onLogout }: LoginProps) {
+export function SignUp({ user, onLogin }: SignUpProps) {
+  const [nameInput, setNameInput] = useState("");
   const [emailInput, setEmailInput] = useState("");
   const [passwordInput, setPasswordInput] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [rememberMe, setRememberMe] = useState(true);
+  const [termsAgreed, setTermsAgreed] = useState(true);
   const [errorText, setErrorText] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!nameInput.trim()) {
+      setErrorText("Please state your registered or full corporate name.");
+      return;
+    }
     if (!emailInput.trim()) {
-      setErrorText("Please enter your registered workspace email.");
+      setErrorText("Workspace email is required.");
       return;
     }
     if (passwordInput.length < 6) {
-      setErrorText("Workspace access keys must contain at least 6 characters.");
+      setErrorText("Pass keys must contain at least 6 alphanumeric values.");
+      return;
+    }
+    if (!termsAgreed) {
+      setErrorText("To provision workspace targets, you must accept policy terms.");
       return;
     }
 
     setErrorText("");
     setLoading(true);
 
-    // Simulate short loader for premium experience
+    // Simulate creation loop
     setTimeout(() => {
       onLogin(emailInput);
       setLoading(false);
@@ -71,7 +79,7 @@ export function Login({ user, onLogin, onLogout }: LoginProps) {
         {/* LEFT COLUMN: AUTH FORM PANEL (Padded nicely, Centered) */}
         <div className="lg:col-span-5 flex items-center justify-center px-4 sm:px-8 lg:px-12 py-20 bg-[#FAF9F5]/30">
           
-          <div className="w-full max-w-lg bg-white rounded-[32px] border border-gray-100 shadow-[0_20px_50px_rgba(13,15,20,0.03)] p-8 sm:p-11 relative">
+          <div className="w-full max-w-lg bg-white rounded-[32px] border border-gray-100 shadow-[0_20px_50px_rgba(13,15,20,0.03)] p-8 sm:p-11 relative animate-fadeIn">
             
             {user.isLoggedIn ? (
               /* ALREADY LOGGED IN CONSOLE */
@@ -97,16 +105,6 @@ export function Login({ user, onLogin, onLogout }: LoginProps) {
                   </p>
                 </div>
 
-                <div className="bg-gray-50 border border-gray-150/50 rounded-2xl p-4 space-y-2">
-                  <div className="flex justify-between items-center text-[9px] text-[#00BFA6] font-bold font-mono uppercase">
-                    <span>Target Tunnel Pipeline</span>
-                    <span>Synchronized</span>
-                  </div>
-                  <p className="text-[11px] text-gray-500 leading-relaxed">
-                    You have active pipelines registered under this identity. Head back to the consulting directory to review ongoing architectural staging, or safe terminate below.
-                  </p>
-                </div>
-
                 <div className="pt-4 space-y-2">
                   <Link
                     to="/"
@@ -114,18 +112,12 @@ export function Login({ user, onLogin, onLogout }: LoginProps) {
                   >
                     Go to Dashboard Target
                   </Link>
-                  <button
-                    onClick={onLogout}
-                    className="w-full bg-red-50 hover:bg-red-100 text-red-600 py-3 rounded-xl text-xs font-bold transition-all block text-center"
-                  >
-                    Terminate Secure Connection
-                  </button>
                 </div>
               </div>
 
             ) : (
 
-              /* LOGIN FORM PANEL */
+              /* SIGN UP FORM PANEL */
               <div className="space-y-7">
                 
                 {/* 2.1 APP LOGO BLOCK */}
@@ -139,11 +131,11 @@ export function Login({ user, onLogin, onLogout }: LoginProps) {
                   </div>
                 </div>
 
-                {/* 2.2 WELCOME BACK SUBTITLE WITH SLANTED TICK/LINES */}
+                {/* 2.2 WELCOME SUBTITLE WITH SLANTED TICK/LINES */}
                 <div className="space-y-2 text-left pt-1">
                   <div className="flex items-center space-x-1 text-[#00BFA6]">
                     <span className="text-[10px] font-black uppercase tracking-widest font-mono">
-                      WELCOME BACK
+                      START YOUR PIPELINE
                     </span>
                     {/* Double slanted lines matching sketched image style exactly */}
                     <svg className="w-4 h-3 text-[#00BFA6]" viewBox="0 0 16 12" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
@@ -153,7 +145,7 @@ export function Login({ user, onLogin, onLogout }: LoginProps) {
                   </div>
 
                   <h2 className="text-3xl sm:text-[32px] font-black text-[#0D0F14] tracking-tight leading-[1.05]">
-                    Sign in to your account<span className="text-[#00BFA6] font-black">.</span>
+                    Create your account<span className="text-[#00BFA6] font-black">.</span>
                   </h2>
 
                   {/* Cursive yellow tagline "Let's build something exceptional!" */}
@@ -178,7 +170,27 @@ export function Login({ user, onLogin, onLogout }: LoginProps) {
                 {/* 2.3 MAIN FORM BLOCK */}
                 <form onSubmit={handleFormSubmit} className="space-y-4 text-left">
                   
-                  {/* Email Field with vector envelope */}
+                  {/* Name field */}
+                  <div className="space-y-1">
+                    <label className="text-[10px] font-black tracking-wider text-gray-400 font-mono block uppercase">
+                      Workspace Name
+                    </label>
+                    <div className="relative">
+                      <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center text-gray-400 pointer-events-none">
+                        <UserIcon size={15} />
+                      </span>
+                      <input
+                        type="text"
+                        required
+                        placeholder="John Doe / Company Ltd"
+                        value={nameInput}
+                        onChange={(e) => setNameInput(e.target.value)}
+                        className="w-full bg-white focus:bg-white text-xs border border-gray-200 focus:border-[#00BFA6] rounded-xl py-3 px-4 pl-10.5 outline-none text-[#0D0F14] focus:ring-1 focus:ring-[#00BFA6] shadow-sm transition-all duration-300"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Email Field */}
                   <div className="space-y-1">
                     <label className="text-[10px] font-black tracking-wider text-gray-400 font-mono block uppercase">
                       Email Address
@@ -198,7 +210,7 @@ export function Login({ user, onLogin, onLogout }: LoginProps) {
                     </div>
                   </div>
 
-                  {/* Password Field with lock logo + visibility helper */}
+                  {/* Password Field */}
                   <div className="space-y-1">
                     <label className="text-[10px] font-black tracking-wider text-gray-400 font-mono block uppercase">
                       Password
@@ -210,7 +222,7 @@ export function Login({ user, onLogin, onLogout }: LoginProps) {
                       <input
                         type={showPassword ? "text" : "password"}
                         required
-                        placeholder="Enter your password"
+                        placeholder="Create workspace key"
                         value={passwordInput}
                         onChange={(e) => setPasswordInput(e.target.value)}
                         className="w-full bg-white focus:bg-white text-xs border border-gray-200 focus:border-[#00BFA6] rounded-xl py-3 px-4 pl-10.5 pr-10 outline-none text-[#0D0F14] focus:ring-1 focus:ring-[#00BFA6] shadow-sm transition-all duration-300"
@@ -225,42 +237,31 @@ export function Login({ user, onLogin, onLogout }: LoginProps) {
                     </div>
                   </div>
 
-                  {/* Remember me & Forgot Pass layout row */}
-                  <div className="flex items-center justify-between pt-0.5 text-xs">
-                    
-                    {/* Custom Styled Checkbox matching image */}
+                  {/* Terms option alignment */}
+                  <div className="flex items-center pt-0.5 text-xs">
                     <label className="flex items-center space-x-2 cursor-pointer select-none group text-gray-500 font-medium font-sans">
                       <div className="relative">
                         <input
                           type="checkbox"
-                          checked={rememberMe}
-                          onChange={() => setRememberMe(!rememberMe)}
+                          checked={termsAgreed}
+                          onChange={() => setTermsAgreed(!termsAgreed)}
                           className="sr-only"
                         />
                         <div className={`w-4.5 h-4.5 rounded-md border transition-all flex items-center justify-center ${
-                          rememberMe 
+                          termsAgreed 
                             ? "bg-[#00BFA6] border-[#00BFA6]" 
                             : "bg-white border-gray-300 group-hover:border-gray-450"
                         }`}>
-                          {rememberMe && <Check size={11} className="text-white stroke-[3.5]" />}
+                          {termsAgreed && <Check size={11} className="text-white stroke-[3.5]" />}
                         </div>
                       </div>
-                      <span className="text-[11px] text-gray-600 font-semibold">Remember me</span>
+                      <span className="text-[10.5px] text-gray-600 font-semibold leading-relaxed">
+                        I agree to the <span className="text-[#00BFA6] font-bold">Terms of Service</span> & <span className="text-[#00BFA6] font-bold">Privacy Statement</span>.
+                      </span>
                     </label>
-
-                    <a 
-                      href="#forgot"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        setErrorText("Reset key link dispatch sent to network coordinator.");
-                      }}
-                      className="text-[11px] text-[#00BFA6] hover:text-teal-600 font-extrabold"
-                    >
-                      Forgot Password?
-                    </a>
                   </div>
 
-                  {/* Black solid submit click button */}
+                  {/* Sign Up Action Trigger */}
                   <div className="pt-2">
                     <button
                       type="submit"
@@ -270,11 +271,11 @@ export function Login({ user, onLogin, onLogout }: LoginProps) {
                       {loading ? (
                         <>
                           <Disc className="animate-spin text-white" size={13} />
-                          <span className="font-sans">Authenticating secure pipeline...</span>
+                          <span className="font-sans">Provisioning workspace ID...</span>
                         </>
                       ) : (
                         <>
-                          <span className="font-sans text-[13px] tracking-tight">Sign In</span>
+                          <span className="font-sans text-[13px] tracking-tight">Sign Up</span>
                           <span className="text-sm">→</span>
                         </>
                       )}
@@ -320,12 +321,12 @@ export function Login({ user, onLogin, onLogout }: LoginProps) {
                   </button>
                 </div>
 
-                {/* 2.6 REDIRECT LINK TO SIGN UP PAGE */}
+                {/* 2.6 REDIRECT LINK TO LOGIN PAGE */}
                 <div className="text-center pt-2">
                   <p className="text-xs text-gray-500 font-bold leading-none">
-                    Don’t have an account?{" "}
-                    <Link to="/signup" className="text-[#00BFA6] hover:underline font-extrabold">
-                      Sign Up
+                    Already have an account?{" "}
+                    <Link to="/login" className="text-[#00BFA6] hover:underline font-extrabold">
+                      Sign In
                     </Link>
                   </p>
                 </div>
