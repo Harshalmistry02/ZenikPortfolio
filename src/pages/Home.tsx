@@ -239,8 +239,8 @@ export function Home() {
               {/* Outer container */}
               <div className="relative w-full max-w-md md:max-w-lg">
                 
-                {/* Dual Screen 1: The Dark Code Editor Window */}
-                <div className="w-[88%] md:w-[92%] bg-[#0D0F14] rounded-2xl border border-gray-800 shadow-2xl relative z-10 p-5 font-mono text-xs text-gray-300">
+                {/* Visual Screen: The Dark Code Editor Window */}
+                <div className="w-full bg-[#0D0F14] rounded-2xl border border-gray-800 shadow-2xl relative z-10 p-5 font-mono text-xs text-gray-300">
                   
                   {/* Window Dot Indicators */}
                   <div className="flex items-center justify-between border-b border-gray-800 pb-3 mb-4 select-none">
@@ -317,87 +317,8 @@ export function Home() {
                   </div>
 
                 </div>
-
-                {/* Dual Screen 2: Foreground overlapping Browser window Mock */}
-                <div className="absolute right-[-10px] md:right-[-25px] bottom-[-25px] md:bottom-[-35px] w-[55%] md:w-[58%] bg-white rounded-2xl border border-gray-150 shadow-[0_20px_50px_rgba(0,0,0,0.06)] relative z-20 overflow-hidden text-left flex flex-col">
-                  
-                  {/* Browser simulated top header */}
-                  <div className="bg-gray-50 border-b border-gray-100 px-3 py-2 flex items-center justify-between select-none">
-                    <div className="flex items-center space-x-1.5">
-                      <span className="w-2 h-2 rounded-full bg-red-400/70 block"></span>
-                      <span className="w-2 h-2 rounded-full bg-yellow-400/70 block"></span>
-                      <span className="w-2 h-2 rounded-full bg-green-400/70 block"></span>
-                    </div>
-                    {/* URL bar mock */}
-                    <div className="flex items-center bg-gray-100 text-[8px] text-gray-500 py-1 px-3 rounded-md max-w-[130px] w-full mx-2 border border-gray-200/40 select-none font-mono">
-                      <span className="mr-1 text-[8px]">🔒</span> https://zenik.studio
-                    </div>
-                    <div className="w-3"></div>
-                  </div>
-
-                  {/* Browser content viewport */}
-                  <div className="p-4 flex-1 space-y-4 flex flex-col justify-between select-none bg-white">
-                    
-                    {/* Header */}
-                    <div className="flex justify-between items-center text-[10px] border-b border-gray-50 pb-1.5">
-                      <span className="font-extrabold text-gray-900 tracking-tight font-sans">Zenik Studio</span>
-                      <span className="text-gray-400 font-extrabold text-sm leading-none">☰</span>
-                    </div>
-
-                    {/* Headline */}
-                    <div className="space-y-1 text-left">
-                      <h4 className="text-xs md:text-[13px] font-black text-gray-950 tracking-tight leading-tight">
-                        Secure. Scalable.<br />Built for Impact<span className="text-[#00BFA6] font-black font-sans">.</span>
-                      </h4>
-                    </div>
-
-                    {/* Action button */}
-                    <div className="text-left">
-                      <button className="text-[9px] font-extrabold border border-gray-200 px-3.5 py-1 rounded-full text-gray-700 hover:border-[#00BFA6] hover:text-[#00BFA6] transition-colors leading-none inline-flex items-center gap-1 cursor-pointer">
-                        <span>Get Started</span> <span className="font-sans">→</span>
-                      </button>
-                    </div>
-
-                    {/* Performance mini chart card */}
-                    <div className="bg-[#FAF9F5] rounded-xl border border-orange-100/50 p-2.5 space-y-1 text-left">
-                      <span className="text-[8.5px] font-bold text-gray-400 block tracking-wide font-sans">Project Performance</span>
-                      <div className="flex items-baseline space-x-1 leading-none">
-                        <span className="text-[#00BFA6] font-black font-mono text-[11px]">↑ 72%</span>
-                        <span className="text-[7.5px] text-gray-400 font-semibold font-mono">vs last month</span>
-                      </div>
-                      
-                      {/* Live Area path chart in SVG */}
-                      <div className="h-10 pt-2 shrink-0">
-                        <svg className="w-full h-full overflow-visible" viewBox="0 0 100 30" preserveAspectRatio="none">
-                          <defs>
-                            <linearGradient id="areaGradient" x1="0" y1="0" x2="0" y2="1">
-                              <stop offset="0%" stopColor="#00BFA6" stopOpacity="0.45" />
-                              <stop offset="100%" stopColor="#00BFA6" stopOpacity="0.0" />
-                            </linearGradient>
-                          </defs>
-                          <path
-                            d="M0,25 Q15,10 30,18 T60,6 T90,12 L100,2 L100,30 L0,30 Z"
-                            fill="url(#areaGradient)"
-                          />
-                          <path
-                            d="M0,25 Q15,10 30,18 T60,6 T90,12 L100,2"
-                            fill="none"
-                            stroke="#00BFA6"
-                            strokeWidth="1.8"
-                            strokeLinecap="round"
-                          />
-                        </svg>
-                      </div>
-                    </div>
-
-                  </div>
-
-                </div>
-
               </div>
-
             </div>
-
           </div>
         </div>
       </section>
