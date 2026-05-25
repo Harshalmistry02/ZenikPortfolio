@@ -82,12 +82,13 @@ export function Home() {
       {/* =============================================
           3. SERVICES OVERVIEW — App Grid
           ============================================= */}
-      <section className="py-24 bg-[#F3F4F6] border-y border-gray-100">
+      <section className="py-24 bg-[#F3F4F6]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeader
             badge="OUR SERVICES"
             title="Everything You Need to Grow"
             subtitle="From design to deployment, we cover every aspect of your digital presence."
+            centered
           />
 
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8 md:gap-10 justify-items-center">
@@ -281,7 +282,7 @@ export function Home() {
       {/* =============================================
           6. PROCESS STEPS — 5-Step Timeline
           ============================================= */}
-      <section className="py-24 bg-[#FAF9F5] border-y border-gray-100">
+      <section className="py-24 bg-[#FAF9F5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeader badge="OUR PROCESS" title="A Process Built for Success" />
 
@@ -398,7 +399,7 @@ export function Home() {
       {/* =============================================
           9. TESTIMONIALS
           ============================================= */}
-      <section className="py-24 bg-[#FAF9F5] border-y border-gray-100">
+      <section className="py-24 bg-[#FAF9F5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeader badge="TESTIMONIALS" title="Real Stories. Real Impact." />
 
@@ -427,7 +428,7 @@ export function Home() {
       {/* =============================================
           11. BLOG / INSIGHTS
           ============================================= */}
-      <section className="py-24 bg-[#FAF9F5] border-y border-gray-100">
+      <section className="py-24 bg-[#FAF9F5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeader badge="INSIGHTS" title="Latest From Our Blog" />
 

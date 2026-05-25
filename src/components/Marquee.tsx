@@ -13,7 +13,7 @@ const logos = [
 
 export function Marquee() {
   return (
-    <div className="w-full bg-[#FAF9F6] border-y border-gray-100 flex items-center py-6 overflow-hidden">
+    <div className="w-full bg-[#FAF9F5] flex items-center py-6 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 md:px-8 w-full flex flex-col md:flex-row items-center justify-between gap-6">
         
         {/* Left Side Label with Chevron Indicator */}
@@ -44,12 +44,6 @@ export function Marquee() {
                   <path d="M12 2C11.5 2 11 2.3 10.7 2.7L2.3 16.1C2 16.6 2 17.2 2.2 17.7C2.4 18.2 2.8 18.6 3.4 18.8L11.1 21.6C11.7 21.8 12.3 21.8 12.9 21.6L20.6 18.8C21.2 18.6 21.6 18.2 21.8 17.7C22 17.2 22 16.6 21.7 16.1L13.3 2.7C13 2.3 12.5 2 12 2Z" opacity="0.15" />
                 </svg>
               )}
-              {logo.name === "deliveroo" && (
-                <span className="text-[#00BFA6] text-xs">🦘</span>
-              )}
-              {logo.name === "octopus energy" && (
-                <span className="text-pink-500 text-xs">🐙</span>
-              )}
               <span className={`${logo.font} text-base`}>
                 {logo.name}
               </span>
@@ -66,4 +60,3 @@ export function Marquee() {
     </div>
   );
 }
-

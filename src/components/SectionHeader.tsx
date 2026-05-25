@@ -31,7 +31,8 @@ export function SectionHeader({
       </span>
 
       {variant === "script" ? (
-        <ScriptHeading
+        <div className={centered ? "mx-auto inline-block" : "inline-block"}>
+          <ScriptHeading
           as="h2"
           text={title}
           highlight={highlight}
@@ -39,6 +40,23 @@ export function SectionHeader({
             light ? "text-white" : "text-[#0D0F14]"
           }`}
         />
+          <div className={`${centered ? "mx-auto" : ""} mt-3 w-40`}>
+            <svg
+              className="w-full h-3 text-[#F4A24D]"
+              viewBox="0 0 300 12"
+              fill="none"
+              preserveAspectRatio="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M5 9c50-3.5 105-6 160-5.5s110 3.5 130 5"
+                stroke="currentColor"
+                strokeWidth="3"
+                strokeLinecap="round"
+              />
+            </svg>
+          </div>
+        </div>
       ) : (
         <h2
           className={`text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-[1.1] mt-4 ${
@@ -48,12 +66,6 @@ export function SectionHeader({
           {title}
         </h2>
       )}
-
-      <div
-        className={`w-12 h-1.5 bg-[#00BFA6] rounded-full mt-4 ${
-          centered ? "mx-auto" : ""
-        }`}
-      />
 
       {subtitle && (
         <p
