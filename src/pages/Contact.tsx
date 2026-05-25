@@ -10,6 +10,7 @@ import {
   HanddrawnHighlight 
 } from "../components/Squiggle";
 import { CtaBanner } from "../components/CtaBanner";
+import { ScriptHeading } from "../components/ScriptHeading";
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -131,13 +132,13 @@ export function Contact() {
             <Squiggle className="w-5 h-1 text-[#00BFA6]" />
           </div>
 
-          <h1 className="text-4xl md:text-6.5xl font-black text-[#0D0F14] leading-tight tracking-tight">
-            Start a Project with Our <br />
-            <span className="relative inline-block text-[#00BFA6] px-4 mt-2">
-              UK & USA Engineering Team.
-              <HanddrawnCircle className="text-teal-400" />
-            </span>
-          </h1>
+          <ScriptHeading
+            as="h1"
+            text="Start a Project with Our UK & USA Engineering Team."
+            highlight="Team."
+            className="font-script text-5xl sm:text-6xl md:text-7xl font-bold text-[#0D0F14] leading-[0.98] tracking-tight"
+            accentColorClassName="text-[#F4A24D]"
+          />
 
           <p className="font-script text-2.5xl text-[#F4A24D] font-extrabold">
             let's draft your next major build ⚡

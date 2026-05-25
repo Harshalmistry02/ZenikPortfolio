@@ -1,368 +1,481 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { 
-  ArrowRight, Search, PieChart, ShoppingCart, Globe, Package, Users, Megaphone, 
-  Briefcase, Layout, Calculator, Tags, Truck, Calendar, Clock, Mail, MessageSquare, 
-  CreditCard, Shield, Code2, Smartphone, Star, Zap, Activity, Layers, Cpu, Heart,
-  Palette, Monitor, Target, Cloud, Database, Wrench, Share2
+import {
+  ArrowRight, Zap, Shield, Layers, Search, Code2, Smartphone, Palette,
+  Globe, TrendingUp, Target, Mail, Cloud, Brain, Briefcase, Eye,
+  FileText, Paintbrush, Rocket, Star, Clock, Check
 } from "lucide-react";
-import { 
-  HanddrawnArrow, 
-  HanddrawnUnderline, 
-  HanddrawnCircle, 
-  HanddrawnHighlight,
-  HanddrawnStar
-} from "../components/Squiggle";
+import { HanddrawnUnderline, HanddrawnArrow, HanddrawnStar, HanddrawnHighlight } from "../components/Squiggle";
+import { Marquee } from "../components/Marquee";
+import { SectionHeader } from "../components/SectionHeader";
+import { StatsCounter } from "../components/StatsCounter";
+import { TestimonialCard } from "../components/TestimonialCard";
+import { PricingTable } from "../components/PricingTable";
+import { CtaBanner } from "../components/CtaBanner";
+import {
+  stats, whyZenikFeatures, processSteps, testimonials,
+  pricingTiers, blogArticles, portfolioProjects
+} from "../data/homeData";
+import { serviceCategories } from "../data/servicesData";
 
-const apps = [
-  { name: 'UI/UX Design', icon: Layout, color: 'text-purple-600', bg: 'bg-purple-50' },
-  { name: 'Graphic Design', icon: Palette, color: 'text-pink-600', bg: 'bg-pink-50' },
-  { name: 'Social Media', icon: Share2, color: 'text-orange-600', bg: 'bg-orange-50' },
-  { name: 'Web Design', icon: Monitor, color: 'text-blue-600', bg: 'bg-blue-50' },
-  { name: 'Web Dev', icon: Code2, color: 'text-sky-600', bg: 'bg-sky-50' },
-  { name: 'Mobile Apps', icon: Smartphone, color: 'text-emerald-600', bg: 'bg-emerald-50' },
-  { name: 'Marketing', icon: Megaphone, color: 'text-red-600', bg: 'bg-red-50' },
-  { name: 'SEO Services', icon: Search, color: 'text-amber-600', bg: 'bg-amber-50' },
-  { name: 'Lead Gen', icon: Target, color: 'text-yellow-600', bg: 'bg-yellow-50' },
-  { name: 'Automation', icon: Mail, color: 'text-fuchsia-600', bg: 'bg-fuchsia-50' },
-  { name: 'Cloud & DevOps', icon: Cloud, color: 'text-cyan-600', bg: 'bg-cyan-50' },
-  { name: 'AI Services', icon: Cpu, color: 'text-violet-600', bg: 'bg-violet-50' },
-  { name: 'Custom CRM', icon: Database, color: 'text-indigo-600', bg: 'bg-indigo-50' },
-  { name: 'SaaS Dev', icon: Layers, color: 'text-teal-600', bg: 'bg-teal-50' },
-  { name: 'Payments', icon: CreditCard, color: 'text-rose-600', bg: 'bg-rose-50' },
-  { name: 'Support', icon: Wrench, color: 'text-slate-600', bg: 'bg-slate-50' },
-];
+const iconMap: Record<string, React.ElementType> = {
+  Zap, Shield, Layers, Search, Code2, Smartphone, Palette, Globe,
+  TrendingUp, Target, Mail, Cloud, Brain, Briefcase, FileText,
+  Paintbrush, Rocket, Star,
+};
+
+const categoryIconMap: Record<string, React.ElementType> = {
+  Palette, Globe, Smartphone, TrendingUp, Target, Mail, Cloud, Brain, Briefcase,
+};
 
 export function Home() {
+  const [portfolioFilter, setPortfolioFilter] = useState<string>("All");
+  const categories = ["All", "Web", "Mobile", "UI/UX", "Marketing", "AI"];
+  const filteredProjects = portfolioFilter === "All"
+    ? portfolioProjects
+    : portfolioProjects.filter((p) => p.category === portfolioFilter);
+
   return (
     <div className="pt-20 bg-white min-h-screen overflow-hidden font-sans">
-      
-      {/* 1. HERO SECTION */}
-      <section className="relative pt-12 pb-24 md:pt-20 md:pb-32 bg-[#FAF9F5]">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-[#0D0F14] tracking-tight leading-[1.1] max-w-4xl mx-auto">
-            All your business on{' '}
-            <span className="relative inline-block">
-              <span className="relative z-10">one platform</span>
-              <span className="absolute inset-0 bg-[#FFD100] transform -rotate-1 rounded-sm -z-10 scale-105"></span>
+
+      {/* =============================================
+          1. ODOO-STYLE HERO SECTION
+          ============================================= */}
+      <section className="relative pt-12 pb-20 md:pt-20 md:pb-28 bg-white text-center flex flex-col items-center justify-center overflow-hidden">
+
+        {/* Main Title Container */}
+        <div className="max-w-4xl mx-auto px-4 z-10 relative">
+          <h1 className="font-script text-5xl sm:text-6xl md:text-7xl lg:text-[85px] font-bold text-[#202020] leading-[1.2] tracking-tight text-center">
+            All your digital needs under{" "}
+            <span className="relative inline-block mt-2">
+              {/* Highlight background */}
+              <span className="absolute inset-0 bg-[#FCB94D] rounded-[4px_12px_4px_12px] -z-10 -rotate-2 scale-[1.05] shadow-sm transform -translate-y-1 translate-x-1" />
+              <span className="relative z-10 text-[#202020]">one roof.</span>
             </span>
             <br />
-            Simple, efficient, yet{' '}
-            <span className="relative inline-block text-gray-700">
-              affordable!
-              <div className="absolute left-0 right-0 bottom-[-5px] h-2">
-                <HanddrawnUnderline className="text-blue-500 w-full" />
-              </div>
+            <span className="inline-block mt-4">
+              Creative, scalable, yet{" "}
+              <span className="relative inline-block">
+                <span className="relative z-10 text-[#202020]">affordable!</span>
+                <div className="absolute left-0 right-0 bottom-1 h-3 sm:h-4">
+                  <HanddrawnUnderline className="text-[#00A1EA] w-[110%] -ml-[5%]" />
+                </div>
+
+                {/* Arrow and Annotation */}
+                <div className="absolute right-[20%] top-[80%] md:right-[10%] md:top-[90%] flex flex-col items-start w-64 translate-x-1/2 translate-y-4">
+                  <HanddrawnArrow className="w-12 h-12 md:w-16 md:h-16 text-[#714B67] opacity-80 rotate-[30deg]" />
+                  <span className="font-script text-xl md:text-3xl text-[#714B67] -rotate-6 mt-[-5px] ml-12 whitespace-nowrap text-left opacity-90 leading-tight">
+                    90+ Premium Services<br />for your business
+                  </span>
+                </div>
+              </span>
             </span>
           </h1>
+        </div>
+      </section>
 
-          <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4 relative">
-            <Link
-              to="/signup"
-              className="bg-[#714B67] hover:bg-[#5c3c54] text-white px-8 py-4 rounded font-bold text-lg transition-colors w-full sm:w-auto"
-            >
-              Start now - It's free
-            </Link>
-            <Link
-              to="/contact"
-              className="bg-white border-2 border-gray-200 hover:border-gray-300 text-gray-800 px-8 py-4 rounded font-bold text-lg transition-colors w-full sm:w-auto"
-            >
-              Schedule a demo
-            </Link>
-            
-            {/* Handwritten note */}
-            <div className="absolute top-0 right-0 sm:right-[-80px] lg:right-[-120px] hidden md:flex flex-col items-center transform rotate-12">
-              <span className="font-script text-xl text-purple-800 mb-1">No credit card<br/>required</span>
-              <HanddrawnArrow className="text-purple-800 w-12 h-12 transform -scale-x-100 rotate-45" />
-            </div>
+      {/* =============================================
+          2. MARQUEE STRIP
+          ============================================= */}
+      <Marquee />
+
+      {/* =============================================
+          3. SERVICES OVERVIEW — App Grid
+          ============================================= */}
+      <section className="py-24 bg-[#F3F4F6] border-y border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionHeader
+            badge="OUR SERVICES"
+            title="Everything You Need to Grow"
+            subtitle="From design to deployment, we cover every aspect of your digital presence."
+          />
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8 md:gap-10 justify-items-center">
+            {serviceCategories.map((cat) => {
+              const IconComp = categoryIconMap[cat.icon] || Globe;
+              return (
+                <Link
+                  key={cat.id}
+                  to={`/services?cat=${cat.id}`}
+                  className="flex flex-col items-center gap-4 py-2 group text-center"
+                >
+                  <div className="w-20 h-20 rounded-2xl bg-white border border-gray-100 shadow-[0_10px_30px_rgba(0,0,0,0.08)] flex items-center justify-center transition-transform duration-300 group-hover:-translate-y-1 group-hover:shadow-[0_18px_45px_rgba(0,0,0,0.12)]">
+                    <div className={`w-14 h-14 rounded-2xl ${cat.bg} ${cat.color} flex items-center justify-center`}>
+                      <IconComp size={26} />
+                    </div>
+                  </div>
+                  <span className="text-sm font-semibold text-gray-800 leading-tight">
+                    {cat.name.replace(" Services", "").replace(" & Development", "").replace(", DevOps & Infrastructure", "")}
+                  </span>
+                </Link>
+              );
+            })}
           </div>
 
-          {/* Search Bar & App Grid Background */}
-          <div className="mt-24 relative bg-white rounded-t-[50px] md:rounded-t-[100px] pt-12 pb-24 shadow-[0_-20px_50px_-20px_rgba(0,0,0,0.05)] border-t border-gray-100">
-            <div className="max-w-2xl mx-auto px-4">
-              <div className="relative mb-12">
-                <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none">
-                  <Search className="h-5 w-5 text-gray-400" />
-                </div>
-                <input 
-                  type="text" 
-                  placeholder="What do you want to manage?" 
-                  className="w-full pl-12 pr-4 py-4 rounded-full border border-gray-200 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#714B67]/20 focus:border-[#714B67]"
-                />
-              </div>
+          <div className="text-center pt-10">
+            <Link
+              to="/services"
+              className="inline-flex items-center gap-2 bg-white border border-gray-200 hover:border-[#0D0F14] text-[#0D0F14] font-bold text-xs uppercase tracking-wider px-7 py-3 rounded-full shadow-sm hover:shadow transition-all"
+            >
+              <span>Explore All 90+ Services</span>
+              <ArrowRight size={14} />
+            </Link>
+          </div>
+        </div>
+      </section>
 
-              <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-x-4 gap-y-8">
-                {apps.map((app, i) => (
-                  <div key={i} className="flex flex-col items-center gap-2 group cursor-pointer">
-                    <div className={`w-14 h-14 rounded-2xl ${app.bg} ${app.color} flex items-center justify-center shadow-sm group-hover:-translate-y-1 group-hover:shadow-md transition-all`}>
-                      <app.icon className="w-7 h-7" />
-                    </div>
-                    <span className="text-xs font-medium text-gray-600">{app.name}</span>
-                  </div>
+      {/* =============================================
+          5. FEATURED SERVICES — Alternating Sections
+          ============================================= */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-28">
+          {/* Web Development */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div className="lg:col-span-5 space-y-5 text-left">
+              <div className="w-10 h-10 rounded-full bg-teal-50 border border-teal-100 flex items-center justify-center font-mono text-lg font-black text-[#00BFA6]">01</div>
+              <h2 className="text-3xl sm:text-4xl font-black text-[#0D0F14] tracking-tight">Web Development</h2>
+              <p className="text-gray-500 text-sm leading-relaxed">Modern websites and web apps built with React, Next.js, and cutting-edge technologies for speed and scale.</p>
+              <ul className="space-y-2 pt-2">
+                {["React & Next.js", "Full-Stack MERN/MEAN", "SaaS Platforms", "API Integrations"].map(f => (
+                  <li key={f} className="flex items-center gap-2 text-sm text-gray-600"><Check size={14} className="text-[#00BFA6]" />{f}</li>
+                ))}
+              </ul>
+              <div className="flex gap-2 pt-2 flex-wrap">
+                {["next.js", "react", "typescript", "node.js"].map(t => (
+                  <span key={t} className="text-[10px] font-mono font-bold text-gray-500 bg-gray-50 px-2.5 py-1 rounded-lg border border-gray-100">{t}</span>
                 ))}
               </div>
             </div>
-          </div>
-
-        </div>
-      </section>
-
-      {/* 2. QUALITY OF WORK SECTION */}
-      <section className="py-24 bg-white relative overflow-hidden">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-5xl font-bold text-[#0D0F14] mb-16 inline-block relative">
-            <span className="relative z-10">Level up</span>
-            <div className="absolute inset-0 bg-red-400/20 transform -rotate-2 rounded -z-10 scale-110"></div>
-            {' '}your quality of work
-          </h2>
-
-          <div className="relative max-w-4xl mx-auto">
-            {/* Simple CSS mockup of an invoice/document */}
-            <div className="bg-white rounded-lg shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-gray-100 p-8 text-left relative z-10 mx-auto w-full md:w-3/4 aspect-[4/3] flex flex-col">
-              <div className="flex justify-between items-end border-b border-gray-200 pb-6 mb-6">
-                <div>
-                  <h3 className="text-3xl font-serif text-gray-800 mb-1">Invoice</h3>
-                  <p className="text-gray-400 text-sm">INV-2023-001</p>
-                </div>
-                <div className="text-right">
-                  <p className="font-bold text-gray-800">Zenik Studio</p>
-                  <p className="text-gray-500 text-sm">123 Tech Lane</p>
+            <div className="lg:col-span-7">
+              <div className="bg-[#FAF9F5] rounded-[32px] border border-gray-100 p-6 shadow-sm">
+                <div className="bg-[#0D0F14] rounded-2xl p-5 font-mono text-[10px] text-gray-400 leading-relaxed">
+                  <div className="flex items-center gap-1.5 mb-3"><span className="w-2 h-2 rounded-full bg-red-400" /><span className="w-2 h-2 rounded-full bg-yellow-400" /><span className="w-2 h-2 rounded-full bg-green-400" /></div>
+                  <div><span className="text-pink-400">const</span> app = <span className="text-blue-400">createApp</span>({"{"}</div>
+                  <div className="pl-4">framework: <span className="text-emerald-400">"next.js"</span>,</div>
+                  <div className="pl-4">database: <span className="text-emerald-400">"postgresql"</span>,</div>
+                  <div className="pl-4">auth: <span className="text-emerald-400">"oauth2"</span>,</div>
+                  <div className="pl-4">deploy: <span className="text-emerald-400">"vercel"</span></div>
+                  <div>{"})"}</div>
                 </div>
               </div>
-              <div className="flex-grow">
-                <div className="grid grid-cols-4 text-xs font-bold text-gray-400 uppercase tracking-wider mb-4 border-b border-gray-100 pb-2">
-                  <div className="col-span-2">Description</div>
-                  <div className="text-right">Qty</div>
-                  <div className="text-right">Price</div>
-                </div>
-                <div className="grid grid-cols-4 text-sm text-gray-700 mb-2">
-                  <div className="col-span-2 font-medium">Web Development Services</div>
-                  <div className="text-right">1</div>
-                  <div className="text-right">$4,500.00</div>
-                </div>
-                <div className="grid grid-cols-4 text-sm text-gray-700 mb-2">
-                  <div className="col-span-2 font-medium">UI/UX Design</div>
-                  <div className="text-right">1</div>
-                  <div className="text-right">$2,200.00</div>
-                </div>
-              </div>
-              <div className="border-t border-gray-200 pt-4 flex justify-between items-center mt-auto">
-                <div className="bg-green-100 text-green-700 px-3 py-1 rounded text-sm font-medium inline-flex items-center gap-1">
-                  <Shield size={14} /> Paid
-                </div>
-                <div className="text-2xl font-bold text-gray-900">
-                  $6,700.00
-                </div>
-              </div>
-            </div>
-
-            {/* Decorative background blocks */}
-            <div className="absolute top-1/2 left-0 transform -translate-y-1/2 -translate-x-12 w-64 h-64 bg-yellow-50 rounded-full blur-3xl -z-10"></div>
-            <div className="absolute top-1/2 right-0 transform -translate-y-1/2 translate-x-12 w-64 h-64 bg-teal-50 rounded-full blur-3xl -z-10"></div>
-          </div>
-        </div>
-      </section>
-
-      {/* 3. OPTIMIZED FOR PRODUCTIVITY */}
-      <section className="py-24 bg-[#F8FAFC] relative overflow-hidden">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-5xl font-bold text-[#0D0F14] mb-16 font-script tracking-wide">
-            Optimized for productivity
-          </h2>
-
-          <div className="relative h-[500px] max-w-5xl mx-auto flex justify-center items-center">
-            {/* Dashboard Mockup (Background Left) */}
-            <div className="absolute left-0 md:left-[10%] top-[10%] w-2/3 md:w-1/2 h-64 bg-white rounded-lg shadow-xl border border-gray-100 p-4 transform -rotate-2 opacity-90 z-10">
-              <div className="h-4 w-24 bg-gray-200 rounded mb-4"></div>
-              <div className="flex gap-4 mb-4">
-                <div className="flex-1 h-16 bg-blue-50 rounded"></div>
-                <div className="flex-1 h-16 bg-green-50 rounded"></div>
-                <div className="flex-1 h-16 bg-purple-50 rounded"></div>
-              </div>
-              <div className="h-24 bg-gray-50 rounded w-full"></div>
-            </div>
-
-            {/* Chat Mockup (Foreground Right) */}
-            <div className="absolute right-0 md:right-[5%] bottom-[10%] w-3/4 md:w-2/5 h-80 bg-white rounded-lg shadow-2xl border border-gray-100 flex flex-col z-30">
-              <div className="px-4 py-3 border-b border-gray-100 flex items-center gap-3">
-                <div className="w-8 h-8 rounded-full bg-orange-200"></div>
-                <div>
-                  <div className="text-sm font-bold">Marketing Team</div>
-                  <div className="text-xs text-green-500">Online</div>
-                </div>
-              </div>
-              <div className="flex-1 p-4 space-y-3 flex flex-col justify-end">
-                <div className="bg-gray-100 rounded-lg p-2 text-sm self-start max-w-[80%]">Did we send the newsletter?</div>
-                <div className="bg-blue-100 rounded-lg p-2 text-sm self-end max-w-[80%]">Yes, just went out to 50k subscribers! 🚀</div>
-              </div>
-              <div className="p-3 border-t border-gray-100">
-                <div className="h-8 bg-gray-50 rounded w-full border border-gray-200"></div>
-              </div>
-            </div>
-
-            {/* Form/Task Mockup (Center Middle) */}
-            <div className="absolute left-[20%] md:left-[30%] top-[25%] w-2/3 md:w-1/2 h-72 bg-white rounded-lg shadow-2xl border border-gray-200 p-6 z-20">
-               <div className="flex justify-between items-center mb-6">
-                 <div className="h-6 w-32 bg-gray-800 rounded"></div>
-                 <div className="px-2 py-1 bg-teal-100 text-teal-800 text-xs rounded font-bold">In Progress</div>
-               </div>
-               <div className="space-y-4">
-                 <div className="h-10 bg-gray-50 border border-gray-200 rounded w-full"></div>
-                 <div className="flex gap-4">
-                   <div className="h-10 bg-gray-50 border border-gray-200 rounded flex-1"></div>
-                   <div className="h-10 bg-gray-50 border border-gray-200 rounded flex-1"></div>
-                 </div>
-                 <div className="h-20 bg-gray-50 border border-gray-200 rounded w-full"></div>
-               </div>
             </div>
           </div>
 
-          <p className="mt-12 text-gray-500 max-w-2xl mx-auto font-medium">
-            Stop the unending run for information... <br />
-            Everything is connected, seamlessly integrated, and instantly accessible.
-          </p>
-        </div>
-      </section>
-
-      {/* 4. NATIVE AI SECTION */}
-      <section className="py-24 bg-white relative">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-5xl font-bold text-[#0D0F14] mb-12">
-            <span className="relative inline-block">
-              Native AI
-              <div className="absolute left-0 right-0 bottom-[-5px] h-2">
-                <HanddrawnUnderline className="text-red-500 w-full" />
+          {/* Mobile Apps */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div className="lg:col-span-7 lg:order-1 order-2">
+              <div className="bg-[#FAF9F5] rounded-[32px] border border-gray-100 p-8 shadow-sm flex items-center justify-center gap-6">
+                {/* Phone mockups */}
+                <div className="w-36 h-64 bg-white rounded-[24px] border border-gray-200 shadow-xl p-3 flex flex-col">
+                  <div className="flex justify-center mb-2"><div className="w-12 h-1.5 bg-gray-200 rounded-full" /></div>
+                  <div className="flex-1 space-y-2">
+                    <div className="bg-gradient-to-r from-[#00BFA6] to-teal-400 rounded-xl p-3 text-white text-center">
+                      <div className="text-[10px] font-bold uppercase opacity-80">Revenue</div>
+                      <div className="text-lg font-black font-mono">$24.8k</div>
+                    </div>
+                    <div className="bg-gray-50 rounded-lg p-2 text-[8px] text-gray-500 font-bold">Recent: +$142.20</div>
+                    <div className="bg-gray-50 rounded-lg p-2 text-[8px] text-gray-500 font-bold">Today: +$85.00</div>
+                  </div>
+                </div>
+                <div className="w-36 h-64 bg-white rounded-[24px] border border-gray-200 shadow-xl p-3 flex flex-col -mt-8">
+                  <div className="flex justify-center mb-2"><div className="w-12 h-1.5 bg-gray-200 rounded-full" /></div>
+                  <div className="flex-1 space-y-2">
+                    <div className="text-[10px] text-gray-500 font-bold">Analytics</div>
+                    <div className="flex items-end gap-1 h-20">
+                      {[40, 65, 45, 80, 55, 90, 70].map((h, i) => (
+                        <div key={i} className="flex-1 bg-[#00BFA6]/20 rounded-t" style={{ height: `${h}%` }}>
+                          <div className="w-full bg-[#00BFA6] rounded-t" style={{ height: `${h * 0.7}%` }} />
+                        </div>
+                      ))}
+                    </div>
+                    <div className="text-[9px] font-bold text-[#00BFA6]">↑ 72% retention</div>
+                  </div>
+                </div>
               </div>
-            </span>
-            {' '}across all your business
-          </h2>
-
-          <div className="bg-gradient-to-br from-purple-50 via-white to-pink-50 rounded-2xl p-12 md:p-24 border border-purple-100 shadow-lg flex items-center justify-center gap-6">
-            <div className="w-16 h-16 bg-white rounded-xl shadow-md flex items-center justify-center text-purple-600 border border-purple-100">
-               <Zap size={32} />
             </div>
-            <div className="text-3xl md:text-4xl font-script text-gray-800">
-              ... and every workflow.
+            <div className="lg:col-span-5 lg:order-2 order-1 space-y-5 text-left">
+              <div className="w-10 h-10 rounded-full bg-teal-50 border border-teal-100 flex items-center justify-center font-mono text-lg font-black text-[#00BFA6]">02</div>
+              <h2 className="text-3xl sm:text-4xl font-black text-[#0D0F14] tracking-tight">Mobile App Development</h2>
+              <p className="text-gray-500 text-sm leading-relaxed">Native iOS & Android apps designed for performance, engagement, and scale with fluid gesture-first interfaces.</p>
+              <ul className="space-y-2 pt-2">
+                {["React Native & Flutter", "iOS & Android Native", "App Store Deployment", "Offline-First Design"].map(f => (
+                  <li key={f} className="flex items-center gap-2 text-sm text-gray-600"><Check size={14} className="text-[#00BFA6]" />{f}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          {/* AI & Advanced Tech */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div className="lg:col-span-5 space-y-5 text-left">
+              <div className="w-10 h-10 rounded-full bg-teal-50 border border-teal-100 flex items-center justify-center font-mono text-lg font-black text-[#00BFA6]">03</div>
+              <h2 className="text-3xl sm:text-4xl font-black text-[#0D0F14] tracking-tight">AI & Advanced Tech</h2>
+              <p className="text-gray-500 text-sm leading-relaxed">Intelligent chatbots, ML models, OCR, and AI-powered workflows that automate your business and delight users.</p>
+              <ul className="space-y-2 pt-2">
+                {["OpenAI & GPT Integration", "AI Chatbot Development", "Machine Learning Models", "Document Processing"].map(f => (
+                  <li key={f} className="flex items-center gap-2 text-sm text-gray-600"><Check size={14} className="text-[#00BFA6]" />{f}</li>
+                ))}
+              </ul>
+            </div>
+            <div className="lg:col-span-7">
+              <div className="bg-gradient-to-br from-violet-50 via-white to-purple-50 rounded-[32px] border border-violet-100 p-8 shadow-sm">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-12 h-12 bg-violet-100 rounded-2xl flex items-center justify-center"><Brain size={24} className="text-violet-600" /></div>
+                  <div>
+                    <div className="text-xs font-bold text-violet-600 uppercase">AI Assistant</div>
+                    <div className="text-lg font-black text-[#0D0F14]">Smart. Fast. Accurate.</div>
+                  </div>
+                </div>
+                <div className="space-y-3">
+                  <div className="bg-white rounded-xl p-3 border border-gray-100 text-xs text-gray-600">
+                    <span className="font-bold text-[#0D0F14]">User:</span> How can I improve my checkout flow?
+                  </div>
+                  <div className="bg-violet-50 rounded-xl p-3 border border-violet-100 text-xs text-gray-600">
+                    <span className="font-bold text-violet-600">AI:</span> Based on your analytics, implementing one-click checkout could increase conversions by 23%. I recommend...
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Digital Marketing */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div className="lg:col-span-7 lg:order-1 order-2">
+              <div className="bg-gradient-to-br from-red-50 via-white to-orange-50 rounded-[32px] border border-red-100 p-8 shadow-sm">
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="bg-white rounded-xl p-4 border border-gray-100 text-center">
+                    <div className="text-2xl font-black text-[#00BFA6] font-mono">340%</div>
+                    <div className="text-[10px] text-gray-500 font-bold mt-1">Conversion Increase</div>
+                  </div>
+                  <div className="bg-white rounded-xl p-4 border border-gray-100 text-center">
+                    <div className="text-2xl font-black text-[#F4A24D] font-mono">2.1x</div>
+                    <div className="text-[10px] text-gray-500 font-bold mt-1">ROAS Improvement</div>
+                  </div>
+                  <div className="bg-white rounded-xl p-4 border border-gray-100 text-center col-span-2">
+                    <div className="text-[10px] text-gray-500 font-bold mb-2">Organic Traffic Growth</div>
+                    <div className="flex items-end gap-1 h-12">
+                      {[20, 35, 30, 50, 45, 70, 65, 85, 80, 95, 88, 100].map((h, i) => (
+                        <div key={i} className="flex-1 bg-red-100 rounded-t" style={{ height: `${h}%` }}>
+                          <div className="w-full bg-red-400 rounded-t" style={{ height: "100%" }} />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="lg:col-span-5 lg:order-2 order-1 space-y-5 text-left">
+              <div className="w-10 h-10 rounded-full bg-teal-50 border border-teal-100 flex items-center justify-center font-mono text-lg font-black text-[#00BFA6]">04</div>
+              <h2 className="text-3xl sm:text-4xl font-black text-[#0D0F14] tracking-tight">Digital Marketing</h2>
+              <p className="text-gray-500 text-sm leading-relaxed">Data-driven SEO, paid advertising, and social media strategies that generate qualified leads and accelerate growth.</p>
+              <ul className="space-y-2 pt-2">
+                {["SEO & Content Strategy", "Google & Meta Ads", "Social Media Management", "Marketing Automation"].map(f => (
+                  <li key={f} className="flex items-center gap-2 text-sm text-gray-600"><Check size={14} className="text-[#00BFA6]" />{f}</li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 5. ENTERPRISE SOFTWARE DONE RIGHT */}
-      <section className="py-24 bg-[#F3F4F6]">
+      {/* =============================================
+          6. PROCESS STEPS — 5-Step Timeline
+          ============================================= */}
+      <section className="py-24 bg-[#FAF9F5] border-y border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-5xl font-bold text-[#0D0F14] mb-16 text-center">
-            Enterprise{' '}
-            <span className="relative inline-block">
-              software
-              <div className="absolute inset-[-10px] scale-110 pointer-events-none">
-                <HanddrawnCircle className="text-[#017A84] w-full h-full" />
-              </div>
-            </span>
-            {' '}done right.
-          </h2>
+          <SectionHeader badge="OUR PROCESS" title="A Process Built for Success" />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
-              <h3 className="text-xl font-bold mb-4">No data silos</h3>
-              <p className="text-gray-500 text-sm leading-relaxed mb-6">Apps are perfectly integrated. Information is shared instantly across all departments. No more painful integrations or copy-pasting data.</p>
-              <div className="bg-[#714B67] text-white px-4 py-2 rounded inline-block text-sm font-bold cursor-pointer">Watch Video</div>
-            </div>
-            
-            <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
-              <h3 className="text-xl font-bold mb-4">No artificial limits</h3>
-              <p className="text-gray-500 text-sm leading-relaxed mb-6">Unlimited users, unlimited features, unlimited possibilities. Grow your business without worrying about pricing tiers holding you back.</p>
-              <div className="bg-[#714B67] text-white px-4 py-2 rounded inline-block text-sm font-bold cursor-pointer">Watch Video</div>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-8 lg:gap-12 relative text-center">
+            {/* Connecting line */}
+            <div className="absolute top-12 left-10 right-10 h-0.5 border-t border-dashed border-teal-200/50 -z-10 hidden md:block" />
 
-            <div className="bg-[#0D0F14] text-white p-8 rounded-2xl shadow-sm md:col-span-2 flex flex-col md:flex-row items-center justify-between gap-8">
-              <div className="flex-1">
-                <h3 className="text-xl font-bold mb-4">Full flexibility</h3>
-                <p className="text-gray-400 text-sm leading-relaxed mb-6">Deploy on-premise, on our cloud, or your own cloud. Customize every aspect with our open-source foundation.</p>
-                <div className="bg-white text-[#0D0F14] px-4 py-2 rounded inline-block text-sm font-bold cursor-pointer">Learn More</div>
-              </div>
-              <div className="flex-1 w-full relative h-48 bg-gray-900 rounded-lg overflow-hidden border border-gray-800">
-                 {/* Decorative Graph/Code visual */}
-                 <div className="absolute inset-0 p-4 font-mono text-xs text-green-400 opacity-50 flex flex-col gap-2">
-                    <div>import {"{"} Core {"}"} from '@zenik/core';</div>
-                    <div>const app = new Core();</div>
-                    <div>app.initialize({"{ "} modules: ['all'] {" }"});</div>
-                    <div className="mt-4 text-blue-400">// System ready...</div>
-                 </div>
-              </div>
-            </div>
+            {processSteps.map((step, idx) => {
+              const IconComp = iconMap[step.iconName] || Search;
+              return (
+                <div key={idx} className="flex flex-col items-center group relative p-4">
+                  <div className="w-16 h-16 rounded-full bg-white border border-gray-100 shadow-sm flex items-center justify-center relative group-hover:border-[#00BFA6] group-hover:scale-105 transition-all duration-300">
+                    <IconComp size={24} className="text-gray-500 group-hover:text-[#00BFA6] transition-colors" />
+                    <span className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-[#00BFA6] text-white flex items-center justify-center text-[10px] font-black font-mono border-2 border-white">
+                      {step.num}
+                    </span>
+                  </div>
+                  <h3 className="text-base font-black text-[#0D0F14] mt-6 tracking-tight group-hover:text-[#00BFA6] transition-colors">
+                    {step.name}
+                  </h3>
+                  <p className="text-xs text-gray-400 leading-relaxed mt-2 max-w-[180px] mx-auto">
+                    {step.description}
+                  </p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* 6. JOIN MILLIONS (AVATARS & QUOTE) */}
-      <section className="py-32 bg-white relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 text-center relative z-10">
-          
-          <h2 className="text-4xl md:text-6xl font-script text-[#0D0F14] mb-12">
-            Join 15 million users
-          </h2>
+      {/* =============================================
+          7. STATS COUNTER
+          ============================================= */}
+      <StatsCounter stats={stats} />
 
-          <div className="max-w-3xl mx-auto mt-24 text-left border-l-4 border-[#017A84] pl-6 md:pl-10 relative">
-            <div className="absolute -top-10 -left-6 text-6xl text-[#FFD100] font-serif">"</div>
-            <p className="text-xl md:text-2xl font-medium text-gray-800 leading-relaxed mb-6">
-              We have replaced 14 different apps with Zenik. It has simplified our processes, boosted our team's morale, and significantly improved our bottom line. It's simply the best decision we've made.
-            </p>
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 bg-gray-200 rounded-full overflow-hidden">
-                 <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80" alt="User" />
-              </div>
-              <div>
-                <div className="font-bold text-gray-900">David Reynolds</div>
-                <div className="text-sm text-gray-500">CEO, TechFlow</div>
-              </div>
-            </div>
+      {/* =============================================
+          8. PORTFOLIO SHOWCASE
+          ============================================= */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionHeader badge="OUR WORK" title="Projects Built to Perform" />
+
+          {/* Filter Tabs */}
+          <div className="flex flex-wrap justify-center gap-3 mb-12">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setPortfolioFilter(cat)}
+                className={`px-6 py-2.5 rounded-full text-xs font-bold transition-all duration-300 ${portfolioFilter === cat
+                  ? "bg-[#0D0F14] text-white shadow-md"
+                  : "bg-gray-50 border border-gray-100 text-gray-600 hover:border-[#0D0F14] hover:text-[#0D0F14]"
+                  }`}
+              >
+                {cat === "All" ? "All Projects" : cat}
+              </button>
+            ))}
           </div>
 
-        </div>
-
-        {/* Scattered Avatars Background (Decorative) */}
-        <div className="absolute inset-0 pointer-events-none opacity-40">
-           <div className="absolute top-[10%] left-[10%] w-12 h-12 bg-blue-200 rounded-full"></div>
-           <div className="absolute top-[20%] right-[15%] w-16 h-16 bg-purple-200 rounded-full"></div>
-           <div className="absolute bottom-[20%] left-[20%] w-10 h-10 bg-green-200 rounded-full"></div>
-           <div className="absolute top-[40%] left-[5%] w-14 h-14 bg-red-200 rounded-full"></div>
-           <div className="absolute bottom-[30%] right-[10%] w-12 h-12 bg-yellow-200 rounded-full"></div>
-           <div className="absolute top-[15%] left-[40%] w-8 h-8 bg-pink-200 rounded-full"></div>
-           <div className="absolute bottom-[10%] right-[40%] w-14 h-14 bg-teal-200 rounded-full"></div>
-        </div>
-      </section>
-
-      {/* 7. BOTTOM CTA */}
-      <section className="py-24 bg-white border-t border-gray-100">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          
-          <div className="relative inline-block mb-12">
-            <h2 className="text-4xl md:text-6xl font-bold text-[#017A84] font-script transform -rotate-2">
-              Unleash
-            </h2>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mt-2">
-              your growth potential
-            </h2>
-            {/* Sunburst decoration */}
-            <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 w-24 h-24 pointer-events-none">
-              <HanddrawnStar className="text-[#FFD100] w-full h-full opacity-60" />
-            </div>
+          {/* Project Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredProjects.map((proj) => (
+              <div
+                key={proj.id}
+                className="group rounded-[28px] overflow-hidden border border-gray-100 bg-white hover:border-[#00BFA6] hover:shadow-[0_20px_50px_rgba(0,191,166,0.06)] transition-all duration-300 hover:-translate-y-1.5"
+              >
+                <div className="relative aspect-video overflow-hidden bg-gray-50">
+                  <img
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    src={proj.image}
+                    alt={proj.title}
+                    referrerPolicy="no-referrer"
+                    loading="lazy"
+                  />
+                  {proj.featured && (
+                    <span className="absolute top-3 right-3 bg-[#F4A24D] text-white text-[9px] font-black uppercase tracking-wider px-2.5 py-1 rounded-lg">
+                      Featured
+                    </span>
+                  )}
+                  <div className="absolute inset-0 bg-[#0D0F14]/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div className="w-12 h-12 bg-[#00BFA6] rounded-full flex items-center justify-center text-white">
+                      <Eye size={20} />
+                    </div>
+                  </div>
+                </div>
+                <div className="p-6 space-y-3">
+                  <div className="flex justify-between items-center">
+                    <span className="text-[10px] uppercase tracking-widest font-black text-[#00BFA6] bg-teal-50 border border-teal-100 px-2.5 py-0.5 rounded-lg">
+                      {proj.category}
+                    </span>
+                    <span className="text-[10px] text-gray-400 font-mono font-bold">{proj.client}</span>
+                  </div>
+                  <h3 className="text-lg font-black text-[#0D0F14] tracking-tight">{proj.title}</h3>
+                  <div className="flex flex-wrap gap-1.5">
+                    {proj.technologies.slice(0, 3).map((t) => (
+                      <span key={t} className="text-[10px] font-mono font-bold text-gray-500 bg-gray-50 px-2 py-0.5 border border-gray-100 rounded-md">{t}</span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
 
-          <div>
+          <div className="text-center pt-12">
             <Link
-              to="/signup"
-              className="bg-[#714B67] hover:bg-[#5c3c54] text-white px-10 py-5 rounded font-bold text-xl transition-colors inline-block shadow-lg hover:shadow-xl hover:-translate-y-1"
+              to="/work"
+              className="inline-flex items-center gap-2 bg-white border border-gray-200 hover:border-[#0D0F14] text-[#0D0F14] font-bold text-xs uppercase tracking-wider px-7 py-3 rounded-full shadow-sm hover:shadow transition-all"
             >
-              Start now - It's free
+              View All Projects <ArrowRight size={14} />
             </Link>
-            <p className="mt-4 text-sm text-gray-500">No credit card required</p>
           </div>
-
         </div>
       </section>
+
+      {/* =============================================
+          9. TESTIMONIALS
+          ============================================= */}
+      <section className="py-24 bg-[#FAF9F5] border-y border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionHeader badge="TESTIMONIALS" title="Real Stories. Real Impact." />
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {testimonials.slice(0, 3).map((t) => (
+              <TestimonialCard key={t.id} testimonial={t} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* =============================================
+          10. PRICING TABLES
+          ============================================= */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionHeader
+            badge="PRICING"
+            title="Transparent Pricing, No Surprises"
+            subtitle="Choose a plan that fits your project scope. All plans include dedicated project management."
+          />
+          <PricingTable tiers={pricingTiers} />
+        </div>
+      </section>
+
+      {/* =============================================
+          11. BLOG / INSIGHTS
+          ============================================= */}
+      <section className="py-24 bg-[#FAF9F5] border-y border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionHeader badge="INSIGHTS" title="Latest From Our Blog" />
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {blogArticles.map((article) => (
+              <article
+                key={article.id}
+                className="group rounded-[28px] overflow-hidden border border-gray-100 bg-white hover:border-[#00BFA6] hover:shadow-[0_20px_50px_rgba(0,191,166,0.05)] transition-all duration-300 hover:-translate-y-1"
+              >
+                <div className="relative aspect-video overflow-hidden bg-gray-50">
+                  <img
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    src={article.image}
+                    alt={article.title}
+                    referrerPolicy="no-referrer"
+                    loading="lazy"
+                  />
+                  <span className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-[10px] font-bold text-[#0D0F14] px-3 py-1 rounded-lg border border-gray-100">
+                    {article.category}
+                  </span>
+                </div>
+                <div className="p-6 space-y-3">
+                  <div className="flex items-center gap-3 text-[10px] text-gray-400 font-medium">
+                    <span className="flex items-center gap-1"><Clock size={10} />{article.readTime}</span>
+                    <span>{article.date}</span>
+                  </div>
+                  <h3 className="text-base font-black text-[#0D0F14] tracking-tight leading-snug group-hover:text-[#00BFA6] transition-colors">
+                    {article.title}
+                  </h3>
+                  <p className="text-xs text-gray-500 leading-relaxed line-clamp-2">
+                    {article.excerpt}
+                  </p>
+                  <div className="pt-2">
+                    <span className="text-xs font-bold text-[#00BFA6] group-hover:underline">
+                      Read More →
+                    </span>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* =============================================
+          12. CTA BANNER
+          ============================================= */}
+      <CtaBanner />
 
     </div>
   );

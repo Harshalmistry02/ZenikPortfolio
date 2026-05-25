@@ -13,6 +13,7 @@ import {
   HanddrawnHighlight 
 } from "../components/Squiggle";
 import { CtaBanner } from "../components/CtaBanner";
+import { ScriptHeading } from "../components/ScriptHeading";
 
 export function About() {
   const team = [
@@ -163,10 +164,13 @@ export function About() {
             
             {/* Title Block (Left) */}
             <div className="lg:col-span-7 space-y-6">
-              <h1 className="text-4xl sm:text-5xl md:text-[56px] font-black text-[#0D0F14] leading-[1.08] tracking-tight">
-                We Build With <br />
-                Purpose, Precision & Passion.
-              </h1>
+              <ScriptHeading
+                as="h1"
+                text="We Build With Purpose, Precision & Passion."
+                highlight="Passion."
+                className="font-script text-5xl sm:text-6xl md:text-7xl font-bold text-[#0D0F14] leading-[0.98] tracking-tight"
+                accentColorClassName="text-[#F4A24D]"
+              />
 
               {/* Styled slogan */}
               <div className="relative pt-1 pb-3">
@@ -211,9 +215,13 @@ export function About() {
                 <span className="text-[#00BFA6] ml-1 font-black">//</span>
               </div>
 
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0D0F14] tracking-tight leading-[1.12]">
-                Who We Are
-              </h2>
+              <ScriptHeading
+                as="h2"
+                text="Who We Are"
+                highlightMode="last"
+                className="font-script text-4xl sm:text-5xl font-bold text-[#0D0F14] tracking-tight leading-[0.98]"
+                accentColorClassName="text-[#F4A24D]"
+              />
 
               <div className="space-y-4 text-gray-500 text-sm sm:text-base leading-relaxed font-normal">
                 <p>
@@ -311,9 +319,13 @@ export function About() {
               <span className="text-[#00BFA6] ml-1 font-black">//</span>
             </div>
 
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0D0F14] tracking-tight">
-              Our Core Values
-            </h2>
+            <ScriptHeading
+              as="h2"
+              text="Our Core Values"
+              highlightMode="last"
+              className="font-script text-4xl sm:text-5xl font-bold text-[#0D0F14] tracking-tight leading-[0.98]"
+              accentColorClassName="text-[#F4A24D]"
+            />
             <div className="w-12 h-1.5 bg-[#00BFA6] rounded-full mt-4"></div>
           </div>
 
@@ -355,9 +367,13 @@ export function About() {
               <span className="text-[#00BFA6] ml-1 font-black">//</span>
             </div>
 
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0D0F14] tracking-tight">
-              Meet the Team
-            </h2>
+            <ScriptHeading
+              as="h2"
+              text="Meet the Team"
+              highlightMode="last"
+              className="font-script text-4xl sm:text-5xl font-bold text-[#0D0F14] tracking-tight leading-[0.98]"
+              accentColorClassName="text-[#F4A24D]"
+            />
             <div className="w-12 h-1.5 bg-[#00BFA6] rounded-full mt-4"></div>
           </div>
 
@@ -421,9 +437,13 @@ export function About() {
               <span className="text-[#00BFA6] ml-1 font-black">//</span>
             </div>
 
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0D0F14] tracking-tight">
-              Our Journey
-            </h2>
+            <ScriptHeading
+              as="h2"
+              text="Our Journey"
+              highlightMode="last"
+              className="font-script text-4xl sm:text-5xl font-bold text-[#0D0F14] tracking-tight leading-[0.98]"
+              accentColorClassName="text-[#F4A24D]"
+            />
             <div className="w-12 h-1.5 bg-[#00BFA6] rounded-full mt-4"></div>
           </div>
 
@@ -477,9 +497,13 @@ export function About() {
               <span className="text-[#00BFA6] ml-1 font-black">//</span>
             </div>
 
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0D0F14] tracking-tight">
-              Recognised for Excellence
-            </h2>
+            <ScriptHeading
+              as="h2"
+              text="Recognised for Excellence"
+              highlightMode="last"
+              className="font-script text-4xl sm:text-5xl font-bold text-[#0D0F14] tracking-tight leading-[0.98]"
+              accentColorClassName="text-[#F4A24D]"
+            />
             <div className="w-12 h-1.5 bg-[#00BFA6] rounded-full mt-4"></div>
           </div>
 

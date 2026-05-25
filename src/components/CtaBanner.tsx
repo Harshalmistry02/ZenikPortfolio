@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
+import { ScriptHeading } from "./ScriptHeading";
 
 interface CtaBannerProps {
   buttonText?: string;
@@ -21,17 +22,12 @@ export function CtaBanner({ buttonText = "Start a Project", linkTo = "/contact" 
           </div>
 
           <div className="space-y-4 max-w-2xl relative z-10">
-            <div className="relative inline-block">
-              <h2 className="text-3xl md:text-5xl font-extrabold text-[#0D0F14] tracking-tight">
-                Have a project in mind?
-              </h2>
-              {/* Warm handwritten accent with orange sketch underline */}
-              <div className="absolute -bottom-2.5 left-0 w-full">
-                <svg className="w-full h-3 text-[#F4A24D]" viewBox="0 0 300 12" fill="none" preserveAspectRatio="none">
-                  <path d="M5 9c50-3.5 105-6 160-5.5s110 3.5 130 5" stroke="currentColor" strokeWidth="3" strokeLinecap="round"/>
-                </svg>
-              </div>
-            </div>
+            <ScriptHeading
+              as="h2"
+              text="Have a project in mind?"
+              className="font-script text-5xl md:text-7xl font-bold text-[#0D0F14] tracking-tight leading-[0.98]"
+              accentColorClassName="text-[#F4A24D]"
+            />
             
             <p className="text-gray-600 font-medium text-base md:text-lg pt-2">
               Let's build something amazing together. Partner with our UK & USA teams.

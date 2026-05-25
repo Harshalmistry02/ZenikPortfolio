@@ -10,13 +10,27 @@ export interface ServiceItem {
   icon: string;
 }
 
+export interface ServiceCategory {
+  id: string;
+  name: string;
+  tagline: string;
+  description: string;
+  icon: string;
+  color: string;
+  bg: string;
+  borderColor: string;
+  services: ServiceItem[];
+}
+
 export interface ProjectItem {
   id: string;
   title: string;
-  category: "Web" | "Mobile" | "Cybersecurity" | "UI/UX";
+  client?: string;
+  category: "Web" | "Mobile" | "Cybersecurity" | "UI/UX" | "Marketing" | "AI" | "Cloud";
   image: string;
   description: string;
   technologies: string[];
+  featured?: boolean;
 }
 
 export interface Testimonial {
@@ -39,6 +53,45 @@ export interface BlogArticle {
   author: string;
   image: string;
   featured?: boolean;
+}
+
+export interface StatItem {
+  value: string;
+  label: string;
+  suffix?: string;
+}
+
+export interface PricingTier {
+  name: string;
+  monthlyPrice: string;
+  annualPrice: string;
+  description: string;
+  features: string[];
+  highlighted: boolean;
+  cta: string;
+}
+
+export interface ProcessStep {
+  num: string;
+  name: string;
+  description: string;
+  iconName: string;
+}
+
+export interface FeatureCard {
+  title: string;
+  description: string;
+  iconName: string;
+}
+
+export interface FAQ {
+  question: string;
+  answer: string;
+}
+
+export interface TrustBadge {
+  title: string;
+  subtitle?: string;
 }
 
 export interface CareerRole {
