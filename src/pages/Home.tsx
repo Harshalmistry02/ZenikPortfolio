@@ -174,151 +174,69 @@ export function Home() {
     <div className="pt-20 bg-white min-h-screen overflow-hidden">
       
       {/* 1. HERO SECTION */}
-      <section className="relative py-14 md:py-24 bg-gradient-to-b from-teal-50/15 via-white to-white">
-        <div className="absolute top-20 right-10 w-96 h-96 bg-teal-200/10 rounded-full blur-3xl -z-10"></div>
-        <div className="absolute bottom-10 left-10 w-80 h-80 bg-orange-100/15 rounded-full blur-3xl -z-10"></div>
+      <section className="relative pt-8 pb-20 md:pt-12 md:pb-28 bg-gradient-to-b from-teal-50/20 via-white to-white overflow-hidden">
+        {/* Subtle Background Elements */}
+        <div className="absolute top-10 left-1/4 w-[500px] h-[500px] bg-teal-100/20 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
+        <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-orange-50/30 rounded-full blur-[80px] -z-10 pointer-events-none"></div>
+        
+        {/* Decorative Stars */}
+        <div className="absolute top-24 left-10 md:left-20 text-[#F4A24D] opacity-20 rotate-12 pointer-events-none select-none hidden md:block">
+          <HanddrawnStar className="w-12 h-12" />
+        </div>
+        <div className="absolute bottom-24 right-10 md:right-20 text-[#00BFA6] opacity-15 -rotate-12 pointer-events-none select-none hidden md:block">
+          <HanddrawnStar className="w-16 h-16" />
+        </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <div className="space-y-8 flex flex-col items-center">
             
-            {/* Left Column Text and CTAs */}
-            <div className="lg:col-span-6 space-y-6 text-left relative z-10">
-              
-              <div className="inline-flex items-center space-x-1 font-bold text-[#00BFA6] tracking-wider text-xs uppercase">
-                <span>WHAT WE DO</span>
-                {/* Custom curve waves svg doodle from mockup */}
-                <svg className="w-5 h-4 text-teal-400 opacity-90 inline-block" viewBox="0 0 20 12" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-                  <path d="M2,9 C5,6 9,6 12,9" />
-                  <path d="M5,5 C8,2 12,2 15,5" />
-                </svg>
-              </div>
-
-              <h1 className="text-4xl sm:text-5xl md:text-[56px] font-black text-[#0D0F14] tracking-tight leading-[1.08]">
-                Building Digital <br />
-                Products That Scale<span className="text-[#00BFA6] font-black">.</span>
-              </h1>
-
-              {/* Accent Overlays: Warm Orange Handwritten Script Accent with underline */}
-              <div className="relative inline-block pt-1.5 pb-2">
-                <span className="font-script text-3xl md:text-4xl text-[#F4A24D] select-none block leading-none font-bold">
-                  For brands ready to lead.
-                </span>
-                <div className="absolute left-0 right-0 bottom-[-4px] h-2">
-                  <HanddrawnUnderline className="text-[#F4A24D]" />
-                </div>
-              </div>
-
-              <p className="text-gray-600 text-sm md:text-base max-w-lg leading-relaxed font-normal pt-2">
-                Zenik Studio is a UK & USA based tech agency helping ambitious companies build secure, modern and scalable web, mobile and cybersecurity solutions.
-              </p>
-
-              {/* CTA Action Buttons */}
-              <div className="flex flex-row flex-wrap items-center gap-4 pt-4">
-                <Link
-                  to="/contact"
-                  className="inline-flex items-center justify-center bg-[#0D0F14] hover:bg-[#00BFA6] text-white hover:text-white transition-all duration-350 font-bold text-xs px-7 py-3.5 rounded-full shadow-md hover:shadow-lg hover:-translate-y-0.5 group"
-                >
-                  <span>Start a Project</span>
-                  <ArrowRight size={14} className="ml-2 group-hover:translate-x-1 transition-transform" />
-                </Link>
-
-                <Link
-                  to="/work"
-                  className="inline-flex items-center justify-center bg-white border border-gray-200 hover:border-[#0D0F14] text-[#0D0F14] hover:bg-gray-50 transition-all duration-350 font-bold text-xs px-7 py-3.5 rounded-full shadow-sm group"
-                >
-                  <span>View Our Work</span>
-                  <ArrowRight size={14} className="ml-2 text-gray-400 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </div>
-
+            <div className="inline-flex items-center justify-center space-x-1.5 font-bold text-[#00BFA6] tracking-widest text-[11px] uppercase bg-teal-50/80 px-4 py-2 rounded-full border border-teal-100/80 shadow-sm backdrop-blur-sm">
+              <span>Zenik Studio • Tech Agency</span>
+              {/* Custom curve waves svg doodle from mockup */}
+              <svg className="w-5 h-4 text-teal-400 opacity-90 inline-block ml-1" viewBox="0 0 20 12" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+                <path d="M2,9 C5,6 9,6 12,9" />
+                <path d="M5,5 C8,2 12,2 15,5" />
+              </svg>
             </div>
 
-            {/* Right Column Custom Mockups (Interactive overlap of code editor & browser) */}
-            <div className="lg:col-span-6 relative flex justify-center pt-8 lg:pt-0">
-              
-              {/* Outer container */}
-              <div className="relative w-full max-w-md md:max-w-lg">
-                
-                {/* Visual Screen: The Dark Code Editor Window */}
-                <div className="w-full bg-[#0D0F14] rounded-2xl border border-gray-800 shadow-2xl relative z-10 p-5 font-mono text-xs text-gray-300">
-                  
-                  {/* Window Dot Indicators */}
-                  <div className="flex items-center justify-between border-b border-gray-800 pb-3 mb-4 select-none">
-                    <div className="flex items-center space-x-1.5">
-                      <span className="w-2.5 h-2.5 rounded-full bg-red-500/80 block"></span>
-                      <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/80 block"></span>
-                      <span className="w-2.5 h-2.5 rounded-full bg-green-500/80 block"></span>
-                    </div>
-                    <div className="text-[10px] text-gray-500 font-sans tracking-wide">App.tsx</div>
-                    <div className="w-8"></div>
-                  </div>
+            <h1 className="text-5xl sm:text-6xl md:text-[72px] lg:text-[84px] font-black text-[#0D0F14] tracking-tight leading-[1.02]">
+              Building Digital <br />
+              Products That Scale<span className="text-[#00BFA6]">.</span>
+            </h1>
 
-                  {/* High Fidelity code mockup snippet matches browser display */}
-                  <div className="space-y-1.5 select-none leading-relaxed text-[11px] md:text-xs text-left">
-                    <div className="flex">
-                      <span className="w-6 text-gray-600 text-right pr-2 font-mono">1</span>
-                      <p className="text-gray-400 font-mono"><span className="text-[#00BFA6] font-mono">import</span> React <span className="text-pink-400 font-mono">from</span> <span className="text-emerald-400 font-mono">'react'</span>;</p>
-                    </div>
-                    
-                    <div className="flex">
-                      <span className="w-6 text-gray-600 text-right pr-2 font-mono">2</span>
-                      <p className="text-gray-400 font-mono"><span className="text-[#00BFA6] font-mono">import</span> &#123; <span className="text-orange-400 font-mono">Hero</span> &#125; <span className="text-pink-400 font-mono">from</span> <span className="text-emerald-400 font-mono">'@/components/Hero'</span>;</p>
-                    </div>
-
-                    <div className="flex">
-                      <span className="w-6 text-gray-600 text-right pr-2 font-mono">3</span>
-                      <p className="text-gray-400 font-mono"><span className="text-[#00BFA6] font-mono">import</span> &#123; <span className="text-orange-400 font-mono">Services</span> &#125; <span className="text-pink-400 font-mono">from</span> <span className="text-emerald-400 font-mono">'@/components/Services'</span>;</p>
-                    </div>
-
-                    <div className="flex">
-                      <span className="w-6 text-gray-600 text-right pr-2 font-mono">4</span>
-                      <p className="text-gray-500 font-mono"></p>
-                    </div>
-
-                    <div className="flex">
-                      <span className="w-6 text-gray-600 text-right pr-2 font-mono">5</span>
-                      <p className="text-gray-400 font-mono"><span className="text-pink-400 font-mono">export default function</span> <span className="text-blue-400 font-mono">Home</span>() &#123;</p>
-                    </div>
-
-                    <div className="flex">
-                      <span className="w-6 text-gray-600 text-right pr-2 font-mono">6</span>
-                      <p className="text-gray-400 font-mono">&nbsp;&nbsp;<span className="text-pink-400 font-mono">return</span> (</p>
-                    </div>
-
-                    <div className="flex">
-                      <span className="w-6 text-gray-600 text-right pr-2 font-mono">7</span>
-                      <p className="text-gray-400 font-mono">&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span className="text-teal-400 font-bold font-mono">main</span> className=<span className="text-emerald-400 font-mono">"min-h-screen"</span>&gt;</p>
-                    </div>
-
-                    <div className="flex bg-teal-500/10 border-l-2 border-[#00BFA6]">
-                      <span className="w-6 text-teal-400 text-right pr-2 font-semibold font-mono">8</span>
-                      <p className="text-white font-mono">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span className="text-[#00BFA6] font-bold font-mono">Hero</span> /&gt;</p>
-                    </div>
-
-                    <div className="flex">
-                      <span className="w-6 text-gray-600 text-right pr-2 font-mono">9</span>
-                      <p className="text-gray-400 font-mono">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span className="text-orange-400 font-bold font-mono">Services</span> /&gt;</p>
-                    </div>
-
-                    <div className="flex">
-                      <span className="w-6 text-gray-600 text-right pr-2 font-mono">10</span>
-                      <p className="text-gray-400 font-mono">&nbsp;&nbsp;&nbsp;&nbsp;&lt;/<span className="text-teal-400 font-bold font-mono">main</span>&gt;</p>
-                    </div>
-
-                    <div className="flex">
-                      <span className="w-6 text-gray-600 text-right pr-2 font-mono">11</span>
-                      <p className="text-gray-400 font-mono">&nbsp;&nbsp;);</p>
-                    </div>
-
-                    <div className="flex">
-                      <span className="w-6 text-gray-600 text-right pr-2 font-mono">12</span>
-                      <p className="text-gray-400 font-mono">&#125;</p>
-                    </div>
-                  </div>
-
-                </div>
+            {/* Accent Overlays: Warm Orange Handwritten Script Accent with underline */}
+            <div className="relative inline-block pt-2 pb-4">
+              <span className="font-script text-4xl md:text-5xl lg:text-6xl text-[#F4A24D] select-none block leading-none font-bold transform -rotate-1">
+                For brands ready to lead.
+              </span>
+              <div className="absolute left-8 right-8 bottom-[-2px] h-2 opacity-80">
+                <HanddrawnUnderline className="text-[#F4A24D]" />
               </div>
             </div>
+
+            <p className="text-gray-500 text-base md:text-lg max-w-2xl mx-auto leading-relaxed font-normal pt-2">
+              Zenik Studio is a UK & USA based tech agency helping ambitious companies build secure, modern and scalable web, mobile and cybersecurity solutions.
+            </p>
+
+            {/* CTA Action Buttons */}
+            <div className="flex flex-row flex-wrap items-center justify-center gap-4 pt-6">
+              <Link
+                to="/contact"
+                className="inline-flex items-center justify-center bg-[#0D0F14] hover:bg-[#00BFA6] text-white hover:text-white transition-all duration-350 font-bold text-sm px-8 py-4.5 rounded-full shadow-md hover:shadow-lg hover:-translate-y-0.5 group"
+              >
+                <span>Start a Project</span>
+                <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
+              </Link>
+
+              <Link
+                to="/work"
+                className="inline-flex items-center justify-center bg-white border border-gray-200 hover:border-[#0D0F14] text-[#0D0F14] hover:bg-gray-50 transition-all duration-350 font-bold text-sm px-8 py-4.5 rounded-full shadow-sm group"
+              >
+                <span>View Our Work</span>
+                <ArrowRight size={16} className="ml-2 text-gray-400 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </div>
+
           </div>
         </div>
       </section>

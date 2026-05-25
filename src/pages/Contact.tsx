@@ -155,18 +155,18 @@ export function Contact() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
             
             {/* Left Column: Interactive Contact Form */}
-            <div className="lg:col-span-7 bg-[#0D0F14] text-white p-8 md:p-12 rounded-[32px] border-2 border-dashed border-gray-800 shadow-xl relative overflow-hidden">
+            <div className="lg:col-span-7 bg-white text-[#0D0F14] p-8 md:p-12 rounded-[32px] border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] relative overflow-hidden">
               
               {submitSuccess ? (
-                <div className="absolute inset-0 bg-[#0D0F14] rounded-[30px] p-8 flex flex-col items-center justify-center text-center space-y-4 z-10">
-                  <div className="w-16 h-16 bg-teal-500/20 text-[#00BFA6] rounded-full flex items-center justify-center animate-bounce">
+                <div className="absolute inset-0 bg-white/95 backdrop-blur-sm rounded-[30px] p-8 flex flex-col items-center justify-center text-center space-y-4 z-10">
+                  <div className="w-16 h-16 bg-teal-50 text-[#00BFA6] rounded-full flex items-center justify-center animate-bounce">
                     <CheckCircle size={36} />
                   </div>
-                  <h3 className="text-2xl font-black text-white">Project Inquiry Received!</h3>
-                  <p className="text-sm text-gray-400 max-w-sm leading-relaxed">
-                    Thank you, <span className="text-white font-black">{formData.name}</span>. One of our transatlantic architects will reach out within 1 business day with custom dashboard setup options.
+                  <h3 className="text-2xl font-black text-[#0D0F14]">Project Inquiry Received!</h3>
+                  <p className="text-sm text-gray-500 max-w-sm leading-relaxed">
+                    Thank you, <span className="text-[#0D0F14] font-black">{formData.name}</span>. One of our transatlantic architects will reach out within 1 business day with custom dashboard setup options.
                   </p>
-                  <p className="text-xs text-teal-400 font-mono select-none uppercase tracking-widest">Dispatched successfully • ID: {(Math.random()*1000).toFixed(0)}</p>
+                  <p className="text-xs text-gray-400 font-mono select-none uppercase tracking-widest">Dispatched successfully • ID: {(Math.random()*1000).toFixed(0)}</p>
                 </div>
               ) : null}
 
@@ -180,7 +180,7 @@ export function Contact() {
                       placeholder="James Carter"
                       value={formData.name}
                       onChange={(e) => setFormData({...formData, name: e.target.value})}
-                      className="w-full bg-[#131720] text-xs border border-gray-800 focus:border-[#00BFA6] rounded-2xl p-4 outline-none text-white focus:ring-2 focus:ring-[#00BFA6]/20 transition-all placeholder:text-gray-600"
+                      className="w-full bg-gray-50/50 text-xs border border-gray-200 focus:border-[#00BFA6] rounded-2xl p-4 outline-none text-[#0D0F14] focus:ring-2 focus:ring-[#00BFA6]/20 transition-all placeholder:text-gray-400"
                     />
                   </div>
                   <div className="space-y-2">
@@ -191,24 +191,24 @@ export function Contact() {
                       placeholder="james@mycompany.com"
                       value={formData.email}
                       onChange={(e) => setFormData({...formData, email: e.target.value})}
-                      className="w-full bg-[#131720] text-xs border border-gray-800 focus:border-[#00BFA6] rounded-2xl p-4 outline-none text-white focus:ring-2 focus:ring-[#00BFA6]/20 transition-all placeholder:text-gray-600"
+                      className="w-full bg-gray-50/50 text-xs border border-gray-200 focus:border-[#00BFA6] rounded-2xl p-4 outline-none text-[#0D0F14] focus:ring-2 focus:ring-[#00BFA6]/20 transition-all placeholder:text-gray-400"
                     />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label className="text-[10px] uppercase font-bold tracking-widest text-gray-400 block font-mono">COMPANY NAME</label>
+                    <label className="text-[10px] uppercase font-bold tracking-widest text-gray-500 block font-mono">COMPANY NAME</label>
                     <input 
                       type="text" 
                       placeholder="E.g., FinTech Labs"
                       value={formData.company}
                       onChange={(e) => setFormData({...formData, company: e.target.value})}
-                      className="w-full bg-[#131720] text-xs border border-gray-800 focus:border-[#00BFA6] rounded-2xl p-4 outline-none text-white focus:ring-2 focus:ring-[#00BFA6]/20 transition-all placeholder:text-gray-600"
+                      className="w-full bg-gray-50/50 text-xs border border-gray-200 focus:border-[#00BFA6] rounded-2xl p-4 outline-none text-[#0D0F14] focus:ring-2 focus:ring-[#00BFA6]/20 transition-all placeholder:text-gray-400"
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[10px] uppercase font-bold tracking-widest text-gray-400 block font-mono">PRIMARY REQUIREMENT</label>
+                    <label className="text-[10px] uppercase font-bold tracking-widest text-gray-500 block font-mono">PRIMARY REQUIREMENT</label>
                     <div className="grid grid-cols-2 gap-2">
                       {requirements.map((req) => {
                         const isSelected = formData.service === req.id || (formData.service === "Web Development" && req.id === "Web Development");
@@ -219,8 +219,8 @@ export function Contact() {
                             onClick={() => setFormData({...formData, service: req.id})}
                             className={`p-3 rounded-xl border text-left transition-all relative cursor-pointer ${
                               isSelected
-                                ? "bg-[#131720] border-[#00BFA6] ring-1 ring-[#00BFA6] text-[#00BFA6]"
-                                : "bg-[#131720]/45 border-gray-850 hover:border-gray-750 text-white"
+                                ? "bg-teal-50/50 border-[#00BFA6] ring-1 ring-[#00BFA6] text-[#00BFA6]"
+                                : "bg-white border-gray-200 hover:border-teal-200 text-[#0D0F14]"
                             }`}
                           >
                             <span className="text-[11px] font-black tracking-tight block">{req.label}</span>
@@ -236,13 +236,13 @@ export function Contact() {
                 {(() => {
                   const activeRequirement = requirements.find(r => r.id === formData.service) || requirements[0];
                   return (
-                    <div className="p-4 bg-[#131720] rounded-[24px] border border-gray-800 text-left relative overflow-hidden">
+                    <div className="p-4 bg-gray-50 rounded-[24px] border border-gray-200 text-left relative overflow-hidden">
                       <div className="absolute -right-2 -top-2 opacity-5 pointer-events-none select-none">
                         <HanddrawnCrown className="w-24 h-24 text-[#00BFA6]" />
                       </div>
                       
                       <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
-                        <div className="w-full sm:w-24 h-16 rounded-xl overflow-hidden shrink-0 border border-gray-850 bg-gray-900">
+                        <div className="w-full sm:w-24 h-16 rounded-xl overflow-hidden shrink-0 border border-gray-200 bg-gray-100">
                           <img 
                             className="w-full h-full object-cover select-none"
                             src={activeRequirement.projectSample.image} 
@@ -252,16 +252,16 @@ export function Contact() {
                         
                         <div className="space-y-1">
                           <div className="flex items-center space-x-1.5 flex-wrap">
-                            <span className="text-[8px] uppercase font-bold tracking-wider text-[#00BFA6] bg-teal-950/40 px-2 py-0.5 rounded-md border border-teal-900">
+                            <span className="text-[8px] uppercase font-bold tracking-wider text-[#00BFA6] bg-teal-50 px-2 py-0.5 rounded-md border border-teal-100">
                               SIMILAR CASE STUDY REFERENCE EXECUTED
                             </span>
                           </div>
-                          <h4 className="text-[13px] font-black text-white tracking-tight">
+                          <h4 className="text-[13px] font-black text-[#0D0F14] tracking-tight">
                             {activeRequirement.projectSample.title} <span className="text-gray-500 text-[10px] font-mono">({activeRequirement.projectSample.client})</span>
                           </h4>
                           <div className="flex items-center gap-1.5 flex-wrap">
                             {activeRequirement.projectSample.tech.map(t => (
-                              <span key={t} className="text-[9px] font-mono text-gray-400 font-bold bg-[#1B212D] px-2 py-0.5 border border-gray-800 rounded-md">
+                              <span key={t} className="text-[9px] font-mono text-gray-500 font-bold bg-white px-2 py-0.5 border border-gray-200 rounded-md">
                                 {t}
                               </span>
                             ))}
@@ -293,8 +293,8 @@ export function Contact() {
                           }}
                           className={`px-3 py-2 rounded-lg text-[9px] font-bold font-mono border transition-all cursor-pointer ${
                             isSelected
-                              ? "bg-teal-500/10 text-[#00BFA6] border-[#00BFA6] scale-[1.02]"
-                              : "bg-[#131720]/80 text-gray-400 border-gray-850 hover:border-gray-750 hover:text-white"
+                              ? "bg-teal-50 text-[#00BFA6] border-[#00BFA6] scale-[1.02]"
+                              : "bg-white text-gray-500 border-gray-200 hover:border-teal-200 hover:text-[#0D0F14]"
                           }`}
                         >
                           {tech} {isSelected ? "✓" : "+"}
@@ -305,7 +305,7 @@ export function Contact() {
                 </div>
 
                 <div className="space-y-2 relative">
-                  <label className="text-[10px] uppercase font-bold tracking-widest text-gray-400 block font-mono">MONTHLY PROJECT BUDGET RANGE</label>
+                  <label className="text-[10px] uppercase font-bold tracking-widest text-gray-500 block font-mono">MONTHLY PROJECT BUDGET RANGE</label>
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                     {budgetRanges.map((val) => (
                       <button
@@ -314,8 +314,8 @@ export function Contact() {
                         onClick={() => setFormData({...formData, budget: val})}
                         className={`text-xs font-bold py-3.5 rounded-2xl border transition-all cursor-pointer ${
                           formData.budget === val
-                            ? "bg-[#00BFA6] text-[#0D0F14] border-[#00BFA6] scale-[1.02] shadow-md shadow-teal-500/10"
-                            : "bg-[#131720] text-gray-400 border-gray-800 hover:border-gray-700 hover:text-white"
+                            ? "bg-[#00BFA6] text-white border-[#00BFA6] scale-[1.02] shadow-md shadow-teal-500/20"
+                            : "bg-white text-gray-500 border-gray-200 hover:border-teal-200 hover:text-[#0D0F14]"
                         }`}
                       >
                         {val}
@@ -332,19 +332,19 @@ export function Contact() {
                     placeholder="Briefly state your requirements, technical frameworks, or security parameters..."
                     value={formData.message}
                     onChange={(e) => setFormData({...formData, message: e.target.value})}
-                    className="w-full bg-[#131720] text-xs border border-gray-800 focus:border-[#00BFA6] rounded-2xl p-4 outline-none text-white focus:ring-2 focus:ring-[#00BFA6]/20 transition-all placeholder:text-gray-600"
+                    className="w-full bg-gray-50/50 text-xs border border-gray-200 focus:border-[#00BFA6] rounded-2xl p-4 outline-none text-[#0D0F14] focus:ring-2 focus:ring-[#00BFA6]/20 transition-all placeholder:text-gray-400"
                   />
                 </div>
 
                 <div className="relative pt-2">
                   <button
                     type="submit"
-                    className="w-full bg-[#00BFA6] text-[#0D0F14] font-extrabold py-4.5 rounded-2xl text-xs hover:bg-white hover:text-[#0D0F14] transition-all transform active:scale-98 shadow-lg hover:shadow-teal-500/5 cursor-pointer"
+                    className="w-full bg-[#00BFA6] text-white font-extrabold py-4.5 rounded-2xl text-xs hover:bg-[#0D0F14] hover:text-white transition-all transform active:scale-98 shadow-lg hover:shadow-teal-500/20 cursor-pointer"
                   >
                     <div className="flex items-center justify-center space-x-2">
                       <span>Submit Project Details & Book Discovery Call</span>
                       {selectedTechs.length > 0 && (
-                        <span className="bg-[#0D0F14] text-white text-[9px] px-1.5 py-0.5 rounded font-mono">
+                        <span className="bg-white/20 text-white text-[9px] px-1.5 py-0.5 rounded font-mono">
                           {selectedTechs.length} Techs selected
                         </span>
                       )}
