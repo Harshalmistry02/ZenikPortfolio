@@ -169,3 +169,25 @@ export function PastelBlob({ className = "bg-rose-50 text-rose-600 border-rose-1
     <span className={`inline-flex items-center px-4 py-1.5 rounded-full text-xs font-semibold border ${className}`} />
   );
 }
+
+/**
+ * HanddrawnBurst: organic sunburst lines around text.
+ */
+export function HanddrawnBurst({ className = "absolute inset-0 text-[#F4A24D]" }: { className?: string }) {
+  return (
+    <svg
+      className={`absolute pointer-events-none overflow-visible ${className}`}
+      viewBox="0 0 100 100"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="3.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M 10,25 L 25,35" />
+      <path d="M 30,5 L 40,20" />
+      <path d="M 70,5 L 60,20" />
+      <path d="M 90,25 L 75,35" />
+    </svg>
+  );
+}
