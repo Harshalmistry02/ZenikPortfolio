@@ -145,11 +145,15 @@ export function About() {
   return (
     <div className="pt-20 bg-white min-h-screen font-sans selection:bg-teal-100 selection:text-teal-900 overflow-x-hidden">
 
-      {/* 1. HERO SECTION */}
-      <section className="relative py-12 md:py-20 lg:py-24 bg-gradient-to-b from-[#FAF9F5]/30 to-white text-left">
-        {/* Subtle background blurs */}
-        <div className="absolute top-1/4 left-1/10 w-72 h-72 bg-teal-100/10 rounded-full blur-3xl -z-10"></div>
-        <div className="absolute top-1/2 right-1/10 w-96 h-96 bg-orange-100/10 rounded-full blur-3xl -z-10"></div>
+      {/* 1. HERO SECTION - ENHANCED */}
+      <section className="relative py-12 md:py-20 lg:py-24 bg-gradient-to-b from-[#FAF9F5]/30 to-white text-left overflow-hidden">
+        {/* Semi-transparent animated background elements (rotating shapes) */}
+        <div className="absolute top-1/4 left-1/10 w-72 h-72 bg-teal-100/10 rounded-full blur-3xl -z-10 animate-pulse"></div>
+        <div className="absolute top-1/2 right-1/10 w-96 h-96 bg-orange-100/10 rounded-full blur-3xl -z-10 animate-pulse" style={{ animationDelay: '1s' }}></div>
+
+        {/* Rotating geometric shapes */}
+        <div className="absolute top-20 right-1/4 w-32 h-32 border-2 border-teal-200/20 rounded-lg -z-10 animate-spin" style={{ animationDuration: '20s' }}></div>
+        <div className="absolute bottom-20 left-1/4 w-24 h-24 border-2 border-orange-200/20 rounded-full -z-10 animate-spin" style={{ animationDuration: '15s', animationDirection: 'reverse' }}></div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
 
@@ -163,23 +167,38 @@ export function About() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mt-6">
 
             {/* Title Block (Left) */}
-            <div className="lg:col-span-7 space-y-6">
-              <ScriptHeading
-                as="h1"
-                text="We Build With Purpose, Precision & Passion."
-                highlight="Passion."
-                className="font-script text-5xl sm:text-6xl md:text-7xl font-bold text-[#0D0F14] leading-[0.98] tracking-tight"
-                accentColorClassName="text-[#F4A24D]"
-              />
+            <div className="lg:col-span-7 space-y-6 relative">
+              <div className="relative">
+                <ScriptHeading
+                  as="h1"
+                  text="We Build With Purpose, Precision & Passion."
+                  highlight="Passion."
+                  className="font-script text-5xl sm:text-6xl md:text-7xl font-bold text-[#0D0F14] leading-[0.98] tracking-tight"
+                  accentColorClassName="text-[#F4A24D]"
+                />
 
-              {/* Styled slogan */}
-              <div className="relative pt-1 pb-3">
-                <p className="font-script text-3xl md:text-4xl text-[#F4A24D] font-bold tracking-wide leading-none">
-                  Digital products. Real impact.
-                </p>
-                <div className="w-56 h-2 mt-1 relative">
-                  <HanddrawnUnderline className="text-[#F4A24D]" />
+                {/* Hand-drawn arrow pointing to "Passion" */}
+                <div className="absolute -right-8 top-12 text-[#F4A24D]/60 w-16 h-16 rotate-[-25deg] hidden lg:block select-none pointer-events-none">
+                  <HanddrawnArrow />
                 </div>
+
+                {/* Animated sparkles around accent text */}
+                <div className="absolute right-0 top-8 text-[#F4A24D] animate-pulse" style={{ animationDuration: '2s' }}>
+                  <Sparkles size={20} className="opacity-60" />
+                </div>
+                <div className="absolute right-12 top-4 text-[#F4A24D] animate-pulse" style={{ animationDuration: '2.5s', animationDelay: '0.5s' }}>
+                  <Sparkles size={16} className="opacity-40" />
+                </div>
+              </div>
+
+              {/* Styled slogan with HanddrawnUnderline */}
+              <div className="relative pt-1 pb-3">
+                <p className="font-script text-3xl md:text-4xl text-[#F4A24D] font-bold tracking-wide leading-none relative inline-block">
+                  Digital products. Real impact.
+                  <span className="absolute left-0 -bottom-1 w-full h-3">
+                    <HanddrawnUnderline className="text-[#F4A24D]" />
+                  </span>
+                </p>
               </div>
             </div>
 
@@ -201,7 +220,7 @@ export function About() {
         </div>
       </section>
 
-      {/* 2. WHO WE ARE & PHOTO COLLAGE SECTION */}
+      {/* 2. WHO WE ARE & PHOTO COLLAGE SECTION - ENHANCED */}
       <section className="py-16 md:py-24 bg-white border-t border-gray-100/55 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
@@ -243,34 +262,38 @@ export function About() {
               </div>
             </div>
 
-            {/* Right Photo Collage with double-layered 1-wide image above + 3-column items below */}
-            <div className="lg:col-span-7 space-y-4">
+            {/* Right Photo Collage with double-layered 1-wide image above + 3-column items below - ENHANCED */}
+            <div className="lg:col-span-7 space-y-6">
 
-              {/* Wide high-quality photo representing happy team */}
-              <div className="rounded-[24px] overflow-hidden border border-gray-150/75 shadow-[0_15px_35px_rgba(0,0,0,0.03)] aspect-[21/9]">
+              {/* Wide high-quality photo representing happy team - ENHANCED with teal border and shadow */}
+              <div className="rounded-[24px] overflow-hidden border-2 border-[#00BFA6]/20 shadow-[0_20px_45px_rgba(0,191,166,0.08)] aspect-[21/9] group">
                 <img
-                  className="w-full h-full object-cover select-none"
+                  className="w-full h-full object-cover select-none transition-transform duration-500 group-hover:scale-105"
                   src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=900&auto=format&fit=crop&q=80"
                   alt="Zenik Studio Main Team"
                   referrerPolicy="no-referrer"
                 />
               </div>
 
-              {/* Grid with 3 smaller columns */}
-              <div className="grid grid-cols-3 gap-4">
+              {/* Grid with 3 smaller columns - ENHANCED with hover zoom and captions */}
+              <div className="grid grid-cols-3 gap-5">
 
-                {/* Visual 1: team coding monitor */}
-                <div className="rounded-[20px] overflow-hidden border border-gray-150/70 shadow-sm aspect-square bg-[#FAF9F5]">
+                {/* Visual 1: team coding monitor - ENHANCED */}
+                <div className="rounded-[20px] overflow-hidden border border-gray-150/70 shadow-sm aspect-square bg-[#FAF9F5] group relative">
                   <img
-                    className="w-full h-full object-cover select-none"
+                    className="w-full h-full object-cover select-none transition-transform duration-500 group-hover:scale-105"
                     src="https://images.unsplash.com/photo-1531538606174-0f90ff5dce83?w=500&auto=format&fit=crop&q=80"
                     alt="Team workspace workspace"
                     referrerPolicy="no-referrer"
                   />
+                  {/* Caption tag */}
+                  <div className="absolute bottom-2 right-2 bg-white/95 backdrop-blur-sm px-2 py-1 rounded-lg text-[9px] font-bold text-gray-700 shadow-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    Innovation
+                  </div>
                 </div>
 
-                {/* Visual 2: Branded logo display on light brick with green layout plant */}
-                <div className="rounded-[20px] overflow-hidden border border-gray-150/80 bg-[#FAF9F5]/75 flex flex-col justify-center items-center p-3 select-none aspect-square text-center relative group hover:border-[#00BFA6] transition-colors">
+                {/* Visual 2: Branded logo display on light brick with green layout plant - ENHANCED */}
+                <div className="rounded-[20px] overflow-hidden border border-gray-150/80 bg-[#FAF9F5]/75 flex flex-col justify-center items-center p-3 select-none aspect-square text-center relative group hover:border-[#00BFA6] transition-all duration-300 hover:scale-105">
                   <div className="relative">
 
                     {/* Visual custom brand element mimicking image sign */}
@@ -288,16 +311,25 @@ export function About() {
 
                   {/* Absolute subtle background pattern */}
                   <div className="absolute inset-x-2 bottom-2 h-0.5 bg-gray-200/50 rounded-full"></div>
+
+                  {/* Caption tag */}
+                  <div className="absolute bottom-2 right-2 bg-white/95 backdrop-blur-sm px-2 py-1 rounded-lg text-[9px] font-bold text-gray-700 shadow-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    Our Brand
+                  </div>
                 </div>
 
-                {/* Visual 3: Female team interaction */}
-                <div className="rounded-[20px] overflow-hidden border border-gray-150/70 shadow-sm aspect-square bg-[#FAF9F5]">
+                {/* Visual 3: Female team interaction - ENHANCED */}
+                <div className="rounded-[20px] overflow-hidden border border-gray-150/70 shadow-sm aspect-square bg-[#FAF9F5] group relative">
                   <img
-                    className="w-full h-full object-cover select-none"
+                    className="w-full h-full object-cover select-none transition-transform duration-500 group-hover:scale-105"
                     src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=500&auto=format&fit=crop&q=80"
                     alt="Two ladies collaborating with notebook"
                     referrerPolicy="no-referrer"
                   />
+                  {/* Caption tag */}
+                  <div className="absolute bottom-2 right-2 bg-white/95 backdrop-blur-sm px-2 py-1 rounded-lg text-[9px] font-bold text-gray-700 shadow-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    Collaboration
+                  </div>
                 </div>
 
               </div>
@@ -308,7 +340,7 @@ export function About() {
         </div>
       </section>
 
-      {/* 3. OUR CORE VALUES SECTION */}
+      {/* 3. OUR CORE VALUES SECTION - REDESIGNED */}
       <section className="py-20 lg:py-24 bg-[#FAF9F5]/45 border-y border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -329,30 +361,35 @@ export function About() {
             <div className="w-12 h-1.5 bg-[#00BFA6] rounded-full mt-4"></div>
           </div>
 
-          {/* Grid Layout 2x2 representing Values */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {/* Grid Layout - REDESIGNED to 4 columns (single row, responsive stack on mobile) */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {values.map((v, i) => (
               <div
                 key={i}
-                className="bg-white p-6 sm:p-9 rounded-[28px] border border-gray-100/70 flex flex-col sm:flex-row items-start sm:items-center gap-6 shadow-sm hover:shadow-[0_15px_35px_rgba(0,191,166,0.03)] hover:border-teal-200 transition-all duration-300 text-left"
+                className="relative bg-transparent p-6 sm:p-7 rounded-[24px] border-2 border-gray-200/60 flex flex-col items-start gap-4 hover:shadow-[0_20px_45px_rgba(0,191,166,0.08)] hover:border-[#00BFA6] hover:border-l-4 transition-all duration-300 text-left group"
               >
-                {/* Circular styled icon */}
-                <div className="w-14 h-14 rounded-full bg-teal-50 border border-teal-100/50 flex items-center justify-center shadow-sm shrink-0">
-                  {v.icon}
+                {/* Small badge/number on top-left */}
+                <div className="absolute top-4 left-4 w-7 h-7 rounded-full bg-teal-50 border border-teal-100 flex items-center justify-center text-[10px] font-black text-[#00BFA6] font-mono">
+                  {String(i + 1).padStart(2, '0')}
+                </div>
+
+                {/* Icon with animation on hover */}
+                <div className="w-12 h-12 rounded-full bg-white border border-gray-200/50 flex items-center justify-center shadow-sm shrink-0 mt-8 group-hover:scale-110 group-hover:bg-teal-50 transition-all duration-300">
+                  <div className="group-hover:scale-110 transition-transform duration-300">
+                    {v.icon}
+                  </div>
                 </div>
 
                 <div className="space-y-2">
-                  <h3 className="text-lg font-black text-[#0D0F14] tracking-tight">
-                    <span className="relative inline-block">
-                      <span className="relative z-10">{v.title}</span>
-                      <svg className="absolute left-0 bottom-0 w-full h-2 pointer-events-none" viewBox="0 0 200 8" preserveAspectRatio="none" aria-hidden="true">
-                        <path d="M0,4 Q50,0 100,4 T200,4" fill="none" stroke="#00BFA6" strokeWidth="6" strokeLinecap="round" strokeDasharray="1,6" opacity="0.5" />
-                      </svg>
-                    </span>
+                  <h3 className="text-base font-black text-[#0D0F14] tracking-tight relative inline-block">
+                    <span className="relative z-10">{v.title}</span>
+                    {/* SVG wavy underline */}
+                    <svg className="absolute left-0 -bottom-1 w-full h-2 pointer-events-none" viewBox="0 0 200 8" preserveAspectRatio="none" aria-hidden="true">
+                      <path d="M0,4 Q10,2 20,4 T40,4 T60,4 T80,4 T100,4 T120,4 T140,4 T160,4 T180,4 T200,4" fill="none" stroke="#00BFA6" strokeWidth="2" strokeLinecap="round" opacity="0.4" />
+                    </svg>
                   </h3>
-                  <p className="text-gray-400 text-sm leading-relaxed font-normal">
-                    <span className="font-semibold text-gray-600">{v.text.split('.')[0]}.</span>
-                    {v.text.split('.').slice(1).join('.')}
+                  <p className="text-gray-500 text-xs leading-relaxed font-normal">
+                    {v.text}
                   </p>
                 </div>
               </div>
@@ -362,7 +399,7 @@ export function About() {
         </div>
       </section>
 
-      {/* 4. MEET THE TEAM GALLERY */}
+      {/* 4. MEET THE TEAM GALLERY - IMPROVED */}
       <section className="py-20 lg:py-24 bg-white relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -383,56 +420,70 @@ export function About() {
             <div className="w-12 h-1.5 bg-[#00BFA6] rounded-full mt-4"></div>
           </div>
 
-          {/* 6-column Profile collection */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+          {/* 3-column Profile collection (2 rows) - CHANGED from 6 columns */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {team.map((t, idx) => (
               <div
                 key={idx}
-                className="group flex flex-col items-center text-center space-y-4 bg-[#FCFAF7]/30 p-3 pb-5 rounded-[24px] border border-transparent hover:border-gray-150 hover:bg-white hover:shadow-[0_12px_35px_rgba(0,0,0,0.02)] transition-all duration-300"
+                className="group flex flex-col items-center text-center space-y-4 bg-[#FCFAF7]/30 p-5 pb-6 rounded-[28px] border border-transparent hover:border-gray-200 hover:bg-white hover:shadow-[0_20px_50px_rgba(0,191,166,0.08)] hover:scale-[1.02] transition-all duration-300"
+                style={{ animationDelay: `${idx * 100}ms` }}
               >
-                {/* Round-box styled portrait */}
-                <div className="w-full aspect-[4/5] rounded-[20px] overflow-hidden bg-gray-100 border border-gray-100/60 relative">
+                {/* Round-box styled portrait with teal border glow on hover */}
+                <div className="w-full aspect-[4/5] rounded-[24px] overflow-hidden bg-gray-100 border-2 border-gray-100/60 relative group-hover:border-[#00BFA6] group-hover:shadow-[0_0_25px_rgba(0,191,166,0.25)] transition-all duration-300">
                   <img
-                    className="w-full h-full object-cover group-hover:scale-104 transition-transform duration-300"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     src={t.image}
                     alt={t.name}
                     referrerPolicy="no-referrer"
                     loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent mix-blend-overlay"></div>
+
+                  {/* Quick view social links on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
+                    <div className="flex items-center space-x-3">
+                      <a href="#linkedin" className="w-8 h-8 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center text-[#00BFA6] hover:bg-[#00BFA6] hover:text-white transition-all duration-200 transform hover:scale-110" title="Linkedin Profile">
+                        <Linkedin size={16} strokeWidth={2.5} />
+                      </a>
+                      <a href="#twitter" className="w-8 h-8 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center text-[#00BFA6] hover:bg-[#00BFA6] hover:text-white transition-all duration-200 transform hover:scale-110" title="Platform Link">
+                        <Twitter size={16} strokeWidth={2.5} />
+                      </a>
+                      <a href={`mailto:${t.socials.mail}`} className="w-8 h-8 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center text-[#00BFA6] hover:bg-[#00BFA6] hover:text-white transition-all duration-200 transform hover:scale-110" title="Direct Email">
+                        <Mail size={16} strokeWidth={2.5} />
+                      </a>
+                    </div>
+                  </div>
                 </div>
 
                 {/* Identity info */}
-                <div className="w-full space-y-1">
-                  <h4 className="text-xs sm:text-[13px] font-black text-[#0D0F14] tracking-tight leading-none leading-tight">
+                <div className="w-full space-y-1.5">
+                  <h4 className="text-sm sm:text-base font-black text-[#0D0F14] tracking-tight leading-tight">
                     {t.name}
                   </h4>
-                  <p className="text-[10px] text-gray-400 font-bold uppercase tracking-wide leading-none">
+                  <p className="text-xs text-[#00BFA6] font-bold uppercase tracking-wide leading-none">
                     {t.role}
                   </p>
-                </div>
-
-                {/* Gray vector logos row for social media support as per wireframe details */}
-                <div className="flex items-center justify-center space-x-2.5 pt-1.5">
-                  <a href="#linkedin" className="text-gray-400 hover:text-[#00BFA6] transition-colors" title="Linkedin Profile">
-                    <Linkedin size={13} strokeWidth={2.5} />
-                  </a>
-                  <a href="#twitter" className="text-gray-400 hover:text-[#00BFA6] transition-colors" title="Platform Link">
-                    <Twitter size={13} strokeWidth={2.5} />
-                  </a>
-                  <a href={`mailto:${t.socials.mail}`} className="text-gray-400 hover:text-[#00BFA6] transition-colors" title="Direct Email">
-                    <Mail size={13} strokeWidth={2.5} />
-                  </a>
                 </div>
 
               </div>
             ))}
           </div>
 
+          {/* "View full team" link */}
+          <div className="mt-12 text-center">
+            <Link
+              to="/team"
+              className="inline-flex items-center justify-center text-[#00BFA6] hover:text-[#0D0F14] font-bold text-sm transition-colors duration-300 group"
+            >
+              <span>View Full Team</span>
+              <span className="ml-2 transform group-hover:translate-x-1 transition-transform duration-300">→</span>
+            </Link>
+          </div>
+
         </div>
       </section>
 
-      {/* 5. OUR JOURNEY HORIZONTAL TIMELINE */}
+      {/* 5. OUR JOURNEY HORIZONTAL TIMELINE - IMPROVED */}
       <section className="py-20 lg:py-24 bg-[#FAF9F5]/45 border-y border-gray-100 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -453,25 +504,28 @@ export function About() {
             <div className="w-12 h-1.5 bg-[#00BFA6] rounded-full mt-4"></div>
           </div>
 
-          {/* Interactive timeline tracking line & circles */}
+          {/* Interactive timeline tracking line & circles - ENHANCED */}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 relative">
 
-            {/* Horizontal Line connector centered vertically inside nodes */}
-            <div className="absolute top-10 left-8 right-8 h-0.5 border-t-2 border-dashed border-teal-200/50 -z-10 hidden md:block"></div>
+            {/* Horizontal Line connector centered vertically inside nodes - ENHANCED with dashed animation */}
+            <div className="absolute top-10 left-8 right-8 h-0.5 border-t-2 border-dashed border-teal-300/60 -z-10 hidden md:block animate-pulse" style={{ animationDuration: '3s' }}></div>
 
             {journey.map((j, i) => (
               <div
                 key={i}
                 className="flex flex-col items-start text-left relative z-10 group"
               >
-                {/* Visual node badge with circular logo inside */}
-                <div className="w-14 h-14 rounded-full bg-[#00BFA6] text-white flex items-center justify-center shadow-md border-4 border-white group-hover:scale-105 transition-transform">
-                  {j.icon}
+                {/* Visual node badge with gradient backgrounds - ENHANCED */}
+                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-teal-50 to-teal-100/50 text-[#00BFA6] flex items-center justify-center shadow-lg border-4 border-white group-hover:scale-110 group-hover:shadow-[0_0_25px_rgba(0,191,166,0.3)] transition-all duration-300 relative">
+                  <div className="absolute inset-0 rounded-full bg-[#00BFA6] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="relative z-10 group-hover:text-white transition-colors duration-300">
+                    {j.icon}
+                  </div>
                 </div>
 
                 <div className="mt-5 space-y-2">
-                  {/* Large visual year stamp */}
-                  <span className="block text-xl font-black text-teal-600 font-mono">
+                  {/* Large visual year stamp - ENHANCED with font-mono bold */}
+                  <span className="block text-2xl font-black text-teal-600 font-mono tracking-tight">
                     {j.year}
                   </span>
 
@@ -485,6 +539,13 @@ export function About() {
                     {j.desc}
                   </p>
                 </div>
+
+                {/* Hover effect - detailed popup */}
+                <div className="absolute top-20 left-0 bg-white p-4 rounded-xl shadow-xl border border-gray-200 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-300 z-20 w-64 hidden lg:block">
+                  <div className="text-xs text-gray-600 leading-relaxed">
+                    <span className="font-bold text-[#00BFA6]">{j.year}:</span> {j.desc}
+                  </div>
+                </div>
               </div>
             ))}
           </div>
@@ -492,7 +553,7 @@ export function About() {
         </div>
       </section>
 
-      {/* 6. RECOGNISED FOR EXCELLENCE STAR BADGES */}
+      {/* 6. RECOGNISED FOR EXCELLENCE STAR BADGES - ENHANCED */}
       <section className="py-20 lg:py-24 bg-white relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -513,18 +574,19 @@ export function About() {
             <div className="w-12 h-1.5 bg-[#00BFA6] rounded-full mt-4"></div>
           </div>
 
-          {/* Awards grid */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+          {/* Awards grid - ENHANCED with responsive layout and visual hierarchy */}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
             {awards.map((a, idx) => (
               <div
                 key={idx}
-                className="flex flex-col items-center justify-center text-center p-5 rounded-[20px] bg-[#FCFAF7]/40 border border-gray-150/50 hover:border-[#00BFA6] hover:bg-white transition-all duration-300 group"
+                className={`flex flex-col items-center justify-center text-center p-6 rounded-[24px] bg-[#FCFAF7]/40 border-2 border-gray-150/50 hover:border-[#00BFA6] hover:bg-white transition-all duration-300 group relative ${a.year === "2024" && idx === awards.length - 1 ? "shadow-[0_0_30px_rgba(0,191,166,0.15)]" : ""
+                  }`}
               >
-                {/* Wreath visual wrapping */}
-                <div className="relative w-20 h-20 flex items-center justify-center mb-2 select-none">
+                {/* Wreath visual wrapping - ENHANCED */}
+                <div className="relative w-24 h-24 flex items-center justify-center mb-3 select-none">
 
                   {/* Fine illustration of double leaf wreath arcs */}
-                  <svg className="absolute inset-0 w-full h-full text-teal-600/75 group-hover:text-[#00BFA6]" viewBox="0 0 100 100" fill="none" stroke="currentColor">
+                  <svg className="absolute inset-0 w-full h-full text-teal-600/75 group-hover:text-[#00BFA6] transition-colors duration-300" viewBox="0 0 100 100" fill="none" stroke="currentColor">
                     {/* Left wreath side */}
                     <path d="M30 75 C18 60 18 35 38 25" strokeWidth="1.5" strokeLinecap="round" />
                     <circle cx="28" cy="65" r="2.5" fill="currentColor" />
@@ -540,23 +602,44 @@ export function About() {
                     <circle cx="67" cy="30" r="2.5" fill="currentColor" />
                   </svg>
 
-                  {/* Brand name nestled inside */}
+                  {/* Award icon/logo placeholder */}
                   <div className="relative z-10 text-center font-sans">
-                    <span className="block text-[8.5px] font-black tracking-wider text-gray-900 uppercase leading-none max-w-[54px] mx-auto">
+                    <Award className="w-8 h-8 text-[#00BFA6] mx-auto mb-1 group-hover:scale-110 transition-transform duration-300" strokeWidth={2} />
+                    <span className="block text-[8px] font-black tracking-wider text-gray-900 uppercase leading-none max-w-[60px] mx-auto">
                       {a.agency === "The Manifest" ? "THE MANIFEST" : a.agency}
                     </span>
                   </div>
 
+                  {/* Animated confetti/sparkle effect on hover */}
+                  <div className="absolute top-0 right-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <Sparkles size={16} className="text-[#F4A24D] animate-pulse" />
+                  </div>
+                  <div className="absolute bottom-0 left-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ animationDelay: '0.2s' }}>
+                    <Sparkles size={14} className="text-[#00BFA6] animate-pulse" />
+                  </div>
+
                 </div>
 
-                {/* Subtitle list category text */}
-                <div className="text-[10px] sm:text-[11px] font-bold text-gray-500 tracking-tight text-center leading-tight min-h-[30px] flex items-center justify-center max-w-[125px] px-1">
+                {/* Subtitle list category text - ENHANCED */}
+                <div className="text-[10px] sm:text-[11px] font-bold text-gray-600 tracking-tight text-center leading-tight min-h-[32px] flex items-center justify-center max-w-[140px] px-1 mb-3">
                   {a.title}
                 </div>
 
-                <div className="mt-2.5 px-3 py-0.5 rounded-full bg-teal-50 border border-teal-100/50 text-[9px] font-black text-[#00BFA6] font-mono select-none">
+                {/* Award year badge - CHANGED to use #F4A24D background */}
+                <div className="px-3.5 py-1 rounded-full bg-[#F4A24D] border border-[#F4A24D]/50 text-[9px] font-black text-white font-mono select-none shadow-sm">
                   {a.year}
                 </div>
+
+                {/* Award certification link on hover */}
+                <a
+                  href="#verify"
+                  className="absolute inset-0 rounded-[24px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center bg-[#00BFA6]/5 backdrop-blur-sm"
+                  title="Verify Award"
+                >
+                  <span className="text-xs font-bold text-[#00BFA6] bg-white px-3 py-1.5 rounded-full shadow-lg">
+                    Verify →
+                  </span>
+                </a>
 
               </div>
             ))}
