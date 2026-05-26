@@ -4,13 +4,30 @@ import { Linkedin, Twitter, Github, Globe } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer id="footer" className="bg-[#212529] text-[#adb5bd] pt-16 pb-8 text-sm">
+    <footer id="footer" className="bg-[#212529] text-[#adb5bd] pt-0 pb-8 text-sm">
+      {/* Newsletter Strip */}
+      <div className="bg-[#1a1e24] py-8 mb-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-center gap-6">
+          <p className="text-white font-medium text-base">Get updates on new services and projects</p>
+          <div className="flex w-full max-w-sm">
+            <input 
+              type="email" 
+              placeholder="Email address" 
+              className="w-full px-4 py-3 bg-[#2a2f36] border border-gray-700 text-white rounded-l-md focus:outline-none focus:border-[#00BFA6]" 
+            />
+            <button className="px-6 py-3 bg-[#00BFA6] hover:bg-[#00a892] text-white font-bold rounded-r-md transition-colors whitespace-nowrap">
+              Subscribe
+            </button>
+          </div>
+        </div>
+      </div>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Main Footer Content */}
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 pb-12 border-b border-gray-700">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-8 pb-12 border-b border-gray-700">
           
-          {/* Column 1: Brand & Bio (Spans 2 columns on lg) */}
+          {/* Column 1: Brand & Bio */}
           <div className="col-span-2 lg:col-span-2 space-y-6">
             <Link to="/" className="inline-block text-white">
               <span className="text-4xl font-black tracking-tighter lowercase">
@@ -33,6 +50,10 @@ export function Footer() {
               <a href="https://dribbble.com" target="_blank" rel="noreferrer" className="text-gray-400 hover:text-white transition-colors">
                 <Globe size={20} />
               </a>
+            </div>
+            <div className="flex items-center space-x-3 pt-4">
+              <span className="text-[9px] font-bold uppercase border border-gray-700 px-2 py-1 rounded-full text-gray-500">ISO 27001</span>
+              <span className="text-[9px] font-bold uppercase border border-gray-700 px-2 py-1 rounded-full text-gray-500">GDPR Compliant</span>
             </div>
           </div>
 
@@ -58,7 +79,19 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Column 4: Contact Info */}
+          {/* Column 4: Resources */}
+          <div className="col-span-1">
+            <h3 className="font-bold text-white mb-4">Resources</h3>
+            <ul className="space-y-3">
+              <li><Link to="/#" className="hover:text-white transition-colors">Blog</Link></li>
+              <li><Link to="/work" className="hover:text-white transition-colors">Case Studies</Link></li>
+              <li><Link to="/#" className="hover:text-white transition-colors">Pricing</Link></li>
+              <li><Link to="/#" className="hover:text-white transition-colors">Careers</Link></li>
+              <li><Link to="/#" className="hover:text-white transition-colors">Documentation</Link></li>
+            </ul>
+          </div>
+
+          {/* Column 5: Contact Info */}
           <div className="col-span-2 lg:col-span-2">
             <h3 className="font-bold text-white mb-4">Contact Info</h3>
             <ul className="space-y-3">
@@ -89,8 +122,9 @@ export function Footer() {
         <div className="pt-8 flex flex-col md:flex-row items-center justify-between text-xs">
           <p>© 2026 Zenik Studio. All rights reserved.</p>
           <div className="flex items-center space-x-6 mt-4 md:mt-0">
-            <Link to="/about" className="hover:text-white transition-colors">Terms of Service</Link>
             <Link to="/about" className="hover:text-white transition-colors">Privacy Policy</Link>
+            <Link to="/about" className="hover:text-white transition-colors">Terms</Link>
+            <button className="hover:text-white transition-colors text-left">Cookie Settings</button>
             <Link to="/about" className="hover:text-white transition-colors">Sitemap</Link>
           </div>
         </div>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { Menu, X, User as UserIcon, ChevronDown } from "lucide-react";
+import { Menu, X, User as UserIcon } from "lucide-react";
+import * as LucideIcons from "lucide-react";
 import type { User } from "../types";
 import { serviceCategories } from "../data/servicesData";
 
@@ -9,26 +10,17 @@ interface NavbarProps {
   onLogout: () => void;
 }
 
-// Organize services into mega menu columns (exactly 8 categories, 2 per column)
 const megaMenuColumns = [
   {
-    title: "DESIGN & PRODUCT",
-    color: "text-purple-600",
     categories: ["design", "product"]
   },
   {
-    title: "DEVELOPMENT",
-    color: "text-blue-600",
     categories: ["web", "mobile"]
   },
   {
-    title: "MARKETING & GROWTH",
-    color: "text-red-600",
     categories: ["marketing", "leadgen"]
   },
   {
-    title: "CLOUD & AI",
-    color: "text-cyan-600",
     categories: ["cloud", "ai"]
   }
 ];
@@ -39,7 +31,6 @@ export function Navbar({ user, onLogout }: NavbarProps) {
   const [showServicesDrop, setShowServicesDrop] = useState(false);
   const location = useLocation();
   const dropdownRef = useRef<HTMLDivElement>(null);
-  const servicesTriggerRef = useRef<HTMLButtonElement>(null);
   const timeoutRef = useRef<ReturnType<typeof setTimeout>>();
 
   useEffect(() => {
@@ -55,26 +46,17 @@ export function Navbar({ user, onLogout }: NavbarProps) {
 
   useEffect(() => {
     if (!showServicesDrop) return;
-
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") setShowServicesDrop(false);
     };
-
     const handlePointerDown = (e: MouseEvent | TouchEvent) => {
       const target = e.target as Node | null;
-      if (!target) return;
-
-      const clickedInsideDropdown = dropdownRef.current?.contains(target);
-      const clickedTrigger = servicesTriggerRef.current?.contains(target);
-      if (clickedInsideDropdown || clickedTrigger) return;
-
+      if (!target || dropdownRef.current?.contains(target)) return;
       setShowServicesDrop(false);
     };
-
     window.addEventListener("keydown", handleKeyDown);
     window.addEventListener("mousedown", handlePointerDown);
     window.addEventListener("touchstart", handlePointerDown, { passive: true });
-
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
       window.removeEventListener("mousedown", handlePointerDown);
@@ -107,7 +89,6 @@ export function Navbar({ user, onLogout }: NavbarProps) {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          {/* Logo */}
           <Link to="/" className="flex items-center gap-2 group" aria-label="Zenik Studio Home">
             <div className="w-8 h-8 rounded-lg bg-[#00BFA6] flex items-center justify-center text-white font-black text-lg shadow-sm group-hover:scale-105 transition-transform">
               Z
@@ -122,7 +103,6 @@ export function Navbar({ user, onLogout }: NavbarProps) {
             </div>
           </Link>
 
-          {/* Desktop Nav */}
           <nav className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
               <div
@@ -135,40 +115,19 @@ export function Navbar({ user, onLogout }: NavbarProps) {
                   <NavLink
                     to={link.path}
                     className={({ isActive }) =>
-                      `text-sm font-semibold transition-colors duration-200 ${isActive
-                        ? "text-[#0D0F14]"
+                      `relative text-sm font-semibold transition-colors duration-200 ${isActive
+                        ? "text-[#0D0F14] after:absolute after:bottom-[-6px] after:left-1/2 after:-translate-x-1/2 after:w-1 after:h-1 after:bg-[#00BFA6] after:rounded-full"
                         : "text-gray-500 hover:text-[#0D0F14]"
                       }`
                     }
                   >
                     {link.name}
                   </NavLink>
-
-                  {link.hasDrop && (
-                    <button
-                      ref={servicesTriggerRef}
-                      type="button"
-                      aria-haspopup="menu"
-                      aria-expanded={showServicesDrop}
-                      aria-controls="services-mega-menu"
-                      onClick={() => setShowServicesDrop((v) => !v)}
-                      className="p-1 rounded-md text-gray-500 hover:text-[#0D0F14] focus:outline-none focus:ring-2 focus:ring-[#00BFA6]/30"
-                      title="Open services menu"
-                    >
-                      <ChevronDown
-                        size={14}
-                        className={`transition-transform duration-200 ${showServicesDrop ? "rotate-180" : ""}`}
-                      />
-                    </button>
-                  )}
                 </div>
-
-                {/* Mega Dropdown for Services (Moved to header root) */}
               </div>
             ))}
           </nav>
 
-          {/* Desktop CTA */}
           <div className="hidden md:flex items-center space-x-4">
             {user.isLoggedIn ? (
               <div className="flex items-center space-x-3">
@@ -200,7 +159,6 @@ export function Navbar({ user, onLogout }: NavbarProps) {
             </Link>
           </div>
 
-          {/* Mobile Hamburger */}
           <div className="flex md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
@@ -213,7 +171,6 @@ export function Navbar({ user, onLogout }: NavbarProps) {
         </div>
       </div>
 
-      {/* Mega Dropdown for Services (Odoo Style) */}
       <div
         id="services-mega-menu"
         ref={dropdownRef}
@@ -229,66 +186,56 @@ export function Navbar({ user, onLogout }: NavbarProps) {
               <div key={colIdx} className="space-y-8">
                 {serviceCategories
                   .filter((cat) => column.categories.includes(cat.id))
-                  .map((category) => (
-                    <div key={category.id}>
-                      <div className="mb-3 pb-2 relative">
-                        <h3 className={`text-[12px] font-bold uppercase tracking-widest ${column.color}`}>
-                          {category.name}
-                        </h3>
-                        <div className={`absolute bottom-0 left-0 w-full h-px ${column.color.replace('text-', 'bg-')} opacity-30`}></div>
+                  .map((category) => {
+                    const IconComp = (LucideIcons as any)[category.icon] || LucideIcons.Circle;
+                    return (
+                      <div key={category.id}>
+                        <div className="mb-3 pb-2 flex items-center gap-2">
+                          <IconComp size={14} className={category.color} />
+                          <h3 className={`text-[11px] font-black uppercase tracking-widest ${category.color}`}>
+                            {category.name}
+                          </h3>
+                        </div>
+                        <ul className="space-y-1">
+                          {category.services.slice(0, 4).map((service) => (
+                            <li key={service.id}>
+                              <Link
+                                to="/services"
+                                className="text-[13px] text-gray-600 hover:text-[#0D0F14] py-1 transition-colors block"
+                              >
+                                {service.title}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
                       </div>
-                      <ul className="space-y-1">
-                        {category.services.slice(0, 2).map((service) => (
-                          <li key={service.id}>
-                            <Link
-                              to="/services"
-                              className="text-[13px] text-gray-600 hover:text-[#0D0F14] hover:bg-gray-50 block py-1.5 px-2 -mx-2 rounded-md transition-colors"
-                            >
-                              {service.title}
-                            </Link>
-                          </li>
-                        ))}
-                        {category.services.length > 2 && (
-                          <li>
-                            <Link
-                              to="/services"
-                              className="text-[13px] font-semibold text-[#00BFA6] hover:text-[#0D0F14] block py-1.5 px-2 -mx-2 transition-colors"
-                            >
-                              + {category.services.length - 2} more
-                            </Link>
-                          </li>
-                        )}
-                      </ul>
-                    </div>
-                  ))}
+                    );
+                  })}
               </div>
             ))}
           </div>
         </div>
 
-        {/* Footer Row */}
         <div className="bg-gray-50 border-t border-gray-100 py-4">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-center gap-12">
-            <Link to="/services" className="flex items-center gap-2 text-sm text-gray-600 hover:text-[#0D0F14] transition-colors font-medium">
-              <span className="text-gray-400">🌐</span> Third party apps
+            <Link to="/services" className="flex items-center gap-2 text-[13px] text-gray-600 hover:text-[#0D0F14] transition-colors font-medium">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#00BFA6]"></span> View all 90+ services →
             </Link>
-            <Link to="/work" className="flex items-center gap-2 text-sm text-gray-600 hover:text-[#0D0F14] transition-colors font-medium">
-              <span className="text-gray-400">✏️</span> Zenik Studio
+            <Link to="/work" className="flex items-center gap-2 text-[13px] text-gray-600 hover:text-[#0D0F14] transition-colors font-medium">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#00BFA6]"></span> See our work →
             </Link>
-            <Link to="/contact" className="flex items-center gap-2 text-sm text-gray-600 hover:text-[#0D0F14] transition-colors font-medium">
-              <span className="text-gray-400">☁️</span> Client Cloud Platform
+            <Link to="/contact" className="flex items-center gap-2 text-[13px] text-gray-600 hover:text-[#0D0F14] transition-colors font-medium">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#00BFA6]"></span> Get a quote →
             </Link>
           </div>
         </div>
       </div>
 
-      {/* Mobile Slide-in Menu */}
       <div
         className={`fixed inset-0 top-[60px] z-40 bg-white md:hidden transition-transform duration-300 transform ${isOpen ? "translate-x-0" : "translate-x-full"
           }`}
       >
         <div className="p-6 space-y-4 flex flex-col h-full overflow-y-auto">
-          {/* Nav Links */}
           <div className="flex flex-col space-y-1">
             {navLinks.map((link) => (
               <NavLink
@@ -304,31 +251,29 @@ export function Navbar({ user, onLogout }: NavbarProps) {
             ))}
           </div>
 
-          {/* Mobile Service Grid */}
           <div className="py-4">
             <span className="text-[10px] uppercase tracking-widest font-black text-[#00BFA6] block mb-3">
               All Services
             </span>
             <div className="space-y-3">
-              {serviceCategories.map((category) => (
-                <Link
-                  key={category.id}
-                  to="/services"
-                  className="flex items-center gap-3 p-3 rounded-xl hover:bg-gray-50 transition-colors"
-                >
-                  <div className={`w-10 h-10 rounded-xl ${category.bg} ${category.color} flex items-center justify-center shrink-0`}>
-                    <span className="text-lg">•</span>
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <div className="text-sm font-bold text-[#0D0F14]">{category.name}</div>
-                    <div className="text-[10px] text-gray-400">{category.services.length} services</div>
-                  </div>
-                </Link>
-              ))}
+              {serviceCategories.map((category) => {
+                const IconComp = (LucideIcons as any)[category.icon] || LucideIcons.Circle;
+                return (
+                  <Link
+                    key={category.id}
+                    to="/services"
+                    className="flex items-center gap-3 py-2 transition-colors"
+                  >
+                    <IconComp size={20} className={category.color} />
+                    <div className="flex-1 min-w-0">
+                      <div className="text-sm font-bold text-[#0D0F14]">{category.name}</div>
+                    </div>
+                  </Link>
+                );
+              })}
             </div>
           </div>
 
-          {/* Auth state */}
           {user.isLoggedIn ? (
             <div className="py-3 border-t border-gray-50 flex items-center justify-between">
               <div className="flex items-center space-x-2 text-gray-800 font-medium">
@@ -354,7 +299,6 @@ export function Navbar({ user, onLogout }: NavbarProps) {
             </NavLink>
           )}
 
-          {/* Bottom CTA */}
           <div className="pt-4 mt-auto">
             <Link
               to="/contact"

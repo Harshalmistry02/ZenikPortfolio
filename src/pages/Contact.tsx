@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Mail, Phone, MessageCircle, ChevronLeft, ChevronRight } from "lucide-react";
 import { ScriptHeading } from "../components/ScriptHeading";
 import { CtaBanner } from "../components/CtaBanner";
+import { FaqAccordion } from "../components/FaqAccordion";
 import type { Testimonial } from "../types";
 
 export function Contact() {
@@ -74,11 +75,11 @@ export function Contact() {
   ];
 
   const faqs = [
-    { q: "What is your typical project timeline?", a: "Most projects take 6-12 weeks from kickoff to launch, depending on scope and complexity." },
-    { q: "Do you work with early-stage startups?", a: "Yes! We love working with startups and offer flexible engagement models to fit your budget and timeline." },
-    { q: "Where are your teams located?", a: "We have offices in London, UK and New York, USA, with teams working across both locations." },
-    { q: "How do you ensure data security?", a: "We follow industry best practices including GDPR compliance, secure hosting, and regular security audits." },
-    { q: "Do clients own the code?", a: "Absolutely. Once the project is complete and paid, you own all code, designs, and intellectual property." }
+    { question: "What is your typical project timeline?", answer: "Most projects take 6-12 weeks from kickoff to launch, depending on scope and complexity." },
+    { question: "Do you work with early-stage startups?", answer: "Yes! We love working with startups and offer flexible engagement models to fit your budget and timeline." },
+    { question: "Where are your teams located?", answer: "We have offices in London, UK and New York, USA, with teams working across both locations." },
+    { question: "How do you ensure data security?", answer: "We follow industry best practices including GDPR compliance, secure hosting, and regular security audits." },
+    { question: "Do clients own the code?", answer: "Absolutely. Once the project is complete and paid, you own all code, designs, and intellectual property." }
   ];
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -420,25 +421,8 @@ export function Contact() {
             </h2>
           </div>
 
-          <div className="space-y-3">
-            {faqs.map((faq, idx) => (
-              <div key={idx} className="bg-white border border-gray-100 rounded-[24px] overflow-hidden">
-                <button
-                  onClick={() => setActiveFaqIdx(activeFaqIdx === idx ? null : idx)}
-                  className="w-full text-left p-6 flex items-center justify-between font-bold text-gray-800 hover:text-[#00BFA6] transition-colors"
-                >
-                  <span>{faq.q}</span>
-                  <span className={`text-[#00BFA6] transition-transform ${activeFaqIdx === idx ? 'rotate-180' : ''}`}>
-                    ▼
-                  </span>
-                </button>
-                {activeFaqIdx === idx && (
-                  <div className="px-6 pb-6 text-gray-600 text-sm leading-relaxed">
-                    {faq.a}
-                  </div>
-                )}
-              </div>
-            ))}
+          <div className="bg-white rounded-[24px] shadow-sm p-8 md:p-12 mb-20 max-w-3xl mx-auto">
+            <FaqAccordion faqs={faqs} />
           </div>
         </div>
       </section>

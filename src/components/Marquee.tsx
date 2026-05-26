@@ -79,32 +79,21 @@ export function Marquee() {
   return (
     <div className="w-full my-8">
       {/* Outer wrapper with fade edges */}
-      <div className="relative w-full overflow-hidden border-y border-gray-100 bg-white py-5"
+      <div className="relative w-full overflow-hidden border-y border-gray-200 bg-white py-5"
         style={{
           maskImage: "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
           WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
         }}
       >
-        {/* Label pinned left — outside the mask */}
-        <div
-          className="absolute left-0 top-0 bottom-0 z-10 flex flex-col justify-center pl-6 pr-4 bg-white select-none hidden sm:flex"
-          style={{ minWidth: 140 }}
-        >
-          <span className="text-[9px] uppercase tracking-[0.18em] font-black text-[#00BFA6] leading-none">TRUSTED BY</span>
-          <span className="text-[9px] uppercase tracking-[0.12em] font-extrabold text-[#00BFA6] mt-1 leading-none">INNOVATIVE COMPANIES</span>
-          {/* Vertical divider */}
-          <div className="absolute right-0 top-1/2 -translate-y-1/2 w-px h-6 bg-gray-200" />
-        </div>
-
         {/* Scrolling track */}
         <div
-          className="flex items-center gap-12 w-max"
-          style={{ animation: "marquee-scroll 28s linear infinite", paddingLeft: 160 }}
+          className="flex items-center gap-16 w-max"
+          style={{ animation: "marquee-scroll 35s linear infinite" }}
         >
           {track.map((logo, i) => (
             <div
               key={i}
-              className="flex items-center gap-2 shrink-0 opacity-60 hover:opacity-100 transition-opacity duration-200 cursor-default"
+              className="flex items-center gap-2 shrink-0 opacity-50 hover:opacity-80 transition-opacity duration-200 cursor-default"
             >
               {logo.icon}
               <span className={logo.style}>{logo.name}</span>

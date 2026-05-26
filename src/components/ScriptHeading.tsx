@@ -44,7 +44,7 @@ export function ScriptHeading({
   className,
   highlight,
   highlightMode = highlight ? "custom" : "last",
-  accentColorClassName = "text-[#F4A24D]",
+  accentColorClassName = "text-[#00BFA6]",
 }: ScriptHeadingProps) {
   const { before, highlight: hi, after } = splitForHighlight(text, highlightMode, highlight);
 

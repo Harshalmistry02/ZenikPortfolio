@@ -155,23 +155,23 @@ export function Login({ user, onLogin, onLogout }: LoginProps) {
 
                 <div className="space-y-2 pt-4">
                   <span className="text-[10px] text-[#00BFA6] font-black uppercase font-mono tracking-widest bg-teal-50 px-3 py-1 rounded-full inline-block">
-                    PRO PORTAL ACTIVE
+                    WELCOME BACK
                   </span>
                   <h1 className="text-2xl font-black text-[#0D0F14] tracking-tight">
-                    Secured Client Session
+                    Already Signed In
                   </h1>
                   <p className="text-xs text-gray-400 leading-relaxed max-w-md">
-                    Logged in workspace: <strong className="text-gray-800">{user.email}</strong>
+                    Signed in as: <strong className="text-gray-800">{user.email}</strong>
                   </p>
                 </div>
 
                 <div className="bg-gray-50 border border-gray-150/50 rounded-2xl p-4 space-y-2">
                   <div className="flex justify-between items-center text-[9px] text-[#00BFA6] font-bold font-mono uppercase">
-                    <span>Target Tunnel Pipeline</span>
-                    <span>Synchronized</span>
+                    <span>Account Active</span>
+                    <span>Ready</span>
                   </div>
                   <p className="text-[11px] text-gray-500 leading-relaxed">
-                    You have active pipelines registered under this identity. Head back to the consulting directory to review ongoing architectural staging, or safe terminate below.
+                    You are already signed into your account. You can head back to the dashboard to manage your projects or sign out below.
                   </p>
                 </div>
 
@@ -180,13 +180,13 @@ export function Login({ user, onLogin, onLogout }: LoginProps) {
                     to="/"
                     className="w-full bg-[#0D0F14] hover:bg-[#00BFA6] text-white py-4 rounded-xl text-xs font-black transition-all block text-center shadow-sm"
                   >
-                    Go to Dashboard Target
+                    Go to Dashboard
                   </Link>
                   <button
                     onClick={onLogout}
                     className="w-full bg-red-50 hover:bg-red-100 text-red-600 py-3 rounded-xl text-xs font-bold transition-all block text-center"
                   >
-                    Terminate Secure Connection
+                    Sign out
                   </button>
                 </div>
               </div>
@@ -482,62 +482,27 @@ export function Login({ user, onLogin, onLogout }: LoginProps) {
               <div className="absolute inset-0 bg-gradient-to-tr from-stone-900/40 via-white/5 to-white/10 mix-blend-overlay"></div>
             </div>
 
-            {/* ART OVERLAY: 3D-styled glass board on the partition wall mimicking text "BUILD CREATE GROW" */}
-            <div className="absolute left-1/5 top-1/3 p-6 rounded-2xl bg-white/40 backdrop-blur-md border border-white/40 shadow-lg text-left select-none max-w-xs transform -rotate-1 group hover:rotate-0 transition-transform duration-300">
-              <span className="block text-[11px] font-mono tracking-widest text-slate-800 font-black mb-2 uppercase opacity-80">
-                OUR PHILOSOPHY
-              </span>
-              <h3 className="font-sans font-black text-2xl text-slate-950 tracking-wide uppercase leading-tight">
-                BUILD <br />
-                CREATE <br />
-                GROW
+            {/* ART OVERLAY: Simple Stats Card */}
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 p-10 bg-white rounded-3xl text-center shadow-xl max-w-sm w-full">
+              <h3 className="font-sans font-black text-5xl text-[#00BFA6] tracking-tight mb-2">
+                80+
               </h3>
-              <div className="w-8 h-1 bg-[#00BFA6] rounded-full mt-3"></div>
-            </div>
-
-            {/* ART OVERLAY: Wall branding 3D styled logo (Z zenik studio) */}
-            <div className="absolute right-12 top-1/4 p-10 bg-white/30 backdrop-blur-xl border border-white/35 rounded-3xl text-center select-none shadow-2xl max-w-sm flex flex-col items-center justify-center transform hover:scale-[1.02] transition-transform duration-300">
-
-              {/* Giant volumetric teal Z logo */}
-              <div className="relative w-28 h-28 flex items-center justify-center group mb-4">
-                {/* 3D Drop shadow depth helper */}
-                <div className="absolute top-1 left-1 opacity-20 text-[#00BFA6]/40 text-8xl font-black font-sans pointer-events-none select-none">
-                  Z
-                </div>
-
-                {/* Visual main letter Z marker */}
-                <span className="text-[104px] font-black text-[#00BFA6] tracking-tighter leading-none relative drop-shadow-[0_15px_30px_rgba(0,191,166,0.35)] filter saturate-120 animate-wiggle">
-                  Z
-                </span>
-
-                {/* Sparkling overlays */}
-                <div className="absolute -top-1 -right-1">
-                  <Sparkles className="w-6 h-6 text-yellow-300 animate-pulse" />
-                </div>
-              </div>
-
-              {/* Identity taglines */}
-              <div className="space-y-1">
-                <span className="block text-3xl font-black text-[#0D0F14] tracking-tight leading-none uppercase">
-                  zenik
-                </span>
-                <span className="block text-xs font-mono font-bold tracking-[0.45em] text-[#0D0F14]/70 uppercase leading-none">
-                  studio
-                </span>
-              </div>
-
-              <div className="mt-5 px-3.5 py-1 bg-teal-950/20 rounded-full border border-teal-900/30">
-                <p className="text-[10px] font-black tracking-wider text-teal-800 uppercase font-mono">
-                  PRO LEVEL CREATIVE DIGITAL DIVISION
-                </p>
-              </div>
-
+              <p className="text-sm text-gray-500 font-bold uppercase tracking-wider mb-8">
+                Projects Delivered
+              </p>
+              
+              <h3 className="font-sans font-black text-5xl text-[#00BFA6] tracking-tight mb-2">
+                99%
+              </h3>
+              <p className="text-sm text-gray-500 font-bold uppercase tracking-wider">
+                Client Satisfaction
+              </p>
             </div>
 
             {/* Subtle branding coordinates marker on the footer boundary */}
             <div className="absolute bottom-6 left-8 flex items-center space-x-2 text-white/50 font-mono text-[9px] select-none uppercase tracking-widest bg-black/30 backdrop-blur-sm px-4 py-2 rounded-full border border-white/10">
               <span className="w-1.5 h-1.5 rounded-full bg-teal-400 animate-ping"></span>
-              <span>Workspace Active Node: LDN-NYC</span>
+              <span>Zenik Studio</span>
             </div>
 
           </div>

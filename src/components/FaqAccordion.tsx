@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Plus, Minus } from "lucide-react";
 import type { FAQ } from "../types";
 
 interface FaqAccordionProps {
@@ -9,38 +10,32 @@ export function FaqAccordion({ faqs }: FaqAccordionProps) {
   const [activeIdx, setActiveIdx] = useState<number | null>(null);
 
   return (
-    <div className="space-y-4">
+    <div className="w-full">
       {faqs.map((faq, idx) => {
         const isOpen = activeIdx === idx;
         return (
           <div
             key={idx}
-            className={`bg-white border rounded-[22px] overflow-hidden shadow-sm transition-all duration-300 ${
-              isOpen ? "border-[#00BFA6]" : "border-gray-100 hover:border-gray-200"
-            }`}
+            className="border-b border-gray-200"
           >
             <button
               onClick={() => setActiveIdx(isOpen ? null : idx)}
-              className="w-full text-left p-6 flex items-center justify-between font-black text-sm text-[#0D0F14] focus:outline-none cursor-pointer"
+              className="w-full text-left py-6 flex items-center justify-between font-bold text-lg text-gray-900 focus:outline-none cursor-pointer transition-colors hover:text-[#00BFA6]"
               aria-expanded={isOpen}
               aria-label={faq.question}
             >
-              <span className="pr-4 leading-snug">{faq.question}</span>
-              <span
-                className={`text-[#00BFA6] font-mono text-xl font-black shrink-0 transition-transform duration-300 ${
-                  isOpen ? "rotate-45" : ""
-                }`}
-              >
-                +
+              <span className="pr-8 leading-tight">{faq.question}</span>
+              <span className="text-gray-400 shrink-0 hover:text-[#00BFA6] transition-colors">
+                {isOpen ? <Minus size={24} /> : <Plus size={24} />}
               </span>
             </button>
 
             <div
               className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+                isOpen ? "max-h-96 opacity-100 mb-6" : "max-h-0 opacity-0"
               }`}
             >
-              <div className="px-6 pb-6 text-sm text-gray-500 leading-relaxed font-medium">
+              <div className="text-base leading-relaxed text-gray-600 font-normal">
                 {faq.answer}
               </div>
             </div>

@@ -8,6 +8,7 @@ interface SectionHeaderProps {
   light?: boolean;
   highlight?: string;
   underline?: string;
+  circleColor?: string;
 }
 
 // Renders the title with optional circled word and/or underlined word
@@ -16,11 +17,13 @@ function OdooTitle({
   highlight,
   underline,
   light,
+  circleColor = "text-[#00BFA6]",
 }: {
   title: string;
   highlight?: string;
   underline?: string;
   light?: boolean;
+  circleColor?: string;
 }) {
   const color = light ? "text-white" : "text-[#0D0F14]";
 
@@ -48,7 +51,7 @@ function OdooTitle({
                 <span className="relative z-10">{cleanWord}</span>
                 {/* Hand-drawn oval circle */}
                 <svg
-                  className="absolute pointer-events-none text-[#00BFA6]"
+                  className={`absolute pointer-events-none ${circleColor}`}
                   style={{ inset: "-0.3em -0.4em", width: "calc(100% + 0.8em)", height: "calc(100% + 0.6em)" }}
                   viewBox="0 0 200 80"
                   preserveAspectRatio="none"
@@ -112,16 +115,23 @@ function OdooTitle({
 }
 
 export function SectionHeader({
+  badge,
   title,
   subtitle,
   centered = false,
   light = false,
   highlight,
   underline,
+  circleColor,
 }: SectionHeaderProps) {
   return (
     <div className={`mb-16 ${centered ? "text-center mx-auto max-w-3xl" : "text-left"}`}>
-      <OdooTitle title={title} highlight={highlight} underline={underline} light={light} />
+      {badge && (
+        <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#00BFA6] bg-teal-50 border border-teal-100 px-3 py-1 rounded-full mb-4 inline-block">
+          {badge}
+        </span>
+      )}
+      <OdooTitle title={title} highlight={highlight} underline={underline} light={light} circleColor={circleColor} />
       {subtitle && (
         <p
           className={`text-sm sm:text-base leading-relaxed mt-5 max-w-xl ${centered ? "mx-auto" : ""} ${

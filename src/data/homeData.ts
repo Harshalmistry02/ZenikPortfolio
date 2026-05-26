@@ -21,10 +21,10 @@ export const stats: StatItem[] = [
 
 // Community-style stats for hero sections
 export const communityStats: StatItem[] = [
-  { value: "15", label: "Million Users", suffix: "" }, // Main hero stat
-  { value: "80", label: "Projects Delivered", suffix: "+" },
-  { value: "45", label: "Happy Clients", suffix: "+" },
+  { value: "80", label: "Projects Delivered", suffix: "+" }, // Main hero stat
   { value: "12", label: "Countries Served", suffix: "+" },
+  { value: "45", label: "Happy Clients", suffix: "+" },
+  { value: "99", label: "Client Satisfaction", suffix: "%" },
 ];
 
 /* ================================================
@@ -92,18 +92,6 @@ export const processSteps: ProcessStep[] = [
     name: "Launch",
     description: "We deploy, test, and scale for long-term success and growth.",
     iconName: "Rocket",
-  },
-  {
-    num: "7",
-    name: "Monitor",
-    description: "Real-time analytics and monitoring to track performance and user behavior.",
-    iconName: "Activity",
-  },
-  {
-    num: "8",
-    name: "Optimize",
-    description: "Continuous improvements based on data insights and user feedback.",
-    iconName: "TrendingUp",
   },
 ];
 

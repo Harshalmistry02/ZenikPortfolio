@@ -13,38 +13,25 @@ export function PricingTable({ tiers }: PricingTableProps) {
   return (
     <div className="space-y-10">
       {/* Monthly/Annual Toggle */}
-      <div className="flex items-center justify-center gap-4">
-        <span
-          className={`text-sm font-bold transition-colors ${
-            !annual ? "text-[#0D0F14]" : "text-gray-400"
-          }`}
-        >
-          Monthly
-        </span>
-        <button
-          onClick={() => setAnnual(!annual)}
-          className="relative w-14 h-7 bg-gray-200 rounded-full transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#00BFA6]/30"
-          style={{ backgroundColor: annual ? "#00BFA6" : undefined }}
-          aria-label="Toggle annual pricing"
-        >
-          <span
-            className={`absolute top-1 w-5 h-5 bg-white rounded-full shadow transition-transform ${
-              annual ? "translate-x-7" : "translate-x-1"
+      <div className="flex justify-center">
+        <div className="bg-gray-100 rounded-full p-1 inline-flex relative">
+          <button
+            onClick={() => setAnnual(false)}
+            className={`w-28 py-2 text-xs font-bold rounded-full transition-all duration-300 ${
+              !annual ? "bg-white text-[#0D0F14] shadow-sm" : "text-gray-500 hover:text-[#0D0F14]"
             }`}
-          />
-        </button>
-        <span
-          className={`text-sm font-bold transition-colors ${
-            annual ? "text-[#0D0F14]" : "text-gray-400"
-          }`}
-        >
-          Annual
-        </span>
-        {annual && (
-          <span className="text-[10px] font-bold bg-teal-50 text-[#00BFA6] px-2.5 py-1 rounded-full border border-teal-100">
-            SAVE 20%
-          </span>
-        )}
+          >
+            Monthly
+          </button>
+          <button
+            onClick={() => setAnnual(true)}
+            className={`w-40 py-2 text-xs font-bold rounded-full transition-all duration-300 ${
+              annual ? "bg-white text-[#0D0F14] shadow-sm" : "text-gray-500 hover:text-[#0D0F14]"
+            }`}
+          >
+            Annual (Save 20%)
+          </button>
+        </div>
       </div>
 
       {/* Pricing Cards */}
@@ -56,19 +43,19 @@ export function PricingTable({ tiers }: PricingTableProps) {
           return (
             <div
               key={tier.name}
-              className={`relative rounded-[28px] p-8 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 ${
+              className={`rounded-[24px] p-8 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 ${
                 tier.highlighted
-                  ? "bg-[#0D0F14] text-white border-2 border-[#00BFA6] shadow-[0_20px_60px_rgba(0,191,166,0.15)]"
+                  ? "bg-[#00BFA6] text-white border border-[#00BFA6] shadow-lg"
                   : "bg-white border border-gray-100 hover:border-[#00BFA6] hover:shadow-[0_20px_50px_rgba(0,191,166,0.05)]"
               }`}
             >
-              {tier.highlighted && (
-                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-[#00BFA6] text-white text-[10px] font-black uppercase tracking-widest px-4 py-1 rounded-full shadow-md">
-                  Most Popular
-                </div>
-              )}
-
               <div className="space-y-6">
+                {tier.highlighted && (
+                  <div className="inline-block bg-[#0D0F14] text-white text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full">
+                    Most Popular
+                  </div>
+                )}
+                
                 {/* Tier Name */}
                 <div>
                   <h3
@@ -80,7 +67,7 @@ export function PricingTable({ tiers }: PricingTableProps) {
                   </h3>
                   <p
                     className={`text-xs mt-1 leading-relaxed ${
-                      tier.highlighted ? "text-gray-400" : "text-gray-500"
+                      tier.highlighted ? "text-white/80" : "text-gray-500"
                     }`}
                   >
                     {tier.description}
@@ -91,7 +78,7 @@ export function PricingTable({ tiers }: PricingTableProps) {
                 <div className="flex items-baseline gap-1">
                   <span
                     className={`text-4xl font-black font-mono tracking-tight ${
-                      tier.highlighted ? "text-[#00BFA6]" : "text-[#0D0F14]"
+                      tier.highlighted ? "text-white" : "text-[#0D0F14]"
                     }`}
                   >
                     {price}
@@ -99,7 +86,7 @@ export function PricingTable({ tiers }: PricingTableProps) {
                   {!isCustom && (
                     <span
                       className={`text-xs font-medium ${
-                        tier.highlighted ? "text-gray-500" : "text-gray-400"
+                        tier.highlighted ? "text-white/70" : "text-gray-400"
                       }`}
                     >
                       /project
@@ -110,7 +97,7 @@ export function PricingTable({ tiers }: PricingTableProps) {
                 {/* Divider */}
                 <div
                   className={`w-full h-px ${
-                    tier.highlighted ? "bg-gray-700" : "bg-gray-100"
+                    tier.highlighted ? "bg-white/20" : "bg-gray-100"
                   }`}
                 />
 
@@ -118,18 +105,16 @@ export function PricingTable({ tiers }: PricingTableProps) {
                 <ul className="space-y-3">
                   {tier.features.map((feature, idx) => (
                     <li key={idx} className="flex items-start gap-2.5">
-                      <div
-                        className={`w-4.5 h-4.5 rounded-full flex items-center justify-center shrink-0 mt-0.5 ${
-                          tier.highlighted
-                            ? "bg-[#00BFA6]/20 text-[#00BFA6]"
-                            : "bg-teal-50 text-[#00BFA6]"
+                      <Check
+                        size={14}
+                        strokeWidth={4}
+                        className={`shrink-0 mt-0.5 ${
+                          tier.highlighted ? "text-[#0D0F14]" : "text-[#00BFA6]"
                         }`}
-                      >
-                        <Check size={10} strokeWidth={3} />
-                      </div>
+                      />
                       <span
-                        className={`text-xs leading-relaxed ${
-                          tier.highlighted ? "text-gray-300" : "text-gray-600"
+                        className={`text-xs leading-relaxed font-medium ${
+                          tier.highlighted ? "text-white" : "text-gray-600"
                         }`}
                       >
                         {feature}
@@ -145,7 +130,7 @@ export function PricingTable({ tiers }: PricingTableProps) {
                   to="/contact"
                   className={`w-full flex items-center justify-center gap-2 py-4 rounded-2xl text-xs font-black transition-all duration-300 group ${
                     tier.highlighted
-                      ? "bg-[#00BFA6] text-white hover:bg-white hover:text-[#0D0F14]"
+                      ? "bg-[#0D0F14] text-white hover:bg-white hover:text-[#0D0F14]"
                       : "bg-[#0D0F14] text-white hover:bg-[#00BFA6]"
                   }`}
                 >
