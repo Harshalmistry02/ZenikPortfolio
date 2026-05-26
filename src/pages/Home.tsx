@@ -222,6 +222,46 @@ export function Home() {
                   </svg>
                 ),
               },
+              {
+                label: "E-Commerce",
+                to: "/services?cat=ecommerce",
+                icon: (
+                  <svg viewBox="0 0 64 64" fill="none" className="w-10 h-10">
+                    <rect x="12" y="20" width="40" height="32" rx="4" fill="#FEE2E2" />
+                    <rect x="12" y="20" width="40" height="8" rx="4" fill="#EF4444" />
+                    <circle cx="20" cy="24" r="2" fill="white" opacity="0.8" />
+                    <circle cx="28" cy="24" r="2" fill="white" opacity="0.6" />
+                    <path d="M24 36 L28 40 L36 32" stroke="#EF4444" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                    <rect x="20" y="44" width="24" height="4" rx="2" fill="#F87171" />
+                  </svg>
+                ),
+              },
+              {
+                label: "Branding",
+                to: "/services?cat=branding",
+                icon: (
+                  <svg viewBox="0 0 64 64" fill="none" className="w-10 h-10">
+                    <circle cx="32" cy="32" r="24" fill="#FEF3C7" />
+                    <path d="M32 14 L38 26 L52 28 L42 38 L44 52 L32 46 L20 52 L22 38 L12 28 L26 26 Z" fill="#F59E0B" />
+                    <circle cx="32" cy="32" r="8" fill="#FDE68A" />
+                    <path d="M28 32 L30 34 L36 28" stroke="#F59E0B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                ),
+              },
+              {
+                label: "Consulting",
+                to: "/services?cat=consulting",
+                icon: (
+                  <svg viewBox="0 0 64 64" fill="none" className="w-10 h-10">
+                    <circle cx="32" cy="24" r="10" fill="#DBEAFE" />
+                    <circle cx="32" cy="24" r="6" fill="#3B82F6" />
+                    <path d="M16 50 C16 40 48 40 48 50" fill="#BFDBFE" />
+                    <path d="M16 50 C16 40 48 40 48 50" stroke="#3B82F6" strokeWidth="2" fill="none" />
+                    <rect x="38" y="14" width="16" height="12" rx="3" fill="#F4A24D" />
+                    <path d="M42 18 L44 20 L50 16" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                ),
+              },
             ].map((item) => (
               <Link
                 key={item.label}
