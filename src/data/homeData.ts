@@ -191,7 +191,7 @@ export const portfolioProjects: ProjectItem[] = [
     client: "Finova Capital",
     category: "Web",
     image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&auto=format&fit=crop&q=80",
     description:
       "A secure, premium corporate analytics dashboard with real-time data feeds and automated reporting.",
     technologies: ["Next.js", "TypeScript", "D3.js", "Tailwind CSS"],
@@ -203,7 +203,7 @@ export const portfolioProjects: ProjectItem[] = [
     client: "MoveMate Inc",
     category: "Mobile",
     image:
-      "https://images.unsplash.com/photo-1510051646316-c3f15a0c64b1?w=800&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800&auto=format&fit=crop&q=80",
     description:
       "Cross-platform iOS and Android workout tracker with offline sync and rich push notifications.",
     technologies: ["React Native", "Expo", "Node.js", "PostgreSQL"],
@@ -214,7 +214,7 @@ export const portfolioProjects: ProjectItem[] = [
     client: "GrowthPath Media",
     category: "Marketing",
     image:
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&auto=format&fit=crop&q=80",
     description:
       "Full-stack marketing automation platform with campaign management, analytics, and A/B testing.",
     technologies: ["React", "Node.js", "MongoDB", "SendGrid"],
@@ -225,7 +225,7 @@ export const portfolioProjects: ProjectItem[] = [
     client: "Lumina Co",
     category: "Web",
     image:
-      "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=800&auto=format&fit=crop&q=80",
     description:
       "Ultra-fast headless Shopify frontend with localized currencies and complex shipping logic.",
     technologies: ["Next.js", "Shopify GraphQL", "Stripe", "Vercel"],
@@ -237,7 +237,7 @@ export const portfolioProjects: ProjectItem[] = [
     client: "TechServe Inc",
     category: "AI",
     image:
-      "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=800&auto=format&fit=crop&q=80",
     description:
       "AI-powered customer support chatbot handling 80% of tickets with natural language understanding.",
     technologies: ["Python", "OpenAI API", "React", "FastAPI"],
@@ -248,7 +248,7 @@ export const portfolioProjects: ProjectItem[] = [
     client: "TrustComply LLC",
     category: "UI/UX",
     image:
-      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&auto=format&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&auto=format&fit=crop&q=80",
     description:
       "Interactive compliance dashboard tracking internal files and highlighting GDPR compliance gaps.",
     technologies: ["Figma", "React", "Tailwind CSS", "Chart.js"],

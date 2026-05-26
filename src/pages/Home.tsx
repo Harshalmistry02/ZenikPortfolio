@@ -623,33 +623,22 @@ export function Home() {
       {/* =============================================
           8. PORTFOLIO SHOWCASE
           ============================================= */}
-      <section className="py-24 bg-white">
+      <section className="py-32 bg-white overflow-hidden relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* HEADER: burst/sparkle rays around first word */}
-          <div className="mb-16 text-center">
-            <h2 className="font-script text-5xl sm:text-6xl md:text-[70px] font-bold text-[#0D0F14] leading-tight">
-              <span className="relative inline-block mr-3">
-                {/* Burst rays */}
-                <svg className="absolute pointer-events-none text-[#F4A24D]" style={{ inset: "-1.1em", width: "calc(100% + 2.2em)", height: "calc(100% + 2.2em)" }} viewBox="0 0 120 120" fill="none" aria-hidden>
-                  <line x1="60" y1="8" x2="60" y2="20" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
-                  <line x1="60" y1="100" x2="60" y2="112" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
-                  <line x1="8" y1="60" x2="20" y2="60" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
-                  <line x1="100" y1="60" x2="112" y2="60" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
-                  <line x1="22" y1="22" x2="31" y2="31" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
-                  <line x1="89" y1="89" x2="98" y2="98" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
-                  <line x1="98" y1="22" x2="89" y2="31" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
-                  <line x1="22" y1="98" x2="31" y2="89" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
-                  <circle cx="60" cy="14" r="2" fill="currentColor" />
-                  <circle cx="106" cy="60" r="2" fill="currentColor" />
-                </svg>
-                <span className="relative z-10">Projects</span>
-              </span>
-              Built to Perform
-            </h2>
+          {/* HEADER */}
+          <div className="mb-20 text-center relative z-10 flex flex-col items-center">
+            <div className="relative inline-block mb-4">
+              <svg className="absolute -top-8 -left-12 w-16 h-16 text-[#00BFA6] opacity-60" viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round">
+                <path d="M16 16 L24 24 M48 16 L40 24 M16 48 L24 40 M48 48 L40 40" />
+              </svg>
+              <h2 className="font-script text-5xl sm:text-6xl md:text-[70px] font-bold text-[#0D0F14] leading-tight">
+                Projects Built to <span className="relative inline-block">Perform<HanddrawnUnderline className="absolute -bottom-1 left-0 w-full text-[#EF4444] h-4" /></span>
+              </h2>
+            </div>
           </div>
 
           {/* Filter Tabs */}
-          <div className="flex flex-wrap justify-center gap-3 mb-12">
+          <div className="flex flex-wrap justify-center gap-3 mb-24 relative z-20">
             {categories.map((cat) => (
               <button
                 key={cat}
@@ -664,56 +653,127 @@ export function Home() {
             ))}
           </div>
 
-          {/* Project Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredProjects.map((proj) => (
-              <div
-                key={proj.id}
-                className="group rounded-[28px] overflow-hidden border border-gray-100 bg-white hover:border-[#00BFA6] hover:shadow-[0_20px_50px_rgba(0,191,166,0.06)] transition-all duration-300 hover:-translate-y-1.5"
-              >
-                <div className="relative aspect-video overflow-hidden bg-gray-50">
-                  <img
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    src={proj.image}
-                    alt={proj.title}
-                    referrerPolicy="no-referrer"
-                    loading="lazy"
-                  />
-                  {proj.featured && (
-                    <span className="absolute top-3 right-3 bg-[#F4A24D] text-white text-[9px] font-black uppercase tracking-wider px-2.5 py-1 rounded-lg">
-                      Featured
-                    </span>
-                  )}
-                  <div className="absolute inset-0 bg-[#0D0F14]/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <div className="w-12 h-12 bg-[#00BFA6] rounded-full flex items-center justify-center text-white">
-                      <Eye size={20} />
+          {/* Projects (Editorial Style) */}
+          <div className="space-y-40">
+            {filteredProjects.map((proj, idx) => {
+              const isCentered = idx % 2 === 0;
+
+              return (
+                <div key={proj.id} className="relative">
+                  {idx > 0 && (
+                    <div className="absolute -top-24 left-1/2 -translate-x-1/2 opacity-30">
+                      <HanddrawnArrow className="w-10 h-10 text-gray-400 rotate-90" />
                     </div>
-                  </div>
+                  )}
+
+                  {isCentered ? (
+                    <div className="flex flex-col items-center">
+                      <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 max-w-5xl mx-auto">
+                        <div className="text-left">
+                          <span className="text-[11px] uppercase tracking-widest font-black text-[#00BFA6] bg-teal-50 border border-teal-100 px-3 py-1 rounded-lg mb-4 inline-block">
+                            {proj.category}
+                          </span>
+                          <h3 className="text-3xl sm:text-4xl font-script font-bold text-[#0D0F14] mb-2">{proj.title}</h3>
+                          <p className="text-gray-600 text-base leading-relaxed max-w-sm">
+                            <span className="font-bold text-gray-900">{proj.client}.</span> {proj.description}
+                          </p>
+                        </div>
+                        <div className="text-left md:text-right flex flex-col justify-end items-start md:items-end">
+                           <p className="text-gray-500 text-sm max-w-sm">
+                             Built for performance and scale. Leveraging cutting-edge tools to deliver exceptional results.
+                           </p>
+                           <div className="flex flex-wrap gap-2 pt-4 justify-start md:justify-end">
+                            {proj.technologies.map((t) => (
+                              <span key={t} className="text-[10px] font-mono font-bold text-gray-500 bg-gray-50 px-2 py-1 border border-gray-100 rounded-md">{t}</span>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="relative w-full max-w-2xl mx-auto flex justify-center mt-8">
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] md:w-[110%] aspect-square bg-[#F8F9FA] rounded-full -z-10"></div>
+                        
+                        <div className="relative bg-white p-3 rounded-[24px] shadow-2xl border border-gray-100 w-full z-10 transition-transform duration-500 hover:scale-[1.02]">
+                           {proj.featured && (
+                            <span className="absolute -top-3 -right-3 z-20 bg-[#F4A24D] text-white text-[9px] font-black uppercase tracking-wider px-3 py-1.5 rounded-xl shadow-md">
+                              Featured
+                            </span>
+                          )}
+                          <img
+                            src={proj.image}
+                            alt={proj.title}
+                            className="w-full h-auto rounded-[16px] object-cover"
+                            loading="lazy"
+                          />
+                        </div>
+
+                        <div className="absolute -bottom-8 left-[10%] md:left-[20%] bg-white rounded-full py-2 px-3 pr-6 shadow-xl border border-gray-100 flex items-center gap-3 z-20 whitespace-nowrap">
+                           <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&auto=format&fit=crop&q=60" className="w-8 h-8 rounded-full" alt="User" />
+                           <span className="text-xs italic text-gray-600 font-medium">"Amazing results for {proj.client}!"</span>
+                        </div>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="flex flex-col lg:flex-row items-center gap-16 relative max-w-5xl mx-auto">
+                      <div className="w-full lg:w-5/12 space-y-6 z-10 relative">
+                        <div className="absolute -top-12 -left-6 text-[#00A1EA]">
+                           <svg viewBox="0 0 64 64" fill="none" className="w-12 h-12">
+                             <rect x="12" y="20" width="16" height="24" rx="2" stroke="currentColor" strokeWidth="4" className="fill-[#00A1EA]/20 -rotate-12" />
+                             <rect x="36" y="24" width="16" height="24" rx="2" stroke="currentColor" strokeWidth="4" className="fill-[#00A1EA]/20 rotate-12" />
+                           </svg>
+                        </div>
+
+                        <span className="text-[11px] uppercase tracking-widest font-black text-[#00A1EA] bg-blue-50 border border-blue-100 px-3 py-1 rounded-lg inline-block">
+                          {proj.category}
+                        </span>
+                        <h3 className="text-4xl sm:text-5xl font-script font-bold text-[#0D0F14] leading-tight">
+                          {proj.title}
+                        </h3>
+                        <p className="text-gray-600 text-lg leading-relaxed">
+                          <span className="font-bold text-gray-900">{proj.client}.</span> {proj.description}
+                        </p>
+                        
+                        <div className="flex flex-wrap gap-2 pt-2">
+                          {proj.technologies.map((t) => (
+                            <span key={t} className="text-xs font-mono font-bold text-gray-500 bg-gray-50 px-3 py-1.5 border border-gray-100 rounded-md shadow-sm">{t}</span>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="w-full lg:w-1/2 relative lg:ml-12 max-w-lg mx-auto lg:mx-0">
+                        <div className="absolute -top-[10%] -bottom-[10%] -left-[10%] -right-[20%] bg-gradient-to-r from-transparent to-[#F3F4F6] rounded-l-[100px] -z-10"></div>
+                        
+                        <div className="relative bg-white p-3 rounded-[24px] shadow-2xl border border-gray-100 transition-transform duration-500 hover:-translate-y-2">
+                          <img
+                            src={proj.image}
+                            alt={proj.title}
+                            className="w-full h-auto rounded-[16px] object-cover"
+                            loading="lazy"
+                          />
+                        </div>
+
+                        <div className="absolute -bottom-10 right-[10%] bg-white rounded-full py-2 px-3 pr-6 shadow-xl border border-gray-100 flex items-center gap-3 z-20">
+                           <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=60" className="w-8 h-8 rounded-full" alt="User" />
+                           <span className="text-xs italic text-gray-600 font-medium">"But wait! There's more."</span>
+                        </div>
+                        
+                        <div className="absolute -bottom-16 left-0 opacity-40 rotate-180">
+                           <HanddrawnArrow className="w-10 h-10 text-gray-400" />
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
-                <div className="p-6 space-y-3">
-                  <div className="flex justify-between items-center">
-                    <span className="text-[10px] uppercase tracking-widest font-black text-[#00BFA6] bg-teal-50 border border-teal-100 px-2.5 py-0.5 rounded-lg">
-                      {proj.category}
-                    </span>
-                    <span className="text-[10px] text-gray-400 font-mono font-bold">{proj.client}</span>
-                  </div>
-                  <h3 className="text-lg font-black text-[#0D0F14] tracking-tight">{proj.title}</h3>
-                  <div className="flex flex-wrap gap-1.5">
-                    {proj.technologies.slice(0, 3).map((t) => (
-                      <span key={t} className="text-[10px] font-mono font-bold text-gray-500 bg-gray-50 px-2 py-0.5 border border-gray-100 rounded-md">{t}</span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
-          <div className="text-center pt-12">
+          <div className="text-center pt-32">
             <Link
               to="/work"
               className="inline-flex items-center gap-2 bg-white border border-gray-200 hover:border-[#0D0F14] text-[#0D0F14] font-bold text-xs uppercase tracking-wider px-7 py-3 rounded-full shadow-sm hover:shadow transition-all"
             >
-              View All Projects <ArrowRight size={14} />
+              <span>View All Projects</span> <ArrowRight size={14} />
             </Link>
           </div>
         </div>

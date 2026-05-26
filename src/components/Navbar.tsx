@@ -9,12 +9,12 @@ interface NavbarProps {
   onLogout: () => void;
 }
 
-// Organize services into mega menu columns
+// Organize services into mega menu columns (exactly 8 categories, 2 per column)
 const megaMenuColumns = [
   {
-    title: "DESIGN & CREATIVE",
+    title: "DESIGN & PRODUCT",
     color: "text-purple-600",
-    categories: ["design"]
+    categories: ["design", "product"]
   },
   {
     title: "DEVELOPMENT",
@@ -27,9 +27,9 @@ const megaMenuColumns = [
     categories: ["marketing", "leadgen"]
   },
   {
-    title: "INFRASTRUCTURE",
+    title: "CLOUD & AI",
     color: "text-cyan-600",
-    categories: ["cloud", "email", "ai", "product"]
+    categories: ["cloud", "ai"]
   }
 ];
 
@@ -163,95 +163,7 @@ export function Navbar({ user, onLogout }: NavbarProps) {
                   )}
                 </div>
 
-                {/* Mega Dropdown for Services */}
-                {link.hasDrop && showServicesDrop && (
-                  <div
-                    id="services-mega-menu"
-                    ref={dropdownRef}
-                    className="absolute top-full left-1/2 -translate-x-1/2 mt-6 w-[min(900px,calc(100vw-2rem))] bg-white rounded-[28px] border border-gray-100 shadow-[0_30px_80px_rgba(0,0,0,0.12)] overflow-hidden animate-fade-down z-50 max-h-[75vh] overflow-y-auto scrollbar-none"
-                    onMouseEnter={handleMouseEnter}
-                    onMouseLeave={handleMouseLeave}
-                    role="menu"
-                  >
-                    {/* Arrow pointer */}
-                    <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-white border-t border-l border-gray-100 rotate-45" />
-
-                    <div className="p-8">
-                      <div className="grid grid-cols-4 gap-6">
-                        {megaMenuColumns.map((column, colIdx) => (
-                          <div key={colIdx} className="space-y-4">
-                            {/* Column Header */}
-                            <div className="pb-3 border-b border-gray-100">
-                              <h3 className={`text-[10px] font-black uppercase tracking-[0.15em] ${column.color}`}>
-                                {column.title}
-                              </h3>
-                            </div>
-
-                            {/* Services in this column */}
-                            <div className="space-y-1">
-                              {serviceCategories
-                                .filter(cat => column.categories.includes(cat.id))
-                                .map((category) => (
-                                  <div key={category.id}>
-                                    <Link
-                                      to="/services"
-                                      className="block py-2 px-3 rounded-lg hover:bg-gray-50 transition-colors group"
-                                    >
-                                      <div className="flex items-start gap-2">
-                                        <div className={`w-1.5 h-1.5 rounded-full ${category.bg} mt-1.5 opacity-0 group-hover:opacity-100 transition-opacity`} />
-                                        <div className="flex-1 min-w-0">
-                                          <div className="text-xs font-bold text-[#0D0F14] group-hover:text-[#00BFA6] transition-colors leading-tight">
-                                            {category.name}
-                                          </div>
-                                          <div className="text-[10px] text-gray-400 mt-0.5 leading-tight line-clamp-1">
-                                            {category.services.length} services
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </Link>
-
-                                    {/* Show first 3 services as sub-items */}
-                                    <div className="ml-6 mt-1 space-y-0.5">
-                                      {category.services.slice(0, 3).map((service) => (
-                                        <Link
-                                          key={service.id}
-                                          to="/services"
-                                          className="block py-1 px-2 text-[10px] text-gray-500 hover:text-[#00BFA6] transition-colors leading-tight"
-                                        >
-                                          {service.title}
-                                        </Link>
-                                      ))}
-                                    </div>
-                                  </div>
-                                ))}
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-
-                      {/* Bottom Bar */}
-                      <div className="mt-6 pt-6 border-t border-gray-100 flex items-center justify-between">
-                        <div className="flex items-center gap-6">
-                          <div className="text-xs text-gray-500">
-                            <span className="font-black text-[#00BFA6]">150+</span> services available
-                          </div>
-                          <div className="text-xs text-gray-500">
-                            <span className="font-black text-[#00BFA6]">9</span> categories
-                          </div>
-                        </div>
-                        <Link
-                          to="/services"
-                          className="inline-flex items-center gap-2 text-xs font-bold text-white bg-[#00BFA6] hover:bg-[#0D0F14] px-4 py-2 rounded-full transition-colors"
-                        >
-                          View All Services
-                          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M1 6H11M11 6L6 1M11 6L6 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                          </svg>
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                )}
+                {/* Mega Dropdown for Services (Moved to header root) */}
               </div>
             ))}
           </nav>
@@ -297,6 +209,75 @@ export function Navbar({ user, onLogout }: NavbarProps) {
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Mega Dropdown for Services (Odoo Style) */}
+      <div
+        id="services-mega-menu"
+        ref={dropdownRef}
+        className={`absolute top-full left-0 w-full bg-white shadow-2xl border-t border-gray-100 overflow-hidden transition-all duration-300 origin-top z-50 ${
+          showServicesDrop ? "opacity-100 scale-y-100 visible" : "opacity-0 scale-y-95 invisible"
+        }`}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+          <div className="grid grid-cols-4 gap-8">
+            {megaMenuColumns.map((column, colIdx) => (
+              <div key={colIdx} className="space-y-8">
+                {serviceCategories
+                  .filter((cat) => column.categories.includes(cat.id))
+                  .map((category) => (
+                    <div key={category.id}>
+                      <div className="mb-3 pb-2 relative">
+                        <h3 className={`text-[12px] font-bold uppercase tracking-widest ${column.color}`}>
+                          {category.name}
+                        </h3>
+                        <div className={`absolute bottom-0 left-0 w-full h-px ${column.color.replace('text-', 'bg-')} opacity-30`}></div>
+                      </div>
+                      <ul className="space-y-1">
+                        {category.services.slice(0, 2).map((service) => (
+                          <li key={service.id}>
+                            <Link
+                              to="/services"
+                              className="text-[13px] text-gray-600 hover:text-[#0D0F14] hover:bg-gray-50 block py-1.5 px-2 -mx-2 rounded-md transition-colors"
+                            >
+                              {service.title}
+                            </Link>
+                          </li>
+                        ))}
+                        {category.services.length > 2 && (
+                          <li>
+                            <Link
+                              to="/services"
+                              className="text-[13px] font-semibold text-[#00BFA6] hover:text-[#0D0F14] block py-1.5 px-2 -mx-2 transition-colors"
+                            >
+                              + {category.services.length - 2} more
+                            </Link>
+                          </li>
+                        )}
+                      </ul>
+                    </div>
+                  ))}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Footer Row */}
+        <div className="bg-gray-50 border-t border-gray-100 py-4">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-center gap-12">
+            <Link to="/services" className="flex items-center gap-2 text-sm text-gray-600 hover:text-[#0D0F14] transition-colors font-medium">
+              <span className="text-gray-400">🌐</span> Third party apps
+            </Link>
+            <Link to="/work" className="flex items-center gap-2 text-sm text-gray-600 hover:text-[#0D0F14] transition-colors font-medium">
+              <span className="text-gray-400">✏️</span> Zenik Studio
+            </Link>
+            <Link to="/contact" className="flex items-center gap-2 text-sm text-gray-600 hover:text-[#0D0F14] transition-colors font-medium">
+              <span className="text-gray-400">☁️</span> Client Cloud Platform
+            </Link>
           </div>
         </div>
       </div>
