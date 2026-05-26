@@ -19,6 +19,14 @@ export const stats: StatItem[] = [
   { value: "99", label: "Client Satisfaction", suffix: "%" },
 ];
 
+// Community-style stats for hero sections
+export const communityStats: StatItem[] = [
+  { value: "15", label: "Million Users", suffix: "" }, // Main hero stat
+  { value: "80", label: "Projects Delivered", suffix: "+" },
+  { value: "45", label: "Happy Clients", suffix: "+" },
+  { value: "12", label: "Countries Served", suffix: "+" },
+];
+
 /* ================================================
    WHY ZENIK FEATURES
    ================================================ */

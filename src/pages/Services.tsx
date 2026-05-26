@@ -16,7 +16,7 @@ import { StatsCounter } from "../components/StatsCounter";
 import { FaqAccordion } from "../components/FaqAccordion";
 import { CtaBanner } from "../components/CtaBanner";
 import { serviceCategories, allServices } from "../data/servicesData";
-import { stats, processSteps, homeFaqs } from "../data/homeData";
+import { stats, communityStats, processSteps, homeFaqs } from "../data/homeData";
 
 const lucideMap: Record<string, React.ElementType> = {
   Palette, Globe, Smartphone, TrendingUp, Target, Mail, Cloud, Brain,
@@ -421,9 +421,18 @@ export function Services() {
                     {String(idx + 1).padStart(2, "0")}
                   </div>
                   <h2 className="text-3xl sm:text-4xl font-black text-[#0D0F14] tracking-tight">
-                    {cat.name}
+                    {cat.name.split(' ').slice(0, -1).join(' ')}{' '}
+                    <span className="relative inline-block">
+                      <span className="relative z-10">{cat.name.split(' ').slice(-1)[0]}</span>
+                      <svg className="absolute left-0 bottom-0 w-full h-3 pointer-events-none" viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true">
+                        <path d="M0,6 Q50,0 100,6 T200,6" fill="none" stroke="#00BFA6" strokeWidth="8" strokeLinecap="round" strokeDasharray="1,8" opacity="0.6" />
+                      </svg>
+                    </span>
                   </h2>
-                  <p className="text-gray-500 text-sm leading-relaxed">{cat.description}</p>
+                  <p className="text-gray-500 text-sm leading-relaxed">
+                    <span className="font-semibold text-gray-700">{cat.description.split('.')[0]}.</span>
+                    {cat.description.split('.').slice(1).join('.')}
+                  </p>
                   <ul className="space-y-2 pt-2">
                     {cat.services.slice(0, 4).map((svc) => (
                       <li key={svc.id} className="flex items-center gap-2 text-sm text-gray-600">
@@ -473,60 +482,143 @@ export function Services() {
       </section>
 
       {/* =============================================
-          4. PROCESS STEPS — Icon Grid Style
+          4. PROCESS STEPS — Odoo Style Enhanced
           ============================================= */}
-      <section className="py-24 bg-[#FAF9F5] border-y border-gray-100">
+      <section className="py-32 bg-gradient-to-b from-white via-gray-50/30 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* HEADER */}
-          <div className="mb-16 text-center">
+          <div className="mb-24 text-center">
             <h2 className="font-script text-5xl sm:text-6xl md:text-[70px] font-bold text-[#0D0F14] leading-tight">
               A Process Built for{" "}
               <span className="relative inline-block">
                 <span className="relative z-10">Success</span>
-                <svg className="absolute left-0 pointer-events-none text-[#F4A24D]" style={{ bottom: "-0.15em", width: "100%", height: "0.4em" }} viewBox="0 0 200 14" preserveAspectRatio="none" aria-hidden>
-                  <path d="M4,9 C50,5 110,4 196,9" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" fill="none" />
-                  <path d="M14,13 C70,10 130,9 188,11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" fill="none" opacity="0.6" />
+                <svg className="absolute left-0 bottom-0 w-full h-3 pointer-events-none" viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true">
+                  <path d="M0,6 Q50,0 100,6 T200,6" fill="none" stroke="#F4A24D" strokeWidth="8" strokeLinecap="round" strokeDasharray="1,8" opacity="0.6" />
                 </svg>
               </span>
             </h2>
+            <p className="text-gray-500 text-base mt-6 max-w-2xl mx-auto">
+              From discovery to launch, our proven methodology ensures your project succeeds at every stage.
+            </p>
           </div>
 
-          {/* Process Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {processSteps.map((step, idx) => {
-              const IconComp = lucideMap[step.iconName] || Search;
-              return (
-                <div key={idx} className="group relative">
-                  {/* Icon with number badge */}
-                  <div className="flex items-start gap-4 mb-3">
-                    <div className="relative">
-                      <div className="w-12 h-12 rounded-xl bg-white border border-gray-100 shadow-sm flex items-center justify-center transition-all group-hover:border-[#00BFA6] group-hover:scale-110">
-                        <IconComp size={20} className="text-gray-500 group-hover:text-[#00BFA6] transition-colors" />
+          {/* Process Grid - 2 rows of 3 with arrows */}
+          <div className="relative">
+            {/* Top Row */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-16 gap-y-20 mb-20 relative">
+              {/* Arrow connectors for top row - desktop only */}
+              <div className="hidden lg:block absolute top-10 left-[16.66%] right-[16.66%] h-0.5">
+                <svg className="w-full h-8" viewBox="0 0 100 20" preserveAspectRatio="none">
+                  <defs>
+                    <marker id="arrowhead1" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                      <polygon points="0 0, 10 3, 0 6" fill="#00BFA6" opacity="0.3" />
+                    </marker>
+                  </defs>
+                  <line x1="0" y1="10" x2="48" y2="10" stroke="#00BFA6" strokeWidth="2" strokeDasharray="4,4" opacity="0.3" markerEnd="url(#arrowhead1)" />
+                </svg>
+              </div>
+              <div className="hidden lg:block absolute top-10 left-[50%] right-0 h-0.5">
+                <svg className="w-full h-8" viewBox="0 0 100 20" preserveAspectRatio="none">
+                  <defs>
+                    <marker id="arrowhead2" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                      <polygon points="0 0, 10 3, 0 6" fill="#00BFA6" opacity="0.3" />
+                    </marker>
+                  </defs>
+                  <line x1="0" y1="10" x2="48" y2="10" stroke="#00BFA6" strokeWidth="2" strokeDasharray="4,4" opacity="0.3" markerEnd="url(#arrowhead2)" />
+                </svg>
+              </div>
+
+              {processSteps.slice(0, 3).map((step, idx) => {
+                const IconComp = lucideMap[step.iconName] || Search;
+                return (
+                  <div key={idx} className="text-center group relative z-10">
+                    {/* Icon Circle with Number Badge */}
+                    <div className="relative inline-flex items-center justify-center mb-6">
+                      <div className="w-20 h-20 rounded-full bg-gradient-to-br from-teal-50 to-teal-100/50 flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg">
+                        <IconComp size={32} className="text-[#00BFA6] transition-transform duration-300 group-hover:scale-110" strokeWidth={2} />
                       </div>
-                      <span className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-[#00BFA6] text-white flex items-center justify-center text-[9px] font-black font-mono border-2 border-white">
+                      {/* Number Badge */}
+                      <span className="absolute -top-1 -right-1 w-7 h-7 rounded-full bg-[#00BFA6] text-white flex items-center justify-center text-xs font-black font-mono shadow-md">
                         {step.num}
                       </span>
                     </div>
-                  </div>
 
-                  {/* Title and Description */}
-                  <h3 className="text-base font-black text-[#0D0F14] mb-2 group-hover:text-[#00BFA6] transition-colors">
-                    {step.name}
-                  </h3>
-                  <p className="text-xs text-gray-500 leading-relaxed">
-                    {step.description}
-                  </p>
-                </div>
-              );
-            })}
+                    {/* Title */}
+                    <h3 className="text-lg font-black text-[#0D0F14] mb-3 tracking-tight">
+                      {step.name}
+                    </h3>
+
+                    {/* Description */}
+                    <p className="text-sm text-gray-500 leading-relaxed max-w-[240px] mx-auto">
+                      <span className="font-semibold text-gray-700">{step.description.split('.')[0]}.</span>
+                      {step.description.split('.').slice(1).join('.')}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Bottom Row */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-16 gap-y-20 relative">
+              {/* Arrow connectors for bottom row - desktop only */}
+              <div className="hidden lg:block absolute top-10 left-[16.66%] right-[16.66%] h-0.5">
+                <svg className="w-full h-8" viewBox="0 0 100 20" preserveAspectRatio="none">
+                  <defs>
+                    <marker id="arrowhead3" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                      <polygon points="0 0, 10 3, 0 6" fill="#00BFA6" opacity="0.3" />
+                    </marker>
+                  </defs>
+                  <line x1="0" y1="10" x2="48" y2="10" stroke="#00BFA6" strokeWidth="2" strokeDasharray="4,4" opacity="0.3" markerEnd="url(#arrowhead3)" />
+                </svg>
+              </div>
+              <div className="hidden lg:block absolute top-10 left-[50%] right-0 h-0.5">
+                <svg className="w-full h-8" viewBox="0 0 100 20" preserveAspectRatio="none">
+                  <defs>
+                    <marker id="arrowhead4" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                      <polygon points="0 0, 10 3, 0 6" fill="#00BFA6" opacity="0.3" />
+                    </marker>
+                  </defs>
+                  <line x1="0" y1="10" x2="48" y2="10" stroke="#00BFA6" strokeWidth="2" strokeDasharray="4,4" opacity="0.3" markerEnd="url(#arrowhead4)" />
+                </svg>
+              </div>
+
+              {processSteps.slice(3, 6).map((step, idx) => {
+                const IconComp = lucideMap[step.iconName] || Search;
+                return (
+                  <div key={idx} className="text-center group relative z-10">
+                    {/* Icon Circle with Number Badge */}
+                    <div className="relative inline-flex items-center justify-center mb-6">
+                      <div className="w-20 h-20 rounded-full bg-gradient-to-br from-teal-50 to-teal-100/50 flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg">
+                        <IconComp size={32} className="text-[#00BFA6] transition-transform duration-300 group-hover:scale-110" strokeWidth={2} />
+                      </div>
+                      {/* Number Badge */}
+                      <span className="absolute -top-1 -right-1 w-7 h-7 rounded-full bg-[#00BFA6] text-white flex items-center justify-center text-xs font-black font-mono shadow-md">
+                        {step.num}
+                      </span>
+                    </div>
+
+                    {/* Title */}
+                    <h3 className="text-lg font-black text-[#0D0F14] mb-3 tracking-tight">
+                      {step.name}
+                    </h3>
+
+                    {/* Description */}
+                    <p className="text-sm text-gray-500 leading-relaxed max-w-[240px] mx-auto">
+                      <span className="font-semibold text-gray-700">{step.description.split('.')[0]}.</span>
+                      {step.description.split('.').slice(1).join('.')}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>
 
       {/* =============================================
-          6. STATS
+          6. STATS - COMMUNITY VARIANT
           ============================================= */}
-      <StatsCounter stats={stats} />
+      <StatsCounter stats={communityStats} variant="community" />
 
 
 

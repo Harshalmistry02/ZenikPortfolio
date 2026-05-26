@@ -1,16 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { 
+import {
   Linkedin, Twitter, Mail, Shield, Flag, Rocket, Users, Globe, Award, Sparkles, Heart, Activity
 } from "lucide-react";
-import { 
-  Squiggle, 
-  HanddrawnArrow, 
-  HanddrawnUnderline, 
-  HanddrawnCircle, 
-  HanddrawnStar, 
-  HanddrawnCrown, 
-  HanddrawnHighlight 
+import {
+  Squiggle,
+  HanddrawnArrow,
+  HanddrawnUnderline,
+  HanddrawnCircle,
+  HanddrawnStar,
+  HanddrawnCrown,
+  HanddrawnHighlight
 } from "../components/Squiggle";
 import { CtaBanner } from "../components/CtaBanner";
 import { ScriptHeading } from "../components/ScriptHeading";
@@ -56,9 +56,9 @@ export function About() {
   ];
 
   const values = [
-    { 
-      title: "Innovation", 
-      text: "We embrace new ideas and technologies to build smarter, future-ready solutions that make a difference.", 
+    {
+      title: "Innovation",
+      text: "We embrace new ideas and technologies to build smarter, future-ready solutions that make a difference.",
       icon: (
         <svg className="w-6 h-6 text-[#00BFA6]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
           <circle cx="12" cy="12" r="5" />
@@ -73,9 +73,9 @@ export function About() {
         </svg>
       )
     },
-    { 
-      title: "Transparency", 
-      text: "Clear communication and honest collaboration at every step build trust and stronger outcomes.", 
+    {
+      title: "Transparency",
+      text: "Clear communication and honest collaboration at every step build trust and stronger outcomes.",
       icon: (
         <svg className="w-6 h-6 text-[#00BFA6]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
           <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
@@ -83,9 +83,9 @@ export function About() {
         </svg>
       )
     },
-    { 
-      title: "Quality", 
-      text: "We are obsessed with detail and committed to delivering exceptional products that stand the test of time.", 
+    {
+      title: "Quality",
+      text: "We are obsessed with detail and committed to delivering exceptional products that stand the test of time.",
       icon: (
         <svg className="w-6 h-6 text-[#00BFA6]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
           <circle cx="12" cy="8" r="7" />
@@ -93,9 +93,9 @@ export function About() {
         </svg>
       )
     },
-    { 
-      title: "Partnership", 
-      text: "We work as an extension of your team, aligned with your goals to achieve long-term success together.", 
+    {
+      title: "Partnership",
+      text: "We work as an extension of your team, aligned with your goals to achieve long-term success together.",
       icon: (
         <svg className="w-6 h-6 text-[#00BFA6]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
           <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
@@ -108,29 +108,29 @@ export function About() {
   ];
 
   const journey = [
-    { 
-      year: "2018", 
-      title: "Founded", 
-      desc: "Zenik Studio was founded in London with a vision to build impactful digital products.", 
-      icon: <Flag className="w-5 h-5 text-white" /> 
+    {
+      year: "2018",
+      title: "Founded",
+      desc: "Zenik Studio was founded in London with a vision to build impactful digital products.",
+      icon: <Flag className="w-5 h-5 text-white" />
     },
-    { 
-      year: "2020", 
-      title: "Expanded to USA", 
-      desc: "Opened our New York office to better serve clients across North America.", 
-      icon: <Rocket className="w-5 h-5 text-white" /> 
+    {
+      year: "2020",
+      title: "Expanded to USA",
+      desc: "Opened our New York office to better serve clients across North America.",
+      icon: <Rocket className="w-5 h-5 text-white" />
     },
-    { 
-      year: "2022", 
-      title: "50+ Projects", 
-      desc: "Crossed 50 successful projects across web, mobile and cybersecurity solutions.", 
-      icon: <Users className="w-5 h-5 text-white" /> 
+    {
+      year: "2022",
+      title: "50+ Projects",
+      desc: "Crossed 50 successful projects across web, mobile and cybersecurity solutions.",
+      icon: <Users className="w-5 h-5 text-white" />
     },
-    { 
-      year: "2024", 
-      title: "Global Impact", 
-      desc: "Serving clients in 12+ countries with a talented team across the UK & USA.", 
-      icon: <Globe className="w-5 h-5 text-white" /> 
+    {
+      year: "2024",
+      title: "Global Impact",
+      desc: "Serving clients in 12+ countries with a talented team across the UK & USA.",
+      icon: <Globe className="w-5 h-5 text-white" />
     }
   ];
 
@@ -144,7 +144,7 @@ export function About() {
 
   return (
     <div className="pt-20 bg-white min-h-screen font-sans selection:bg-teal-100 selection:text-teal-900 overflow-x-hidden">
-      
+
       {/* 1. HERO SECTION */}
       <section className="relative py-12 md:py-20 lg:py-24 bg-gradient-to-b from-[#FAF9F5]/30 to-white text-left">
         {/* Subtle background blurs */}
@@ -152,7 +152,7 @@ export function About() {
         <div className="absolute top-1/2 right-1/10 w-96 h-96 bg-orange-100/10 rounded-full blur-3xl -z-10"></div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          
+
           {/* Top layout sketching indicators */}
           <div className="flex items-center space-x-1 justify-start text-teal-400 font-bold text-xs uppercase tracking-widest pl-1">
             <span className="text-[#00BFA6] mr-1 font-black">//</span>
@@ -161,7 +161,7 @@ export function About() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mt-6">
-            
+
             {/* Title Block (Left) */}
             <div className="lg:col-span-7 space-y-6">
               <ScriptHeading
@@ -185,7 +185,7 @@ export function About() {
 
             {/* Paragraph block (Right / Bottom depending on screen) with handdrawn curved arrow */}
             <div className="lg:col-span-5 relative lg:pt-8">
-              
+
               {/* Playful sketched curving pointer in teal pointing to the content */}
               <div className="absolute -left-16 -top-12 text-[#00BFA6]/50 w-20 h-20 -rotate-45 hidden lg:block select-none" style={{ transform: "scaleY(-1) scaleX(-1)" }}>
                 <HanddrawnArrow />
@@ -205,10 +205,10 @@ export function About() {
       <section className="py-16 md:py-24 bg-white border-t border-gray-100/55 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-            
+
             {/* Left Texts + Button */}
             <div className="lg:col-span-5 space-y-6 text-left">
-              
+
               <div className="flex items-center space-x-1 justify-start text-teal-400 font-bold text-xs uppercase tracking-widest pl-1">
                 <span className="text-[#00BFA6] mr-1 font-black">//</span>
                 <span className="text-teal-600 tracking-wider font-extrabold uppercase text-[11px]">Who we are</span>
@@ -225,10 +225,10 @@ export function About() {
 
               <div className="space-y-4 text-gray-500 text-sm sm:text-base leading-relaxed font-normal">
                 <p>
-                  Zenik Studio is a UK & USA based digital product agency. We partner with ambitious startups and enterprises to design, build and scale modern web, mobile and cybersecurity solutions.
+                  <span className="font-semibold text-gray-700">Zenik Studio is a UK & USA based digital product agency.</span> We partner with ambitious startups and enterprises to design, build and scale modern web, mobile and cybersecurity solutions.
                 </p>
                 <p>
-                  Our mission is simple: to solve real problems with beautiful, functional technology that drives growth and creates lasting impact.
+                  <span className="font-semibold text-gray-700">Our mission is simple:</span> to solve real problems with beautiful, functional technology that drives growth and creates lasting impact.
                 </p>
               </div>
 
@@ -245,26 +245,26 @@ export function About() {
 
             {/* Right Photo Collage with double-layered 1-wide image above + 3-column items below */}
             <div className="lg:col-span-7 space-y-4">
-              
+
               {/* Wide high-quality photo representing happy team */}
               <div className="rounded-[24px] overflow-hidden border border-gray-150/75 shadow-[0_15px_35px_rgba(0,0,0,0.03)] aspect-[21/9]">
-                <img 
-                  className="w-full h-full object-cover select-none" 
-                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=900&auto=format&fit=crop&q=80" 
-                  alt="Zenik Studio Main Team" 
+                <img
+                  className="w-full h-full object-cover select-none"
+                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=900&auto=format&fit=crop&q=80"
+                  alt="Zenik Studio Main Team"
                   referrerPolicy="no-referrer"
                 />
               </div>
 
               {/* Grid with 3 smaller columns */}
               <div className="grid grid-cols-3 gap-4">
-                
+
                 {/* Visual 1: team coding monitor */}
                 <div className="rounded-[20px] overflow-hidden border border-gray-150/70 shadow-sm aspect-square bg-[#FAF9F5]">
-                  <img 
-                    className="w-full h-full object-cover select-none" 
-                    src="https://images.unsplash.com/photo-1531538606174-0f90ff5dce83?w=500&auto=format&fit=crop&q=80" 
-                    alt="Team workspace workspace" 
+                  <img
+                    className="w-full h-full object-cover select-none"
+                    src="https://images.unsplash.com/photo-1531538606174-0f90ff5dce83?w=500&auto=format&fit=crop&q=80"
+                    alt="Team workspace workspace"
                     referrerPolicy="no-referrer"
                   />
                 </div>
@@ -272,7 +272,7 @@ export function About() {
                 {/* Visual 2: Branded logo display on light brick with green layout plant */}
                 <div className="rounded-[20px] overflow-hidden border border-gray-150/80 bg-[#FAF9F5]/75 flex flex-col justify-center items-center p-3 select-none aspect-square text-center relative group hover:border-[#00BFA6] transition-colors">
                   <div className="relative">
-                    
+
                     {/* Visual custom brand element mimicking image sign */}
                     <div className="flex items-center justify-center space-x-1.5 mb-1.5">
                       <span className="text-3xl font-black text-[#00BFA6] tracking-tighter leading-none select-none">Z</span>
@@ -285,17 +285,17 @@ export function About() {
                     {/* Small potted silhouette */}
                     <div className="text-xs text-gray-300 mt-2 filter drop-shadow">🌿</div>
                   </div>
-                  
+
                   {/* Absolute subtle background pattern */}
                   <div className="absolute inset-x-2 bottom-2 h-0.5 bg-gray-200/50 rounded-full"></div>
                 </div>
 
                 {/* Visual 3: Female team interaction */}
                 <div className="rounded-[20px] overflow-hidden border border-gray-150/70 shadow-sm aspect-square bg-[#FAF9F5]">
-                  <img 
-                    className="w-full h-full object-cover select-none" 
-                    src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=500&auto=format&fit=crop&q=80" 
-                    alt="Two ladies collaborating with notebook" 
+                  <img
+                    className="w-full h-full object-cover select-none"
+                    src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=500&auto=format&fit=crop&q=80"
+                    alt="Two ladies collaborating with notebook"
                     referrerPolicy="no-referrer"
                   />
                 </div>
@@ -311,7 +311,7 @@ export function About() {
       {/* 3. OUR CORE VALUES SECTION */}
       <section className="py-20 lg:py-24 bg-[#FAF9F5]/45 border-y border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
+
           <div className="max-w-2xl text-left space-y-4 mb-16">
             <div className="flex items-center space-x-1 justify-start text-teal-400 font-bold text-xs uppercase tracking-widest pl-1 select-none">
               <span className="text-[#00BFA6] mr-1 font-black">//</span>
@@ -332,8 +332,8 @@ export function About() {
           {/* Grid Layout 2x2 representing Values */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {values.map((v, i) => (
-              <div 
-                key={i} 
+              <div
+                key={i}
                 className="bg-white p-6 sm:p-9 rounded-[28px] border border-gray-100/70 flex flex-col sm:flex-row items-start sm:items-center gap-6 shadow-sm hover:shadow-[0_15px_35px_rgba(0,191,166,0.03)] hover:border-teal-200 transition-all duration-300 text-left"
               >
                 {/* Circular styled icon */}
@@ -343,10 +343,16 @@ export function About() {
 
                 <div className="space-y-2">
                   <h3 className="text-lg font-black text-[#0D0F14] tracking-tight">
-                    {v.title}
+                    <span className="relative inline-block">
+                      <span className="relative z-10">{v.title}</span>
+                      <svg className="absolute left-0 bottom-0 w-full h-2 pointer-events-none" viewBox="0 0 200 8" preserveAspectRatio="none" aria-hidden="true">
+                        <path d="M0,4 Q50,0 100,4 T200,4" fill="none" stroke="#00BFA6" strokeWidth="6" strokeLinecap="round" strokeDasharray="1,6" opacity="0.5" />
+                      </svg>
+                    </span>
                   </h3>
                   <p className="text-gray-400 text-sm leading-relaxed font-normal">
-                    {v.text}
+                    <span className="font-semibold text-gray-600">{v.text.split('.')[0]}.</span>
+                    {v.text.split('.').slice(1).join('.')}
                   </p>
                 </div>
               </div>
@@ -359,7 +365,7 @@ export function About() {
       {/* 4. MEET THE TEAM GALLERY */}
       <section className="py-20 lg:py-24 bg-white relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
+
           <div className="max-w-2xl text-left space-y-3 mb-16">
             <div className="flex items-center space-x-1 justify-start text-teal-400 font-bold text-xs uppercase tracking-widest pl-1 select-none">
               <span className="text-[#00BFA6] mr-1 font-black">//</span>
@@ -380,15 +386,15 @@ export function About() {
           {/* 6-column Profile collection */}
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
             {team.map((t, idx) => (
-              <div 
-                key={idx} 
+              <div
+                key={idx}
                 className="group flex flex-col items-center text-center space-y-4 bg-[#FCFAF7]/30 p-3 pb-5 rounded-[24px] border border-transparent hover:border-gray-150 hover:bg-white hover:shadow-[0_12px_35px_rgba(0,0,0,0.02)] transition-all duration-300"
               >
                 {/* Round-box styled portrait */}
                 <div className="w-full aspect-[4/5] rounded-[20px] overflow-hidden bg-gray-100 border border-gray-100/60 relative">
-                  <img 
-                    className="w-full h-full object-cover group-hover:scale-104 transition-transform duration-300" 
-                    src={t.image} 
+                  <img
+                    className="w-full h-full object-cover group-hover:scale-104 transition-transform duration-300"
+                    src={t.image}
                     alt={t.name}
                     referrerPolicy="no-referrer"
                     loading="lazy"
@@ -429,7 +435,7 @@ export function About() {
       {/* 5. OUR JOURNEY HORIZONTAL TIMELINE */}
       <section className="py-20 lg:py-24 bg-[#FAF9F5]/45 border-y border-gray-100 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
+
           <div className="max-w-2xl text-left space-y-4 mb-20 relative">
             <div className="flex items-center space-x-1 justify-start text-teal-400 font-bold text-xs uppercase tracking-widest pl-1 select-none">
               <span className="text-[#00BFA6] mr-1 font-black">//</span>
@@ -449,13 +455,13 @@ export function About() {
 
           {/* Interactive timeline tracking line & circles */}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 relative">
-            
+
             {/* Horizontal Line connector centered vertically inside nodes */}
             <div className="absolute top-10 left-8 right-8 h-0.5 border-t-2 border-dashed border-teal-200/50 -z-10 hidden md:block"></div>
 
             {journey.map((j, i) => (
-              <div 
-                key={i} 
+              <div
+                key={i}
                 className="flex flex-col items-start text-left relative z-10 group"
               >
                 {/* Visual node badge with circular logo inside */}
@@ -468,12 +474,12 @@ export function About() {
                   <span className="block text-xl font-black text-teal-600 font-mono">
                     {j.year}
                   </span>
-                  
+
                   {/* Category */}
                   <h4 className="text-sm font-black text-[#0D0F14] tracking-tight leading-none">
                     {j.title}
                   </h4>
-                  
+
                   {/* Detailed summary */}
                   <p className="text-[11px] sm:text-xs text-gray-500 font-normal leading-relaxed max-w-[210px]">
                     {j.desc}
@@ -489,7 +495,7 @@ export function About() {
       {/* 6. RECOGNISED FOR EXCELLENCE STAR BADGES */}
       <section className="py-20 lg:py-24 bg-white relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
+
           <div className="max-w-2xl text-left space-y-4 mb-16 select-none">
             <div className="flex items-center space-x-1 justify-start text-teal-400 font-bold text-xs uppercase tracking-widest pl-1">
               <span className="text-[#00BFA6] mr-1 font-black">//</span>
@@ -510,13 +516,13 @@ export function About() {
           {/* Awards grid */}
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
             {awards.map((a, idx) => (
-              <div 
-                key={idx} 
+              <div
+                key={idx}
                 className="flex flex-col items-center justify-center text-center p-5 rounded-[20px] bg-[#FCFAF7]/40 border border-gray-150/50 hover:border-[#00BFA6] hover:bg-white transition-all duration-300 group"
               >
                 {/* Wreath visual wrapping */}
                 <div className="relative w-20 h-20 flex items-center justify-center mb-2 select-none">
-                  
+
                   {/* Fine illustration of double leaf wreath arcs */}
                   <svg className="absolute inset-0 w-full h-full text-teal-600/75 group-hover:text-[#00BFA6]" viewBox="0 0 100 100" fill="none" stroke="currentColor">
                     {/* Left wreath side */}
@@ -525,7 +531,7 @@ export function About() {
                     <circle cx="21" cy="53" r="2.5" fill="currentColor" />
                     <circle cx="24" cy="40" r="2.5" fill="currentColor" />
                     <circle cx="33" cy="30" r="2.5" fill="currentColor" />
-                    
+
                     {/* Right wreath side */}
                     <path d="M70 75 C82 60 82 35 62 25" strokeWidth="1.5" strokeLinecap="round" />
                     <circle cx="72" cy="65" r="2.5" fill="currentColor" />

@@ -5,7 +5,7 @@ import { HanddrawnUnderline, HanddrawnStar } from "../components/Squiggle";
 import { ScriptHeading } from "../components/ScriptHeading";
 import { StatsCounter } from "../components/StatsCounter";
 import { CtaBanner } from "../components/CtaBanner";
-import { stats, testimonials } from "../data/homeData";
+import { communityStats, testimonials } from "../data/homeData";
 import { TestimonialCard } from "../components/TestimonialCard";
 import type { ProjectItem } from "../types";
 
@@ -129,7 +129,7 @@ export function Work() {
       </section>
 
       {/* STATS */}
-      <StatsCounter stats={stats} />
+      <StatsCounter stats={communityStats} variant="community" />
 
       {/* PORTFOLIO GRID */}
       <section className="py-20 bg-white">
@@ -141,60 +141,180 @@ export function Work() {
               <button
                 key={cat}
                 onClick={() => setActiveFilter(cat)}
-                className={`px-6 py-2.5 rounded-full text-xs font-bold transition-all duration-300 ${
-                  activeFilter === cat
-                    ? "bg-[#0D0F14] text-white shadow-md"
-                    : "bg-gray-50 border border-gray-100 text-gray-600 hover:border-[#0D0F14] hover:text-[#0D0F14]"
-                }`}
+                className={`px-6 py-2.5 rounded-full text-xs font-bold transition-all duration-300 ${activeFilter === cat
+                  ? "bg-[#0D0F14] text-white shadow-md"
+                  : "bg-gray-50 border border-gray-100 text-gray-600 hover:border-[#0D0F14] hover:text-[#0D0F14]"
+                  }`}
               >
                 {cat === "All" ? "All Projects" : cat}
               </button>
             ))}
           </div>
 
-          {/* Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {filteredProjects.map((proj) => (
+          {/* Grid - Collaboration Style Layout */}
+          <div className="space-y-24">
+            {filteredProjects.map((proj, index) => (
               <div
                 key={proj.id}
-                className="group rounded-[28px] overflow-hidden border border-gray-100 bg-white hover:border-[#00BFA6] hover:shadow-[0_20px_50px_rgba(0,191,166,0.06)] transition-all duration-300 hover:-translate-y-1.5"
+                className="relative"
               >
-                <div className="relative aspect-video overflow-hidden bg-gray-50">
-                  <img
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    src={proj.image}
-                    alt={proj.title}
-                    referrerPolicy="no-referrer"
-                    loading="lazy"
-                  />
-                  {proj.featured && (
-                    <span className="absolute top-3 right-3 bg-[#F4A24D] text-white text-[9px] font-black uppercase tracking-wider px-2.5 py-1 rounded-lg">
-                      Featured
+                {/* Header Section */}
+                <div className="max-w-2xl mb-12">
+                  <h2 className="font-script text-4xl sm:text-5xl md:text-6xl font-bold text-[#0D0F14] leading-tight mb-6">
+                    The art of effective{" "}
+                    <span className="relative inline-block px-2">
+                      <span className="relative z-10">{proj.title}</span>
+                      <svg className="absolute pointer-events-none text-[#00BFA6]" style={{ inset: "-0.3em -0.5em", width: "calc(100% + 1em)", height: "calc(100% + 0.7em)" }} viewBox="0 0 200 80" preserveAspectRatio="none" aria-hidden>
+                        <path d="M18,44 C18,14 62,8 100,10 C144,12 184,16 184,44 C184,70 146,72 100,70 C58,68 18,68 18,44 Z" fill="none" stroke="currentColor" strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" opacity="0.9" />
+                      </svg>
                     </span>
-                  )}
-                  <div className="absolute inset-0 bg-[#0D0F14]/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <div className="w-14 h-14 bg-[#00BFA6] rounded-full flex items-center justify-center text-white shadow-lg">
-                      <Eye size={22} />
+                  </h2>
+                  <p className="text-gray-600 text-base leading-relaxed">
+                    <span className="font-semibold text-[#0D0F14]">{proj.description.split('.')[0]}</span>
+                    {' '}and communicate with colleagues, customers, and vendors all in one place so that you can access critical information at any time.
+                  </p>
+                </div>
+
+                {/* Content Grid */}
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
+                  {/* Left Column - Feature Cards */}
+                  <div className="lg:col-span-5 space-y-6">
+                    {/* Share Files Card */}
+                    <div className="bg-white rounded-2xl border border-gray-200 p-6 shadow-sm hover:shadow-md transition-shadow">
+                      <h3 className="font-script text-2xl font-bold text-[#0D0F14] mb-4">
+                        Share files and workspace
+                      </h3>
+                      <div className="space-y-3">
+                        <div className="flex items-center gap-3">
+                          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center text-white text-sm font-bold">
+                            U
+                          </div>
+                          <div className="flex-1">
+                            <div className="text-xs font-semibold text-gray-700">URL</div>
+                            <div className="text-xs text-gray-500 font-mono">/Business/Videos/YT-Advert</div>
+                          </div>
+                        </div>
+                        <div className="flex gap-2 text-xs">
+                          <span className="px-3 py-1 bg-gray-100 rounded-md font-medium">Docs</span>
+                          <span className="px-3 py-1 bg-gray-100 rounded-md font-medium">HR</span>
+                          <span className="px-3 py-1 bg-gray-100 rounded-md font-medium">Include Sub Folders</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Technologies Used */}
+                    <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl border border-gray-200 p-6">
+                      <div className="text-xs uppercase tracking-widest font-bold text-gray-500 mb-3">
+                        Technologies
+                      </div>
+                      <div className="flex flex-wrap gap-2">
+                        {proj.technologies.map((t) => (
+                          <span key={t} className="text-xs font-mono font-bold text-[#0D0F14] bg-white px-3 py-1.5 border border-gray-200 rounded-lg shadow-sm">
+                            {t}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Center Column - Main Image/Card */}
+                  <div className="lg:col-span-4">
+                    <div className="bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                      <div className="relative aspect-[4/3] overflow-hidden bg-gray-50">
+                        <img
+                          className="w-full h-full object-cover"
+                          src={proj.image}
+                          alt={proj.title}
+                          referrerPolicy="no-referrer"
+                          loading="lazy"
+                        />
+                        {proj.featured && (
+                          <span className="absolute top-3 right-3 bg-[#F4A24D] text-white text-[9px] font-black uppercase tracking-wider px-2.5 py-1 rounded-lg shadow-md">
+                            Featured
+                          </span>
+                        )}
+                      </div>
+                      <div className="p-5 bg-white">
+                        <div className="font-semibold text-[#0D0F14] mb-1">{proj.title}</div>
+                        <div className="text-xs text-gray-500 mb-3">
+                          <span className="font-medium">Task:</span> {proj.description.split('.')[0]}
+                        </div>
+                        <div className="text-xs text-gray-400 font-mono">
+                          {new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: 'numeric' })}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Right Column - Info Cards */}
+                  <div className="lg:col-span-3 space-y-6">
+                    {/* Send Message Card */}
+                    <div className="bg-white rounded-2xl border border-gray-200 p-5 shadow-sm hover:shadow-md transition-shadow">
+                      <h3 className="font-script text-xl font-bold text-[#0D0F14] mb-3">
+                        Send message
+                      </h3>
+                      <div className="space-y-3">
+                        <div className="flex items-start gap-2">
+                          <div className="w-8 h-8 rounded-full bg-gradient-to-br from-orange-400 to-pink-500 flex-shrink-0"></div>
+                          <div className="flex-1 bg-gray-50 rounded-lg p-3">
+                            <div className="text-[10px] font-semibold text-gray-700 mb-1">
+                              {proj.client} <span className="text-gray-400">• 1 day ago</span>
+                            </div>
+                            <div className="text-xs text-gray-600 leading-relaxed">
+                              Hey team,<br />
+                              Could you please have the vendor sign this bill before October 3rd?
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Plan Activities Card */}
+                    <div className="bg-white rounded-2xl border border-gray-200 p-5 shadow-sm hover:shadow-md transition-shadow">
+                      <h3 className="font-script text-xl font-bold text-[#0D0F14] mb-3">
+                        Plan activities
+                      </h3>
+                      <div className="space-y-2">
+                        <div className="flex items-center gap-2">
+                          <div className="w-7 h-7 rounded-full bg-gradient-to-br from-red-400 to-orange-500 flex-shrink-0"></div>
+                          <div className="flex-1">
+                            <div className="text-xs font-semibold text-gray-700">Yesterday: To validate</div>
+                            <div className="text-[10px] text-gray-500">for {proj.client}</div>
+                          </div>
+                        </div>
+                        <div className="text-[10px] text-gray-600 ml-9">
+                          ✓ Mark Done &nbsp; ✏️ Edit &nbsp; ✕ Cancel
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Log Notes Card */}
+                    <div className="bg-white rounded-2xl border border-gray-200 p-5 shadow-sm hover:shadow-md transition-shadow">
+                      <h3 className="font-script text-xl font-bold text-[#0D0F14] mb-3">
+                        Log Notes
+                      </h3>
+                      <div className="flex items-start gap-2">
+                        <div className="w-7 h-7 rounded-full bg-gradient-to-br from-purple-400 to-blue-500 flex-shrink-0"></div>
+                        <div className="flex-1">
+                          <div className="text-[10px] font-semibold text-gray-700 mb-1">
+                            Jane Doe <span className="text-gray-400">• 3 days ago</span>
+                          </div>
+                          <div className="text-xs text-gray-600 bg-gray-50 rounded-lg p-2">
+                            The customer asked if this comes in other colors
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
 
-                <div className="p-6 space-y-3">
-                  <div className="flex justify-between items-center">
-                    <span className="text-[10px] uppercase tracking-widest font-black text-[#00BFA6] bg-teal-50 border border-teal-100 px-2.5 py-0.5 rounded-lg">
-                      {proj.category}
-                    </span>
-                    <span className="text-[10px] text-gray-400 font-mono font-bold">{proj.client}</span>
-                  </div>
-                  <h3 className="text-xl font-black text-[#0D0F14] tracking-tight">{proj.title}</h3>
-                  <p className="text-xs text-gray-500 leading-relaxed">{proj.description}</p>
-                  <div className="flex flex-wrap gap-1.5 pt-1">
-                    {proj.technologies.map((t) => (
-                      <span key={t} className="text-[10px] font-mono font-bold text-gray-500 bg-gray-50 px-2.5 py-0.5 border border-gray-100 rounded-md">
-                        {t}
-                      </span>
-                    ))}
-                  </div>
+                {/* Category Badge */}
+                <div className="mt-6 flex items-center gap-3">
+                  <span className="text-[10px] uppercase tracking-widest font-black text-[#00BFA6] bg-teal-50 border border-teal-100 px-3 py-1 rounded-lg">
+                    {proj.category}
+                  </span>
+                  <span className="text-xs text-gray-400 font-mono font-bold">Client: {proj.client}</span>
                 </div>
               </div>
             ))}
@@ -211,8 +331,8 @@ export function Work() {
               What{" "}
               <span className="relative inline-block px-2">
                 <span className="relative z-10">Clients</span>
-                <svg className="absolute pointer-events-none text-[#00BFA6]" style={{inset:"-0.3em -0.5em",width:"calc(100% + 1em)",height:"calc(100% + 0.7em)"}} viewBox="0 0 200 80" preserveAspectRatio="none" aria-hidden>
-                  <path d="M18,44 C18,14 62,8 100,10 C144,12 184,16 184,44 C184,70 146,72 100,70 C58,68 18,68 18,44 Z" fill="none" stroke="currentColor" strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" opacity="0.9"/>
+                <svg className="absolute pointer-events-none text-[#00BFA6]" style={{ inset: "-0.3em -0.5em", width: "calc(100% + 1em)", height: "calc(100% + 0.7em)" }} viewBox="0 0 200 80" preserveAspectRatio="none" aria-hidden>
+                  <path d="M18,44 C18,14 62,8 100,10 C144,12 184,16 184,44 C184,70 146,72 100,70 C58,68 18,68 18,44 Z" fill="none" stroke="currentColor" strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" opacity="0.9" />
                 </svg>
               </span>
               {" "}Say

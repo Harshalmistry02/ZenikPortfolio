@@ -10,7 +10,7 @@ import { StatsCounter } from "../components/StatsCounter";
 import { TestimonialCard } from "../components/TestimonialCard";
 import { CtaBanner } from "../components/CtaBanner";
 import {
-  stats, whyZenikFeatures, processSteps, testimonials,
+  stats, communityStats, whyZenikFeatures, processSteps, testimonials,
   portfolioProjects
 } from "../data/homeData";
 import { serviceCategories } from "../data/servicesData";
@@ -299,8 +299,18 @@ export function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-5 space-y-5 text-left">
               <div className="w-10 h-10 rounded-full bg-teal-50 border border-teal-100 flex items-center justify-center font-mono text-lg font-black text-[#00BFA6]">01</div>
-              <h2 className="text-3xl sm:text-4xl font-black text-[#0D0F14] tracking-tight">Web Development</h2>
-              <p className="text-gray-500 text-sm leading-relaxed">Modern websites and web apps built with React, Next.js, and cutting-edge technologies for speed and scale.</p>
+              <h2 className="text-3xl sm:text-4xl font-black text-[#0D0F14] tracking-tight">
+                Web{" "}
+                <span className="relative inline-block">
+                  <span className="relative z-10">Development</span>
+                  <svg className="absolute left-0 bottom-0 w-full h-3 pointer-events-none" viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true">
+                    <path d="M0,6 Q50,0 100,6 T200,6" fill="none" stroke="#00BFA6" strokeWidth="8" strokeLinecap="round" strokeDasharray="1,8" opacity="0.6" />
+                  </svg>
+                </span>
+              </h2>
+              <p className="text-gray-500 text-sm leading-relaxed">
+                <span className="font-semibold text-gray-700">Modern websites and web apps</span> built with React, Next.js, and cutting-edge technologies for speed and scale.
+              </p>
               <ul className="space-y-2 pt-2">
                 {["React & Next.js", "Full-Stack MERN/MEAN", "SaaS Platforms", "API Integrations"].map(f => (
                   <li key={f} className="flex items-center gap-2 text-sm text-gray-600"><Check size={14} className="text-[#00BFA6]" />{f}</li>
@@ -361,8 +371,18 @@ export function Home() {
             </div>
             <div className="lg:col-span-5 lg:order-2 order-1 space-y-5 text-left">
               <div className="w-10 h-10 rounded-full bg-teal-50 border border-teal-100 flex items-center justify-center font-mono text-lg font-black text-[#00BFA6]">02</div>
-              <h2 className="text-3xl sm:text-4xl font-black text-[#0D0F14] tracking-tight">Mobile App Development</h2>
-              <p className="text-gray-500 text-sm leading-relaxed">Native iOS & Android apps designed for performance, engagement, and scale with fluid gesture-first interfaces.</p>
+              <h2 className="text-3xl sm:text-4xl font-black text-[#0D0F14] tracking-tight">
+                Mobile App{" "}
+                <span className="relative inline-block">
+                  <span className="relative z-10">Development</span>
+                  <svg className="absolute left-0 bottom-0 w-full h-3 pointer-events-none" viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true">
+                    <path d="M0,6 Q50,0 100,6 T200,6" fill="none" stroke="#00BFA6" strokeWidth="8" strokeLinecap="round" strokeDasharray="1,8" opacity="0.6" />
+                  </svg>
+                </span>
+              </h2>
+              <p className="text-gray-500 text-sm leading-relaxed">
+                <span className="font-semibold text-gray-700">Native iOS & Android apps</span> designed for performance, engagement, and scale with fluid gesture-first interfaces.
+              </p>
               <ul className="space-y-2 pt-2">
                 {["React Native & Flutter", "iOS & Android Native", "App Store Deployment", "Offline-First Design"].map(f => (
                   <li key={f} className="flex items-center gap-2 text-sm text-gray-600"><Check size={14} className="text-[#00BFA6]" />{f}</li>
@@ -375,8 +395,18 @@ export function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-5 space-y-5 text-left">
               <div className="w-10 h-10 rounded-full bg-teal-50 border border-teal-100 flex items-center justify-center font-mono text-lg font-black text-[#00BFA6]">03</div>
-              <h2 className="text-3xl sm:text-4xl font-black text-[#0D0F14] tracking-tight">AI & Advanced Tech</h2>
-              <p className="text-gray-500 text-sm leading-relaxed">Intelligent chatbots, ML models, OCR, and AI-powered workflows that automate your business and delight users.</p>
+              <h2 className="text-3xl sm:text-4xl font-black text-[#0D0F14] tracking-tight">
+                AI & Advanced{" "}
+                <span className="relative inline-block">
+                  <span className="relative z-10">Tech</span>
+                  <svg className="absolute left-0 bottom-0 w-full h-3 pointer-events-none" viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true">
+                    <path d="M0,6 Q50,0 100,6 T200,6" fill="none" stroke="#00BFA6" strokeWidth="8" strokeLinecap="round" strokeDasharray="1,8" opacity="0.6" />
+                  </svg>
+                </span>
+              </h2>
+              <p className="text-gray-500 text-sm leading-relaxed">
+                <span className="font-semibold text-gray-700">Intelligent chatbots, ML models, OCR,</span> and AI-powered workflows that automate your business and delight users.
+              </p>
               <ul className="space-y-2 pt-2">
                 {["OpenAI & GPT Integration", "AI Chatbot Development", "Machine Learning Models", "Document Processing"].map(f => (
                   <li key={f} className="flex items-center gap-2 text-sm text-gray-600"><Check size={14} className="text-[#00BFA6]" />{f}</li>
@@ -432,8 +462,18 @@ export function Home() {
             </div>
             <div className="lg:col-span-5 lg:order-2 order-1 space-y-5 text-left">
               <div className="w-10 h-10 rounded-full bg-teal-50 border border-teal-100 flex items-center justify-center font-mono text-lg font-black text-[#00BFA6]">04</div>
-              <h2 className="text-3xl sm:text-4xl font-black text-[#0D0F14] tracking-tight">Digital Marketing</h2>
-              <p className="text-gray-500 text-sm leading-relaxed">Data-driven SEO, paid advertising, and social media strategies that generate qualified leads and accelerate growth.</p>
+              <h2 className="text-3xl sm:text-4xl font-black text-[#0D0F14] tracking-tight">
+                Digital{" "}
+                <span className="relative inline-block">
+                  <span className="relative z-10">Marketing</span>
+                  <svg className="absolute left-0 bottom-0 w-full h-3 pointer-events-none" viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true">
+                    <path d="M0,6 Q50,0 100,6 T200,6" fill="none" stroke="#00BFA6" strokeWidth="8" strokeLinecap="round" strokeDasharray="1,8" opacity="0.6" />
+                  </svg>
+                </span>
+              </h2>
+              <p className="text-gray-500 text-sm leading-relaxed">
+                <span className="font-semibold text-gray-700">Data-driven SEO, paid advertising,</span> and social media strategies that generate qualified leads and accelerate growth.
+              </p>
               <ul className="space-y-2 pt-2">
                 {["SEO & Content Strategy", "Google & Meta Ads", "Social Media Management", "Marketing Automation"].map(f => (
                   <li key={f} className="flex items-center gap-2 text-sm text-gray-600"><Check size={14} className="text-[#00BFA6]" />{f}</li>
@@ -445,55 +485,140 @@ export function Home() {
       </section>
 
       {/* =============================================
-          6. PROCESS STEPS — 5-Step Timeline
+          6. PROCESS STEPS — Odoo Style
           ============================================= */}
-      <section className="py-24 bg-[#FAF9F5] border-y border-gray-100">
+      <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* HEADER: orange wavy underline on last word */}
-          <div className="mb-16 text-center">
+          {/* HEADER */}
+          <div className="mb-20 text-center">
             <h2 className="font-script text-5xl sm:text-6xl md:text-[70px] font-bold text-[#0D0F14] leading-tight">
               A Process Built for{" "}
               <span className="relative inline-block">
                 <span className="relative z-10">Success</span>
-                <svg className="absolute left-0 pointer-events-none text-[#F4A24D]" style={{ bottom: "-0.15em", width: "100%", height: "0.4em" }} viewBox="0 0 200 14" preserveAspectRatio="none" aria-hidden>
-                  <path d="M4,9 C50,5 110,4 196,9" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" fill="none" />
-                  <path d="M14,13 C70,10 130,9 188,11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" fill="none" opacity="0.6" />
+                <svg className="absolute left-0 bottom-0 w-full h-3 pointer-events-none" viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true">
+                  <path d="M0,6 Q50,0 100,6 T200,6" fill="none" stroke="#F4A24D" strokeWidth="8" strokeLinecap="round" strokeDasharray="1,8" opacity="0.6" />
                 </svg>
               </span>
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-8 lg:gap-12 relative text-center">
-            {/* Connecting line */}
-            <div className="absolute top-12 left-10 right-10 h-0.5 border-t border-dashed border-teal-200/50 -z-10 hidden md:block" />
+          {/* Process Grid - 2 rows of 3 with arrows */}
+          <div className="relative">
+            {/* Top Row */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-16 gap-y-20 mb-20 relative">
+              {/* Arrow connectors for top row - desktop only */}
+              <div className="hidden lg:block absolute top-10 left-[16.66%] right-[16.66%] h-0.5">
+                <svg className="w-full h-8" viewBox="0 0 100 20" preserveAspectRatio="none">
+                  <defs>
+                    <marker id="arrowhead1-home" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                      <polygon points="0 0, 10 3, 0 6" fill="#00BFA6" opacity="0.3" />
+                    </marker>
+                  </defs>
+                  <line x1="0" y1="10" x2="48" y2="10" stroke="#00BFA6" strokeWidth="2" strokeDasharray="4,4" opacity="0.3" markerEnd="url(#arrowhead1-home)" />
+                </svg>
+              </div>
+              <div className="hidden lg:block absolute top-10 left-[50%] right-0 h-0.5">
+                <svg className="w-full h-8" viewBox="0 0 100 20" preserveAspectRatio="none">
+                  <defs>
+                    <marker id="arrowhead2-home" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                      <polygon points="0 0, 10 3, 0 6" fill="#00BFA6" opacity="0.3" />
+                    </marker>
+                  </defs>
+                  <line x1="0" y1="10" x2="48" y2="10" stroke="#00BFA6" strokeWidth="2" strokeDasharray="4,4" opacity="0.3" markerEnd="url(#arrowhead2-home)" />
+                </svg>
+              </div>
 
-            {processSteps.map((step, idx) => {
-              const IconComp = iconMap[step.iconName] || Search;
-              return (
-                <div key={idx} className="flex flex-col items-center group relative p-4">
-                  <div className="w-16 h-16 rounded-full bg-white border border-gray-100 shadow-sm flex items-center justify-center relative group-hover:border-[#00BFA6] group-hover:scale-105 transition-all duration-300">
-                    <IconComp size={24} className="text-gray-500 group-hover:text-[#00BFA6] transition-colors" />
-                    <span className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-[#00BFA6] text-white flex items-center justify-center text-[10px] font-black font-mono border-2 border-white">
-                      {step.num}
-                    </span>
+              {processSteps.slice(0, 3).map((step, idx) => {
+                const IconComp = iconMap[step.iconName] || Search;
+                return (
+                  <div key={idx} className="text-center group relative z-10">
+                    {/* Icon Circle with Number Badge */}
+                    <div className="relative inline-flex items-center justify-center mb-6">
+                      <div className="w-20 h-20 rounded-full bg-gradient-to-br from-teal-50 to-teal-100/50 flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg">
+                        <IconComp size={32} className="text-[#00BFA6] transition-transform duration-300 group-hover:scale-110" strokeWidth={2} />
+                      </div>
+                      {/* Number Badge */}
+                      <span className="absolute -top-1 -right-1 w-7 h-7 rounded-full bg-[#00BFA6] text-white flex items-center justify-center text-xs font-black font-mono shadow-md">
+                        {step.num}
+                      </span>
+                    </div>
+
+                    {/* Title */}
+                    <h3 className="text-lg font-black text-[#0D0F14] mb-3 tracking-tight">
+                      {step.name}
+                    </h3>
+
+                    {/* Description */}
+                    <p className="text-sm text-gray-500 leading-relaxed max-w-[200px] mx-auto">
+                      <span className="font-semibold text-gray-700">{step.description.split('.')[0]}.</span>
+                      {step.description.split('.').slice(1).join('.')}
+                    </p>
                   </div>
-                  <h3 className="text-base font-black text-[#0D0F14] mt-6 tracking-tight group-hover:text-[#00BFA6] transition-colors">
-                    {step.name}
-                  </h3>
-                  <p className="text-xs text-gray-400 leading-relaxed mt-2 max-w-[180px] mx-auto">
-                    {step.description}
-                  </p>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
+
+            {/* Bottom Row */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-16 gap-y-20 relative">
+              {/* Arrow connectors for bottom row - desktop only */}
+              <div className="hidden lg:block absolute top-10 left-[16.66%] right-[16.66%] h-0.5">
+                <svg className="w-full h-8" viewBox="0 0 100 20" preserveAspectRatio="none">
+                  <defs>
+                    <marker id="arrowhead3-home" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                      <polygon points="0 0, 10 3, 0 6" fill="#00BFA6" opacity="0.3" />
+                    </marker>
+                  </defs>
+                  <line x1="0" y1="10" x2="48" y2="10" stroke="#00BFA6" strokeWidth="2" strokeDasharray="4,4" opacity="0.3" markerEnd="url(#arrowhead3-home)" />
+                </svg>
+              </div>
+              <div className="hidden lg:block absolute top-10 left-[50%] right-0 h-0.5">
+                <svg className="w-full h-8" viewBox="0 0 100 20" preserveAspectRatio="none">
+                  <defs>
+                    <marker id="arrowhead4-home" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                      <polygon points="0 0, 10 3, 0 6" fill="#00BFA6" opacity="0.3" />
+                    </marker>
+                  </defs>
+                  <line x1="0" y1="10" x2="48" y2="10" stroke="#00BFA6" strokeWidth="2" strokeDasharray="4,4" opacity="0.3" markerEnd="url(#arrowhead4-home)" />
+                </svg>
+              </div>
+
+              {processSteps.slice(3, 6).map((step, idx) => {
+                const IconComp = iconMap[step.iconName] || Search;
+                return (
+                  <div key={idx} className="text-center group relative z-10">
+                    {/* Icon Circle with Number Badge */}
+                    <div className="relative inline-flex items-center justify-center mb-6">
+                      <div className="w-20 h-20 rounded-full bg-gradient-to-br from-teal-50 to-teal-100/50 flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg">
+                        <IconComp size={32} className="text-[#00BFA6] transition-transform duration-300 group-hover:scale-110" strokeWidth={2} />
+                      </div>
+                      {/* Number Badge */}
+                      <span className="absolute -top-1 -right-1 w-7 h-7 rounded-full bg-[#00BFA6] text-white flex items-center justify-center text-xs font-black font-mono shadow-md">
+                        {step.num}
+                      </span>
+                    </div>
+
+                    {/* Title */}
+                    <h3 className="text-lg font-black text-[#0D0F14] mb-3 tracking-tight">
+                      {step.name}
+                    </h3>
+
+                    {/* Description */}
+                    <p className="text-sm text-gray-500 leading-relaxed max-w-[200px] mx-auto">
+                      <span className="font-semibold text-gray-700">{step.description.split('.')[0]}.</span>
+                      {step.description.split('.').slice(1).join('.')}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>
 
       {/* =============================================
-          7. STATS COUNTER
+          7. STATS COUNTER - COMMUNITY VARIANT
           ============================================= */}
-      <StatsCounter stats={stats} />
+      <StatsCounter stats={communityStats} variant="community" />
 
       {/* =============================================
           8. PORTFOLIO SHOWCASE
