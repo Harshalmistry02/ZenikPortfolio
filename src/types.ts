@@ -43,32 +43,10 @@ export interface Testimonial {
   rating: number;
 }
 
-export interface BlogArticle {
-  id: string;
-  title: string;
-  excerpt: string;
-  category: string;
-  date: string;
-  readTime: string;
-  author: string;
-  image: string;
-  featured?: boolean;
-}
-
 export interface StatItem {
   value: string;
   label: string;
   suffix?: string;
-}
-
-export interface PricingTier {
-  name: string;
-  monthlyPrice: string;
-  annualPrice: string;
-  description: string;
-  features: string[];
-  highlighted: boolean;
-  cta: string;
 }
 
 export interface ProcessStep {

@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { Eye, ArrowRight } from "lucide-react";
 import { HanddrawnUnderline, HanddrawnStar } from "../components/Squiggle";
 import { ScriptHeading } from "../components/ScriptHeading";
-import { SectionHeader } from "../components/SectionHeader";
 import { StatsCounter } from "../components/StatsCounter";
 import { CtaBanner } from "../components/CtaBanner";
 import { stats, testimonials } from "../data/homeData";
@@ -206,7 +205,19 @@ export function Work() {
       {/* TESTIMONIALS */}
       <section className="py-24 bg-[#FAF9F5] border-y border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeader badge="CLIENT FEEDBACK" title="What Clients Say" />
+          {/* HEADER: teal oval circle around "Clients" */}
+          <div className="mb-16 text-center">
+            <h2 className="font-script text-5xl sm:text-6xl md:text-[70px] font-bold text-[#0D0F14] leading-tight">
+              What{" "}
+              <span className="relative inline-block px-2">
+                <span className="relative z-10">Clients</span>
+                <svg className="absolute pointer-events-none text-[#00BFA6]" style={{inset:"-0.3em -0.5em",width:"calc(100% + 1em)",height:"calc(100% + 0.7em)"}} viewBox="0 0 200 80" preserveAspectRatio="none" aria-hidden>
+                  <path d="M18,44 C18,14 62,8 100,10 C144,12 184,16 184,44 C184,70 146,72 100,70 C58,68 18,68 18,44 Z" fill="none" stroke="currentColor" strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" opacity="0.9"/>
+                </svg>
+              </span>
+              {" "}Say
+            </h2>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {testimonials.slice(0, 3).map((t) => (
               <TestimonialCard key={t.id} testimonial={t} />

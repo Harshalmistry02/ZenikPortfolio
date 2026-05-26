@@ -1,77 +1,132 @@
 import React from "react";
-import { ScriptHeading } from "./ScriptHeading";
 
 interface SectionHeaderProps {
-  badge: string;
+  badge?: string;
   title: string;
   subtitle?: string;
   centered?: boolean;
   light?: boolean;
-  variant?: "default" | "script";
   highlight?: string;
+  underline?: string;
+}
+
+// Renders the title with optional circled word and/or underlined word
+function OdooTitle({
+  title,
+  highlight,
+  underline,
+  light,
+}: {
+  title: string;
+  highlight?: string;
+  underline?: string;
+  light?: boolean;
+}) {
+  const color = light ? "text-white" : "text-[#0D0F14]";
+
+  // Split title into tokens, applying circle or underline decorations
+  const words = title.split(" ");
+
+  return (
+    <h2
+      className={`font-script text-5xl sm:text-6xl md:text-[72px] font-bold tracking-tight leading-[1.15] ${color}`}
+    >
+      {words.map((word, i) => {
+        const isLast = i === words.length - 1;
+        const cleanWord = word.replace(/[.,!?]$/, "");
+        const punct = word.slice(cleanWord.length);
+
+        const isCircled = highlight && cleanWord.toLowerCase() === highlight.replace(/[.,!?]$/, "").toLowerCase();
+        const isUnderlined = underline
+          ? cleanWord.toLowerCase() === underline.replace(/[.,!?]$/, "").toLowerCase()
+          : false;
+
+        const inner = (
+          <>
+            {isCircled ? (
+              <span className="relative inline-block px-1">
+                <span className="relative z-10">{cleanWord}</span>
+                {/* Hand-drawn oval circle */}
+                <svg
+                  className="absolute pointer-events-none text-[#00BFA6]"
+                  style={{ inset: "-0.3em -0.4em", width: "calc(100% + 0.8em)", height: "calc(100% + 0.6em)" }}
+                  viewBox="0 0 200 80"
+                  preserveAspectRatio="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M18,44 C18,14 62,8 100,10 C144,12 184,16 184,44 C184,70 146,72 100,70 C58,68 18,68 18,44 Z"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="7"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    opacity="0.9"
+                  />
+                </svg>
+              </span>
+            ) : isUnderlined ? (
+              <span className="relative inline-block">
+                <span className="relative z-10">{cleanWord}</span>
+                {/* Hand-drawn wavy underline */}
+                <svg
+                  className="absolute left-0 pointer-events-none text-[#F4A24D]"
+                  style={{ bottom: "-0.2em", width: "100%", height: "0.35em" }}
+                  viewBox="0 0 200 12"
+                  preserveAspectRatio="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M 4,8 C 50,4.5 110,3.5 196,8"
+                    stroke="currentColor"
+                    strokeWidth="3"
+                    strokeLinecap="round"
+                    fill="none"
+                  />
+                  <path
+                    d="M 12,11 C 70,8.5 130,7.5 190,9"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    fill="none"
+                    opacity="0.7"
+                  />
+                </svg>
+              </span>
+            ) : (
+              <span>{cleanWord}</span>
+            )}
+            {punct}
+          </>
+        );
+
+        return (
+          <React.Fragment key={i}>
+            {inner}
+            {!isLast && " "}
+          </React.Fragment>
+        );
+      })}
+    </h2>
+  );
 }
 
 export function SectionHeader({
-  badge,
   title,
   subtitle,
-  centered = true,
+  centered = false,
   light = false,
-  variant = "script",
   highlight,
+  underline,
 }: SectionHeaderProps) {
   return (
-    <div
-      className={`max-w-2xl mb-16 space-y-4 ${
-        centered ? "mx-auto text-center" : "text-left"
-      }`}
-    >
-      <span className="text-[10px] uppercase tracking-widest font-bold text-[#00BFA6] bg-teal-50 px-4 py-1.5 rounded-full border border-teal-100 font-mono inline-block">
-        // {badge} //
-      </span>
-
-      {variant === "script" ? (
-        <div className={centered ? "mx-auto inline-block" : "inline-block"}>
-          <ScriptHeading
-          as="h2"
-          text={title}
-          highlight={highlight}
-          className={`font-script text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight leading-[0.98] mt-4 ${
-            light ? "text-white" : "text-[#0D0F14]"
-          }`}
-        />
-          <div className={`${centered ? "mx-auto" : ""} mt-3 w-40`}>
-            <svg
-              className="w-full h-3 text-[#F4A24D]"
-              viewBox="0 0 300 12"
-              fill="none"
-              preserveAspectRatio="none"
-              aria-hidden="true"
-            >
-              <path
-                d="M5 9c50-3.5 105-6 160-5.5s110 3.5 130 5"
-                stroke="currentColor"
-                strokeWidth="3"
-                strokeLinecap="round"
-              />
-            </svg>
-          </div>
-        </div>
-      ) : (
-        <h2
-          className={`text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-[1.1] mt-4 ${
-            light ? "text-white" : "text-[#0D0F14]"
-          }`}
-        >
-          {title}
-        </h2>
-      )}
-
+    <div className={`mb-16 ${centered ? "text-center mx-auto max-w-3xl" : "text-left"}`}>
+      <OdooTitle title={title} highlight={highlight} underline={underline} light={light} />
       {subtitle && (
         <p
-          className={`text-sm sm:text-base leading-relaxed mt-4 max-w-lg ${
-            centered ? "mx-auto" : ""
-          } ${light ? "text-gray-400" : "text-gray-500"}`}
+          className={`text-sm sm:text-base leading-relaxed mt-5 max-w-xl ${centered ? "mx-auto" : ""} ${
+            light ? "text-gray-400" : "text-gray-500"
+          }`}
         >
           {subtitle}
         </p>

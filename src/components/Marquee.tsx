@@ -1,62 +1,124 @@
 import React from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const logos = [
-  { name: "monzo", font: "font-sans font-black tracking-tighter text-[#1C2024] italic", prefix: "M" },
-  { name: "checkout.com", font: "font-mono tracking-widest text-[#1C2024] font-medium text-sm" },
-  { name: "airbnb", font: "font-sans font-black tracking-tight text-[#1C2024]" },
-  { name: "Revolut", font: "font-sans font-black tracking-tight text-[#1C2024]" },
-  { name: "deliveroo", font: "font-sans font-extrabold tracking-tight text-[#1C2024]" },
-  { name: "octopus energy", font: "font-sans font-bold tracking-tighter text-[#1C2024]" },
-  { name: "Brewdog", font: "font-mono font-black uppercase text-[#1C2024]" },
+  {
+    name: "monzo",
+    icon: <span className="w-5 h-5 rounded-md bg-[#FF3464] flex items-center justify-center text-white font-black text-[10px] shrink-0">M</span>,
+    style: "font-sans font-black tracking-tight text-[#1C2024] text-[15px]",
+  },
+  {
+    name: "checkout.com",
+    icon: null,
+    style: "font-mono tracking-widest text-[#1C2024] font-semibold text-[13px]",
+  },
+  {
+    name: "airbnb",
+    icon: (
+      <svg className="w-4 h-4 text-[#FF5A5F] shrink-0" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm5 11H7v-1c0-2.67 3.33-4 5-4s5 1.33 5 4v1z"/>
+      </svg>
+    ),
+    style: "font-sans font-black tracking-tight text-[#1C2024] text-[15px]",
+  },
+  {
+    name: "Revolut",
+    icon: null,
+    style: "font-sans font-black tracking-tight text-[#1C2024] text-[15px]",
+  },
+  {
+    name: "deliveroo",
+    icon: (
+      <svg className="w-4 h-4 text-[#00CCBC] shrink-0" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/>
+      </svg>
+    ),
+    style: "font-sans font-extrabold tracking-tight text-[#1C2024] text-[15px]",
+  },
+  {
+    name: "octopus energy",
+    icon: (
+      <svg className="w-4 h-4 text-[#EC008C] shrink-0" viewBox="0 0 24 24" fill="currentColor">
+        <circle cx="12" cy="12" r="10" opacity="0.2"/>
+        <circle cx="12" cy="12" r="5" opacity="0.8"/>
+      </svg>
+    ),
+    style: "font-sans font-bold tracking-tight text-[#1C2024] text-[14px]",
+  },
+  {
+    name: "BREWDOG",
+    icon: null,
+    style: "font-mono font-black uppercase tracking-widest text-[#1C2024] text-[13px]",
+  },
+  {
+    name: "TransferWise",
+    icon: (
+      <span className="w-5 h-5 rounded-full bg-[#00B9FF] flex items-center justify-center text-white font-black text-[9px] shrink-0">T</span>
+    ),
+    style: "font-sans font-bold tracking-tight text-[#1C2024] text-[14px]",
+  },
+  {
+    name: "Stripe",
+    icon: (
+      <span className="w-5 h-5 rounded-md bg-[#635BFF] flex items-center justify-center text-white font-black text-[9px] shrink-0">S</span>
+    ),
+    style: "font-sans font-black tracking-tight text-[#1C2024] text-[15px]",
+  },
+  {
+    name: "Shopify",
+    icon: (
+      <span className="w-5 h-5 rounded-md bg-[#96BF48] flex items-center justify-center text-white font-black text-[9px] shrink-0">S</span>
+    ),
+    style: "font-sans font-bold tracking-tight text-[#1C2024] text-[14px]",
+  },
 ];
+
+// Duplicate for seamless loop
+const track = [...logos, ...logos];
 
 export function Marquee() {
   return (
-    <div className="w-full bg-[#FAF9F5] flex items-center py-6 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 md:px-8 w-full flex flex-col md:flex-row items-center justify-between gap-6">
-        
-        {/* Left Side Label with Chevron Indicator */}
-        <div className="flex items-center space-x-3 shrink-0 select-none">
-          <ChevronLeft size={16} className="text-gray-300 md:block hidden animate-pulse" />
-          <div className="flex flex-col text-left md:items-start items-center">
-            <span className="text-[10px] uppercase tracking-widest font-black text-[#00BFA6] leading-none">
-              TRUSTED BY
-            </span>
-            <span className="text-[10px] uppercase tracking-wider font-extrabold text-teal-600 mt-1">
-              INNOVATIVE COMPANIES
-            </span>
-          </div>
+    <div className="w-full my-8">
+      {/* Outer wrapper with fade edges */}
+      <div className="relative w-full overflow-hidden border-y border-gray-100 bg-white py-5"
+        style={{
+          maskImage: "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
+          WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
+        }}
+      >
+        {/* Label pinned left — outside the mask */}
+        <div
+          className="absolute left-0 top-0 bottom-0 z-10 flex flex-col justify-center pl-6 pr-4 bg-white select-none hidden sm:flex"
+          style={{ minWidth: 140 }}
+        >
+          <span className="text-[9px] uppercase tracking-[0.18em] font-black text-[#00BFA6] leading-none">TRUSTED BY</span>
+          <span className="text-[9px] uppercase tracking-[0.12em] font-extrabold text-[#00BFA6] mt-1 leading-none">INNOVATIVE COMPANIES</span>
+          {/* Vertical divider */}
+          <div className="absolute right-0 top-1/2 -translate-y-1/2 w-px h-6 bg-gray-200" />
         </div>
 
-        {/* Brand Logos Line */}
-        <div className="flex-1 overflow-x-auto scrollbar-none flex items-center md:justify-around justify-start gap-10 md:gap-4 px-4 select-none opacity-85 hover:opacity-100 transition-opacity">
-          {logos.map((logo, idx) => (
+        {/* Scrolling track */}
+        <div
+          className="flex items-center gap-12 w-max"
+          style={{ animation: "marquee-scroll 28s linear infinite", paddingLeft: 160 }}
+        >
+          {track.map((logo, i) => (
             <div
-              key={idx}
-              className="flex items-center space-x-1.5 flex-shrink-0 cursor-default"
+              key={i}
+              className="flex items-center gap-2 shrink-0 opacity-60 hover:opacity-100 transition-opacity duration-200 cursor-default"
             >
-              {logo.name === "monzo" && (
-                <span className="w-4 h-4 rounded bg-rose-500 text-white font-extrabold text-[9px] flex items-center justify-center font-sans">M</span>
-              )}
-              {logo.name === "airbnb" && (
-                <svg className="w-4 h-4 text-rose-500 fill-current inline-block" viewBox="0 0 24 24">
-                  <path d="M12 2C11.5 2 11 2.3 10.7 2.7L2.3 16.1C2 16.6 2 17.2 2.2 17.7C2.4 18.2 2.8 18.6 3.4 18.8L11.1 21.6C11.7 21.8 12.3 21.8 12.9 21.6L20.6 18.8C21.2 18.6 21.6 18.2 21.8 17.7C22 17.2 22 16.6 21.7 16.1L13.3 2.7C13 2.3 12.5 2 12 2Z" opacity="0.15" />
-                </svg>
-              )}
-              <span className={`${logo.font} text-base`}>
-                {logo.name}
-              </span>
+              {logo.icon}
+              <span className={logo.style}>{logo.name}</span>
             </div>
           ))}
         </div>
-
-        {/* Right Arrow spacer */}
-        <div className="md:block hidden select-none shrink-0">
-          <ChevronRight size={16} className="text-gray-300 animate-pulse" />
-        </div>
-
       </div>
+
+      <style>{`
+        @keyframes marquee-scroll {
+          0%   { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+      `}</style>
     </div>
   );
 }

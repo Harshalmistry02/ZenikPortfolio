@@ -1,32 +1,19 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import {
-  ArrowRight, Zap, Shield, Layers, Search, Code2, Smartphone, Palette,
-  Globe, TrendingUp, Target, Mail, Cloud, Brain, Briefcase, Eye,
-  FileText, Paintbrush, Rocket, Star, Clock, Check
+  ArrowRight, Brain, Eye, Check, Search, FileText, Paintbrush, Code2, Rocket,
+  CheckCircle, Activity, TrendingUp
 } from "lucide-react";
-import { HanddrawnUnderline, HanddrawnArrow, HanddrawnStar, HanddrawnHighlight, HanddrawnCircle, HanddrawnBurst } from "../components/Squiggle";
+import { HanddrawnUnderline, HanddrawnArrow, HanddrawnStar, HanddrawnHighlight } from "../components/Squiggle";
 import { Marquee } from "../components/Marquee";
-import { SectionHeader } from "../components/SectionHeader";
 import { StatsCounter } from "../components/StatsCounter";
 import { TestimonialCard } from "../components/TestimonialCard";
-import { PricingTable } from "../components/PricingTable";
 import { CtaBanner } from "../components/CtaBanner";
 import {
   stats, whyZenikFeatures, processSteps, testimonials,
-  pricingTiers, blogArticles, portfolioProjects
+  portfolioProjects
 } from "../data/homeData";
 import { serviceCategories } from "../data/servicesData";
-
-const iconMap: Record<string, React.ElementType> = {
-  Zap, Shield, Layers, Search, Code2, Smartphone, Palette, Globe,
-  TrendingUp, Target, Mail, Cloud, Brain, Briefcase, FileText,
-  Paintbrush, Rocket, Star,
-};
-
-const categoryIconMap: Record<string, React.ElementType> = {
-  Palette, Globe, Smartphone, TrendingUp, Target, Mail, Cloud, Brain, Briefcase,
-};
 
 export function Home() {
   const [portfolioFilter, setPortfolioFilter] = useState<string>("All");
@@ -35,143 +22,54 @@ export function Home() {
     ? portfolioProjects
     : portfolioProjects.filter((p) => p.category === portfolioFilter);
 
+  // Icon mapping for process steps
+  const iconMap: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
+    Search,
+    FileText,
+    Paintbrush,
+    Code2,
+    Rocket,
+    CheckCircle,
+    Activity,
+    TrendingUp,
+  };
+
   return (
     <div className="pt-20 bg-white min-h-screen overflow-hidden font-sans">
 
       {/* =============================================
-          1. ODOO-STYLE HERO SECTION (RICH VISUALS)
+          1. ODOO-STYLE HERO SECTION
           ============================================= */}
-      <section className="relative pt-32 pb-32 md:pt-40 md:pb-40 bg-[#FAF9F5] overflow-hidden">
-        {/* Background decorative elements */}
-        <div className="absolute top-0 right-0 -mr-20 -mt-20 w-[600px] h-[600px] bg-gradient-to-br from-teal-100/40 to-orange-100/40 rounded-full blur-3xl opacity-60"></div>
-        <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-[400px] h-[400px] bg-gradient-to-tr from-pink-100/40 to-violet-100/40 rounded-full blur-3xl opacity-60"></div>
+      <section className="relative pt-12 pb-20 md:pt-20 md:pb-28 bg-white text-center flex flex-col items-center justify-center overflow-hidden">
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            
-            {/* Left: Text Content */}
-            <div className="text-left space-y-8">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-gray-100 shadow-sm">
-                <HanddrawnStar className="w-4 h-4 text-[#F4A24D]" />
-                <span className="text-xs font-bold text-gray-600 uppercase tracking-widest">Award-Winning Digital Agency</span>
-              </div>
+        {/* Main Title Container */}
+        <div className="max-w-4xl mx-auto px-4 z-10 relative">
+          <h1 className="font-script text-5xl sm:text-6xl md:text-7xl lg:text-[85px] font-bold text-[#202020] leading-[1.2] tracking-tight text-center">
+            All your digital needs under{" "}
+            <span className="relative inline-block mt-2">
+              {/* Highlight background */}
+              <span className="absolute inset-0 bg-[#FCB94D] rounded-[4px_12px_4px_12px] -z-10 -rotate-2 scale-[1.05] shadow-sm transform -translate-y-1 translate-x-1" />
+              <span className="relative z-10 text-[#202020]">one roof.</span>
+            </span>
+            <br />
+            <span className="inline-block mt-4">
+              Creative, scalable, yet{" "}
+              <span className="relative inline-block">
+                <span className="relative z-10 text-[#202020]">affordable!</span>
+                <div className="absolute left-0 right-0 bottom-1 h-3 sm:h-4">
+                  <HanddrawnUnderline className="text-[#00A1EA] w-[110%] -ml-[5%]" />
+                </div>
 
-              <h1 className="font-script text-5xl sm:text-6xl lg:text-7xl font-bold text-[#0D0F14] leading-[1.1] tracking-tight">
-                All your digital needs under{" "}
-                <span className="relative inline-block mt-2">
-                  <span className="relative z-10 text-[#00BFA6]">one roof.</span>
-                  <div className="absolute -bottom-2 left-0 right-0 h-3">
-                    <HanddrawnUnderline className="text-[#F4A24D] w-[110%] -ml-[5%]" />
-                  </div>
-                </span>
-                <br />
-                <span className="inline-block mt-4">
-                  Creative, scalable, yet{" "}
-                  <span className="relative inline-block">
-                    <span className="relative z-10 text-[#0D0F14]">affordable!</span>
-                    <div className="absolute -right-16 -top-10 hidden md:block">
-                      <HanddrawnArrow className="w-12 h-12 text-[#714B67] opacity-80 rotate-[120deg]" />
-                      <span className="absolute top-10 left-12 font-script text-xl text-[#714B67] -rotate-6 whitespace-nowrap opacity-90 leading-tight">
-                        90+ Services
-                      </span>
-                    </div>
+                {/* Arrow and Annotation */}
+                <div className="absolute right-[20%] top-[80%] md:right-[10%] md:top-[90%] flex flex-col items-start w-64 translate-x-1/2 translate-y-4">
+                  <HanddrawnArrow className="w-12 h-12 md:w-16 md:h-16 text-[#714B67] opacity-80 rotate-[30deg]" />
+                  <span className="font-script text-xl md:text-3xl text-[#714B67] -rotate-6 mt-[-5px] ml-12 whitespace-nowrap text-left opacity-90 leading-tight">
+                    90+ Premium Services<br />for your business
                   </span>
-                </span>
-              </h1>
-
-              <p className="text-lg text-gray-500 max-w-lg leading-relaxed font-medium">
-                We design, build, and scale premium digital experiences for startups and enterprises. Stop juggling freelancers and let our in-house experts handle everything.
-              </p>
-
-              {/* Buttons */}
-              <div className="flex flex-wrap items-center gap-4 pt-4">
-                <Link
-                  to="/contact"
-                  className="inline-flex items-center justify-center bg-[#0D0F14] hover:bg-[#00BFA6] text-white transition-colors duration-300 font-extrabold text-sm px-8 py-4 rounded-2xl shadow-lg hover:shadow-teal-500/20 active:scale-95"
-                >
-                  Start now - It's free
-                </Link>
-                <Link
-                  to="/about"
-                  className="inline-flex items-center justify-center bg-white hover:bg-gray-50 text-[#0D0F14] border border-gray-200 transition-colors duration-300 font-extrabold text-sm px-8 py-4 rounded-2xl active:scale-95"
-                >
-                  Meet an advisor
-                </Link>
-              </div>
-
-              {/* Event Pill */}
-              <div className="inline-flex items-center gap-4 bg-white/60 backdrop-blur-md px-6 py-3 rounded-2xl shadow-sm border border-gray-100/50 mt-4">
-                <div className="flex items-center gap-2 text-xs font-bold text-gray-700">
-                  <span className="text-base">🇮🇳</span>
-                  <span>Delhi Tech Expo</span>
                 </div>
-                <div className="w-1.5 h-1.5 rounded-full bg-gray-300"></div>
-                <div className="text-xs font-semibold text-gray-500">May 27, 2026</div>
-                <Link to="/contact" className="text-xs font-black text-[#00BFA6] hover:underline ml-2">
-                  Register →
-                </Link>
-              </div>
-            </div>
-
-            {/* Right: Floating Premium Composition */}
-            <div className="relative lg:h-[600px] flex items-center justify-center">
-              
-              {/* Main abstract card shape */}
-              <div className="absolute inset-0 bg-[#00BFA6] rounded-[48px] rotate-3 opacity-10 scale-95 origin-center transition-transform hover:rotate-6"></div>
-              
-              {/* Central Hero Image (Dashboard/UI mockup) */}
-              <div className="relative z-20 w-full max-w-md bg-white rounded-[32px] shadow-2xl border border-gray-100 overflow-hidden transform -rotate-2 hover:rotate-0 transition-all duration-500 hover:scale-[1.02]">
-                <div className="h-8 bg-gray-50 border-b border-gray-100 flex items-center px-4 gap-1.5">
-                  <div className="w-2.5 h-2.5 rounded-full bg-red-400"></div>
-                  <div className="w-2.5 h-2.5 rounded-full bg-yellow-400"></div>
-                  <div className="w-2.5 h-2.5 rounded-full bg-green-400"></div>
-                </div>
-                <img 
-                  src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop&q=80" 
-                  alt="Analytics Dashboard" 
-                  className="w-full h-auto object-cover opacity-90 hover:opacity-100 transition-opacity"
-                />
-                
-                {/* Floating UI Element overlapping the dashboard */}
-                <div className="absolute bottom-6 -left-8 bg-white p-4 rounded-2xl shadow-xl border border-gray-100 flex items-center gap-4 animate-bounce" style={{ animationDuration: '3s' }}>
-                  <div className="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center text-[#F4A24D]">
-                    <TrendingUp size={20} />
-                  </div>
-                  <div>
-                    <div className="text-[10px] font-bold text-gray-400 uppercase">Conversion</div>
-                    <div className="text-lg font-black text-[#0D0F14]">+124%</div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Secondary Floating Image (Team/Creative) */}
-              <div className="absolute -bottom-10 -right-4 z-30 w-56 h-64 bg-white rounded-[24px] shadow-2xl border border-white p-2 transform rotate-6 hover:rotate-12 transition-all duration-500 hover:scale-105">
-                <img 
-                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&auto=format&fit=crop&q=80" 
-                  alt="Team Collaboration" 
-                  className="w-full h-full object-cover rounded-[16px]"
-                />
-                <div className="absolute -top-4 -right-4 bg-white p-2 rounded-full shadow-lg">
-                  <div className="w-8 h-8 rounded-full bg-[#714B67] flex items-center justify-center text-white">
-                    <Rocket size={14} />
-                  </div>
-                </div>
-              </div>
-
-              {/* Decorative Squiggle in the composition */}
-              <div className="absolute top-10 right-10 z-0">
-                <HanddrawnHighlight className="text-yellow-200 w-32 h-32 opacity-50" />
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-        {/* Curved bottom separator to transition into the Marquee */}
-        <div className="absolute bottom-0 left-0 right-0 w-full overflow-hidden leading-none z-0 rotate-180">
-          <svg className="relative block w-full h-[60px] md:h-[100px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-            <path d="M0,0 L1200,0 L1200,120 C900,0 300,0 0,120 Z" className="fill-white"></path>
-          </svg>
+              </span>
+            </span>
+          </h1>
         </div>
       </section>
 
@@ -181,68 +79,163 @@ export function Home() {
       <Marquee />
 
       {/* =============================================
-          3. WHY ZENIK? — 3 Feature Cards
+          3. SERVICES OVERVIEW — App Grid
           ============================================= */}
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-[#F3F4F6] border-y border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeader 
-            badge="WHY ZENIK" 
-            title={<>Why Companies <span className="relative inline-block"><span className="relative z-10 text-[#00BFA6]">Choose</span><HanddrawnUnderline className="text-[#F4A24D] -bottom-1" /></span> Us</>} 
-          />
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {whyZenikFeatures.map((feature, idx) => {
-              const IconComp = iconMap[feature.iconName] || Zap;
-              return (
-                <div
-                  key={idx}
-                  className="bg-white p-8 rounded-[28px] border border-gray-100 hover:border-[#00BFA6] hover:shadow-[0_20px_50px_rgba(0,191,166,0.05)] transition-all duration-300 hover:-translate-y-2 group"
-                >
-                  <div className="w-12 h-12 bg-teal-50 rounded-2xl flex items-center justify-center text-[#00BFA6] mb-6 group-hover:scale-110 transition-transform">
-                    <IconComp size={24} />
-                  </div>
-                  <h3 className="text-lg font-black text-[#0D0F14] mb-3">
-                    {feature.title}
-                  </h3>
-                  <p className="text-sm text-gray-500 leading-relaxed">
-                    {feature.description}
-                  </p>
-                </div>
-              );
-            })}
+          {/* HEADER: word circled in teal oval */}
+          <div className="mb-16 text-center">
+            <h2 className="font-script text-5xl sm:text-6xl md:text-[70px] font-bold text-[#0D0F14] leading-tight">
+              Everything You Need to{" "}
+              <span className="relative inline-block px-2">
+                <span className="relative z-10">Grow</span>
+                <svg className="absolute pointer-events-none text-[#00BFA6]" style={{ inset: "-0.3em -0.5em", width: "calc(100% + 1em)", height: "calc(100% + 0.7em)" }} viewBox="0 0 200 80" preserveAspectRatio="none" aria-hidden>
+                  <path d="M18,44 C18,14 62,8 100,10 C144,12 184,16 184,44 C184,70 146,72 100,70 C58,68 18,68 18,44 Z" fill="none" stroke="currentColor" strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" opacity="0.9" />
+                </svg>
+              </span>
+            </h2>
+            <p className="text-gray-500 text-sm sm:text-base mt-5 max-w-xl mx-auto leading-relaxed">From design to deployment, we cover every aspect of your digital presence.</p>
           </div>
-        </div>
-      </section>
 
-      {/* =============================================
-          4. SERVICES OVERVIEW — App Grid
-          ============================================= */}
-      <section className="py-24 bg-[#FAF9F5] border-y border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeader
-            badge="OUR SERVICES"
-            title={<>Everything You Need to <span className="relative inline-block"><span className="relative z-10 text-[#00BFA6]">Grow</span><HanddrawnCircle className="w-[140%] h-[140%] -top-[20%] -left-[20%] text-[#F4A24D]" /></span></>}
-            subtitle="From design to deployment, we cover every aspect of your digital presence."
-          />
-
-          <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-9 gap-4">
-            {serviceCategories.map((cat) => {
-              const IconComp = categoryIconMap[cat.icon] || Globe;
-              return (
-                <Link
-                  key={cat.id}
-                  to="/services"
-                  className="flex flex-col items-center gap-3 p-4 rounded-2xl bg-white border border-gray-100 hover:border-[#00BFA6] hover:shadow-[0_12px_30px_rgba(0,191,166,0.06)] transition-all duration-300 hover:-translate-y-1 group text-center"
-                >
-                  <div className={`w-12 h-12 rounded-2xl ${cat.bg} ${cat.color} flex items-center justify-center group-hover:scale-110 transition-transform shadow-sm`}>
-                    <IconComp size={22} />
-                  </div>
-                  <span className="text-[11px] font-bold text-gray-700 leading-tight">
-                    {cat.name.replace(" Services", "").replace(" & Development", "").replace(", DevOps & Infrastructure", "")}
-                  </span>
-                </Link>
-              );
-            })}
+          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-6 md:gap-8">
+            {[
+              {
+                label: "UI/UX Design",
+                to: "/services?cat=design",
+                icon: (
+                  <svg viewBox="0 0 64 64" fill="none" className="w-10 h-10">
+                    <rect x="8" y="8" width="22" height="22" rx="4" fill="#A78BFA" />
+                    <rect x="34" y="8" width="22" height="22" rx="4" fill="#7C3AED" opacity="0.7" />
+                    <rect x="8" y="34" width="22" height="22" rx="4" fill="#C4B5FD" opacity="0.8" />
+                    <circle cx="45" cy="45" r="11" fill="#F4A24D" />
+                    <path d="M40 45 L44 49 L51 41" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                ),
+              },
+              {
+                label: "Web Dev",
+                to: "/services?cat=web",
+                icon: (
+                  <svg viewBox="0 0 64 64" fill="none" className="w-10 h-10">
+                    <rect x="6" y="14" width="52" height="36" rx="6" fill="#DBEAFE" />
+                    <rect x="6" y="14" width="52" height="10" rx="6" fill="#3B82F6" />
+                    <circle cx="16" cy="19" r="2.5" fill="white" />
+                    <circle cx="24" cy="19" r="2.5" fill="white" opacity="0.6" />
+                    <circle cx="32" cy="19" r="2.5" fill="white" opacity="0.4" />
+                    <path d="M18 34 L24 40 L18 46" stroke="#3B82F6" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                    <path d="M30 46 L46 46" stroke="#93C5FD" strokeWidth="2.5" strokeLinecap="round" />
+                  </svg>
+                ),
+              },
+              {
+                label: "Mobile Apps",
+                to: "/services?cat=mobile",
+                icon: (
+                  <svg viewBox="0 0 64 64" fill="none" className="w-10 h-10">
+                    <rect x="18" y="6" width="28" height="52" rx="6" fill="#D1FAE5" />
+                    <rect x="18" y="6" width="28" height="52" rx="6" stroke="#10B981" strokeWidth="2" />
+                    <rect x="24" y="14" width="16" height="28" rx="3" fill="#10B981" opacity="0.8" />
+                    <circle cx="32" cy="50" r="3" fill="#10B981" />
+                    <path d="M26 20 L30 24 L38 16" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                ),
+              },
+              {
+                label: "Marketing",
+                to: "/services?cat=marketing",
+                icon: (
+                  <svg viewBox="0 0 64 64" fill="none" className="w-10 h-10">
+                    <circle cx="32" cy="32" r="26" fill="#FEE2E2" />
+                    <path d="M16 40 L24 28 L32 34 L42 20 L50 26" stroke="#EF4444" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                    <circle cx="50" cy="26" r="4" fill="#F4A24D" />
+                    <circle cx="24" cy="28" r="3" fill="#EF4444" />
+                  </svg>
+                ),
+              },
+              {
+                label: "Lead Gen",
+                to: "/services?cat=leadgen",
+                icon: (
+                  <svg viewBox="0 0 64 64" fill="none" className="w-10 h-10">
+                    <circle cx="32" cy="22" r="12" fill="#FEF3C7" />
+                    <circle cx="32" cy="22" r="7" fill="#F59E0B" />
+                    <path d="M14 50 C14 38 50 38 50 50" fill="#FDE68A" />
+                    <path d="M14 50 C14 38 50 38 50 50" stroke="#F59E0B" strokeWidth="2" fill="none" />
+                    <path d="M44 14 L50 8 M50 8 L50 14 M50 8 L44 8" stroke="#F4A24D" strokeWidth="2" strokeLinecap="round" />
+                  </svg>
+                ),
+              },
+              {
+                label: "Email & Auto",
+                to: "/services?cat=email",
+                icon: (
+                  <svg viewBox="0 0 64 64" fill="none" className="w-10 h-10">
+                    <rect x="8" y="18" width="48" height="32" rx="6" fill="#FAE8FF" />
+                    <path d="M8 24 L32 38 L56 24" stroke="#C026D3" strokeWidth="2.5" strokeLinecap="round" fill="none" />
+                    <rect x="8" y="18" width="48" height="10" rx="6" fill="#E879F9" opacity="0.5" />
+                    <circle cx="48" cy="16" r="8" fill="#F4A24D" />
+                    <path d="M44 16 L47 19 L53 13" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                ),
+              },
+              {
+                label: "Cloud & DevOps",
+                to: "/services?cat=cloud",
+                icon: (
+                  <svg viewBox="0 0 64 64" fill="none" className="w-10 h-10">
+                    <path d="M48 38 C54 38 58 34 58 28 C58 22 53 18 47 19 C45 13 39 9 32 9 C23 9 16 16 16 25 C10 26 6 31 6 37 C6 43 11 48 17 48 L48 48 C54 48 58 44 58 38" fill="#CFFAFE" />
+                    <path d="M48 38 C54 38 58 34 58 28 C58 22 53 18 47 19 C45 13 39 9 32 9 C23 9 16 16 16 25 C10 26 6 31 6 37 C6 43 11 48 17 48 L48 48" stroke="#06B6D4" strokeWidth="2" fill="none" />
+                    <path d="M26 38 L32 32 L38 38" stroke="#0891B2" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                    <path d="M32 32 L32 50" stroke="#0891B2" strokeWidth="2.5" strokeLinecap="round" />
+                  </svg>
+                ),
+              },
+              {
+                label: "AI & Tech",
+                to: "/services?cat=ai",
+                icon: (
+                  <svg viewBox="0 0 64 64" fill="none" className="w-10 h-10">
+                    <circle cx="32" cy="32" r="14" fill="#EDE9FE" />
+                    <circle cx="32" cy="32" r="8" fill="#7C3AED" />
+                    <circle cx="32" cy="32" r="3" fill="white" />
+                    <path d="M32 10 L32 18" stroke="#7C3AED" strokeWidth="2.5" strokeLinecap="round" />
+                    <path d="M32 46 L32 54" stroke="#7C3AED" strokeWidth="2.5" strokeLinecap="round" />
+                    <path d="M10 32 L18 32" stroke="#A78BFA" strokeWidth="2.5" strokeLinecap="round" />
+                    <path d="M46 32 L54 32" stroke="#A78BFA" strokeWidth="2.5" strokeLinecap="round" />
+                    <path d="M17 17 L23 23" stroke="#C4B5FD" strokeWidth="2" strokeLinecap="round" />
+                    <path d="M41 41 L47 47" stroke="#C4B5FD" strokeWidth="2" strokeLinecap="round" />
+                    <path d="M47 17 L41 23" stroke="#C4B5FD" strokeWidth="2" strokeLinecap="round" />
+                    <path d="M23 41 L17 47" stroke="#C4B5FD" strokeWidth="2" strokeLinecap="round" />
+                  </svg>
+                ),
+              },
+              {
+                label: "SaaS & MVPs",
+                to: "/services?cat=product",
+                icon: (
+                  <svg viewBox="0 0 64 64" fill="none" className="w-10 h-10">
+                    <rect x="8" y="32" width="14" height="24" rx="3" fill="#A5F3FC" />
+                    <rect x="25" y="20" width="14" height="36" rx="3" fill="#06B6D4" />
+                    <rect x="42" y="10" width="14" height="46" rx="3" fill="#0E7490" />
+                    <path d="M12 28 L26 18 L40 22 L54 10" stroke="#F4A24D" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                    <circle cx="54" cy="10" r="3.5" fill="#F4A24D" />
+                  </svg>
+                ),
+              },
+            ].map((item) => (
+              <Link
+                key={item.label}
+                to={item.to}
+                className="flex flex-col items-center gap-3 group"
+              >
+                <div className="w-20 h-20 sm:w-24 sm:h-24 bg-white rounded-[20px] shadow-[0_4px_20px_rgba(0,0,0,0.07)] border border-gray-100 flex items-center justify-center transition-all duration-300 group-hover:-translate-y-1.5 group-hover:shadow-[0_12px_32px_rgba(0,0,0,0.12)]">
+                  {item.icon}
+                </div>
+                <span className="text-[12px] sm:text-[13px] font-semibold text-gray-700 text-center leading-tight group-hover:text-[#0D0F14] transition-colors">
+                  {item.label}
+                </span>
+              </Link>
+            ))}
           </div>
 
           <div className="text-center pt-10">
@@ -416,10 +409,19 @@ export function Home() {
           ============================================= */}
       <section className="py-24 bg-[#FAF9F5] border-y border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeader 
-            badge="OUR PROCESS" 
-            title={<>A Process Built for <span className="relative inline-block px-1"><span className="relative z-10">Success</span><HanddrawnHighlight className="bg-pink-200" /></span></>} 
-          />
+          {/* HEADER: orange wavy underline on last word */}
+          <div className="mb-16 text-center">
+            <h2 className="font-script text-5xl sm:text-6xl md:text-[70px] font-bold text-[#0D0F14] leading-tight">
+              A Process Built for{" "}
+              <span className="relative inline-block">
+                <span className="relative z-10">Success</span>
+                <svg className="absolute left-0 pointer-events-none text-[#F4A24D]" style={{ bottom: "-0.15em", width: "100%", height: "0.4em" }} viewBox="0 0 200 14" preserveAspectRatio="none" aria-hidden>
+                  <path d="M4,9 C50,5 110,4 196,9" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" fill="none" />
+                  <path d="M14,13 C70,10 130,9 188,11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" fill="none" opacity="0.6" />
+                </svg>
+              </span>
+            </h2>
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-5 gap-8 lg:gap-12 relative text-center">
             {/* Connecting line */}
@@ -458,10 +460,28 @@ export function Home() {
           ============================================= */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeader 
-            badge="OUR WORK" 
-            title={<>Projects Built to <span className="relative inline-block"><span className="relative z-10 text-[#00BFA6]">Perform</span><HanddrawnBurst className="w-[150%] h-[150%] -top-[70%] -left-[30%] text-[#F4A24D]" /></span></>} 
-          />
+          {/* HEADER: burst/sparkle rays around first word */}
+          <div className="mb-16 text-center">
+            <h2 className="font-script text-5xl sm:text-6xl md:text-[70px] font-bold text-[#0D0F14] leading-tight">
+              <span className="relative inline-block mr-3">
+                {/* Burst rays */}
+                <svg className="absolute pointer-events-none text-[#F4A24D]" style={{ inset: "-1.1em", width: "calc(100% + 2.2em)", height: "calc(100% + 2.2em)" }} viewBox="0 0 120 120" fill="none" aria-hidden>
+                  <line x1="60" y1="8" x2="60" y2="20" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+                  <line x1="60" y1="100" x2="60" y2="112" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+                  <line x1="8" y1="60" x2="20" y2="60" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+                  <line x1="100" y1="60" x2="112" y2="60" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+                  <line x1="22" y1="22" x2="31" y2="31" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+                  <line x1="89" y1="89" x2="98" y2="98" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+                  <line x1="98" y1="22" x2="89" y2="31" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+                  <line x1="22" y1="98" x2="31" y2="89" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+                  <circle cx="60" cy="14" r="2" fill="currentColor" />
+                  <circle cx="106" cy="60" r="2" fill="currentColor" />
+                </svg>
+                <span className="relative z-10">Projects</span>
+              </span>
+              Built to Perform
+            </h2>
+          </div>
 
           {/* Filter Tabs */}
           <div className="flex flex-wrap justify-center gap-3 mb-12">
@@ -470,8 +490,8 @@ export function Home() {
                 key={cat}
                 onClick={() => setPortfolioFilter(cat)}
                 className={`px-6 py-2.5 rounded-full text-xs font-bold transition-all duration-300 ${portfolioFilter === cat
-                    ? "bg-[#0D0F14] text-white shadow-md"
-                    : "bg-gray-50 border border-gray-100 text-gray-600 hover:border-[#0D0F14] hover:text-[#0D0F14]"
+                  ? "bg-[#0D0F14] text-white shadow-md"
+                  : "bg-gray-50 border border-gray-100 text-gray-600 hover:border-[#0D0F14] hover:text-[#0D0F14]"
                   }`}
               >
                 {cat === "All" ? "All Projects" : cat}
@@ -539,10 +559,23 @@ export function Home() {
           ============================================= */}
       <section className="py-24 bg-[#FAF9F5] border-y border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeader 
-            badge="TESTIMONIALS" 
-            title={<>Real Stories. Real <span className="relative inline-block"><span className="relative z-10 text-[#00BFA6]">Impact.</span><HanddrawnUnderline className="text-[#00BFA6] -bottom-2" /></span></>} 
-          />
+          {/* HEADER: pink/red highlighter brush stroke behind key phrase */}
+          <div className="mb-16 text-center">
+            <h2 className="font-script text-5xl sm:text-6xl md:text-[70px] font-bold text-[#0D0F14] leading-tight">
+              Real{" "}
+              <span className="relative inline-block">
+                <span className="absolute inset-0 -z-10 bg-[#F4A24D]/20 rounded-sm -rotate-1 scale-x-110 scale-y-125" />
+                <span className="relative z-10">Stories.</span>
+              </span>
+              {" "}Real{" "}
+              <span className="relative inline-block">
+                <span className="relative z-10">Impact.</span>
+                <svg className="absolute left-0 pointer-events-none text-[#00BFA6]" style={{ bottom: "-0.15em", width: "100%", height: "0.4em" }} viewBox="0 0 200 14" preserveAspectRatio="none" aria-hidden>
+                  <path d="M4,9 C50,5 110,4 196,9" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" fill="none" />
+                </svg>
+              </span>
+            </h2>
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {testimonials.slice(0, 3).map((t) => (
@@ -553,72 +586,7 @@ export function Home() {
       </section>
 
       {/* =============================================
-          10. PRICING TABLES
-          ============================================= */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeader
-            badge="PRICING"
-            title={<>Transparent Pricing, <span className="relative inline-block"><span className="relative z-10 text-[#0D0F14]">No Surprises</span><HanddrawnArrow className="absolute -top-12 -right-8 w-12 h-12 text-[#F4A24D] rotate-[100deg]" /></span></>}
-            subtitle="Choose a plan that fits your project scope. All plans include dedicated project management."
-          />
-          <PricingTable tiers={pricingTiers} />
-        </div>
-      </section>
-
-      {/* =============================================
-          11. BLOG / INSIGHTS
-          ============================================= */}
-      <section className="py-24 bg-[#FAF9F5] border-y border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeader 
-            badge="INSIGHTS" 
-            title={<>Latest From Our <span className="relative inline-block px-2"><span className="relative z-10">Blog</span><HanddrawnHighlight className="bg-teal-100" /></span></>} 
-          />
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {blogArticles.map((article) => (
-              <article
-                key={article.id}
-                className="group rounded-[28px] overflow-hidden border border-gray-100 bg-white hover:border-[#00BFA6] hover:shadow-[0_20px_50px_rgba(0,191,166,0.05)] transition-all duration-300 hover:-translate-y-1"
-              >
-                <div className="relative aspect-video overflow-hidden bg-gray-50">
-                  <img
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    src={article.image}
-                    alt={article.title}
-                    referrerPolicy="no-referrer"
-                    loading="lazy"
-                  />
-                  <span className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-[10px] font-bold text-[#0D0F14] px-3 py-1 rounded-lg border border-gray-100">
-                    {article.category}
-                  </span>
-                </div>
-                <div className="p-6 space-y-3">
-                  <div className="flex items-center gap-3 text-[10px] text-gray-400 font-medium">
-                    <span className="flex items-center gap-1"><Clock size={10} />{article.readTime}</span>
-                    <span>{article.date}</span>
-                  </div>
-                  <h3 className="text-base font-black text-[#0D0F14] tracking-tight leading-snug group-hover:text-[#00BFA6] transition-colors">
-                    {article.title}
-                  </h3>
-                  <p className="text-xs text-gray-500 leading-relaxed line-clamp-2">
-                    {article.excerpt}
-                  </p>
-                  <div className="pt-2">
-                    <span className="text-xs font-bold text-[#00BFA6] group-hover:underline">
-                      Read More →
-                    </span>
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* =============================================
-          12. CTA BANNER
+          10. CTA BANNER
           ============================================= */}
       <CtaBanner />
 

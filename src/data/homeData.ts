@@ -1,8 +1,6 @@
 import type {
   StatItem,
   Testimonial,
-  BlogArticle,
-  PricingTier,
   ProcessStep,
   FeatureCard,
   ProjectItem,
@@ -77,9 +75,27 @@ export const processSteps: ProcessStep[] = [
   },
   {
     num: "5",
+    name: "Test",
+    description: "Rigorous QA testing ensures bug-free, secure, and performant delivery.",
+    iconName: "CheckCircle",
+  },
+  {
+    num: "6",
     name: "Launch",
     description: "We deploy, test, and scale for long-term success and growth.",
     iconName: "Rocket",
+  },
+  {
+    num: "7",
+    name: "Monitor",
+    description: "Real-time analytics and monitoring to track performance and user behavior.",
+    iconName: "Activity",
+  },
+  {
+    num: "8",
+    name: "Optimize",
+    description: "Continuous improvements based on data insights and user feedback.",
+    iconName: "TrendingUp",
   },
 ];
 
@@ -153,113 +169,6 @@ export const testimonials: Testimonial[] = [
     avatar:
       "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
     rating: 5,
-  },
-];
-
-/* ================================================
-   PRICING TIERS
-   ================================================ */
-
-export const pricingTiers: PricingTier[] = [
-  {
-    name: "Starter",
-    monthlyPrice: "$2,499",
-    annualPrice: "$1,999",
-    description: "Perfect for startups and small businesses launching their first digital product.",
-    features: [
-      "UI/UX Design (up to 10 screens)",
-      "Frontend Development (React/Next.js)",
-      "Responsive design (mobile + desktop)",
-      "Basic SEO setup",
-      "1 round of revisions",
-      "2-week delivery",
-      "30 days post-launch support",
-    ],
-    highlighted: false,
-    cta: "Get Started",
-  },
-  {
-    name: "Growth",
-    monthlyPrice: "$5,999",
-    annualPrice: "$4,999",
-    description: "For growing companies that need a full-stack solution with backend and integrations.",
-    features: [
-      "Everything in Starter",
-      "Full-stack development (MERN/MEAN)",
-      "Admin panel / Dashboard",
-      "API development & integration",
-      "Payment gateway setup",
-      "Cloud deployment (AWS/GCP)",
-      "3 rounds of revisions",
-      "60 days post-launch support",
-      "Performance optimization",
-    ],
-    highlighted: true,
-    cta: "Start a Project",
-  },
-  {
-    name: "Enterprise",
-    monthlyPrice: "Custom",
-    annualPrice: "Custom",
-    description: "For enterprises requiring complex, scalable solutions with dedicated support teams.",
-    features: [
-      "Everything in Growth",
-      "Dedicated project manager",
-      "Custom SaaS / ERP development",
-      "AI & ML integrations",
-      "CI/CD pipeline setup",
-      "Security audit & compliance",
-      "Multi-region deployment",
-      "24/7 priority support",
-      "Unlimited revisions",
-      "SLA guarantee",
-    ],
-    highlighted: false,
-    cta: "Book a Call",
-  },
-];
-
-/* ================================================
-   BLOG ARTICLES
-   ================================================ */
-
-export const blogArticles: BlogArticle[] = [
-  {
-    id: "b1",
-    title: "Why Next.js 15 is the Best Framework for Enterprise Apps",
-    excerpt:
-      "Explore how Next.js 15's server components, streaming, and edge runtime make it the ideal choice for large-scale applications.",
-    category: "Engineering",
-    date: "May 20, 2026",
-    readTime: "6 min read",
-    author: "Arjun Patel",
-    image:
-      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&auto=format&fit=crop&q=80",
-    featured: true,
-  },
-  {
-    id: "b2",
-    title: "The Complete Guide to SaaS Product Design in 2026",
-    excerpt:
-      "From user research to design systems — everything you need to know about designing SaaS products that users love.",
-    category: "Design",
-    date: "May 15, 2026",
-    readTime: "8 min read",
-    author: "Emily Roberts",
-    image:
-      "https://images.unsplash.com/photo-1559028012-481c04fa702d?w=800&auto=format&fit=crop&q=80",
-  },
-  {
-    id: "b3",
-    title: "How AI Chatbots Are Reducing Support Costs by 60%",
-    excerpt:
-      "Real case studies showing how our clients automated their customer support with intelligent AI chatbots.",
-    category: "AI & Tech",
-    date: "May 10, 2026",
-    readTime: "5 min read",
-    author: "Sophia Nguyen",
-    image:
-      "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&auto=format&fit=crop&q=80",
   },
 ];
 

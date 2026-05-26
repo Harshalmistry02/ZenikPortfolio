@@ -15,14 +15,13 @@ import {
 } from "lucide-react";
 import { HanddrawnUnderline, HanddrawnArrow } from "../components/Squiggle";
 import { Marquee } from "../components/Marquee";
-import { SectionHeader } from "../components/SectionHeader";
 import { StatsCounter } from "../components/StatsCounter";
-import { PricingTable } from "../components/PricingTable";
+
 import { FaqAccordion } from "../components/FaqAccordion";
 import { CtaBanner } from "../components/CtaBanner";
 import { ScriptHeading } from "../components/ScriptHeading";
 import { serviceCategories, allServices } from "../data/servicesData";
-import { stats, pricingTiers, processSteps, homeFaqs } from "../data/homeData";
+import { stats, processSteps, homeFaqs } from "../data/homeData";
 
 const lucideMap: Record<string, React.ElementType> = {
   Palette, Globe, Smartphone, TrendingUp, Target, Mail, Cloud, Brain,
@@ -130,10 +129,13 @@ export function Services() {
           ============================================= */}
       <section id="all-services" className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeader
-            badge="ALL SERVICES"
-            title={activeCategory === "all" ? "90+ Services. One Partner." : serviceCategories.find(c => c.id === activeCategory)?.name || "Services"}
-          />
+          {/* HEADER: teal color accent on key words */}
+          <div className="mb-16 text-center">
+            <h2 className="font-script text-5xl sm:text-6xl md:text-[70px] font-bold text-[#0D0F14] leading-tight">
+              90+ Services.{" "}
+              <span className="text-[#00BFA6]">One Partner.</span>
+            </h2>
+          </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
             {filteredServices.map((svc) => {
@@ -244,7 +246,19 @@ export function Services() {
           ============================================= */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeader badge="OUR PROCESS" title="A Process Built for Success" />
+          {/* HEADER: double wavy underline in orange */}
+          <div className="mb-16 text-center">
+            <h2 className="font-script text-5xl sm:text-6xl md:text-[70px] font-bold text-[#0D0F14] leading-tight">
+              A Process Built for{" "}
+              <span className="relative inline-block">
+                <span className="relative z-10">Success</span>
+                <svg className="absolute left-0 pointer-events-none text-[#F4A24D]" style={{bottom:"-0.15em",width:"100%",height:"0.4em"}} viewBox="0 0 200 14" preserveAspectRatio="none" aria-hidden>
+                  <path d="M4,9 C50,5 110,4 196,9" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" fill="none"/>
+                  <path d="M14,13 C70,10 130,9 188,11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" fill="none" opacity="0.6"/>
+                </svg>
+              </span>
+            </h2>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-5 gap-8 lg:gap-12 relative text-center">
             <div className="absolute top-12 left-10 right-10 h-0.5 border-t border-dashed border-teal-200/50 -z-10 hidden md:block" />
             {processSteps.map((step, idx) => {
@@ -269,22 +283,25 @@ export function Services() {
           ============================================= */}
       <StatsCounter stats={stats} />
 
-      {/* =============================================
-          7. PRICING
-          ============================================= */}
-      <section className="py-24 bg-[#FAF9F5] border-y border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeader badge="PRICING" title="Transparent Pricing for Every Scale" />
-          <PricingTable tiers={pricingTiers} />
-        </div>
-      </section>
+
 
       {/* =============================================
           8. FAQ
           ============================================= */}
       <section className="py-24 bg-white">
         <div className="max-w-3xl mx-auto px-4 sm:px-6">
-          <SectionHeader badge="FAQ" title="Frequently Asked Questions" />
+          {/* HEADER: red underline on first two words */}
+          <div className="mb-16 text-center">
+            <h2 className="font-script text-5xl sm:text-6xl md:text-[70px] font-bold text-[#0D0F14] leading-tight">
+              <span className="relative inline-block mr-2">
+                <span className="relative z-10">Frequently Asked</span>
+                <svg className="absolute left-0 pointer-events-none text-[#F4A24D]" style={{bottom:"-0.15em",width:"100%",height:"0.4em"}} viewBox="0 0 200 14" preserveAspectRatio="none" aria-hidden>
+                  <path d="M4,9 C80,3 140,5 196,9" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" fill="none"/>
+                </svg>
+              </span>
+              {" "}Questions
+            </h2>
+          </div>
           <FaqAccordion faqs={homeFaqs} />
         </div>
       </section>
