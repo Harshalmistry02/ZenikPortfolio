@@ -1,12 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Caveat:wght@400;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-script: "Caveat", cursive, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-script: var(--font-caveat), cursive, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
 
   --color-zinc-950: #0D0F14;
+}
+
+/* Ensure font variables are available globally */
+:root {
+  --font-inter: var(--font-inter);
+  --font-caveat: var(--font-caveat);
+  --font-jetbrains-mono: var(--font-jetbrains-mono);
+}
+
+/* Explicit font-script utility */
+.font-script {
+  font-family: var(--font-caveat), cursive, sans-serif;
 }
 
 /* Custom fade-in on-scroll animations / helper classes */

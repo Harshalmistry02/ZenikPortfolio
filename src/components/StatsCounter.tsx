@@ -52,7 +52,7 @@ function AnimatedNumber({ value, suffix }: { value: string; suffix?: string }) {
 function CommunityStatsVariant({ stats }: { stats: StatItem[] }) {
   return (
     <section className="py-20 bg-white relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative">
 
         {/* Background decorative grid */}
         <div className="absolute inset-0 bg-[radial-gradient(#00bfa6_1px,transparent_1px)] [background-size:24px_24px] opacity-5 pointer-events-none z-0" />

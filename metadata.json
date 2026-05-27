@@ -1,6 +1,0 @@
-{
-  "name": "Zenik Studio",
-  "description": "Premium UK & USA tech agency offering Web Development, Mobile App Development, and Cybersecurity services.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}

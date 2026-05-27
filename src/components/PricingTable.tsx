@@ -1,6 +1,8 @@
+"use client";
+
 import React, { useState } from "react";
 import { Check, ArrowRight } from "lucide-react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import type { PricingTier } from "../types";
 
 interface PricingTableProps {
@@ -127,7 +129,7 @@ export function PricingTable({ tiers }: PricingTableProps) {
               {/* CTA */}
               <div className="pt-8">
                 <Link
-                  to="/contact"
+                  href="/contact"
                   className={`w-full flex items-center justify-center gap-2 py-4 rounded-2xl text-xs font-black transition-all duration-300 group ${
                     tier.highlighted
                       ? "bg-[#0D0F14] text-white hover:bg-white hover:text-[#0D0F14]"

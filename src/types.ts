@@ -82,3 +82,16 @@ export interface CareerRole {
   requirements: string[];
   description: string;
 }
+
+export interface PricingTier {
+  id: string;
+  name: string;
+  price: string;
+  monthlyPrice?: string;
+  annualPrice?: string;
+  period?: string;
+  description: string;
+  features: string[];
+  highlighted?: boolean;
+  cta?: string;
+}

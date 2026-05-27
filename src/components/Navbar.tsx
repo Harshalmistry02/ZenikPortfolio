@@ -1,5 +1,8 @@
+"use client";
+
 import React, { useState, useEffect, useRef } from "react";
-import { Link, NavLink, useLocation } from "react-router-dom";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X, User as UserIcon } from "lucide-react";
 import * as LucideIcons from "lucide-react";
 import type { User } from "../types";
@@ -29,9 +32,9 @@ export function Navbar({ user, onLogout }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [showServicesDrop, setShowServicesDrop] = useState(false);
-  const location = useLocation();
+  const pathname = usePathname();
   const dropdownRef = useRef<HTMLDivElement>(null);
-  const timeoutRef = useRef<ReturnType<typeof setTimeout>>();
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -42,7 +45,7 @@ export function Navbar({ user, onLogout }: NavbarProps) {
   useEffect(() => {
     setIsOpen(false);
     setShowServicesDrop(false);
-  }, [location.pathname]);
+  }, [pathname]);
 
   useEffect(() => {
     if (!showServicesDrop) return;
@@ -87,9 +90,9 @@ export function Navbar({ user, onLogout }: NavbarProps) {
         : "bg-transparent py-4"
         }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-2 group" aria-label="Zenik Studio Home">
+          <Link href="/" className="flex items-center gap-2 group" aria-label="Zenik Studio Home">
             <div className="w-8 h-8 rounded-lg bg-[#00BFA6] flex items-center justify-center text-white font-black text-lg shadow-sm group-hover:scale-105 transition-transform">
               Z
             </div>
@@ -104,28 +107,31 @@ export function Navbar({ user, onLogout }: NavbarProps) {
           </Link>
 
           <nav className="hidden md:flex items-center space-x-8">
-            {navLinks.map((link) => (
-              <div
-                key={link.name}
-                className="relative"
-                onMouseEnter={link.hasDrop ? handleMouseEnter : undefined}
-                onMouseLeave={link.hasDrop ? handleMouseLeave : undefined}
-              >
-                <div className="flex items-center gap-1">
-                  <NavLink
-                    to={link.path}
-                    className={({ isActive }) =>
-                      `relative text-sm font-semibold transition-colors duration-200 ${isActive
-                        ? "text-[#0D0F14] after:absolute after:bottom-[-6px] after:left-1/2 after:-translate-x-1/2 after:w-1 after:h-1 after:bg-[#00BFA6] after:rounded-full"
-                        : "text-gray-500 hover:text-[#0D0F14]"
-                      }`
-                    }
-                  >
-                    {link.name}
-                  </NavLink>
+            {navLinks.map((link) => {
+              const isActive = pathname === link.path;
+              return (
+                <div
+                  key={link.name}
+                  className="relative"
+                  onMouseEnter={link.hasDrop ? handleMouseEnter : undefined}
+                  onMouseLeave={link.hasDrop ? handleMouseLeave : undefined}
+                >
+                  <div className="flex items-center gap-1">
+                    <Link
+                      href={link.path}
+                      className={
+                        `relative text-sm font-semibold transition-colors duration-200 ${isActive
+                          ? "text-[#0D0F14] after:absolute after:bottom-[-6px] after:left-1/2 after:-translate-x-1/2 after:w-1 after:h-1 after:bg-[#00BFA6] after:rounded-full"
+                          : "text-gray-500 hover:text-[#0D0F14]"
+                        }`
+                      }
+                    >
+                      {link.name}
+                    </Link>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </nav>
 
           <div className="hidden md:flex items-center space-x-4">
@@ -144,7 +150,7 @@ export function Navbar({ user, onLogout }: NavbarProps) {
               </div>
             ) : (
               <Link
-                to="/login"
+                href="/login"
                 className="text-sm font-semibold text-gray-500 hover:text-[#0D0F14] transition-colors"
               >
                 Sign in
@@ -152,7 +158,7 @@ export function Navbar({ user, onLogout }: NavbarProps) {
             )}
 
             <Link
-              to="/contact"
+              href="/contact"
               className="inline-flex items-center justify-center bg-[#0D0F14] text-white hover:bg-[#00BFA6] transition-all duration-300 font-bold text-sm px-6 py-2.5 rounded-full shadow-sm hover:shadow-md"
             >
               Start a Project
@@ -174,13 +180,12 @@ export function Navbar({ user, onLogout }: NavbarProps) {
       <div
         id="services-mega-menu"
         ref={dropdownRef}
-        className={`absolute top-full left-0 w-full bg-white shadow-2xl border-t border-gray-100 overflow-hidden transition-all duration-300 origin-top z-50 ${
-          showServicesDrop ? "opacity-100 scale-y-100 visible" : "opacity-0 scale-y-95 invisible"
-        }`}
+        className={`absolute top-full left-0 w-full bg-white shadow-2xl border-t border-gray-100 overflow-hidden transition-all duration-300 origin-top z-50 ${showServicesDrop ? "opacity-100 scale-y-100 visible" : "opacity-0 scale-y-95 invisible"
+          }`}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-10">
           <div className="grid grid-cols-4 gap-8">
             {megaMenuColumns.map((column, colIdx) => (
               <div key={colIdx} className="space-y-8">
@@ -200,7 +205,7 @@ export function Navbar({ user, onLogout }: NavbarProps) {
                           {category.services.slice(0, 4).map((service) => (
                             <li key={service.id}>
                               <Link
-                                to="/services"
+                                href="/services"
                                 className="text-[13px] text-gray-600 hover:text-[#0D0F14] py-1 transition-colors block"
                               >
                                 {service.title}
@@ -217,14 +222,14 @@ export function Navbar({ user, onLogout }: NavbarProps) {
         </div>
 
         <div className="bg-gray-50 border-t border-gray-100 py-4">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-center gap-12">
-            <Link to="/services" className="flex items-center gap-2 text-[13px] text-gray-600 hover:text-[#0D0F14] transition-colors font-medium">
+          <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-center gap-12">
+            <Link href="/services" className="flex items-center gap-2 text-[13px] text-gray-600 hover:text-[#0D0F14] transition-colors font-medium">
               <span className="w-1.5 h-1.5 rounded-full bg-[#00BFA6]"></span> View all 90+ services →
             </Link>
-            <Link to="/work" className="flex items-center gap-2 text-[13px] text-gray-600 hover:text-[#0D0F14] transition-colors font-medium">
+            <Link href="/work" className="flex items-center gap-2 text-[13px] text-gray-600 hover:text-[#0D0F14] transition-colors font-medium">
               <span className="w-1.5 h-1.5 rounded-full bg-[#00BFA6]"></span> See our work →
             </Link>
-            <Link to="/contact" className="flex items-center gap-2 text-[13px] text-gray-600 hover:text-[#0D0F14] transition-colors font-medium">
+            <Link href="/contact" className="flex items-center gap-2 text-[13px] text-gray-600 hover:text-[#0D0F14] transition-colors font-medium">
               <span className="w-1.5 h-1.5 rounded-full bg-[#00BFA6]"></span> Get a quote →
             </Link>
           </div>
@@ -237,18 +242,18 @@ export function Navbar({ user, onLogout }: NavbarProps) {
       >
         <div className="p-6 space-y-4 flex flex-col h-full overflow-y-auto">
           <div className="flex flex-col space-y-1">
-            {navLinks.map((link) => (
-              <NavLink
-                key={link.name}
-                to={link.path}
-                className={({ isActive }) =>
-                  `block text-lg font-bold py-3 border-b border-gray-50 transition-colors ${isActive ? "text-[#00BFA6]" : "text-[#0D0F14]"
-                  }`
-                }
-              >
-                {link.name}
-              </NavLink>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = pathname === link.path;
+              return (
+                <Link
+                  key={link.name}
+                  href={link.path}
+                  className={`block text-lg font-bold py-3 border-b border-gray-50 transition-colors ${isActive ? "text-[#00BFA6]" : "text-[#0D0F14]"}`}
+                >
+                  {link.name}
+                </Link>
+              );
+            })}
           </div>
 
           <div className="py-4">
@@ -261,7 +266,7 @@ export function Navbar({ user, onLogout }: NavbarProps) {
                 return (
                   <Link
                     key={category.id}
-                    to="/services"
+                    href="/services"
                     className="flex items-center gap-3 py-2 transition-colors"
                   >
                     <IconComp size={20} className={category.color} />
@@ -291,17 +296,17 @@ export function Navbar({ user, onLogout }: NavbarProps) {
               </button>
             </div>
           ) : (
-            <NavLink
-              to="/login"
+            <Link
+              href="/login"
               className="block text-lg font-bold py-3 border-b border-gray-50 text-[#0D0F14]"
             >
               Sign In
-            </NavLink>
+            </Link>
           )}
 
           <div className="pt-4 mt-auto">
             <Link
-              to="/contact"
+              href="/contact"
               className="w-full inline-flex items-center justify-center bg-[#0D0F14] text-white py-3.5 px-6 rounded-full font-bold text-center hover:bg-[#00BFA6] transition-colors"
             >
               Start a Project

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { Linkedin, Twitter, Github, Globe } from "lucide-react";
 
 export function Footer() {
@@ -7,7 +7,7 @@ export function Footer() {
     <footer id="footer" className="bg-[#212529] text-[#adb5bd] pt-0 pb-8 text-sm">
       {/* Newsletter Strip */}
       <div className="bg-[#1a1e24] py-8 mb-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-center gap-6">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-center gap-6">
           <p className="text-white font-medium text-base">Get updates on new services and projects</p>
           <div className="flex w-full max-w-sm">
             <input 
@@ -22,14 +22,14 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Main Footer Content */}
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-8 pb-12 border-b border-gray-700">
           
           {/* Column 1: Brand & Bio */}
           <div className="col-span-2 lg:col-span-2 space-y-6">
-            <Link to="/" className="inline-block text-white">
+            <Link href="/" className="inline-block text-white">
               <span className="text-4xl font-black tracking-tighter lowercase">
                 zenik
               </span>
@@ -61,11 +61,11 @@ export function Footer() {
           <div className="col-span-1">
             <h3 className="font-bold text-white mb-4">Services</h3>
             <ul className="space-y-3">
-              <li><Link to="/services" className="hover:text-white transition-colors">Web Development</Link></li>
-              <li><Link to="/services" className="hover:text-white transition-colors">Mobile Apps</Link></li>
-              <li><Link to="/services" className="hover:text-white transition-colors">Cybersecurity</Link></li>
-              <li><Link to="/services" className="hover:text-white transition-colors">Cloud Solutions</Link></li>
-              <li><Link to="/services" className="hover:text-white transition-colors">All Services</Link></li>
+              <li><Link href="/services" className="hover:text-white transition-colors">Web Development</Link></li>
+              <li><Link href="/services" className="hover:text-white transition-colors">Mobile Apps</Link></li>
+              <li><Link href="/services" className="hover:text-white transition-colors">Cybersecurity</Link></li>
+              <li><Link href="/services" className="hover:text-white transition-colors">Cloud Solutions</Link></li>
+              <li><Link href="/services" className="hover:text-white transition-colors">All Services</Link></li>
             </ul>
           </div>
 
@@ -73,9 +73,9 @@ export function Footer() {
           <div className="col-span-1">
             <h3 className="font-bold text-white mb-4">Company</h3>
             <ul className="space-y-3">
-              <li><Link to="/about" className="hover:text-white transition-colors">About Us</Link></li>
-              <li><Link to="/work" className="hover:text-white transition-colors">Our Work</Link></li>
-              <li><Link to="/contact" className="hover:text-white transition-colors">Contact</Link></li>
+              <li><Link href="/about" className="hover:text-white transition-colors">About Us</Link></li>
+              <li><Link href="/work" className="hover:text-white transition-colors">Our Work</Link></li>
+              <li><Link href="/contact" className="hover:text-white transition-colors">Contact</Link></li>
             </ul>
           </div>
 
@@ -83,11 +83,11 @@ export function Footer() {
           <div className="col-span-1">
             <h3 className="font-bold text-white mb-4">Resources</h3>
             <ul className="space-y-3">
-              <li><Link to="/#" className="hover:text-white transition-colors">Blog</Link></li>
-              <li><Link to="/work" className="hover:text-white transition-colors">Case Studies</Link></li>
-              <li><Link to="/#" className="hover:text-white transition-colors">Pricing</Link></li>
-              <li><Link to="/#" className="hover:text-white transition-colors">Careers</Link></li>
-              <li><Link to="/#" className="hover:text-white transition-colors">Documentation</Link></li>
+              <li><Link href="/#" className="hover:text-white transition-colors">Blog</Link></li>
+              <li><Link href="/work" className="hover:text-white transition-colors">Case Studies</Link></li>
+              <li><Link href="/#" className="hover:text-white transition-colors">Pricing</Link></li>
+              <li><Link href="/#" className="hover:text-white transition-colors">Careers</Link></li>
+              <li><Link href="/#" className="hover:text-white transition-colors">Documentation</Link></li>
             </ul>
           </div>
 
@@ -122,10 +122,10 @@ export function Footer() {
         <div className="pt-8 flex flex-col md:flex-row items-center justify-between text-xs">
           <p>© 2026 Zenik Studio. All rights reserved.</p>
           <div className="flex items-center space-x-6 mt-4 md:mt-0">
-            <Link to="/about" className="hover:text-white transition-colors">Privacy Policy</Link>
-            <Link to="/about" className="hover:text-white transition-colors">Terms</Link>
+            <Link href="/about" className="hover:text-white transition-colors">Privacy Policy</Link>
+            <Link href="/about" className="hover:text-white transition-colors">Terms</Link>
             <button className="hover:text-white transition-colors text-left">Cookie Settings</button>
-            <Link to="/about" className="hover:text-white transition-colors">Sitemap</Link>
+            <Link href="/about" className="hover:text-white transition-colors">Sitemap</Link>
           </div>
         </div>
 

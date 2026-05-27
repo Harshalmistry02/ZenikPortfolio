@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
 interface CtaBannerProps {
@@ -10,7 +10,7 @@ interface CtaBannerProps {
 export function CtaBanner({ buttonText = "Start a Project", linkTo = "/contact" }: CtaBannerProps) {
   return (
     <section className="py-16 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="rounded-3xl overflow-hidden bg-[#F3F4F6] p-8 md:p-12 border border-gray-200 flex flex-col items-center justify-center text-center gap-8">
           
           <div className="space-y-4 max-w-2xl">
@@ -25,7 +25,7 @@ export function CtaBanner({ buttonText = "Start a Project", linkTo = "/contact" 
 
           <div className="flex flex-col items-center gap-4">
             <Link
-              to={linkTo}
+              href={linkTo}
               className="inline-flex items-center justify-center bg-[#0D0F14] hover:bg-[#00BFA6] text-white hover:text-white transition-all duration-300 font-bold px-8 py-4 rounded-full shadow-lg hover:shadow-xl hover:-translate-y-0.5 group shrink-0"
             >
               <span>{buttonText}</span>
