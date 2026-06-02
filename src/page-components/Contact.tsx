@@ -93,6 +93,17 @@ export function Contact() {
     setSubmitSuccess(false);
     setErrorMessage(null);
 
+    if (!formData.service) {
+      setErrorMessage('Please select a service type.');
+      setLoading(false);
+      return;
+    }
+    if (formData.message.trim().length < 10) {
+      setErrorMessage('Please describe your project in at least 10 characters.');
+      setLoading(false);
+      return;
+    }
+
     try {
       const response = await fetch('/api/forms/project-inquiry', {
         method: 'POST',
@@ -311,6 +322,7 @@ export function Contact() {
                     value={formData.message}
                     onChange={(e) => setFormData({...formData, message: e.target.value})}
                     rows={4}
+                    minLength={10}
                     className="w-full bg-gray-50 border-0 rounded-xl px-4 py-3 focus:ring-2 focus:ring-[#00BFA6]/20 outline-none resize-none"
                     required
                   />
