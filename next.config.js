@@ -2,7 +2,6 @@
 const nextConfig = {
     reactStrictMode: true,
     images: {
-        domains: ['images.unsplash.com'],
         remotePatterns: [
             {
                 protocol: 'https',
@@ -10,7 +9,6 @@ const nextConfig = {
             },
         ],
     },
-    // Enable experimental features if needed
     experimental: {
         optimizePackageImports: ['lucide-react'],
     },

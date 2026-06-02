@@ -72,3 +72,70 @@ model Session {
   @@index([userId])
   @@index([token])
 }
+
+model ContactSubmission {
+  id          String    @id @default(cuid())
+  name        String
+  email       String
+  company     String?
+  message     String
+  phone       String?
+  status      String    @default("new")
+  submittedAt DateTime  @default(now())
+  respondedAt DateTime?
+  notes       String?
+
+  @@index([email])
+  @@index([status])
+  @@index([submittedAt])
+}
+
+model ProjectInquiry {
+  id             String    @id @default(cuid())
+  name           String
+  email          String
+  company        String?
+  serviceType    String
+  budget         String
+  description    String
+  phone          String?
+  status         String    @default("new")
+  estimatedValue String?
+  submittedAt    DateTime  @default(now())
+  quotedAt       DateTime?
+  respondedAt    DateTime?
+  notes          String?
+
+  @@index([email])
+  @@index([status])
+  @@index([serviceType])
+  @@index([submittedAt])
+}
+
+model NewsletterSubscriber {
+  id             String    @id @default(cuid())
+  email          String    @unique
+  name           String?
+  subscribedAt   DateTime  @default(now())
+  unsubscribedAt DateTime?
+  isActive       Boolean   @default(true)
+
+  @@index([email])
+  @@index([isActive])
+}
+
+model AdminUser {
+  id        String    @id @default(cuid())
+  email     String    @unique
+  username  String    @unique
+  password  String
+  role      String    @default("admin")
+  firstName String?
+  lastName  String?
+  isActive  Boolean   @default(true)
+  lastLogin DateTime?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  @@index([email])
+}

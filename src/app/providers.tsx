@@ -5,6 +5,7 @@ import type { User } from "../types";
 
 interface AuthContextType {
   user: User;
+  initialized: boolean;
   login: (email: string) => void;
   logout: () => void;
 }
@@ -16,7 +17,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [initialized, setInitialized] = useState(false);
 
   useEffect(() => {
-    // Check if user has valid auth cookies
     const checkAuth = async () => {
       try {
         const response = await fetch('/api/auth/me', { credentials: 'include' });
@@ -26,27 +26,26 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         }
       } catch {
         // Not authenticated
+      } finally {
+        setInitialized(true);
       }
-      setInitialized(true);
     };
     checkAuth();
   }, []);
 
-  const login = (email: string) => {
-    setUser({ email, isLoggedIn: true });
-  };
+  const login = (email: string) => setUser({ email, isLoggedIn: true });
 
   const logout = async () => {
     try {
       await fetch('/api/auth/logout', { method: 'POST', credentials: 'include' });
     } catch {
-      // Ignore errors
+      // ignore
     }
     setUser({ email: "", isLoggedIn: false });
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider value={{ user, initialized, login, logout }}>
       {children}
     </AuthContext.Provider>
   );

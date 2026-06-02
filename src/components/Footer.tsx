@@ -1,6 +1,9 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import { Linkedin, Twitter, Github, Globe } from "lucide-react";
+import { NewsletterSignup } from "./NewsletterSignup";
 
 export function Footer() {
   return (
@@ -9,16 +12,7 @@ export function Footer() {
       <div className="bg-[#1a1e24] py-8 mb-12">
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-center gap-6">
           <p className="text-white font-medium text-base">Get updates on new services and projects</p>
-          <div className="flex w-full max-w-sm">
-            <input 
-              type="email" 
-              placeholder="Email address" 
-              className="w-full px-4 py-3 bg-[#2a2f36] border border-gray-700 text-white rounded-l-md focus:outline-none focus:border-[#00BFA6]" 
-            />
-            <button className="px-6 py-3 bg-[#00BFA6] hover:bg-[#00a892] text-white font-bold rounded-r-md transition-colors whitespace-nowrap">
-              Subscribe
-            </button>
-          </div>
+          <NewsletterSignup />
         </div>
       </div>
 

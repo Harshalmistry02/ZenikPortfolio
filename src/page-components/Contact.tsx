@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Mail, Phone, MessageCircle, ChevronLeft, ChevronRight } from "lucide-react";
+import { Mail, Phone, MessageCircle, ChevronLeft, ChevronRight, Check, AlertCircle } from "lucide-react";
 import { ScriptHeading } from "../components/ScriptHeading";
 import { CtaBanner } from "../components/CtaBanner";
 import { FaqAccordion } from "../components/FaqAccordion";
@@ -12,10 +12,13 @@ export function Contact() {
     company: "",
     service: "",
     budget: "£25k",
-    message: ""
+    message: "",
+    phone: "",
   });
+  const [loading, setLoading] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [testimonialIndex, setTestimonialIndex] = useState(0);
-  const [activeFaqIdx, setActiveFaqIdx] = useState<number | null>(null);
 
   const testimonials: Testimonial[] = [
     {
@@ -82,9 +85,42 @@ export function Contact() {
     { question: "Do clients own the code?", answer: "Absolutely. Once the project is complete and paid, you own all code, designs, and intellectual property." }
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const resetForm = () => setFormData({ name: "", email: "", company: "", service: "", budget: "£25k", message: "", phone: "" });
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
+    setLoading(true);
+    setSubmitSuccess(false);
+    setErrorMessage(null);
+
+    try {
+      const response = await fetch('/api/forms/project-inquiry', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          company: formData.company || undefined,
+          serviceType: formData.service,
+          budget: formData.budget,
+          description: formData.message,
+          phone: formData.phone || undefined,
+        }),
+      });
+
+      if (!response.ok) {
+        const err = await response.json();
+        throw new Error(err.error || 'Failed to submit form');
+      }
+
+      setSubmitSuccess(true);
+      resetForm();
+      setTimeout(() => setSubmitSuccess(false), 4000);
+    } catch (error) {
+      setErrorMessage(error instanceof Error ? error.message : 'Something went wrong. Please try again.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -185,6 +221,18 @@ export function Contact() {
                 </p>
 
                 <form onSubmit={handleSubmit} className="space-y-6">
+                  {submitSuccess && (
+                    <div className="p-3 bg-green-50 border border-green-200 text-green-600 rounded-xl text-xs flex items-center space-x-2">
+                      <Check size={14} />
+                      <span>Thank you! We’ll be in touch shortly.</span>
+                    </div>
+                  )}
+                  {errorMessage && (
+                    <div className="p-3 bg-red-50 border border-red-200 text-red-600 rounded-xl text-xs flex items-center space-x-2">
+                      <AlertCircle size={14} />
+                      <span>{errorMessage}</span>
+                    </div>
+                  )}
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     <input
                       type="text"
@@ -267,11 +315,20 @@ export function Contact() {
                     required
                   />
 
+                  <input
+                    type="tel"
+                    placeholder="Phone (optional)"
+                    value={formData.phone}
+                    onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                    className="w-full bg-gray-50 border-0 rounded-xl px-4 py-3 focus:ring-2 focus:ring-[#00BFA6]/20 outline-none"
+                  />
+
                   <button
                     type="submit"
-                    className="w-full bg-[#00BFA6] hover:bg-[#0D0F14] text-white py-4 rounded-2xl font-bold transition-all"
+                    disabled={loading}
+                    className="w-full bg-[#00BFA6] hover:bg-[#0D0F14] text-white py-4 rounded-2xl font-bold transition-all disabled:opacity-60"
                   >
-                    Send Project Brief →
+                    {loading ? 'Sending...' : 'Send Project Brief →'}
                   </button>
                 </form>
               </div>
