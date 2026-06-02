@@ -82,11 +82,16 @@ export function rateLimit(
 /**
  * Clean up expired rate limit records
  */
-setInterval(() => {
+function cleanupRateLimitStore() {
     const now = Date.now();
     for (const [key, value] of rateLimitStore.entries()) {
         if (now > value.resetTime) {
             rateLimitStore.delete(key);
         }
     }
-}, 60000); // Clean up every minute
+}
+
+// Clean up on each rate limit check to avoid setInterval in edge runtime
+if (typeof setInterval !== 'undefined' && typeof window === 'undefined' && typeof (globalThis as any).EdgeRuntime === 'undefined') {
+    setInterval(cleanupRateLimitStore, 60000);
+}

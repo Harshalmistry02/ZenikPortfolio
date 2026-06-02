@@ -4,11 +4,5 @@
     "framework": "nextjs",
     "regions": [
         "iad1"
-    ],
-    "env": {
-        "DATABASE_URL": "@database_url",
-        "JWT_SECRET": "@jwt_secret",
-        "JWT_REFRESH_SECRET": "@jwt_refresh_secret",
-        "NODE_ENV": "production"
-    }
+    ]
 }

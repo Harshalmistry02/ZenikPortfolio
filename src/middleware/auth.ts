@@ -43,6 +43,10 @@ export async function authenticate(request: NextRequest): Promise<{
         // Verify token
         const payload = verifyAccessToken(token);
 
+        if (!payload) {
+            return { authenticated: false, error: 'Invalid or expired token' };
+        }
+
         // Check if user still exists and is active
         const user = await prisma.user.findUnique({
             where: { id: payload.userId },
