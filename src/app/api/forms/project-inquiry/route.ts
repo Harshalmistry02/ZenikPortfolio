@@ -7,7 +7,7 @@ const projectInquirySchema = z.object({
   email: z.string().email(),
   company: z.string().max(100).optional(),
   serviceType: z.string().min(2).max(50),
-  budget: z.string(),
+  budget: z.string().optional(),
   description: z.string().min(10).max(5000),
   phone: z.string().optional(),
 });

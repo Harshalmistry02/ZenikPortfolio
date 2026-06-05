@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { securityHeaders, corsHeaders } from './middleware/security';
+import { securityHeaders, corsHeaders } from '@/src/middleware/security';
 
 export function middleware(request: NextRequest) {
     // Create response
