@@ -63,8 +63,8 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className={`${inter.variable} ${caveat.variable} ${jetBrainsMono.variable} font-sans antialiased`}>
+    <html lang="en" className={`${inter.variable} ${caveat.variable} ${jetBrainsMono.variable}`}>
+      <body className="font-sans antialiased">
         <AuthProvider>
           <AppShell>{children}</AppShell>
         </AuthProvider>

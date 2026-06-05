@@ -8,12 +8,7 @@
   --color-zinc-950: #0D0F14;
 }
 
-/* Ensure font variables are available globally */
-:root {
-  --font-inter: var(--font-inter);
-  --font-caveat: var(--font-caveat);
-  --font-jetbrains-mono: var(--font-jetbrains-mono);
-}
+
 
 /* Explicit font-script utility */
 .font-script {

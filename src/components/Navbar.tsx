@@ -90,7 +90,7 @@ export function Navbar({ user, onLogout }: NavbarProps) {
         : "bg-transparent py-4"
         }`}
     >
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2 group" aria-label="Zenik Studio Home">
             <div className="w-8 h-8 rounded-lg bg-[#00BFA6] flex items-center justify-center text-white font-black text-lg shadow-sm group-hover:scale-105 transition-transform">
@@ -185,7 +185,7 @@ export function Navbar({ user, onLogout }: NavbarProps) {
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 py-10">
           <div className="grid grid-cols-4 gap-8">
             {megaMenuColumns.map((column, colIdx) => (
               <div key={colIdx} className="space-y-8">
@@ -205,7 +205,7 @@ export function Navbar({ user, onLogout }: NavbarProps) {
                           {category.services.slice(0, 4).map((service) => (
                             <li key={service.id}>
                               <Link
-                                href="/services"
+                                href={`/services/${category.id}`}
                                 className="text-[13px] text-gray-600 hover:text-[#0D0F14] py-1 transition-colors block"
                               >
                                 {service.title}
@@ -222,7 +222,7 @@ export function Navbar({ user, onLogout }: NavbarProps) {
         </div>
 
         <div className="bg-gray-50 border-t border-gray-100 py-4">
-          <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-center gap-12">
+          <div className="max-w-[1440px] mx-auto px-4 sm:px-6 flex items-center justify-center gap-12">
             <Link href="/services" className="flex items-center gap-2 text-[13px] text-gray-600 hover:text-[#0D0F14] transition-colors font-medium">
               <span className="w-1.5 h-1.5 rounded-full bg-[#00BFA6]"></span> View all 90+ services →
             </Link>
@@ -266,7 +266,7 @@ export function Navbar({ user, onLogout }: NavbarProps) {
                 return (
                   <Link
                     key={category.id}
-                    href="/services"
+                    href={`/services/${category.id}`}
                     className="flex items-center gap-3 py-2 transition-colors"
                   >
                     <IconComp size={20} className={category.color} />

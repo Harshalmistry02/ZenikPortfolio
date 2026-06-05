@@ -10,13 +10,13 @@ export function Footer() {
     <footer id="footer" className="bg-[#212529] text-[#adb5bd] pt-0 pb-8 text-sm">
       {/* Newsletter Strip */}
       <div className="bg-[#1a1e24] py-8 mb-12">
-        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-center gap-6">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center justify-center gap-6">
           <p className="text-white font-medium text-base">Get updates on new services and projects</p>
           <NewsletterSignup />
         </div>
       </div>
 
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6">
         
         {/* Main Footer Content */}
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-8 pb-12 border-b border-gray-700">
