@@ -101,7 +101,7 @@ export function Home() {
             {[
               {
                 label: "UI/UX Design",
-                to: "/services#design",
+                to: "/services/design",
                 icon: (
                   <svg viewBox="0 0 64 64" fill="none" className="w-10 h-10">
                     <rect x="8" y="8" width="22" height="22" rx="4" fill="#A78BFA" />
@@ -114,7 +114,7 @@ export function Home() {
               },
               {
                 label: "Web Dev",
-                to: "/services#web",
+                to: "/services/web",
                 icon: (
                   <svg viewBox="0 0 64 64" fill="none" className="w-10 h-10">
                     <rect x="6" y="14" width="52" height="36" rx="6" fill="#DBEAFE" />
@@ -129,7 +129,7 @@ export function Home() {
               },
               {
                 label: "Mobile Apps",
-                to: "/services#mobile",
+                to: "/services/mobile",
                 icon: (
                   <svg viewBox="0 0 64 64" fill="none" className="w-10 h-10">
                     <rect x="18" y="6" width="28" height="52" rx="6" fill="#D1FAE5" />
@@ -142,7 +142,7 @@ export function Home() {
               },
               {
                 label: "Marketing",
-                to: "/services#marketing",
+                to: "/services/marketing",
                 icon: (
                   <svg viewBox="0 0 64 64" fill="none" className="w-10 h-10">
                     <circle cx="32" cy="32" r="26" fill="#FEE2E2" />
@@ -154,7 +154,7 @@ export function Home() {
               },
               {
                 label: "Lead Gen",
-                to: "/services#leadgen",
+                to: "/services/leadgen",
                 icon: (
                   <svg viewBox="0 0 64 64" fill="none" className="w-10 h-10">
                     <circle cx="32" cy="22" r="12" fill="#FEF3C7" />
@@ -167,7 +167,7 @@ export function Home() {
               },
               {
                 label: "Email & Auto",
-                to: "/services#email",
+                to: "/services/email",
                 icon: (
                   <svg viewBox="0 0 64 64" fill="none" className="w-10 h-10">
                     <rect x="8" y="18" width="48" height="32" rx="6" fill="#FAE8FF" />
@@ -180,7 +180,7 @@ export function Home() {
               },
               {
                 label: "Cloud & DevOps",
-                to: "/services#cloud",
+                to: "/services/cloud",
                 icon: (
                   <svg viewBox="0 0 64 64" fill="none" className="w-10 h-10">
                     <path d="M48 38 C54 38 58 34 58 28 C58 22 53 18 47 19 C45 13 39 9 32 9 C23 9 16 16 16 25 C10 26 6 31 6 37 C6 43 11 48 17 48 L48 48 C54 48 58 44 58 38" fill="#CFFAFE" />
@@ -192,7 +192,7 @@ export function Home() {
               },
               {
                 label: "AI & Tech",
-                to: "/services#ai",
+                to: "/services/ai",
                 icon: (
                   <svg viewBox="0 0 64 64" fill="none" className="w-10 h-10">
                     <circle cx="32" cy="32" r="14" fill="#EDE9FE" />
@@ -211,7 +211,7 @@ export function Home() {
               },
               {
                 label: "SaaS & MVPs",
-                to: "/services#product",
+                to: "/services/product",
                 icon: (
                   <svg viewBox="0 0 64 64" fill="none" className="w-10 h-10">
                     <rect x="8" y="32" width="14" height="24" rx="3" fill="#A5F3FC" />
@@ -224,7 +224,7 @@ export function Home() {
               },
               {
                 label: "E-Commerce",
-                to: "/services#ecommerce",
+                to: "/services/web",
                 icon: (
                   <svg viewBox="0 0 64 64" fill="none" className="w-10 h-10">
                     <rect x="12" y="20" width="40" height="32" rx="4" fill="#FEE2E2" />
@@ -238,7 +238,7 @@ export function Home() {
               },
               {
                 label: "Branding",
-                to: "/services#branding",
+                to: "/services/design",
                 icon: (
                   <svg viewBox="0 0 64 64" fill="none" className="w-10 h-10">
                     <circle cx="32" cy="32" r="24" fill="#FEF3C7" />
@@ -250,7 +250,7 @@ export function Home() {
               },
               {
                 label: "Consulting",
-                to: "/services#consulting",
+                to: "/services/product",
                 icon: (
                   <svg viewBox="0 0 64 64" fill="none" className="w-10 h-10">
                     <circle cx="32" cy="24" r="10" fill="#DBEAFE" />

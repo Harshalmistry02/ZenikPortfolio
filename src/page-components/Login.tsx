@@ -24,7 +24,6 @@ export function Login({ user, onLogin, onLogout }: LoginProps) {
   const [passwordStrength, setPasswordStrength] = useState(0);
   const [emailFocused, setEmailFocused] = useState(false);
   const [passwordFocused, setPasswordFocused] = useState(false);
-  const [oauthLoading, setOauthLoading] = useState<string | null>(null);
   const [showForgotModal, setShowForgotModal] = useState(false);
   const [resetEmail, setResetEmail] = useState("");
   const router = useRouter();
@@ -98,16 +97,6 @@ export function Login({ user, onLogin, onLogout }: LoginProps) {
     }
   };
 
-  const handleOAuthSimulate = (provider: string) => {
-    setOauthLoading(provider);
-    setErrorText("");
-    setTimeout(() => {
-      onLogin(`pioneer.${provider.toLowerCase()}@zenik.studio`);
-      setOauthLoading(null);
-      router.push("/");
-    }, 1000);
-  };
-
   const handleForgotPassword = () => {
     if (!resetEmail.trim()) {
       setErrorText("Please enter your email address for password reset.");
@@ -148,390 +137,292 @@ export function Login({ user, onLogin, onLogout }: LoginProps) {
         <span className="text-xs font-bold font-mono tracking-tight text-[#0D0F14]">Back to website</span>
       </Link>
 
-      {/* 2. FULL GRID SPLIT DESIGN */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 w-full min-h-screen">
+      {/* CENTERED FORM */}
+      <div className="flex w-full min-h-screen items-center justify-center px-4 py-20">
 
-        {/* LEFT COLUMN: AUTH FORM PANEL (Padded nicely, Centered) */}
-        <div className="lg:col-span-5 flex items-center justify-center px-4 sm:px-8 lg:px-12 py-20 bg-[#FAF9F5]/30">
+        <div className="w-full max-w-lg bg-white rounded-[32px] border border-[#00BFA6]/20 shadow-[0_20px_50px_rgba(13,15,20,0.03)] hover:shadow-[0_25px_60px_rgba(0,191,166,0.08)] transition-shadow duration-500 p-8 sm:p-11 relative group">
 
-          <div className="w-full max-w-lg bg-white rounded-[32px] border border-[#00BFA6]/20 shadow-[0_20px_50px_rgba(13,15,20,0.03)] hover:shadow-[0_25px_60px_rgba(0,191,166,0.08)] transition-shadow duration-500 p-8 sm:p-11 relative group">
+          {/* Decorative SVG shapes in top-right corner */}
+          <div className="absolute top-6 right-6 opacity-10 group-hover:opacity-20 transition-opacity duration-500">
+            <svg width="60" height="60" viewBox="0 0 60 60" fill="none" className="text-[#00BFA6]">
+              <circle cx="10" cy="10" r="3" fill="currentColor" />
+              <circle cx="30" cy="15" r="4" fill="currentColor" opacity="0.6" />
+              <circle cx="50" cy="10" r="2" fill="currentColor" opacity="0.8" />
+              <path d="M15 35 L25 45 L35 35" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" opacity="0.4" />
+              <rect x="40" y="35" width="15" height="15" rx="3" stroke="currentColor" strokeWidth="2" fill="none" opacity="0.3" />
+            </svg>
+          </div>
 
-            {/* Decorative SVG shapes in top-right corner */}
-            <div className="absolute top-6 right-6 opacity-10 group-hover:opacity-20 transition-opacity duration-500">
-              <svg width="60" height="60" viewBox="0 0 60 60" fill="none" className="text-[#00BFA6]">
-                <circle cx="10" cy="10" r="3" fill="currentColor" />
-                <circle cx="30" cy="15" r="4" fill="currentColor" opacity="0.6" />
-                <circle cx="50" cy="10" r="2" fill="currentColor" opacity="0.8" />
-                <path d="M15 35 L25 45 L35 35" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" opacity="0.4" />
-                <rect x="40" y="35" width="15" height="15" rx="3" stroke="currentColor" strokeWidth="2" fill="none" opacity="0.3" />
-              </svg>
+          {user.isLoggedIn ? (
+            /* ALREADY LOGGED IN CONSOLE */
+            <div className="space-y-6 text-left">
+              {/* Brand Header inside card */}
+              <div className="flex items-center space-x-2">
+                <div className="w-8 h-8 rounded-lg bg-[#00BFA6] flex items-center justify-center text-white font-black text-lg shadow-sm">Z</div>
+                <div>
+                  <span className="text-base font-black tracking-tight text-gray-900 block leading-none">zenik</span>
+                  <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider leading-none">studio</span>
+                </div>
+              </div>
+
+              <div className="space-y-2 pt-4">
+                <span className="text-[10px] text-[#00BFA6] font-black uppercase font-mono tracking-widest bg-teal-50 px-3 py-1 rounded-full inline-block">
+                  WELCOME BACK
+                </span>
+                <h1 className="text-2xl font-black text-[#0D0F14] tracking-tight">
+                  Already Signed In
+                </h1>
+                <p className="text-xs text-gray-400 leading-relaxed max-w-md">
+                  Signed in as: <strong className="text-gray-800">{user.email}</strong>
+                </p>
+              </div>
+
+              <div className="bg-gray-50 border border-gray-150/50 rounded-2xl p-4 space-y-2">
+                <div className="flex justify-between items-center text-[9px] text-[#00BFA6] font-bold font-mono uppercase">
+                  <span>Account Active</span>
+                  <span>Ready</span>
+                </div>
+                <p className="text-[11px] text-gray-500 leading-relaxed">
+                  You are already signed into your account. You can head back to the dashboard to manage your projects or sign out below.
+                </p>
+              </div>
+
+              <div className="pt-4 space-y-2">
+                <Link
+                  href="/"
+                  className="w-full bg-[#0D0F14] hover:bg-[#00BFA6] text-white py-4 rounded-xl text-xs font-black transition-all block text-center shadow-sm"
+                >
+                  Go to Dashboard
+                </Link>
+                <button
+                  onClick={onLogout}
+                  className="w-full bg-red-50 hover:bg-red-100 text-red-600 py-3 rounded-xl text-xs font-bold transition-all block text-center"
+                >
+                  Sign out
+                </button>
+              </div>
             </div>
 
-            {user.isLoggedIn ? (
-              /* ALREADY LOGGED IN CONSOLE */
-              <div className="space-y-6 text-left">
-                {/* Brand Header inside card */}
-                <div className="flex items-center space-x-2">
-                  <div className="w-8 h-8 rounded-lg bg-[#00BFA6] flex items-center justify-center text-white font-black text-lg shadow-sm">Z</div>
-                  <div>
-                    <span className="text-base font-black tracking-tight text-gray-900 block leading-none">zenik</span>
-                    <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider leading-none">studio</span>
-                  </div>
-                </div>
+          ) : (
 
-                <div className="space-y-2 pt-4">
-                  <span className="text-[10px] text-[#00BFA6] font-black uppercase font-mono tracking-widest bg-teal-50 px-3 py-1 rounded-full inline-block">
+            /* LOGIN FORM PANEL */
+            <div className="space-y-7">
+
+              {/* 2.1 APP LOGO BLOCK */}
+              <div className="flex items-center space-x-2 text-left justify-start">
+                <div className="w-8 h-8 rounded-lg bg-[#00BFA6] flex items-center justify-center text-white font-black text-xl shadow-sm">
+                  Z
+                </div>
+                <div className="leading-none">
+                  <span className="text-base font-black tracking-tight text-[#0D0F14] block">zenik</span>
+                  <span className="text-[9px] text-gray-400 font-bold tracking-widest uppercase block">studio</span>
+                </div>
+              </div>
+
+              {/* 2.2 WELCOME BACK SUBTITLE WITH SLANTED TICK/LINES */}
+              <div className="space-y-2 text-left pt-1">
+                <div className="flex items-center space-x-1 text-[#00BFA6]">
+                  <span className="text-[10px] font-black uppercase tracking-widest font-mono">
                     WELCOME BACK
                   </span>
-                  <h1 className="text-2xl font-black text-[#0D0F14] tracking-tight">
-                    Already Signed In
-                  </h1>
-                  <p className="text-xs text-gray-400 leading-relaxed max-w-md">
-                    Signed in as: <strong className="text-gray-800">{user.email}</strong>
-                  </p>
+                  {/* Double slanted lines matching sketched image style exactly */}
+                  <svg className="w-4 h-3 text-[#00BFA6]" viewBox="0 0 16 12" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+                    <path d="M3 10 L8 2" />
+                    <path d="M8 10 L13 2" />
+                  </svg>
                 </div>
 
-                <div className="bg-gray-50 border border-gray-150/50 rounded-2xl p-4 space-y-2">
-                  <div className="flex justify-between items-center text-[9px] text-[#00BFA6] font-bold font-mono uppercase">
-                    <span>Account Active</span>
-                    <span>Ready</span>
+                <h2 className="text-3xl sm:text-[32px] font-black text-[#0D0F14] tracking-tight leading-[1.05]">
+                  Sign in to your account<span className="text-[#00BFA6] font-black">.</span>
+                </h2>
+
+                {/* Cursive yellow tagline "Let's build something exceptional!" */}
+                <div className="relative pt-1 pb-2">
+                  <p className="font-script text-xl sm:text-2xl text-[#F4A24D] font-bold tracking-wide">
+                    Let's build something exceptional!
+                  </p>
+                  <div className="w-48 h-2 relative mt-0.5">
+                    <HanddrawnUnderline className="text-[#F4A24D]" />
                   </div>
-                  <p className="text-[11px] text-gray-500 leading-relaxed">
-                    You are already signed into your account. You can head back to the dashboard to manage your projects or sign out below.
-                  </p>
-                </div>
-
-                <div className="pt-4 space-y-2">
-                  <Link
-                    href="/"
-                    className="w-full bg-[#0D0F14] hover:bg-[#00BFA6] text-white py-4 rounded-xl text-xs font-black transition-all block text-center shadow-sm"
-                  >
-                    Go to Dashboard
-                  </Link>
-                  <button
-                    onClick={onLogout}
-                    className="w-full bg-red-50 hover:bg-red-100 text-red-600 py-3 rounded-xl text-xs font-bold transition-all block text-center"
-                  >
-                    Sign out
-                  </button>
                 </div>
               </div>
 
-            ) : (
-
-              /* LOGIN FORM PANEL */
-              <div className="space-y-7">
-
-                {/* 2.1 APP LOGO BLOCK */}
-                <div className="flex items-center space-x-2 text-left justify-start">
-                  <div className="w-8 h-8 rounded-lg bg-[#00BFA6] flex items-center justify-center text-white font-black text-xl shadow-sm">
-                    Z
+              {/* ERROR FEEDBACK BAR */}
+              {errorText && (
+                <div className="p-3 bg-red-50 border border-red-200 text-red-600 rounded-xl text-xs flex items-center space-x-2 animate-[slideDown_0.3s_ease-out] text-left relative">
+                  <div className="w-5 h-5 rounded-full bg-red-100 flex items-center justify-center shrink-0">
+                    <AlertCircle size={14} className="shrink-0" />
                   </div>
-                  <div className="leading-none">
-                    <span className="text-base font-black tracking-tight text-[#0D0F14] block">zenik</span>
-                    <span className="text-[9px] text-gray-400 font-bold tracking-widest uppercase block">studio</span>
-                  </div>
+                  <span className="leading-snug flex-1">{errorText}</span>
+                  <button
+                    onClick={() => setErrorText("")}
+                    className="shrink-0 hover:bg-red-100 rounded-full p-1 transition-colors"
+                    aria-label="Dismiss error"
+                  >
+                    <X size={12} />
+                  </button>
                 </div>
+              )}
 
-                {/* 2.2 WELCOME BACK SUBTITLE WITH SLANTED TICK/LINES */}
-                <div className="space-y-2 text-left pt-1">
-                  <div className="flex items-center space-x-1 text-[#00BFA6]">
-                    <span className="text-[10px] font-black uppercase tracking-widest font-mono">
-                      WELCOME BACK
+              {/* 2.3 MAIN FORM BLOCK */}
+              <form onSubmit={handleFormSubmit} className="space-y-6 text-left">
+
+                {/* Email Field with vector envelope */}
+                <div className="space-y-1">
+                  <label className="text-[10px] font-black tracking-wider text-gray-400 font-mono block uppercase">
+                    Email Address
+                  </label>
+                  <div className="relative">
+                    <span className={`absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none transition-colors duration-300 ${emailFocused ? "text-[#00BFA6]" : "text-gray-400"
+                      }`}>
+                      <Mail size={15} />
                     </span>
-                    {/* Double slanted lines matching sketched image style exactly */}
-                    <svg className="w-4 h-3 text-[#00BFA6]" viewBox="0 0 16 12" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-                      <path d="M3 10 L8 2" />
-                      <path d="M8 10 L13 2" />
-                    </svg>
-                  </div>
-
-                  <h2 className="text-3xl sm:text-[32px] font-black text-[#0D0F14] tracking-tight leading-[1.05]">
-                    Sign in to your account<span className="text-[#00BFA6] font-black">.</span>
-                  </h2>
-
-                  {/* Cursive yellow tagline "Let's build something exceptional!" */}
-                  <div className="relative pt-1 pb-2">
-                    <p className="font-script text-xl sm:text-2xl text-[#F4A24D] font-bold tracking-wide">
-                      Let's build something exceptional!
-                    </p>
-                    <div className="w-48 h-2 relative mt-0.5">
-                      <HanddrawnUnderline className="text-[#F4A24D]" />
-                    </div>
-                  </div>
-                </div>
-
-                {/* ERROR FEEDBACK BAR */}
-                {errorText && (
-                  <div className="p-3 bg-red-50 border border-red-200 text-red-600 rounded-xl text-xs flex items-center space-x-2 animate-[slideDown_0.3s_ease-out] text-left relative">
-                    <div className="w-5 h-5 rounded-full bg-red-100 flex items-center justify-center shrink-0">
-                      <AlertCircle size={14} className="shrink-0" />
-                    </div>
-                    <span className="leading-snug flex-1">{errorText}</span>
-                    <button
-                      onClick={() => setErrorText("")}
-                      className="shrink-0 hover:bg-red-100 rounded-full p-1 transition-colors"
-                      aria-label="Dismiss error"
-                    >
-                      <X size={12} />
-                    </button>
-                  </div>
-                )}
-
-                {/* 2.3 MAIN FORM BLOCK */}
-                <form onSubmit={handleFormSubmit} className="space-y-6 text-left">
-
-                  {/* Email Field with vector envelope */}
-                  <div className="space-y-1">
-                    <label className="text-[10px] font-black tracking-wider text-gray-400 font-mono block uppercase">
-                      Email Address
-                    </label>
-                    <div className="relative">
-                      <span className={`absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none transition-colors duration-300 ${emailFocused ? "text-[#00BFA6]" : "text-gray-400"
-                        }`}>
-                        <Mail size={15} />
+                    <input
+                      type="email"
+                      required
+                      placeholder="you@company.com"
+                      value={emailInput}
+                      onChange={(e) => setEmailInput(e.target.value)}
+                      onFocus={() => setEmailFocused(true)}
+                      onBlur={() => setEmailFocused(false)}
+                      className="w-full bg-white focus:bg-white text-xs border border-gray-200 focus:border-[#00BFA6] rounded-xl py-3 px-4 pl-10.5 pr-10 outline-none text-[#0D0F14] focus:ring-1 focus:ring-[#00BFA6] shadow-sm transition-all duration-300 focus:translate-y-[-2px] placeholder:text-gray-350"
+                    />
+                    {emailValid && emailInput && (
+                      <span className="absolute inset-y-0 right-0 pr-3.5 flex items-center text-green-500 animate-[fadeIn_0.3s_ease-in]">
+                        <CheckCircle size={15} />
                       </span>
-                      <input
-                        type="email"
-                        required
-                        placeholder="you@company.com"
-                        value={emailInput}
-                        onChange={(e) => setEmailInput(e.target.value)}
-                        onFocus={() => setEmailFocused(true)}
-                        onBlur={() => setEmailFocused(false)}
-                        className="w-full bg-white focus:bg-white text-xs border border-gray-200 focus:border-[#00BFA6] rounded-xl py-3 px-4 pl-10.5 pr-10 outline-none text-[#0D0F14] focus:ring-1 focus:ring-[#00BFA6] shadow-sm transition-all duration-300 focus:translate-y-[-2px] placeholder:text-gray-350"
-                      />
-                      {emailValid && emailInput && (
-                        <span className="absolute inset-y-0 right-0 pr-3.5 flex items-center text-green-500 animate-[fadeIn_0.3s_ease-in]">
-                          <CheckCircle size={15} />
-                        </span>
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Password Field with lock logo + visibility helper */}
-                  <div className="space-y-1">
-                    <label className="text-[10px] font-black tracking-wider text-gray-400 font-mono block uppercase">
-                      Password
-                    </label>
-                    <div className="relative">
-                      <span className={`absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none transition-colors duration-300 ${passwordFocused ? "text-[#00BFA6]" : "text-gray-400"
-                        }`}>
-                        <Lock size={15} />
-                      </span>
-                      <input
-                        type={showPassword ? "text" : "password"}
-                        required
-                        placeholder="Enter your password"
-                        value={passwordInput}
-                        onChange={(e) => setPasswordInput(e.target.value)}
-                        onFocus={() => setPasswordFocused(true)}
-                        onBlur={() => setPasswordFocused(false)}
-                        className="w-full bg-white focus:bg-white text-xs border border-gray-200 focus:border-[#00BFA6] rounded-xl py-3 px-4 pl-10.5 pr-10 outline-none text-[#0D0F14] focus:ring-1 focus:ring-[#00BFA6] shadow-sm transition-all duration-300 focus:translate-y-[-2px] placeholder:text-gray-350"
-                      />
-                      <button
-                        type="button"
-                        onClick={() => setShowPassword(!showPassword)}
-                        className={`absolute inset-y-0 right-0 pr-3.5 flex items-center transition-all duration-300 hover:scale-110 group ${showPassword ? "text-[#00BFA6]" : "text-gray-400 hover:text-[#00BFA6]"
-                          }`}
-                        title={showPassword ? "Hide password" : "Show password"}
-                      >
-                        {showPassword ? <EyeOff size={15} className="transition-transform duration-300" /> : <Eye size={15} className="transition-transform duration-300" />}
-                      </button>
-                    </div>
-
-                    {/* Password strength indicator */}
-                    {passwordInput && (
-                      <div className="mt-2 animate-[fadeIn_0.3s_ease-in]">
-                        <div className="h-1 bg-gray-200 rounded-full overflow-hidden">
-                          <div className={`h-full ${getPasswordStrengthColor()} ${getPasswordStrengthWidth()} transition-all duration-500 ease-out`}></div>
-                        </div>
-                        <p className="text-[9px] text-gray-400 mt-1 font-medium">
-                          {passwordStrength === 1 && "Weak password"}
-                          {passwordStrength === 2 && "Medium strength"}
-                          {passwordStrength === 3 && "Strong password"}
-                        </p>
-                      </div>
                     )}
                   </div>
+                </div>
 
-                  {/* Remember me & Forgot Pass layout row */}
-                  <div className="flex items-center justify-between pt-0.5 text-xs">
-
-                    {/* Custom Styled Checkbox matching image */}
-                    <label className="flex items-center space-x-2 cursor-pointer select-none group text-gray-500 font-medium font-sans">
-                      <div className="relative">
-                        <input
-                          type="checkbox"
-                          checked={rememberMe}
-                          onChange={() => setRememberMe(!rememberMe)}
-                          className="sr-only"
-                        />
-                        <div className={`w-4.5 h-4.5 rounded-md border transition-all duration-300 flex items-center justify-center ${rememberMe
-                          ? "bg-[#00BFA6] border-[#00BFA6] scale-105"
-                          : "bg-white border-gray-300 group-hover:border-gray-450"
-                          }`}>
-                          {rememberMe && <Check size={11} className="text-white stroke-[3.5] animate-[checkmark_0.3s_ease-in]" />}
-                        </div>
-                      </div>
-                      <span className="text-[11px] text-gray-600 font-semibold">Remember me</span>
-                    </label>
-
+                {/* Password Field with lock logo + visibility helper */}
+                <div className="space-y-1">
+                  <label className="text-[10px] font-black tracking-wider text-gray-400 font-mono block uppercase">
+                    Password
+                  </label>
+                  <div className="relative">
+                    <span className={`absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none transition-colors duration-300 ${passwordFocused ? "text-[#00BFA6]" : "text-gray-400"
+                      }`}>
+                      <Lock size={15} />
+                    </span>
+                    <input
+                      type={showPassword ? "text" : "password"}
+                      required
+                      placeholder="Enter your password"
+                      value={passwordInput}
+                      onChange={(e) => setPasswordInput(e.target.value)}
+                      onFocus={() => setPasswordFocused(true)}
+                      onBlur={() => setPasswordFocused(false)}
+                      className="w-full bg-white focus:bg-white text-xs border border-gray-200 focus:border-[#00BFA6] rounded-xl py-3 px-4 pl-10.5 pr-10 outline-none text-[#0D0F14] focus:ring-1 focus:ring-[#00BFA6] shadow-sm transition-all duration-300 focus:translate-y-[-2px] placeholder:text-gray-350"
+                    />
                     <button
                       type="button"
-                      onClick={() => setShowForgotModal(true)}
-                      className="text-[11px] text-[#00BFA6] hover:text-teal-600 hover:underline font-extrabold transition-all duration-200"
-                    >
-                      Forgot Password?
-                    </button>
-                  </div>
-
-                  {/* Black solid submit click button */}
-                  <div className="pt-2">
-                    <button
-                      type="submit"
-                      disabled={loading || submitSuccess}
-                      className={`w-full text-white transition-all duration-300 font-extrabold text-xs py-4.5 rounded-2xl flex items-center justify-center space-x-2 shadow-sm relative overflow-hidden active:scale-98 disabled:opacity-50 disabled:cursor-not-allowed ${submitSuccess
-                        ? "bg-green-600"
-                        : "bg-[#040D21] hover:bg-gradient-to-r hover:from-[#00BFA6] hover:to-teal-600 hover:shadow-lg"
+                      onClick={() => setShowPassword(!showPassword)}
+                      className={`absolute inset-y-0 right-0 pr-3.5 flex items-center transition-all duration-300 hover:scale-110 group ${showPassword ? "text-[#00BFA6]" : "text-gray-400 hover:text-[#00BFA6]"
                         }`}
-                      onKeyDown={(e) => {
-                        if (e.key === "Enter" && !loading && !submitSuccess) {
-                          handleFormSubmit(e as any);
-                        }
-                      }}
+                      title={showPassword ? "Hide password" : "Show password"}
                     >
-                      {/* Shimmer effect on hover */}
-                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-
-                      {submitSuccess ? (
-                        <>
-                          <CheckCircle className="text-white animate-[scaleIn_0.3s_ease-out]" size={16} />
-                          <span className="font-sans">Success!</span>
-                        </>
-                      ) : loading ? (
-                        <>
-                          <Disc className="animate-spin text-white" size={13} />
-                          <span className="font-sans">Authenticating secure pipeline...</span>
-                        </>
-                      ) : (
-                        <>
-                          <span className="font-sans text-[13px] tracking-tight">Sign In</span>
-                          <span className="text-sm">→</span>
-                        </>
-                      )}
+                      {showPassword ? <EyeOff size={15} className="transition-transform duration-300" /> : <Eye size={15} className="transition-transform duration-300" />}
                     </button>
                   </div>
 
-                </form>
-
-                {/* 2.4 OR CONTINUE WITH SEPARATOR STYLE */}
-                <div className="relative flex items-center justify-center py-1.5 h-2 text-xs text-gray-400 select-none">
-                  <span className="w-full border-t border-gray-150/65" />
-                  <span className="bg-white px-3 font-semibold text-[9.5px] uppercase tracking-wide shrink-0 text-gray-400 font-mono">
-                    or continue with
-                  </span>
-                  <span className="w-full border-t border-gray-150/65" />
+                  {/* Password strength indicator */}
+                  {passwordInput && (
+                    <div className="mt-2 animate-[fadeIn_0.3s_ease-in]">
+                      <div className="h-1 bg-gray-200 rounded-full overflow-hidden">
+                        <div className={`h-full ${getPasswordStrengthColor()} ${getPasswordStrengthWidth()} transition-all duration-500 ease-out`}></div>
+                      </div>
+                      <p className="text-[9px] text-gray-400 mt-1 font-medium">
+                        {passwordStrength === 1 && "Weak password"}
+                        {passwordStrength === 2 && "Medium strength"}
+                        {passwordStrength === 3 && "Strong password"}
+                      </p>
+                    </div>
+                  )}
                 </div>
 
-                {/* 2.5 OAUTH SIMULATION BUTTONS */}
-                <div className="grid grid-cols-2 gap-3 pb-2">
-                  <button
-                    type="button"
-                    onClick={() => handleOAuthSimulate("Google")}
-                    disabled={oauthLoading !== null}
-                    className="flex items-center justify-center space-x-2 bg-white border border-gray-200 hover:border-blue-300 py-3 px-2 rounded-xl transition-all duration-300 font-bold text-xs text-gray-700 shadow-sm hover:shadow-md hover:-translate-y-0.5 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed group"
-                    title="Continue with Google"
-                  >
-                    {oauthLoading === "Google" ? (
-                      <Disc className="animate-spin w-4 h-4 text-blue-500" />
-                    ) : (
-                      <svg className="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
-                        <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" />
-                        <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05" />
-                        <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335" />
-                      </svg>
-                    )}
-                    <span className="font-sans text-[11px] leading-none shrink-0 text-gray-800 truncate">Google</span>
-                  </button>
+                {/* Remember me & Forgot Pass layout row */}
+                <div className="flex items-center justify-between pt-0.5 text-xs">
+
+                  {/* Custom Styled Checkbox matching image */}
+                  <label className="flex items-center space-x-2 cursor-pointer select-none group text-gray-500 font-medium font-sans">
+                    <div className="relative">
+                      <input
+                        type="checkbox"
+                        checked={rememberMe}
+                        onChange={() => setRememberMe(!rememberMe)}
+                        className="sr-only"
+                      />
+                      <div className={`w-4.5 h-4.5 rounded-md border transition-all duration-300 flex items-center justify-center ${rememberMe
+                        ? "bg-[#00BFA6] border-[#00BFA6] scale-105"
+                        : "bg-white border-gray-300 group-hover:border-gray-450"
+                        }`}>
+                        {rememberMe && <Check size={11} className="text-white stroke-[3.5] animate-[checkmark_0.3s_ease-in]" />}
+                      </div>
+                    </div>
+                    <span className="text-[11px] text-gray-600 font-semibold">Remember me</span>
+                  </label>
 
                   <button
                     type="button"
-                    onClick={() => handleOAuthSimulate("GitHub")}
-                    disabled={oauthLoading !== null}
-                    className="flex items-center justify-center space-x-2 bg-white border border-gray-200 hover:border-gray-800 py-3 px-2 rounded-xl transition-all duration-300 font-bold text-xs text-gray-700 shadow-sm hover:shadow-md hover:-translate-y-0.5 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed group"
-                    title="Continue with GitHub"
+                    onClick={() => setShowForgotModal(true)}
+                    className="text-[11px] text-[#00BFA6] hover:text-teal-600 hover:underline font-extrabold transition-all duration-200"
                   >
-                    {oauthLoading === "GitHub" ? (
-                      <Disc className="animate-spin w-4 h-4 text-gray-800" />
-                    ) : (
-                      <svg className="w-4 h-4 shrink-0 text-gray-800" fill="currentColor" viewBox="0 0 24 24">
-                        <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.579.688.481C19.137 20.16 22 16.418 22 12c0-5.523-4.477-10-10-10z" />
-                      </svg>
-                    )}
-                    <span className="font-sans text-[11px] leading-none shrink-0 text-gray-800 truncate">GitHub</span>
+                    Forgot Password?
                   </button>
                 </div>
 
-                {/* 2.6 REDIRECT LINK TO SIGN UP PAGE */}
-                <div className="text-center pt-2">
-                  <p className="text-xs text-gray-500 font-bold leading-none">
-                    Don’t have an account?{" "}
-                    <Link href="/signup" className="text-[#00BFA6] hover:underline font-extrabold">
-                      Sign Up
-                    </Link>
-                  </p>
+                {/* Black solid submit click button */}
+                <div className="pt-2">
+                  <button
+                    type="submit"
+                    disabled={loading || submitSuccess}
+                    className={`w-full text-white transition-all duration-300 font-extrabold text-xs py-4.5 rounded-2xl flex items-center justify-center space-x-2 shadow-sm relative overflow-hidden active:scale-98 disabled:opacity-50 disabled:cursor-not-allowed ${submitSuccess
+                      ? "bg-green-600"
+                      : "bg-[#040D21] hover:bg-gradient-to-r hover:from-[#00BFA6] hover:to-teal-600 hover:shadow-lg"
+                      }`}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" && !loading && !submitSuccess) {
+                        handleFormSubmit(e as any);
+                      }
+                    }}
+                  >
+                    {/* Shimmer effect on hover */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+
+                    {submitSuccess ? (
+                      <>
+                        <CheckCircle className="text-white animate-[scaleIn_0.3s_ease-out]" size={16} />
+                        <span className="font-sans">Success!</span>
+                      </>
+                    ) : loading ? (
+                      <>
+                        <Disc className="animate-spin text-white" size={13} />
+                        <span className="font-sans">Authenticating secure pipeline...</span>
+                      </>
+                    ) : (
+                      <>
+                        <span className="font-sans text-[13px] tracking-tight">Sign In</span>
+                        <span className="text-sm">→</span>
+                      </>
+                    )}
+                  </button>
                 </div>
 
+              </form>
+
+              {/* 2.6 REDIRECT LINK TO SIGN UP PAGE */}
+              <div className="text-center pt-2">
+                <p className="text-xs text-gray-500 font-bold leading-none">
+                  Don’t have an account?{" "}
+                  <Link href="/signup" className="text-[#00BFA6] hover:underline font-extrabold">
+                    Sign Up
+                  </Link>
+                </p>
               </div>
-            )}
 
-          </div>
-
-        </div>
-
-        {/* RIGHT COLUMN: GORGEOUS ZENIK BRANDED OFFICE COLLAGE (Desktop Only) */}
-        <div className="hidden lg:col-span-7 lg:flex items-center justify-center bg-stone-100 p-8 select-none relative overflow-hidden">
-
-          {/* Main frame wrapping simulating office space perfectly */}
-          <div className="w-full h-full rounded-[40px] overflow-hidden relative border border-white/20 shadow-2xl">
-
-            {/* Real aesthetic corporate background overlay */}
-            <div
-              className="absolute inset-0 bg-cover bg-center filter saturate-[1.05] brightness-[1.02]"
-              style={{
-                backgroundImage: "url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&auto=format&fit=crop&q=80')"
-              }}
-            >
-              {/* Soft warm sun ray styled color masking */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-stone-900/40 via-white/5 to-white/10 mix-blend-overlay"></div>
             </div>
-
-            {/* ART OVERLAY: Simple Stats Card */}
-            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 p-10 bg-white rounded-3xl text-center shadow-xl max-w-sm w-full">
-              <h3 className="font-sans font-black text-5xl text-[#00BFA6] tracking-tight mb-2">
-                80+
-              </h3>
-              <p className="text-sm text-gray-500 font-bold uppercase tracking-wider mb-8">
-                Projects Delivered
-              </p>
-
-              <h3 className="font-sans font-black text-5xl text-[#00BFA6] tracking-tight mb-2">
-                99%
-              </h3>
-              <p className="text-sm text-gray-500 font-bold uppercase tracking-wider">
-                Client Satisfaction
-              </p>
-            </div>
-
-            {/* Subtle branding coordinates marker on the footer boundary */}
-            <div className="absolute bottom-6 left-8 flex items-center space-x-2 text-white/50 font-mono text-[9px] select-none uppercase tracking-widest bg-black/30 backdrop-blur-sm px-4 py-2 rounded-full border border-white/10">
-              <span className="w-1.5 h-1.5 rounded-full bg-teal-400 animate-ping"></span>
-              <span>Zenik Studio</span>
-            </div>
-
-          </div>
+          )}
 
         </div>
 

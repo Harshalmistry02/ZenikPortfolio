@@ -1,0 +1,381 @@
+export interface ServiceDetail {
+  slug: string;
+  title: string;
+  tagline: string;
+  description: string;
+  image: string;
+  overview: string;
+  benefits: string[];
+  features: { title: string; description: string }[];
+  process: { step: number; name: string; description: string }[];
+  tools: string[];
+  whyUs: { title: string; description: string }[];
+  faqs: { question: string; answer: string }[];
+}
+
+export const serviceDetails: ServiceDetail[] = [
+  {
+    slug: "design",
+    title: "Design Services",
+    tagline: "Pixel-perfect visual experiences that captivate and convert",
+    description: "Stunning UI/UX design, brand identities, and creative assets for ambitious businesses.",
+    image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1200&auto=format&fit=crop&q=80",
+    overview: "Our design team crafts visually compelling digital experiences that go beyond aesthetics. From user research and wireframing to high-fidelity prototypes and full design systems, we build interfaces that feel intuitive, look stunning, and drive measurable results. Every design decision is backed by data and aligned with your business goals.",
+    benefits: [
+      "Increased user engagement and conversion rates",
+      "Consistent brand identity across all touchpoints",
+      "Reduced development costs through precise design systems",
+      "Faster time-to-market with reusable component libraries",
+    ],
+    features: [
+      { title: "UI/UX Design", description: "End-to-end interface design for web and mobile platforms." },
+      { title: "Design Systems", description: "Scalable component libraries and style guides for consistency." },
+      { title: "Brand Identity", description: "Logo, typography, colour palette and brand guidelines." },
+      { title: "Prototyping", description: "Interactive prototypes from low to high fidelity for rapid validation." },
+      { title: "Social Media Creatives", description: "Platform-optimised visuals for every channel." },
+      { title: "Presentation Design", description: "Pitch decks and boardroom-ready slide decks." },
+    ],
+    process: [
+      { step: 1, name: "Discovery", description: "We audit your brand, research your audience, and define visual goals." },
+      { step: 2, name: "Wireframing", description: "Low-fidelity sketches and user-flow mapping." },
+      { step: 3, name: "Visual Design", description: "High-fidelity mockups aligned to your brand language." },
+      { step: 4, name: "Prototyping", description: "Interactive prototypes for stakeholder review." },
+      { step: 5, name: "Handoff", description: "Developer-ready assets and a documented design system." },
+    ],
+    tools: ["Figma", "Adobe Illustrator", "Adobe Photoshop", "Framer", "Webflow", "Lottie"],
+    whyUs: [
+      { title: "Strategy-Led Design", description: "Every pixel serves a purpose — rooted in UX research and conversion data." },
+      { title: "Brand Consistency", description: "We create systems, not one-off designs, ensuring coherence at scale." },
+      { title: "Fast Turnaround", description: "Iterative sprints mean you see results in days, not months." },
+    ],
+    faqs: [
+      { question: "How long does a UI/UX project take?", answer: "A typical UI/UX project takes 2–6 weeks depending on scope. A full design system can take 6–10 weeks." },
+      { question: "Do you deliver source files?", answer: "Yes. All projects are handed off with organised Figma source files, exported assets, and a comprehensive style guide." },
+      { question: "Can you redesign an existing product?", answer: "Absolutely. We conduct a UX audit first and then propose a phased redesign to minimise disruption." },
+    ],
+  },
+  {
+    slug: "web",
+    title: "Web Design & Development",
+    tagline: "Modern websites and web apps that perform at scale",
+    description: "High-performance websites and web applications built with React, Next.js, and cutting-edge frameworks.",
+    image: "https://images.unsplash.com/photo-1547658719-da2b51169166?w=1200&auto=format&fit=crop&q=80",
+    overview: "We architect and build web products that are fast, scalable, and secure. From marketing landing pages to complex SaaS platforms, our full-stack engineers use React, Next.js, Node.js and modern cloud infrastructure to deliver experiences that delight users and support rapid business growth.",
+    benefits: [
+      "Sub-second load times with server-side rendering and edge caching",
+      "SEO-ready architecture that ranks and drives organic growth",
+      "Scalable infrastructure handling millions of concurrent users",
+      "Secure, maintainable codebases built to evolve with your business",
+    ],
+    features: [
+      { title: "Frontend Development", description: "React, Next.js and Vue applications with pixel-perfect fidelity." },
+      { title: "Backend & APIs", description: "Node.js, Express, NestJS RESTful and GraphQL APIs." },
+      { title: "Full-Stack Applications", description: "MERN/MEAN stack apps from database to deployment." },
+      { title: "SaaS Platforms", description: "Multi-tenant SaaS with subscription billing and analytics." },
+      { title: "E-commerce", description: "Headless storefronts integrated with Stripe, Shopify and more." },
+      { title: "Payment Integrations", description: "Stripe, Razorpay, Paystack and Chargebee payment flows." },
+    ],
+    process: [
+      { step: 1, name: "Requirements", description: "We document your technical requirements and define the architecture." },
+      { step: 2, name: "Design", description: "UI/UX design and component prototyping." },
+      { step: 3, name: "Development", description: "Agile sprints with weekly demos and continuous delivery." },
+      { step: 4, name: "QA & Testing", description: "End-to-end testing, performance audits and security checks." },
+      { step: 5, name: "Launch", description: "Zero-downtime deployment with monitoring and alerting." },
+    ],
+    tools: ["React", "Next.js", "TypeScript", "Node.js", "PostgreSQL", "Tailwind CSS", "Vercel", "AWS"],
+    whyUs: [
+      { title: "Performance First", description: "Core Web Vitals optimised from day one — Lighthouse scores above 95." },
+      { title: "Security Built In", description: "OWASP-compliant code, encrypted data flows and GDPR-ready architecture." },
+      { title: "Scalable by Design", description: "Cloud-native infrastructure that scales horizontally without refactoring." },
+    ],
+    faqs: [
+      { question: "What is your development stack?", answer: "Our primary stack is React/Next.js on the frontend, Node.js/NestJS on the backend, PostgreSQL or MongoDB for data, and AWS or Vercel for deployment." },
+      { question: "How long does a web app take to build?", answer: "A landing page takes 1–2 weeks. A full SaaS platform typically takes 8–16 weeks depending on complexity." },
+      { question: "Do you provide ongoing maintenance?", answer: "Yes. We offer monthly retainer packages covering updates, security patches, performance monitoring and feature enhancements." },
+    ],
+  },
+  {
+    slug: "mobile",
+    title: "Mobile App Development",
+    tagline: "Native and cross-platform apps users love",
+    description: "iOS and Android apps with fluid interfaces and stellar performance, built to delight and retain users.",
+    image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=1200&auto=format&fit=crop&q=80",
+    overview: "We build mobile applications that combine beautiful design with rock-solid engineering. Whether you need a native iOS experience, an Android app, or a cross-platform solution with React Native or Flutter, our mobile team delivers products that users love and businesses rely on.",
+    benefits: [
+      "Higher user retention with fluid, gesture-first interfaces",
+      "Single codebase options reducing development costs by up to 40%",
+      "Offline-first architecture ensuring reliability on any connection",
+      "App Store Optimisation (ASO) increasing organic downloads",
+    ],
+    features: [
+      { title: "iOS Development", description: "Native Swift apps following Apple Human Interface Guidelines." },
+      { title: "Android Development", description: "Native Kotlin apps with Material Design excellence." },
+      { title: "React Native", description: "Cross-platform apps for iOS and Android from one codebase." },
+      { title: "Flutter", description: "Beautiful, natively compiled apps with stunning performance." },
+      { title: "App Backend", description: "Scalable backend services and APIs powering your mobile app." },
+      { title: "Store Deployment", description: "App Store and Google Play submission, optimisation and launch." },
+    ],
+    process: [
+      { step: 1, name: "Discovery", description: "Define app goals, user personas and feature scope." },
+      { step: 2, name: "UI/UX Design", description: "Mobile-first wireframes and interactive prototypes." },
+      { step: 3, name: "Development", description: "Iterative sprints with TestFlight and Play Console previews." },
+      { step: 4, name: "QA & Testing", description: "Device testing across iOS and Android versions." },
+      { step: 5, name: "Launch & ASO", description: "Store submission, metadata optimisation and launch marketing." },
+    ],
+    tools: ["React Native", "Flutter", "Swift", "Kotlin", "Expo", "Firebase", "Xcode", "Android Studio"],
+    whyUs: [
+      { title: "Cross-Platform Experts", description: "We choose the right technology — native or cross-platform — based on your users, not our convenience." },
+      { title: "Performance Obsessed", description: "60fps animations, minimal battery drain and fast cold starts as standard." },
+      { title: "End-to-End Delivery", description: "From design to deployment and ASO, we handle the entire mobile lifecycle." },
+    ],
+    faqs: [
+      { question: "React Native or Flutter — which should I choose?", answer: "Both are excellent. React Native is ideal if your team knows JavaScript; Flutter offers more performance consistency across platforms. We advise based on your specific project needs." },
+      { question: "How long does a mobile app take to build?", answer: "A simple app with 5–10 screens takes 6–10 weeks. A feature-rich consumer app typically takes 12–20 weeks." },
+      { question: "Do you handle App Store submission?", answer: "Yes. We manage the entire submission process including screenshots, metadata, compliance review and binary upload." },
+    ],
+  },
+  {
+    slug: "marketing",
+    title: "Digital Marketing",
+    tagline: "Data-driven growth strategies that deliver measurable ROI",
+    description: "SEO, paid advertising, and social media strategies that generate qualified leads and accelerate growth.",
+    image: "https://images.unsplash.com/photo-1533750349088-cd871a92f312?w=1200&auto=format&fit=crop&q=80",
+    overview: "Our digital marketing team combines creative strategy with rigorous data analysis to drive sustainable business growth. From SEO and content marketing to paid campaigns and social media management, every initiative is tracked, measured and optimised to maximise your return on investment.",
+    benefits: [
+      "Increased organic visibility and qualified inbound traffic",
+      "Reduced cost-per-acquisition through continuous campaign optimisation",
+      "Multi-channel attribution delivering clear ROI visibility",
+      "Brand authority built through consistent, high-quality content",
+    ],
+    features: [
+      { title: "SEO (On/Off/Technical)", description: "Comprehensive search engine optimisation across all dimensions." },
+      { title: "Google Ads", description: "Search and display campaigns managed for maximum ROAS." },
+      { title: "Meta Advertising", description: "Facebook and Instagram ads with precision audience targeting." },
+      { title: "Social Media Management", description: "Content planning, scheduling and community management." },
+      { title: "Content Marketing", description: "SEO-optimised blogs, case studies and landing pages." },
+      { title: "Marketing Automation", description: "Automated workflows that nurture leads through the funnel." },
+    ],
+    process: [
+      { step: 1, name: "Audit", description: "Comprehensive audit of your current digital presence and competitors." },
+      { step: 2, name: "Strategy", description: "Custom growth strategy aligned with your business objectives." },
+      { step: 3, name: "Launch", description: "Campaign creation, content production and channel activation." },
+      { step: 4, name: "Optimise", description: "Weekly performance reviews and continuous A/B testing." },
+      { step: 5, name: "Report", description: "Monthly reports with transparent ROI metrics and next steps." },
+    ],
+    tools: ["Google Ads", "Meta Business Suite", "SEMrush", "Ahrefs", "HubSpot", "Google Analytics 4", "Hotjar"],
+    whyUs: [
+      { title: "Full-Funnel Approach", description: "We manage awareness through to conversion, ensuring no leakage at any stage." },
+      { title: "Transparent Reporting", description: "Real-time dashboards giving you full visibility of spend and results." },
+      { title: "ROI Guarantee", description: "We set measurable KPIs upfront and are accountable to every one of them." },
+    ],
+    faqs: [
+      { question: "How long before I see SEO results?", answer: "Typically 3–6 months for meaningful organic ranking improvements. Paid campaigns deliver results from day one." },
+      { question: "What is your minimum ad spend?", answer: "We recommend a minimum monthly ad budget of £2,000 / $2,500 to generate statistically meaningful data for optimisation." },
+      { question: "Do you manage social media daily?", answer: "Yes. Our social media packages include daily scheduling, community management, DM responses and monthly content calendars." },
+    ],
+  },
+  {
+    slug: "leadgen",
+    title: "Lead Generation",
+    tagline: "Qualified leads on autopilot — B2B and B2C at scale",
+    description: "LinkedIn outreach, cold email campaigns, and automated funnels that fill your pipeline with ready-to-buy prospects.",
+    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&auto=format&fit=crop&q=80",
+    overview: "We build end-to-end lead generation systems that consistently deliver qualified prospects into your sales pipeline. From LinkedIn outreach and cold email sequences to landing page optimisation and CRM automation, we take a systematic, data-driven approach to filling your funnel with buyers, not browsers.",
+    benefits: [
+      "Consistent, predictable flow of qualified leads each month",
+      "Reduced sales cycle through better-qualified prospects",
+      "Automated follow-up sequences that never miss a lead",
+      "Full CRM integration for seamless pipeline management",
+    ],
+    features: [
+      { title: "LinkedIn Lead Generation", description: "Targeted connection and messaging campaigns on LinkedIn." },
+      { title: "Cold Email Campaigns", description: "Personalised multi-touch email sequences with high reply rates." },
+      { title: "CRM Setup & Management", description: "HubSpot, Salesforce and custom CRM configuration." },
+      { title: "Sales Funnel Automation", description: "Automated nurture sequences from first touch to close." },
+      { title: "Lead Capture Pages", description: "High-converting landing pages with smart form optimisation." },
+      { title: "B2B & B2C Outreach", description: "Tailored strategies for both business and consumer audiences." },
+    ],
+    process: [
+      { step: 1, name: "ICP Definition", description: "Define your ideal customer profile and target segments." },
+      { step: 2, name: "List Building", description: "Curate verified, targeted prospect lists from premium databases." },
+      { step: 3, name: "Campaign Setup", description: "Configure outreach sequences, email infrastructure and CRM." },
+      { step: 4, name: "Outreach", description: "Launch and monitor multi-channel outreach campaigns." },
+      { step: 5, name: "Optimise & Scale", description: "A/B test messaging and scale winning sequences." },
+    ],
+    tools: ["HubSpot", "Salesforce", "Apollo.io", "LinkedIn Sales Navigator", "Instantly", "Lemlist", "Zapier"],
+    whyUs: [
+      { title: "Verified Data", description: "We use only premium, verified data sources to ensure high deliverability and accuracy." },
+      { title: "Personalisation at Scale", description: "AI-assisted personalisation making every outreach feel 1-to-1, even at volume." },
+      { title: "Pipeline Transparency", description: "Live CRM dashboards showing every lead, touchpoint and conversion status." },
+    ],
+    faqs: [
+      { question: "How many leads can I expect per month?", answer: "Depending on your industry and ICP, clients typically see 20–80 qualified leads per month within the first 60 days." },
+      { question: "Do you handle email warming?", answer: "Yes. We set up and warm all email infrastructure before launch to ensure maximum inbox placement." },
+      { question: "Is this compliant with GDPR and CAN-SPAM?", answer: "Absolutely. All our campaigns are designed to comply with GDPR, CAN-SPAM and LinkedIn's terms of service." },
+    ],
+  },
+  {
+    slug: "email",
+    title: "Email & Automation",
+    tagline: "Automate. Engage. Convert — at every stage of the funnel",
+    description: "Email campaigns, transactional emails, SMTP infrastructure, and marketing automation that drives real revenue.",
+    image: "https://images.unsplash.com/photo-1596526131083-e8c633c948d2?w=1200&auto=format&fit=crop&q=80",
+    overview: "Email remains the highest-ROI digital channel — when done right. We design, build and automate the full email marketing stack: from beautifully branded templates and drip sequences to transactional email infrastructure and CRM integrations. Every email is optimised for deliverability, open rates and conversions.",
+    benefits: [
+      "Average 4,200% ROI — the highest of any digital channel",
+      "Automated sequences that generate revenue while you sleep",
+      "Superior inbox placement through proper SMTP infrastructure",
+      "Deep personalisation increasing open rates by up to 50%",
+    ],
+    features: [
+      { title: "Email Campaigns", description: "Strategic campaigns that nurture subscribers toward conversion." },
+      { title: "Automation Workflows", description: "Drip sequences, welcome flows and behavioural triggers." },
+      { title: "Transactional Email", description: "Order confirmations, password resets and notifications." },
+      { title: "SMTP Infrastructure", description: "AWS SES and SendGrid setup with domain authentication." },
+      { title: "Template Design", description: "Responsive HTML email templates across all email clients." },
+      { title: "CRM Integration", description: "Two-way sync between your email platform and CRM." },
+    ],
+    process: [
+      { step: 1, name: "Audit", description: "Review current email performance and deliverability health." },
+      { step: 2, name: "Infrastructure", description: "Set up SMTP, domain authentication (SPF, DKIM, DMARC)." },
+      { step: 3, name: "Design", description: "Create branded templates and a modular component library." },
+      { step: 4, name: "Automation", description: "Build and test all automated workflows and sequences." },
+      { step: 5, name: "Optimise", description: "A/B test subject lines, CTAs and send timing." },
+    ],
+    tools: ["AWS SES", "SendGrid", "Mailchimp", "Klaviyo", "HubSpot", "ActiveCampaign", "Postmark"],
+    whyUs: [
+      { title: "Deliverability Experts", description: "We ensure your emails land in the inbox, not the spam folder, through proper authentication and list hygiene." },
+      { title: "Revenue Attribution", description: "Every email campaign is tied to revenue through UTM tracking and CRM attribution." },
+      { title: "Full-Service", description: "Strategy, copywriting, design, development and analytics — all under one roof." },
+    ],
+    faqs: [
+      { question: "What open rate should I expect?", answer: "With proper setup and good list hygiene, clients typically see 30–50% open rates, well above the industry average of 21%." },
+      { question: "How do you ensure emails don't go to spam?", answer: "We configure SPF, DKIM and DMARC records, warm up sending IPs, and maintain list hygiene through regular cleaning." },
+      { question: "Can you migrate us from our current email provider?", answer: "Yes. We handle full migrations including list transfer, template recreation and workflow rebuilds with zero disruption." },
+    ],
+  },
+  {
+    slug: "cloud",
+    title: "Cloud, DevOps & Infrastructure",
+    tagline: "Deploy. Scale. Sleep well — your infrastructure in expert hands",
+    description: "Cloud setup, CI/CD pipelines, Docker containerisation, and performance optimisation on AWS, GCP, and Azure.",
+    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&auto=format&fit=crop&q=80",
+    overview: "We design, deploy and manage cloud infrastructure that is secure, scalable and cost-efficient. From initial cloud migration and CI/CD pipeline setup to ongoing DevOps management and performance optimisation, our engineers ensure your infrastructure is always production-ready and operating at peak efficiency.",
+    benefits: [
+      "Infrastructure costs reduced by 20–40% through right-sizing and reserved instances",
+      "99.99% uptime through multi-region redundancy and auto-scaling",
+      "Deployment time reduced from hours to minutes with CI/CD automation",
+      "Security hardened infrastructure passing SOC 2 and ISO 27001 audits",
+    ],
+    features: [
+      { title: "Cloud Setup (AWS/GCP/Azure)", description: "Full cloud environment provisioning and configuration." },
+      { title: "CI/CD Pipelines", description: "Automated build, test and deployment workflows." },
+      { title: "Docker & Kubernetes", description: "Containerisation and orchestration for consistent deployments." },
+      { title: "Database Management", description: "PostgreSQL, MongoDB and Redis optimised for production." },
+      { title: "Security & Compliance", description: "Automated backups, security hardening and compliance audits." },
+      { title: "Performance Optimisation", description: "Load balancing, caching and CDN configuration." },
+    ],
+    process: [
+      { step: 1, name: "Assessment", description: "Audit existing infrastructure and identify gaps and risks." },
+      { step: 2, name: "Architecture", description: "Design cloud architecture aligned with your scale and budget." },
+      { step: 3, name: "Provisioning", description: "Infrastructure as Code (Terraform) deployment." },
+      { step: 4, name: "CI/CD Setup", description: "Configure pipelines, monitoring and alerting." },
+      { step: 5, name: "Handover", description: "Documentation, runbooks and team training." },
+    ],
+    tools: ["AWS", "GCP", "Azure", "Terraform", "Docker", "Kubernetes", "GitHub Actions", "Datadog", "Nginx"],
+    whyUs: [
+      { title: "Infrastructure as Code", description: "All infrastructure is version-controlled with Terraform — fully reproducible and auditable." },
+      { title: "Proactive Monitoring", description: "24/7 alerting and runbooks mean issues are resolved before users notice." },
+      { title: "Cost Optimisation", description: "Regular cost reviews identifying savings without compromising performance." },
+    ],
+    faqs: [
+      { question: "Which cloud provider do you recommend?", answer: "AWS for most use cases due to its maturity and breadth. We also work extensively with GCP and Azure and will recommend based on your existing stack." },
+      { question: "Do you offer 24/7 infrastructure support?", answer: "Yes. Our DevOps retainer plans include 24/7 on-call support with guaranteed SLA response times." },
+      { question: "Can you migrate our existing infrastructure?", answer: "Yes. We handle full cloud migrations with zero downtime using blue-green deployment strategies." },
+    ],
+  },
+  {
+    slug: "ai",
+    title: "AI & Advanced Tech",
+    tagline: "Intelligence built into your product — from day one",
+    description: "AI chatbots, OpenAI integrations, OCR, recommendation systems, and custom machine learning solutions.",
+    image: "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=1200&auto=format&fit=crop&q=80",
+    overview: "We integrate cutting-edge artificial intelligence into your products and workflows, delivering tangible business value — not just technical novelty. From GPT-powered chatbots and document intelligence to recommendation engines and custom ML models, our AI team builds solutions that automate, personalise and scale your business operations.",
+    benefits: [
+      "Automate up to 80% of repetitive support and operational tasks",
+      "Personalisation at scale increasing user engagement and LTV",
+      "Faster decision-making through AI-powered analytics and insights",
+      "Competitive differentiation with proprietary AI capabilities",
+    ],
+    features: [
+      { title: "AI Chatbots", description: "Intelligent conversational interfaces for support and sales." },
+      { title: "OpenAI / GPT Integration", description: "GPT-4 powered features embedded into your product." },
+      { title: "OCR & Document Processing", description: "Automated document reading, extraction and classification." },
+      { title: "Recommendation Engines", description: "Personalised content and product recommendation systems." },
+      { title: "Machine Learning Models", description: "Custom ML models trained on your proprietary data." },
+      { title: "AI Workflow Automation", description: "Intelligent automation replacing manual, repetitive processes." },
+    ],
+    process: [
+      { step: 1, name: "Use Case Definition", description: "Identify and prioritise the highest-value AI opportunities in your business." },
+      { step: 2, name: "Data Assessment", description: "Evaluate data availability and quality for model training." },
+      { step: 3, name: "Prototype", description: "Rapid proof-of-concept to validate feasibility and ROI." },
+      { step: 4, name: "Build & Train", description: "Model development, fine-tuning and integration." },
+      { step: 5, name: "Deploy & Monitor", description: "Production deployment with model performance monitoring." },
+    ],
+    tools: ["OpenAI API", "LangChain", "Python", "TensorFlow", "FastAPI", "Pinecone", "Hugging Face", "AWS SageMaker"],
+    whyUs: [
+      { title: "Practical AI", description: "We focus on AI that delivers measurable ROI — not solutions looking for problems." },
+      { title: "Production-Grade", description: "Our AI systems are built for reliability, latency and scale from the start." },
+      { title: "Responsible AI", description: "Every model we build includes bias testing, explainability and data privacy controls." },
+    ],
+    faqs: [
+      { question: "Do I need large amounts of data for AI?", answer: "Not always. We leverage pre-trained foundation models like GPT-4 that require minimal fine-tuning. Custom models require more data, which we assess during discovery." },
+      { question: "How do you ensure AI accuracy?", answer: "We establish baseline metrics, conduct rigorous evaluation and implement human-in-the-loop feedback loops to continuously improve accuracy." },
+      { question: "Is my data safe when using OpenAI?", answer: "We implement API-only integrations with zero data retention agreements and can deploy self-hosted open-source models for maximum privacy." },
+    ],
+  },
+  {
+    slug: "product",
+    title: "Product & Business Solutions",
+    tagline: "From idea to market — SaaS, MVPs and enterprise platforms",
+    description: "SaaS products, startup MVPs, CRM/ERP development, booking systems, fintech, edtech, and marketplace platforms.",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&auto=format&fit=crop&q=80",
+    overview: "We are the technical co-founders businesses wish they had from day one. Whether you are validating a startup idea with a lean MVP or building a complex enterprise platform, our product team combines deep business understanding with engineering excellence to ship products that users love and investors fund.",
+    benefits: [
+      "MVPs shipped in 6–12 weeks, accelerating time-to-market and fundraising",
+      "Product-market fit validated before significant engineering investment",
+      "Scalable architecture that grows from 100 to 10 million users",
+      "Reduced technical debt through clean, documented, maintainable code",
+    ],
+    features: [
+      { title: "SaaS Development", description: "Multi-tenant platforms with billing, analytics and onboarding." },
+      { title: "Startup MVP", description: "Rapid MVP builds to validate your idea and attract investors." },
+      { title: "Custom CRM/ERP", description: "Tailored business management systems for your workflows." },
+      { title: "Marketplace Platforms", description: "Multi-vendor marketplaces with escrow and ratings." },
+      { title: "Fintech & EdTech", description: "Specialist solutions for finance and education verticals." },
+      { title: "Booking & Scheduling", description: "Real-time availability, booking and payment systems." },
+    ],
+    process: [
+      { step: 1, name: "Product Discovery", description: "Define core value proposition, user stories and MVP scope." },
+      { step: 2, name: "Architecture", description: "Design scalable system architecture and data models." },
+      { step: 3, name: "Sprint Development", description: "2-week sprints with shippable increments and demos." },
+      { step: 4, name: "Beta Testing", description: "Controlled beta with real users and structured feedback." },
+      { step: 5, name: "Launch & Grow", description: "Production launch with analytics, monitoring and iteration." },
+    ],
+    tools: ["Next.js", "Node.js", "PostgreSQL", "Stripe", "AWS", "Redis", "Elasticsearch", "Mixpanel"],
+    whyUs: [
+      { title: "Product Thinking", description: "We ask 'should we build this?' before 'how do we build this?' — protecting your budget and timeline." },
+      { title: "Startup DNA", description: "Our founders have built and scaled startups, giving us the perspective to build products that survive contact with real users." },
+      { title: "Long-Term Partnership", description: "We stay engaged post-launch with maintenance, feature development and growth engineering." },
+    ],
+    faqs: [
+      { question: "What is your MVP development cost?", answer: "MVPs typically range from £15,000–£50,000 depending on complexity. We provide a fixed-scope, fixed-price proposal after the discovery phase." },
+      { question: "Do you offer equity-based arrangements?", answer: "In select cases for high-potential startups, we consider partial equity arrangements. This is assessed case-by-case during initial discussions." },
+      { question: "Who owns the code after the project?", answer: "You do — 100%. All source code, IP and assets are fully transferred to you upon final payment." },
+    ],
+  },
+];
+
+export function getServiceDetail(slug: string): ServiceDetail | undefined {
+  return serviceDetails.find((s) => s.slug === slug);
+}

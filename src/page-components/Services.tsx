@@ -35,6 +35,144 @@ const categoryIcons: Record<string, React.ElementType> = {
   Palette, Globe, Smartphone, TrendingUp, Target, Mail, Cloud, Brain, Briefcase,
 };
 
+function ServiceIcon({ svc }: { svc: { id: string; icon: string; bg: string; color: string } }) {
+  switch (svc.id) {
+    case "ui-design":
+      return (
+        <svg viewBox="0 0 64 64" fill="none" className="w-10 h-10">
+          <rect x="8" y="8" width="22" height="22" rx="4" fill="#A78BFA" />
+          <rect x="34" y="8" width="22" height="22" rx="4" fill="#7C3AED" opacity="0.7" />
+          <rect x="8" y="34" width="22" height="22" rx="4" fill="#C4B5FD" opacity="0.8" />
+          <circle cx="45" cy="45" r="11" fill="#F4A24D" />
+          <path d="M40 45 L44 49 L51 41" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      );
+    case "frontend-react":
+      return (
+        <svg viewBox="0 0 64 64" fill="none" className="w-10 h-10">
+          <rect x="6" y="14" width="52" height="36" rx="6" fill="#DBEAFE" />
+          <rect x="6" y="14" width="52" height="10" rx="6" fill="#3B82F6" />
+          <circle cx="16" cy="19" r="2.5" fill="white" />
+          <circle cx="24" cy="19" r="2.5" fill="white" opacity="0.6" />
+          <circle cx="32" cy="19" r="2.5" fill="white" opacity="0.4" />
+          <path d="M18 34 L24 40 L18 46" stroke="#3B82F6" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M30 46 L46 46" stroke="#93C5FD" strokeWidth="2.5" strokeLinecap="round" />
+        </svg>
+      );
+    case "android-dev":
+      return (
+        <svg viewBox="0 0 64 64" fill="none" className="w-10 h-10">
+          <rect x="18" y="6" width="28" height="52" rx="6" fill="#D1FAE5" />
+          <rect x="18" y="6" width="28" height="52" rx="6" stroke="#10B981" strokeWidth="2" />
+          <rect x="24" y="14" width="16" height="28" rx="3" fill="#10B981" opacity="0.8" />
+          <circle cx="32" cy="50" r="3" fill="#10B981" />
+          <path d="M26 20 L30 24 L38 16" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      );
+    case "marketing-strategy":
+      return (
+        <svg viewBox="0 0 64 64" fill="none" className="w-10 h-10">
+          <circle cx="32" cy="32" r="26" fill="#FEE2E2" />
+          <path d="M16 40 L24 28 L32 34 L42 20 L50 26" stroke="#EF4444" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+          <circle cx="50" cy="26" r="4" fill="#F4A24D" />
+          <circle cx="24" cy="28" r="3" fill="#EF4444" />
+        </svg>
+      );
+    case "b2b-leadgen":
+      return (
+        <svg viewBox="0 0 64 64" fill="none" className="w-10 h-10">
+          <circle cx="32" cy="22" r="12" fill="#FEF3C7" />
+          <circle cx="32" cy="22" r="7" fill="#F59E0B" />
+          <path d="M14 50 C14 38 50 38 50 50" fill="#FDE68A" />
+          <path d="M14 50 C14 38 50 38 50 50" stroke="#F59E0B" strokeWidth="2" fill="none" />
+          <path d="M44 14 L50 8 M50 8 L50 14 M50 8 L44 8" stroke="#F4A24D" strokeWidth="2" strokeLinecap="round" />
+        </svg>
+      );
+    case "email-campaigns":
+      return (
+        <svg viewBox="0 0 64 64" fill="none" className="w-10 h-10">
+          <rect x="8" y="18" width="48" height="32" rx="6" fill="#FAE8FF" />
+          <path d="M8 24 L32 38 L56 24" stroke="#C026D3" strokeWidth="2.5" strokeLinecap="round" fill="none" />
+          <rect x="8" y="18" width="48" height="10" rx="6" fill="#E879F9" opacity="0.5" />
+          <circle cx="48" cy="16" r="8" fill="#F4A24D" />
+          <path d="M44 16 L47 19 L53 13" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      );
+    case "cloud-aws":
+      return (
+        <svg viewBox="0 0 64 64" fill="none" className="w-10 h-10">
+          <path d="M48 38 C54 38 58 34 58 28 C58 22 53 18 47 19 C45 13 39 9 32 9 C23 9 16 16 16 25 C10 26 6 31 6 37 C6 43 11 48 17 48 L48 48 C54 48 58 44 58 38" fill="#CFFAFE" />
+          <path d="M48 38 C54 38 58 34 58 28 C58 22 53 18 47 19 C45 13 39 9 32 9 C23 9 16 16 16 25 C10 26 6 31 6 37 C6 43 11 48 17 48 L48 48" stroke="#06B6D4" strokeWidth="2" fill="none" />
+          <path d="M26 38 L32 32 L38 38" stroke="#0891B2" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M32 32 L32 50" stroke="#0891B2" strokeWidth="2.5" strokeLinecap="round" />
+        </svg>
+      );
+    case "ai-chatbot":
+      return (
+        <svg viewBox="0 0 64 64" fill="none" className="w-10 h-10">
+          <circle cx="32" cy="32" r="14" fill="#EDE9FE" />
+          <circle cx="32" cy="32" r="8" fill="#7C3AED" />
+          <circle cx="32" cy="32" r="3" fill="white" />
+          <path d="M32 10 L32 18" stroke="#7C3AED" strokeWidth="2.5" strokeLinecap="round" />
+          <path d="M32 46 L32 54" stroke="#7C3AED" strokeWidth="2.5" strokeLinecap="round" />
+          <path d="M10 32 L18 32" stroke="#A78BFA" strokeWidth="2.5" strokeLinecap="round" />
+          <path d="M46 32 L54 32" stroke="#A78BFA" strokeWidth="2.5" strokeLinecap="round" />
+          <path d="M17 17 L23 23" stroke="#C4B5FD" strokeWidth="2" strokeLinecap="round" />
+          <path d="M41 41 L47 47" stroke="#C4B5FD" strokeWidth="2" strokeLinecap="round" />
+          <path d="M47 17 L41 23" stroke="#C4B5FD" strokeWidth="2" strokeLinecap="round" />
+          <path d="M23 41 L17 47" stroke="#C4B5FD" strokeWidth="2" strokeLinecap="round" />
+        </svg>
+      );
+    case "saas-product":
+      return (
+        <svg viewBox="0 0 64 64" fill="none" className="w-10 h-10">
+          <rect x="8" y="32" width="14" height="24" rx="3" fill="#A5F3FC" />
+          <rect x="25" y="20" width="14" height="36" rx="3" fill="#06B6D4" />
+          <rect x="42" y="10" width="14" height="46" rx="3" fill="#0E7490" />
+          <path d="M12 28 L26 18 L40 22 L54 10" stroke="#F4A24D" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+          <circle cx="54" cy="10" r="3.5" fill="#F4A24D" />
+        </svg>
+      );
+    case "logo-design":
+      return (
+        <svg viewBox="0 0 64 64" fill="none" className="w-10 h-10">
+          <circle cx="32" cy="32" r="24" fill="#FEF3C7" />
+          <path d="M32 14 L38 26 L52 28 L42 38 L44 52 L32 46 L20 52 L22 38 L12 28 L26 26 Z" fill="#F59E0B" />
+          <circle cx="32" cy="32" r="8" fill="#FDE68A" />
+          <path d="M28 32 L30 34 L36 28" stroke="#F59E0B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      );
+    case "seo-onpage":
+      return (
+        <svg viewBox="0 0 64 64" fill="none" className="w-10 h-10">
+          <circle cx="26" cy="26" r="16" fill="#DBEAFE" stroke="#3B82F6" strokeWidth="3" />
+          <path d="M38 38 L50 50" stroke="#3B82F6" strokeWidth="4" strokeLinecap="round" />
+          <circle cx="26" cy="26" r="10" fill="#3B82F6" opacity="0.3" />
+          <path d="M22 26 L24 28 L30 22" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      );
+    case "google-ads-search":
+      return (
+        <svg viewBox="0 0 64 64" fill="none" className="w-10 h-10">
+          <rect x="8" y="16" width="48" height="32" rx="4" fill="#FEE2E2" />
+          <rect x="8" y="16" width="48" height="8" rx="4" fill="#EF4444" />
+          <circle cx="16" cy="20" r="2" fill="white" opacity="0.8" />
+          <circle cx="24" cy="20" r="2" fill="white" opacity="0.6" />
+          <path d="M20 32 L24 36 L32 28" stroke="#EF4444" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+          <rect x="16" y="40" width="32" height="4" rx="2" fill="#F87171" />
+        </svg>
+      );
+    default: {
+      const Icon = lucideMap[svc.icon] || Globe;
+      return (
+        <div className={`w-10 h-10 rounded-xl ${svc.bg} ${svc.color} flex items-center justify-center`}>
+          <Icon size={18} />
+        </div>
+      );
+    }
+  }
+}
+
 export function Services() {
   const [activeCategory, setActiveCategory] = useState<string>("all");
   const [showAllServices, setShowAllServices] = useState<boolean>(false);
@@ -154,7 +292,7 @@ export function Services() {
           ============================================= */}
       {activeCategory === "all" && (
         <section id="all-services" className="py-24 bg-[#F3F4F6] border-y border-gray-100">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-[1400px] mx-auto px-4 sm:px-6">
             {/* HEADER: word circled in teal oval */}
             <div className="mb-16 text-center">
               <h2 className="font-script text-5xl sm:text-6xl md:text-[70px] font-bold text-[#0D0F14] leading-tight">
@@ -172,160 +310,16 @@ export function Services() {
             </div>
 
             <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-6 md:gap-8">
-              {servicesToDisplay.map((svc) => {
-                // Custom SVG icons mapping
-                const getServiceIcon = (id: string) => {
-                  switch (id) {
-                    case "ui-design":
-                      return (
-                        <svg viewBox="0 0 64 64" fill="none" className="w-10 h-10">
-                          <rect x="8" y="8" width="22" height="22" rx="4" fill="#A78BFA" />
-                          <rect x="34" y="8" width="22" height="22" rx="4" fill="#7C3AED" opacity="0.7" />
-                          <rect x="8" y="34" width="22" height="22" rx="4" fill="#C4B5FD" opacity="0.8" />
-                          <circle cx="45" cy="45" r="11" fill="#F4A24D" />
-                          <path d="M40 45 L44 49 L51 41" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                      );
-                    case "frontend-react":
-                      return (
-                        <svg viewBox="0 0 64 64" fill="none" className="w-10 h-10">
-                          <rect x="6" y="14" width="52" height="36" rx="6" fill="#DBEAFE" />
-                          <rect x="6" y="14" width="52" height="10" rx="6" fill="#3B82F6" />
-                          <circle cx="16" cy="19" r="2.5" fill="white" />
-                          <circle cx="24" cy="19" r="2.5" fill="white" opacity="0.6" />
-                          <circle cx="32" cy="19" r="2.5" fill="white" opacity="0.4" />
-                          <path d="M18 34 L24 40 L18 46" stroke="#3B82F6" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                          <path d="M30 46 L46 46" stroke="#93C5FD" strokeWidth="2.5" strokeLinecap="round" />
-                        </svg>
-                      );
-                    case "android-dev":
-                      return (
-                        <svg viewBox="0 0 64 64" fill="none" className="w-10 h-10">
-                          <rect x="18" y="6" width="28" height="52" rx="6" fill="#D1FAE5" />
-                          <rect x="18" y="6" width="28" height="52" rx="6" stroke="#10B981" strokeWidth="2" />
-                          <rect x="24" y="14" width="16" height="28" rx="3" fill="#10B981" opacity="0.8" />
-                          <circle cx="32" cy="50" r="3" fill="#10B981" />
-                          <path d="M26 20 L30 24 L38 16" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                      );
-                    case "marketing-strategy":
-                      return (
-                        <svg viewBox="0 0 64 64" fill="none" className="w-10 h-10">
-                          <circle cx="32" cy="32" r="26" fill="#FEE2E2" />
-                          <path d="M16 40 L24 28 L32 34 L42 20 L50 26" stroke="#EF4444" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-                          <circle cx="50" cy="26" r="4" fill="#F4A24D" />
-                          <circle cx="24" cy="28" r="3" fill="#EF4444" />
-                        </svg>
-                      );
-                    case "b2b-leadgen":
-                      return (
-                        <svg viewBox="0 0 64 64" fill="none" className="w-10 h-10">
-                          <circle cx="32" cy="22" r="12" fill="#FEF3C7" />
-                          <circle cx="32" cy="22" r="7" fill="#F59E0B" />
-                          <path d="M14 50 C14 38 50 38 50 50" fill="#FDE68A" />
-                          <path d="M14 50 C14 38 50 38 50 50" stroke="#F59E0B" strokeWidth="2" fill="none" />
-                          <path d="M44 14 L50 8 M50 8 L50 14 M50 8 L44 8" stroke="#F4A24D" strokeWidth="2" strokeLinecap="round" />
-                        </svg>
-                      );
-                    case "email-campaigns":
-                      return (
-                        <svg viewBox="0 0 64 64" fill="none" className="w-10 h-10">
-                          <rect x="8" y="18" width="48" height="32" rx="6" fill="#FAE8FF" />
-                          <path d="M8 24 L32 38 L56 24" stroke="#C026D3" strokeWidth="2.5" strokeLinecap="round" fill="none" />
-                          <rect x="8" y="18" width="48" height="10" rx="6" fill="#E879F9" opacity="0.5" />
-                          <circle cx="48" cy="16" r="8" fill="#F4A24D" />
-                          <path d="M44 16 L47 19 L53 13" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                      );
-                    case "cloud-aws":
-                      return (
-                        <svg viewBox="0 0 64 64" fill="none" className="w-10 h-10">
-                          <path d="M48 38 C54 38 58 34 58 28 C58 22 53 18 47 19 C45 13 39 9 32 9 C23 9 16 16 16 25 C10 26 6 31 6 37 C6 43 11 48 17 48 L48 48 C54 48 58 44 58 38" fill="#CFFAFE" />
-                          <path d="M48 38 C54 38 58 34 58 28 C58 22 53 18 47 19 C45 13 39 9 32 9 C23 9 16 16 16 25 C10 26 6 31 6 37 C6 43 11 48 17 48 L48 48" stroke="#06B6D4" strokeWidth="2" fill="none" />
-                          <path d="M26 38 L32 32 L38 38" stroke="#0891B2" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                          <path d="M32 32 L32 50" stroke="#0891B2" strokeWidth="2.5" strokeLinecap="round" />
-                        </svg>
-                      );
-                    case "ai-chatbot":
-                      return (
-                        <svg viewBox="0 0 64 64" fill="none" className="w-10 h-10">
-                          <circle cx="32" cy="32" r="14" fill="#EDE9FE" />
-                          <circle cx="32" cy="32" r="8" fill="#7C3AED" />
-                          <circle cx="32" cy="32" r="3" fill="white" />
-                          <path d="M32 10 L32 18" stroke="#7C3AED" strokeWidth="2.5" strokeLinecap="round" />
-                          <path d="M32 46 L32 54" stroke="#7C3AED" strokeWidth="2.5" strokeLinecap="round" />
-                          <path d="M10 32 L18 32" stroke="#A78BFA" strokeWidth="2.5" strokeLinecap="round" />
-                          <path d="M46 32 L54 32" stroke="#A78BFA" strokeWidth="2.5" strokeLinecap="round" />
-                          <path d="M17 17 L23 23" stroke="#C4B5FD" strokeWidth="2" strokeLinecap="round" />
-                          <path d="M41 41 L47 47" stroke="#C4B5FD" strokeWidth="2" strokeLinecap="round" />
-                          <path d="M47 17 L41 23" stroke="#C4B5FD" strokeWidth="2" strokeLinecap="round" />
-                          <path d="M23 41 L17 47" stroke="#C4B5FD" strokeWidth="2" strokeLinecap="round" />
-                        </svg>
-                      );
-                    case "saas-product":
-                      return (
-                        <svg viewBox="0 0 64 64" fill="none" className="w-10 h-10">
-                          <rect x="8" y="32" width="14" height="24" rx="3" fill="#A5F3FC" />
-                          <rect x="25" y="20" width="14" height="36" rx="3" fill="#06B6D4" />
-                          <rect x="42" y="10" width="14" height="46" rx="3" fill="#0E7490" />
-                          <path d="M12 28 L26 18 L40 22 L54 10" stroke="#F4A24D" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-                          <circle cx="54" cy="10" r="3.5" fill="#F4A24D" />
-                        </svg>
-                      );
-                    case "logo-design":
-                      return (
-                        <svg viewBox="0 0 64 64" fill="none" className="w-10 h-10">
-                          <circle cx="32" cy="32" r="24" fill="#FEF3C7" />
-                          <path d="M32 14 L38 26 L52 28 L42 38 L44 52 L32 46 L20 52 L22 38 L12 28 L26 26 Z" fill="#F59E0B" />
-                          <circle cx="32" cy="32" r="8" fill="#FDE68A" />
-                          <path d="M28 32 L30 34 L36 28" stroke="#F59E0B" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                      );
-                    case "seo-onpage":
-                      return (
-                        <svg viewBox="0 0 64 64" fill="none" className="w-10 h-10">
-                          <circle cx="26" cy="26" r="16" fill="#DBEAFE" stroke="#3B82F6" strokeWidth="3" />
-                          <path d="M38 38 L50 50" stroke="#3B82F6" strokeWidth="4" strokeLinecap="round" />
-                          <circle cx="26" cy="26" r="10" fill="#3B82F6" opacity="0.3" />
-                          <path d="M22 26 L24 28 L30 22" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                      );
-                    case "google-ads-search":
-                      return (
-                        <svg viewBox="0 0 64 64" fill="none" className="w-10 h-10">
-                          <rect x="8" y="16" width="48" height="32" rx="4" fill="#FEE2E2" />
-                          <rect x="8" y="16" width="48" height="8" rx="4" fill="#EF4444" />
-                          <circle cx="16" cy="20" r="2" fill="white" opacity="0.8" />
-                          <circle cx="24" cy="20" r="2" fill="white" opacity="0.6" />
-                          <path d="M20 32 L24 36 L32 28" stroke="#EF4444" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                          <rect x="16" y="40" width="32" height="4" rx="2" fill="#F87171" />
-                        </svg>
-                      );
-                    default:
-                      const Icon = lucideMap[svc.icon] || Globe;
-                      return (
-                        <div className={`w-10 h-10 rounded-xl ${svc.bg} ${svc.color} flex items-center justify-center`}>
-                          <Icon size={18} />
-                        </div>
-                      );
-                  }
-                };
-
-                return (
-                  <Link
-                    href={`/services/${svc.id}`}
-                    key={svc.id}
-                    className="flex flex-col items-center gap-3 group"
-                  >
-                    <div className="w-20 h-20 sm:w-24 sm:h-24 bg-white rounded-[20px] shadow-[0_4px_20px_rgba(0,0,0,0.07)] border border-gray-100 flex items-center justify-center transition-all duration-300 group-hover:-translate-y-1.5 group-hover:shadow-[0_12px_32px_rgba(0,0,0,0.12)]">
-                      {getServiceIcon(svc.id)}
-                    </div>
-                    <span className="text-[12px] sm:text-[13px] font-semibold text-gray-700 text-center leading-tight group-hover:text-[#0D0F14] transition-colors">
-                      {svc.title}
-                    </span>
-                  </Link>
-                );
-              })}
+              {servicesToDisplay.map((svc) => (
+                <Link key={svc.id} href={`/services/${svc.categoryId}`} className="flex flex-col items-center gap-3 group">
+                  <div className="w-20 h-20 sm:w-24 sm:h-24 bg-white rounded-[20px] shadow-[0_4px_20px_rgba(0,0,0,0.07)] border border-gray-100 flex items-center justify-center transition-all duration-300 group-hover:-translate-y-1.5 group-hover:shadow-[0_12px_32px_rgba(0,0,0,0.12)]">
+                    <ServiceIcon svc={svc} />
+                  </div>
+                  <span className="text-[12px] sm:text-[13px] font-semibold text-gray-700 text-center leading-tight group-hover:text-[#0D0F14] transition-colors">
+                    {svc.title}
+                  </span>
+                </Link>
+              ))}
 
               {/* Show More Button */}
               {!showAllServices && (
@@ -374,27 +368,18 @@ export function Services() {
       {/* Category-specific services display */}
       {activeCategory !== "all" && (
         <section className="py-24 bg-[#F3F4F6]">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-[1400px] mx-auto px-4 sm:px-6">
             <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-6 md:gap-8">
-              {filteredServices.map((svc) => {
-                const Icon = lucideMap[svc.icon] || Globe;
-                return (
-                  <Link
-                    href={`/services/${svc.id}`}
-                    key={svc.id}
-                    className="flex flex-col items-center gap-3 group"
-                  >
-                    <div className="w-20 h-20 sm:w-24 sm:h-24 bg-white rounded-[20px] shadow-[0_4px_20px_rgba(0,0,0,0.07)] border border-gray-100 flex items-center justify-center transition-all duration-300 group-hover:-translate-y-1.5 group-hover:shadow-[0_12px_32px_rgba(0,0,0,0.12)]">
-                      <div className={`w-10 h-10 rounded-xl ${svc.bg} ${svc.color} flex items-center justify-center`}>
-                        <Icon size={18} />
-                      </div>
-                    </div>
-                    <span className="text-[12px] sm:text-[13px] font-semibold text-gray-700 text-center leading-tight group-hover:text-[#0D0F14] transition-colors">
-                      {svc.title}
-                    </span>
-                  </Link>
-                );
-              })}
+              {filteredServices.map((svc) => (
+                <Link key={svc.id} href={`/services/${svc.categoryId}`} className="flex flex-col items-center gap-3 group">
+                  <div className="w-20 h-20 sm:w-24 sm:h-24 bg-white rounded-[20px] shadow-[0_4px_20px_rgba(0,0,0,0.07)] border border-gray-100 flex items-center justify-center transition-all duration-300 group-hover:-translate-y-1.5 group-hover:shadow-[0_12px_32px_rgba(0,0,0,0.12)]">
+                    <ServiceIcon svc={svc} />
+                  </div>
+                  <span className="text-[12px] sm:text-[13px] font-semibold text-gray-700 text-center leading-tight group-hover:text-[#0D0F14] transition-colors">
+                    {svc.title}
+                  </span>
+                </Link>
+              ))}
             </div>
 
             <div className="text-center pt-10">
@@ -413,8 +398,8 @@ export function Services() {
           3. FEATURED SERVICES — Alternating Sections
           ============================================= */}
       <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-28">
-          {serviceCategories.map((cat, idx) => {
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 space-y-28">
+          {serviceCategories.slice(0, 5).map((cat, idx) => {
             const isEven = idx % 2 === 1;
             return (
               <div key={cat.id} id={cat.id} className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pt-20 -mt-20">
@@ -488,7 +473,7 @@ export function Services() {
           4. PROCESS STEPS — Odoo Style Enhanced
           ============================================= */}
       <section className="py-32 bg-gradient-to-b from-white via-gray-50/30 to-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6">
           {/* HEADER */}
           <div className="mb-24 text-center">
             <h2 className="font-script text-5xl sm:text-6xl md:text-[70px] font-bold text-[#0D0F14] leading-tight">
