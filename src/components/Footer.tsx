@@ -55,10 +55,10 @@ export function Footer() {
           <div className="col-span-1">
             <h3 className="font-bold text-white mb-4">Services</h3>
             <ul className="space-y-3">
-              <li><Link href="/services" className="hover:text-white transition-colors">Web Development</Link></li>
-              <li><Link href="/services" className="hover:text-white transition-colors">Mobile Apps</Link></li>
-              <li><Link href="/services" className="hover:text-white transition-colors">Cybersecurity</Link></li>
-              <li><Link href="/services" className="hover:text-white transition-colors">Cloud Solutions</Link></li>
+              <li><Link href="/services/frontend-nextjs" className="hover:text-white transition-colors">Web Development</Link></li>
+              <li><Link href="/services/cross-platform-rn" className="hover:text-white transition-colors">Mobile Apps</Link></li>
+              <li><Link href="/services/backup-security" className="hover:text-white transition-colors">Cybersecurity</Link></li>
+              <li><Link href="/services/cloud-aws" className="hover:text-white transition-colors">Cloud Solutions</Link></li>
               <li><Link href="/services" className="hover:text-white transition-colors">All Services</Link></li>
             </ul>
           </div>

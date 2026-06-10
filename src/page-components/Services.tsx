@@ -311,7 +311,7 @@ export function Services() {
 
             <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-6 md:gap-8">
               {servicesToDisplay.map((svc) => (
-                <Link key={svc.id} href={`/services/${svc.categoryId}`} className="flex flex-col items-center gap-3 group">
+                <Link key={svc.id} href={`/services/${svc.id}`} className="flex flex-col items-center gap-3 group">
                   <div className="w-20 h-20 sm:w-24 sm:h-24 bg-white rounded-[20px] shadow-[0_4px_20px_rgba(0,0,0,0.07)] border border-gray-100 flex items-center justify-center transition-all duration-300 group-hover:-translate-y-1.5 group-hover:shadow-[0_12px_32px_rgba(0,0,0,0.12)]">
                     <ServiceIcon svc={svc} />
                   </div>
@@ -371,7 +371,7 @@ export function Services() {
           <div className="max-w-[1400px] mx-auto px-4 sm:px-6">
             <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-6 md:gap-8">
               {filteredServices.map((svc) => (
-                <Link key={svc.id} href={`/services/${svc.categoryId}`} className="flex flex-col items-center gap-3 group">
+                <Link key={svc.id} href={`/services/${svc.id}`} className="flex flex-col items-center gap-3 group">
                   <div className="w-20 h-20 sm:w-24 sm:h-24 bg-white rounded-[20px] shadow-[0_4px_20px_rgba(0,0,0,0.07)] border border-gray-100 flex items-center justify-center transition-all duration-300 group-hover:-translate-y-1.5 group-hover:shadow-[0_12px_32px_rgba(0,0,0,0.12)]">
                     <ServiceIcon svc={svc} />
                   </div>
@@ -446,9 +446,10 @@ export function Services() {
                         {cat.services.slice(0, 6).map((svc) => {
                           const SvcIcon = lucideMap[svc.icon] || Globe;
                           return (
-                            <div
+                            <Link
                               key={svc.id}
-                              className="bg-white rounded-xl p-3 border border-gray-100 text-center hover:shadow-sm transition-all"
+                              href={`/services/${svc.id}`}
+                              className="bg-white rounded-xl p-3 border border-gray-100 text-center hover:shadow-sm hover:border-[#00BFA6]/40 transition-all"
                             >
                               <div className={`w-8 h-8 mx-auto rounded-lg ${cat.bg} ${cat.color} flex items-center justify-center mb-2`}>
                                 <SvcIcon size={16} />
@@ -456,7 +457,7 @@ export function Services() {
                               <span className="text-[9px] font-bold text-gray-700 block leading-tight">
                                 {svc.title.length > 18 ? svc.title.slice(0, 18) + "…" : svc.title}
                               </span>
-                            </div>
+                            </Link>
                           );
                         })}
                       </div>
