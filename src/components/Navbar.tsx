@@ -205,7 +205,7 @@ export function Navbar({ user, onLogout }: NavbarProps) {
                           {category.services.slice(0, 4).map((service) => (
                             <li key={service.id}>
                               <Link
-                                href="/services"
+                                href={`/services/${service.id}`}
                                 className="text-[13px] text-gray-600 hover:text-[#0D0F14] py-1 transition-colors block"
                               >
                                 {service.title}

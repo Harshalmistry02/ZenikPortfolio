@@ -12,13 +12,13 @@ export async function POST(request: NextRequest) {
     const data = newsletterSchema.parse(await request.json());
 
     const existing = await prisma.newsletterSubscriber.findUnique({ where: { email: data.email } });
-    if (existing?.isActive) {
+    if (existing?.status === 'active') {
       return NextResponse.json({ message: 'Already subscribed' }, { status: 200 });
     }
 
     const subscriber = await prisma.newsletterSubscriber.upsert({
       where: { email: data.email },
-      update: { isActive: true, unsubscribedAt: null },
+      update: { status: 'active' },
       create: { email: data.email, name: data.name },
     });
 

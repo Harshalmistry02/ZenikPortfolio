@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import {
   ArrowRight, Check, Palette, Globe, Smartphone, TrendingUp, Target,
@@ -311,7 +312,8 @@ export function Services() {
                 };
 
                 return (
-                  <div
+                  <Link
+                    href={`/services/${svc.id}`}
                     key={svc.id}
                     className="flex flex-col items-center gap-3 group"
                   >
@@ -321,7 +323,7 @@ export function Services() {
                     <span className="text-[12px] sm:text-[13px] font-semibold text-gray-700 text-center leading-tight group-hover:text-[#0D0F14] transition-colors">
                       {svc.title}
                     </span>
-                  </div>
+                  </Link>
                 );
               })}
 
@@ -377,7 +379,8 @@ export function Services() {
               {filteredServices.map((svc) => {
                 const Icon = lucideMap[svc.icon] || Globe;
                 return (
-                  <div
+                  <Link
+                    href={`/services/${svc.id}`}
                     key={svc.id}
                     className="flex flex-col items-center gap-3 group"
                   >
@@ -389,7 +392,7 @@ export function Services() {
                     <span className="text-[12px] sm:text-[13px] font-semibold text-gray-700 text-center leading-tight group-hover:text-[#0D0F14] transition-colors">
                       {svc.title}
                     </span>
-                  </div>
+                  </Link>
                 );
               })}
             </div>
@@ -411,10 +414,10 @@ export function Services() {
           ============================================= */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-28">
-          {serviceCategories.slice(0, 5).map((cat, idx) => {
+          {serviceCategories.map((cat, idx) => {
             const isEven = idx % 2 === 1;
             return (
-              <div key={cat.id} className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+              <div key={cat.id} id={cat.id} className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pt-20 -mt-20">
                 {/* Text */}
                 <div className={`lg:col-span-5 space-y-5 text-left ${isEven ? "lg:order-2" : ""}`}>
                   <div className="w-10 h-10 rounded-full bg-teal-50 border border-teal-100 flex items-center justify-center font-mono text-lg font-black text-[#00BFA6]">
