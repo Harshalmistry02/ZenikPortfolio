@@ -126,12 +126,12 @@ export function Contact() {
   ];
 
   const faqs: FAQ[] = [
-    { question: "What is your typical project timeline?", answer: "Most projects take 6–12 weeks from kickoff to launch, depending on scope and complexity. We'll share a detailed timeline during the discovery call." },
-    { question: "Do you work with early-stage startups?", answer: "Absolutely. We love partnering with startups and offer flexible engagement models to fit your budget and stage of growth." },
-    { question: "What information should I include in my message?", answer: "A brief description of your project, goals, rough timeline, and budget range is ideal. Don't worry if you don't have all the details — we'll ask the right questions." },
-    { question: "How quickly will you respond?", answer: "We aim to respond to all inquiries within 1 business day. For urgent matters, calling us directly is the fastest route." },
-    { question: "Do clients own the final deliverables?", answer: "Yes. Once the project is complete and payment is finalised, you own all code, designs, and intellectual property outright." },
-    { question: "Can you sign an NDA before we discuss our project?", answer: "Of course. We're happy to sign an NDA before any detailed discussions. Just mention it in your message." },
+    { question: "What is your typical project timeline?", answer: "Standard MVP development takes 6 to 12 weeks. Large system integrations or custom databases typically require 3 to 6 months." },
+    { question: "Do you work with early-stage startups?", answer: "Yes. We partner with growing startups to design and build investment-ready MVPs and customer portals." },
+    { question: "What information should I include in my message?", answer: "A brief overview of your business problem, target timeline, and budget estimate is helpful. We will clarify the technical details on our discovery call." },
+    { question: "How quickly will you respond?", answer: "We review all project inquiries within 1 business day to schedule a direct introductory call." },
+    { question: "Do clients own the final deliverables?", answer: "Yes, you own 100% of the code, designs, and intellectual property. The repository ownership is transferred directly to your team upon final payment." },
+    { question: "Can you sign an NDA before we discuss our project?", answer: "Yes. We regularly sign NDAs before discovery calls to protect your proprietary ideas and operational data." },
   ];
 
   return (

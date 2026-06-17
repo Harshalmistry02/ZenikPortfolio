@@ -28,26 +28,26 @@ const jetBrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Zenik Studio — Digital Product Agency",
-    template: "%s | Zenik Studio",
+    default: "Zenik | Custom Software Development & Digital Product Agency",
+    template: "%s | Zenik",
   },
   description:
-    "Zenik Studio is a UK & USA digital product agency building modern web apps, mobile apps, and AI-powered solutions for ambitious brands.",
-  keywords: ["web development", "mobile apps", "UI/UX design", "AI", "Next.js", "React", "Zenik Studio"],
-  authors: [{ name: "Zenik Studio", url: "https://zenik.studio" }],
+    "We design and build secure, high-performance custom web applications, mobile apps, and automated systems that drive real business growth. Partner with Zenik.",
+  keywords: ["web development", "mobile apps", "UI/UX design", "AI", "Next.js", "React", "Zenik Studio", "Zenik"],
+  authors: [{ name: "Zenik", url: "https://zenik.studio" }],
   metadataBase: new URL("https://zenik.studio"),
   openGraph: {
-    title: "Zenik Studio — Digital Product Agency",
-    description: "We build modern web, mobile, and AI solutions for ambitious brands across the UK & USA.",
+    title: "Zenik | Custom Software Development & Digital Product Agency",
+    description: "We design and build secure, high-performance custom web applications, mobile apps, and automated systems that drive real business growth. Partner with Zenik.",
     url: "https://zenik.studio",
-    siteName: "Zenik Studio",
+    siteName: "Zenik",
     locale: "en_GB",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Zenik Studio — Digital Product Agency",
-    description: "We build modern web, mobile, and AI solutions for ambitious brands across the UK & USA.",
+    title: "Zenik | Custom Software Development & Digital Product Agency",
+    description: "We design and build secure, high-performance custom web applications, mobile apps, and automated systems that drive real business growth. Partner with Zenik.",
   },
   robots: {
     index: true,

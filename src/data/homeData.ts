@@ -13,18 +13,18 @@ import type {
    ================================================ */
 
 export const stats: StatItem[] = [
-  { value: "80", label: "Projects Delivered", suffix: "+" },
-  { value: "45", label: "Happy Clients", suffix: "+" },
-  { value: "12", label: "Countries Served", suffix: "+" },
-  { value: "99", label: "Client Satisfaction", suffix: "%" },
+  { value: "95", label: "Projects Delivered", suffix: "+" },
+  { value: "60", label: "Happy Clients", suffix: "+" },
+  { value: "15", label: "Countries Served", suffix: "+" },
+  { value: "99.2", label: "Client Retention", suffix: "%" },
 ];
 
 // Community-style stats for hero sections
 export const communityStats: StatItem[] = [
-  { value: "80", label: "Projects Delivered", suffix: "+" }, // Main hero stat
-  { value: "12", label: "Countries Served", suffix: "+" },
-  { value: "45", label: "Happy Clients", suffix: "+" },
-  { value: "99", label: "Client Satisfaction", suffix: "%" },
+  { value: "95", label: "Projects Delivered", suffix: "+" }, // Main hero stat
+  { value: "15", label: "Countries Served", suffix: "+" },
+  { value: "60", label: "Happy Clients", suffix: "+" },
+  { value: "99.2", label: "Client Retention", suffix: "%" },
 ];
 
 /* ================================================
@@ -33,21 +33,21 @@ export const communityStats: StatItem[] = [
 
 export const whyZenikFeatures: FeatureCard[] = [
   {
-    title: "Rapid Delivery",
+    title: "Rapid MVP Delivery",
     description:
-      "Ship MVPs in weeks, not months. Our streamlined process and expert teams accelerate your time-to-market without sacrificing quality.",
+      "Launch your product in weeks, not months. We follow a streamlined sprint model to get your software to market quickly without cutting corners.",
     iconName: "Zap",
   },
   {
-    title: "Secure by Default",
+    title: "Security by Design",
     description:
-      "Every line of code is written with security in mind. OWASP compliance, encrypted data flows, and rigorous penetration testing baked in.",
+      "Every system is built to protect your data. We incorporate encryption, OWASP guidelines, and compliance checks from day one.",
     iconName: "Shield",
   },
   {
-    title: "Scale-Ready Architecture",
+    title: "Scale-Ready Structure",
     description:
-      "Built to grow with your business. Cloud-native infrastructure, microservices, and modular design handle millions of users effortlessly.",
+      "Never worry about crash reports. We build clean, modular architectures that easily handle traffic spikes and team growth.",
     iconName: "Layers",
   },
 ];
@@ -60,37 +60,37 @@ export const processSteps: ProcessStep[] = [
   {
     num: "1",
     name: "Discover",
-    description: "We understand your goals, challenges, and opportunities through deep research.",
+    description: "We align on your goals, identify potential challenges, and define the scope through research.",
     iconName: "Search",
   },
   {
     num: "2",
     name: "Plan",
-    description: "We create a clear roadmap and technical architecture tailored to your needs.",
+    description: "We map out a clear project timeline, wireframes, and choose the most stable technology stack.",
     iconName: "FileText",
   },
   {
     num: "3",
     name: "Design",
-    description: "Pixel-perfect UI/UX design that delights users and drives conversion.",
+    description: "We create high-fidelity visual mockups and interactive prototypes to review before coding.",
     iconName: "Paintbrush",
   },
   {
     num: "4",
     name: "Build",
-    description: "Our engineers build with speed, quality, and production-grade standards.",
+    description: "Our developers write clean, well-tested code in regular sprints, keeping you updated.",
     iconName: "Code2",
   },
   {
     num: "5",
     name: "Test",
-    description: "Rigorous QA testing ensures bug-free, secure, and performant delivery.",
+    description: "We run quality assurance audits and security tests to ensure the software works perfectly.",
     iconName: "CheckCircle",
   },
   {
     num: "6",
     name: "Launch",
-    description: "We deploy, test, and scale for long-term success and growth.",
+    description: "We safely deploy your project, monitor server performance, and provide post-launch support.",
     iconName: "Rocket",
   },
 ];
@@ -103,7 +103,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "t1",
     quote:
-      "Zenik transformed our idea into a powerful product. Their team is reliable, skilled, and a pleasure to work with. The quality exceeded every expectation.",
+      "Zenik turned our initial wireframes into a secure, functional dashboard. Their engineering team communicated clearly, hit every major deadline, and delivered code that passed our security audits with ease.",
     author: "James Carter",
     role: "CTO",
     company: "Fintech Labs",
@@ -114,7 +114,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "t2",
     quote:
-      "Professional, fast, and innovative. They delivered our mobile app two weeks ahead of schedule with zero critical bugs. Outstanding team.",
+      "They delivered our mobile app ahead of schedule. The interface is fluid, the database handles offline sync perfectly, and launching on the app stores was completely hands-off for us.",
     author: "Sophia Patel",
     role: "Product Lead",
     company: "Healthify",
@@ -125,7 +125,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "t3",
     quote:
-      "Top-notch security and architecture. Zenik is our go-to tech partner for all mission-critical infrastructure. Highly recommended.",
+      "Zenik serves as our reliable development partner. Their cloud setups are stable, secure, and easily handle our traffic spikes. We trust them with our core infrastructure.",
     author: "Daniel Wu",
     role: "CEO",
     company: "CloudScale",
@@ -136,7 +136,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "t4",
     quote:
-      "Our conversion rate increased by 340% after Zenik redesigned our landing pages. The ROI was incredible within the first month alone.",
+      "Our lead registration rate increased significantly after the redesign. They focused heavily on speed and clear user journeys, which paid off almost immediately.",
     author: "Emily Chen",
     role: "Marketing Director",
     company: "GrowthPath",
@@ -147,7 +147,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "t5",
     quote:
-      "The AI chatbot they built handles 80% of our support tickets automatically. Our team can now focus on complex issues that actually need human attention.",
+      "The database automation tools they built for us have cut support response times in half. It freed up our team to focus on customer calls rather than manual data entry.",
     author: "Marcus Rodriguez",
     role: "VP of Operations",
     company: "TechServe",
@@ -158,7 +158,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "t6",
     quote:
-      "We've replaced 14 different apps with the custom platform Zenik built. It simplified our entire operation and our team morale skyrocketed.",
+      "We replaced multiple expensive software subscriptions with the custom database portal Zenik developed. It simplified our internal reporting and saved us thousands in monthly fees.",
     author: "Olivia Bennett",
     role: "COO",
     company: "NexGen Systems",
@@ -181,7 +181,7 @@ export const portfolioProjects: ProjectItem[] = [
     image:
       "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&auto=format&fit=crop&q=80",
     description:
-      "A secure, premium corporate analytics dashboard with real-time data feeds and automated reporting.",
+      "A secure corporate analytics portal with real-time financial reporting, user access levels, and automated document generation.",
     technologies: ["Next.js", "TypeScript", "D3.js", "Tailwind CSS"],
     featured: true,
   },
@@ -193,7 +193,7 @@ export const portfolioProjects: ProjectItem[] = [
     image:
       "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800&auto=format&fit=crop&q=80",
     description:
-      "Cross-platform iOS and Android workout tracker with offline sync and rich push notifications.",
+      "A cross-platform iOS and Android exercise application featuring offline storage, push notifications, and wearable device integration.",
     technologies: ["React Native", "Expo", "Node.js", "PostgreSQL"],
   },
   {
@@ -204,7 +204,7 @@ export const portfolioProjects: ProjectItem[] = [
     image:
       "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&auto=format&fit=crop&q=80",
     description:
-      "Full-stack marketing automation platform with campaign management, analytics, and A/B testing.",
+      "A custom marketing system with drag-and-drop workflow builders, detailed tracking, and automated email trigger logic.",
     technologies: ["React", "Node.js", "MongoDB", "SendGrid"],
   },
   {
@@ -215,7 +215,7 @@ export const portfolioProjects: ProjectItem[] = [
     image:
       "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=800&auto=format&fit=crop&q=80",
     description:
-      "Ultra-fast headless Shopify frontend with localized currencies and complex shipping logic.",
+      "A headless e-commerce store with rapid page load speeds, custom payment checkouts, and international shipping configurations.",
     technologies: ["Next.js", "Shopify GraphQL", "Stripe", "Vercel"],
     featured: true,
   },
@@ -227,7 +227,7 @@ export const portfolioProjects: ProjectItem[] = [
     image:
       "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=800&auto=format&fit=crop&q=80",
     description:
-      "AI-powered customer support chatbot handling 80% of tickets with natural language understanding.",
+      "An automated customer service chat agent that resolves common queries and handles support tickets directly inside the user dashboard.",
     technologies: ["Python", "OpenAI API", "React", "FastAPI"],
   },
   {
@@ -238,7 +238,7 @@ export const portfolioProjects: ProjectItem[] = [
     image:
       "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&auto=format&fit=crop&q=80",
     description:
-      "Interactive compliance dashboard tracking internal files and highlighting GDPR compliance gaps.",
+      "An interactive web dashboard that tracks compliance records, files secure documents, and identifies regulatory gaps.",
     technologies: ["Figma", "React", "Tailwind CSS", "Chart.js"],
   },
 ];

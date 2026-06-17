@@ -11,7 +11,7 @@ export function Footer() {
       {/* Newsletter Strip */}
       <div className="bg-[#1a1e24] py-8 mb-12">
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center justify-center gap-6">
-          <p className="text-white font-medium text-base">Get updates on new services and projects</p>
+          <p className="text-white font-medium text-base">Stay updated on our latest launches, security insights, and custom solutions.</p>
           <NewsletterSignup />
         </div>
       </div>
@@ -29,7 +29,7 @@ export function Footer() {
               </span>
             </Link>
             <p className="text-sm max-w-sm leading-relaxed">
-              Design, development and security combined. We partner with ambitious brands to launch modern digital solutions across the UK & USA.
+              Zenik is a full-service custom software agency. We combine intuitive design, robust development, and cloud security to build digital products that scale.
             </p>
             <div className="flex items-center space-x-4 pt-2">
               <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="text-gray-400 hover:text-white transition-colors">

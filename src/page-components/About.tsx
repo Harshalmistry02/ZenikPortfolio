@@ -57,8 +57,8 @@ export function About() {
 
   const values = [
     {
-      title: "Innovation",
-      text: "We embrace new ideas and technologies to build smarter, future-ready solutions that make a difference.",
+      title: "Reliability",
+      text: "We write clean, secure, and well-tested code that works at scale without technical debt.",
       icon: (
         <svg className="w-6 h-6 text-[#00BFA6]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
           <circle cx="12" cy="12" r="5" />
@@ -75,7 +75,7 @@ export function About() {
     },
     {
       title: "Transparency",
-      text: "Clear communication and honest collaboration at every step build trust and stronger outcomes.",
+      text: "We communicate directly, share clear progress updates, and maintain total visibility over hours and timelines.",
       icon: (
         <svg className="w-6 h-6 text-[#00BFA6]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
           <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
@@ -84,8 +84,8 @@ export function About() {
       )
     },
     {
-      title: "Quality",
-      text: "We are obsessed with detail and committed to delivering exceptional products that stand the test of time.",
+      title: "Focus on Uptime",
+      text: "We focus on proven, modern technologies to build reliable systems that solve real operational problems.",
       icon: (
         <svg className="w-6 h-6 text-[#00BFA6]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
           <circle cx="12" cy="8" r="7" />
@@ -94,8 +94,8 @@ export function About() {
       )
     },
     {
-      title: "Partnership",
-      text: "We work as an extension of your team, aligned with your goals to achieve long-term success together.",
+      title: "Technical Partner",
+      text: "We act as your dedicated technical partner, helping you make smart technology decisions that protect your budget.",
       icon: (
         <svg className="w-6 h-6 text-[#00BFA6]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
           <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
@@ -111,25 +111,25 @@ export function About() {
     {
       year: "2018",
       title: "Founded",
-      desc: "Zenik Studio was founded in London with a vision to build impactful digital products.",
+      desc: "Zenik was founded in London with a vision to build stable, secure custom software.",
       icon: <Flag className="w-5 h-5 text-white" />
     },
     {
       year: "2020",
       title: "Expanded to USA",
-      desc: "Opened our New York office to better serve clients across North America.",
+      desc: "Opened our New York office to support North American brands and handle global workloads.",
       icon: <Rocket className="w-5 h-5 text-white" />
     },
     {
       year: "2022",
       title: "50+ Projects",
-      desc: "Crossed 50 successful projects across web, mobile and cybersecurity solutions.",
+      desc: "Delivered 50+ custom web applications, mobile platforms, and infrastructure solutions.",
       icon: <Users className="w-5 h-5 text-white" />
     },
     {
       year: "2024",
       title: "Global Impact",
-      desc: "Serving clients in 12+ countries with a talented team across the UK & USA.",
+      desc: "Serving clients in 15+ countries with a dedicated transatlantic team across the UK & USA.",
       icon: <Globe className="w-5 h-5 text-white" />
     }
   ];

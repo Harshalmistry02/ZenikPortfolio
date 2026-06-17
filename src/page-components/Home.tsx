@@ -45,17 +45,17 @@ export function Home() {
         {/* Main Title Container */}
         <div className="max-w-4xl mx-auto px-4 z-10 relative">
           <h1 className="font-script text-5xl sm:text-6xl md:text-7xl lg:text-[85px] font-bold text-[#202020] leading-[1.2] tracking-tight text-center">
-            All your digital needs under{" "}
+            Concept to custom software{" "}
             <span className="relative inline-block mt-2">
               {/* Highlight background */}
               <span className="absolute inset-0 bg-[#FCB94D] rounded-[4px_12px_4px_12px] -z-10 -rotate-2 scale-[1.05] shadow-sm transform -translate-y-1 translate-x-1" />
-              <span className="relative z-10 text-[#202020]">one roof.</span>
+              <span className="relative z-10 text-[#202020]">built to scale.</span>
             </span>
             <br />
             <span className="inline-block mt-4">
-              Creative, scalable, yet{" "}
+              Intuitive, secure, and{" "}
               <span className="relative inline-block">
-                <span className="relative z-10 text-[#202020]">affordable!</span>
+                <span className="relative z-10 text-[#202020]">reliable.</span>
                 <div className="absolute left-0 right-0 bottom-1 h-3 sm:h-4">
                   <HanddrawnUnderline className="text-[#00A1EA] w-[110%] -ml-[5%]" />
                 </div>
@@ -64,7 +64,7 @@ export function Home() {
                 <div className="absolute right-[20%] top-[80%] md:right-[10%] md:top-[90%] flex flex-col items-start w-64 translate-x-1/2 translate-y-4">
                   <HanddrawnArrow className="w-12 h-12 md:w-16 md:h-16 text-[#714B67] opacity-80 rotate-[30deg]" />
                   <span className="font-script text-xl md:text-3xl text-[#714B67] -rotate-6 mt-[-5px] ml-12 whitespace-nowrap text-left opacity-90 leading-tight">
-                    90+ Premium Services<br />for your business
+                    90+ Specialized services<br />for your business
                   </span>
                 </div>
               </span>
@@ -86,15 +86,15 @@ export function Home() {
           {/* HEADER: word circled in teal oval */}
           <div className="mb-16 text-center">
             <h2 className="font-script text-5xl sm:text-6xl md:text-[70px] font-bold text-[#0D0F14] leading-tight">
-              Everything You Need to{" "}
+              Everything Your Digital Presence{" "}
               <span className="relative inline-block px-2">
-                <span className="relative z-10">Grow</span>
+                <span className="relative z-10">Needs</span>
                 <svg className="absolute pointer-events-none text-[#00BFA6]" style={{ inset: "-0.3em -0.5em", width: "calc(100% + 1em)", height: "calc(100% + 0.7em)" }} viewBox="0 0 200 80" preserveAspectRatio="none" aria-hidden>
                   <path d="M18,44 C18,14 62,8 100,10 C144,12 184,16 184,44 C184,70 146,72 100,70 C58,68 18,68 18,44 Z" fill="none" stroke="currentColor" strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" opacity="0.9" />
                 </svg>
               </span>
             </h2>
-            <p className="text-gray-500 text-sm sm:text-base mt-5 max-w-xl mx-auto leading-relaxed">From design to deployment, we cover every aspect of your digital presence.</p>
+            <p className="text-gray-500 text-sm sm:text-base mt-5 max-w-xl mx-auto leading-relaxed">Whether you need a customer portal, a custom CRM, a mobile app, or search engine visibility, we provide specialized expertise for every step of your project.</p>
           </div>
 
           <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-6 md:gap-8">
@@ -300,7 +300,7 @@ export function Home() {
             <div className="lg:col-span-5 space-y-5 text-left">
               <div className="w-10 h-10 rounded-full bg-teal-50 border border-teal-100 flex items-center justify-center font-mono text-lg font-black text-[#00BFA6]">01</div>
               <h2 className="text-3xl sm:text-4xl font-black text-[#0D0F14] tracking-tight">
-                Web{" "}
+                Web Design &{" "}
                 <span className="relative inline-block">
                   <span className="relative z-10">Development</span>
                   <svg className="absolute left-0 bottom-0 w-full h-3 pointer-events-none" viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true">
@@ -309,10 +309,10 @@ export function Home() {
                 </span>
               </h2>
               <p className="text-gray-500 text-sm leading-relaxed">
-                <span className="font-semibold text-gray-700">Modern websites and web apps</span> built with React, Next.js, and cutting-edge technologies for speed and scale.
+                <span className="font-semibold text-gray-700">Fast, secure, and responsive websites</span> that turn visitors into customers. We build custom web applications, SaaS dashboards, and corporate websites using stable frameworks optimized for speed.
               </p>
               <ul className="space-y-2 pt-2">
-                {["React & Next.js", "Full-Stack MERN/MEAN", "SaaS Platforms", "API Integrations"].map(f => (
+                {["Custom SaaS & Web Apps", "Corporate & Portfolio Websites", "Secure API & Database Integration", "Ongoing Maintenance & Support"].map(f => (
                   <li key={f} className="flex items-center gap-2 text-sm text-gray-600"><Check size={14} className="text-[#00BFA6]" />{f}</li>
                 ))}
               </ul>
@@ -381,10 +381,10 @@ export function Home() {
                 </span>
               </h2>
               <p className="text-gray-500 text-sm leading-relaxed">
-                <span className="font-semibold text-gray-700">Native iOS & Android apps</span> designed for performance, engagement, and scale with fluid gesture-first interfaces.
+                <span className="font-semibold text-gray-700">Clean, native-quality iOS and Android apps</span> that users love. From journey mapping and database setup to App Store deployment, we handle the entire process.
               </p>
               <ul className="space-y-2 pt-2">
-                {["React Native & Flutter", "iOS & Android Native", "App Store Deployment", "Offline-First Design"].map(f => (
+                {["Cross-Platform iOS & Android Apps", "Intuitive Mobile UI/UX Design", "Secure Offline-First Databases", "App Store & Google Play Deployment"].map(f => (
                   <li key={f} className="flex items-center gap-2 text-sm text-gray-600"><Check size={14} className="text-[#00BFA6]" />{f}</li>
                 ))}
               </ul>
@@ -396,19 +396,19 @@ export function Home() {
             <div className="lg:col-span-5 space-y-5 text-left">
               <div className="w-10 h-10 rounded-full bg-teal-50 border border-teal-100 flex items-center justify-center font-mono text-lg font-black text-[#00BFA6]">03</div>
               <h2 className="text-3xl sm:text-4xl font-black text-[#0D0F14] tracking-tight">
-                AI & Advanced{" "}
+                AI Integration &{" "}
                 <span className="relative inline-block">
-                  <span className="relative z-10">Tech</span>
+                  <span className="relative z-10">Automation</span>
                   <svg className="absolute left-0 bottom-0 w-full h-3 pointer-events-none" viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true">
                     <path d="M0,6 Q50,0 100,6 T200,6" fill="none" stroke="#00BFA6" strokeWidth="8" strokeLinecap="round" strokeDasharray="1,8" opacity="0.6" />
                   </svg>
                 </span>
               </h2>
               <p className="text-gray-500 text-sm leading-relaxed">
-                <span className="font-semibold text-gray-700">Intelligent chatbots, ML models, OCR,</span> and AI-powered workflows that automate your business and delight users.
+                <span className="font-semibold text-gray-700">Automate manual tasks</span> and answer customer queries in real-time. Save hours of manual labor by integrating smart chatbots, OCR data extraction, and CRM workflow automation tools.
               </p>
               <ul className="space-y-2 pt-2">
-                {["OpenAI & GPT Integration", "AI Chatbot Development", "Machine Learning Models", "Document Processing"].map(f => (
+                {["Custom AI Chatbots & Support", "Smart Document Processing (OCR)", "API Integrations & Custom Models", "Workflow Automation (Zapier, HubSpot)"].map(f => (
                   <li key={f} className="flex items-center gap-2 text-sm text-gray-600"><Check size={14} className="text-[#00BFA6]" />{f}</li>
                 ))}
               </ul>
@@ -463,19 +463,19 @@ export function Home() {
             <div className="lg:col-span-5 lg:order-2 order-1 space-y-5 text-left">
               <div className="w-10 h-10 rounded-full bg-teal-50 border border-teal-100 flex items-center justify-center font-mono text-lg font-black text-[#00BFA6]">04</div>
               <h2 className="text-3xl sm:text-4xl font-black text-[#0D0F14] tracking-tight">
-                Digital{" "}
+                Digital Marketing &{" "}
                 <span className="relative inline-block">
-                  <span className="relative z-10">Marketing</span>
+                  <span className="relative z-10">SEO</span>
                   <svg className="absolute left-0 bottom-0 w-full h-3 pointer-events-none" viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true">
                     <path d="M0,6 Q50,0 100,6 T200,6" fill="none" stroke="#00BFA6" strokeWidth="8" strokeLinecap="round" strokeDasharray="1,8" opacity="0.6" />
                   </svg>
                 </span>
               </h2>
               <p className="text-gray-500 text-sm leading-relaxed">
-                <span className="font-semibold text-gray-700">Data-driven SEO, paid advertising,</span> and social media strategies that generate qualified leads and accelerate growth.
+                <span className="font-semibold text-gray-700">Get found by qualified leads</span> and increase your sales pipeline. We optimize your search visibility, manage paid advertising, and build marketing automation funnels that drive real ROI.
               </p>
               <ul className="space-y-2 pt-2">
-                {["SEO & Content Strategy", "Google & Meta Ads", "Social Media Management", "Marketing Automation"].map(f => (
+                {["Technical & Local SEO Audits", "Targeted Search & Social Ads", "B2B Lead Generation Campaigns", "Email Marketing & Automated Funnels"].map(f => (
                   <li key={f} className="flex items-center gap-2 text-sm text-gray-600"><Check size={14} className="text-[#00BFA6]" />{f}</li>
                 ))}
               </ul>
@@ -632,9 +632,12 @@ export function Home() {
                 <path d="M16 16 L24 24 M48 16 L40 24 M16 48 L24 40 M48 48 L40 40" />
               </svg>
               <h2 className="font-script text-5xl sm:text-6xl md:text-[70px] font-bold text-[#0D0F14] leading-tight">
-                Projects Built to <span className="relative inline-block">Perform<HanddrawnUnderline className="absolute -bottom-1 left-0 w-full text-[#EF4444] h-4" /></span>
+                Proven Software Built to <span className="relative inline-block">Perform<HanddrawnUnderline className="absolute -bottom-1 left-0 w-full text-[#EF4444] h-4" /></span>
               </h2>
             </div>
+            <p className="text-gray-500 text-sm sm:text-base mt-5 max-w-xl mx-auto leading-relaxed">
+              A selection of web apps, mobile solutions, and integrations we've built to automate operations and drive results.
+            </p>
           </div>
 
           {/* Filter Tabs */}
@@ -680,7 +683,7 @@ export function Home() {
                         </div>
                         <div className="text-left md:text-right flex flex-col justify-end items-start md:items-end">
                           <p className="text-gray-500 text-sm max-w-sm">
-                            Built for performance and scale. Leveraging cutting-edge tools to deliver exceptional results.
+                            Proven software built for reliability, performance, and clear business outcomes.
                           </p>
                           <div className="flex flex-wrap gap-2 pt-4 justify-start md:justify-end">
                             {proj.technologies.map((t) => (
@@ -800,6 +803,9 @@ export function Home() {
                 </svg>
               </span>
             </h2>
+            <p className="text-gray-500 text-sm sm:text-base mt-5 max-w-xl mx-auto leading-relaxed">
+              What our partners say about working with our transatlantic design and development team.
+            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
