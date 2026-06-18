@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useAuth } from "./providers";
 import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
+import { ChatWidget } from "../components/ChatWidget";
 
 export function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -17,6 +18,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       {!isAuthPage && !initialized && <div className="h-[60px]" />}
       <main className="grow">{children}</main>
       {!isAuthPage && <Footer />}
+      {!isAuthPage && <ChatWidget />}
     </div>
   );
 }

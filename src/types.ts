@@ -8,6 +8,12 @@ export interface ServiceItem {
   title: string;
   description: string;
   icon: string;
+  // Fields added by allServices flatMap enrichment
+  categoryId?: string;
+  categoryName?: string;
+  color?: string;
+  bg?: string;
+  borderColor?: string;
 }
 
 export interface ServiceCategory {
