@@ -108,7 +108,7 @@ export function SignUp({ user, onLogin }: SignUpProps) {
                 <div className="w-8 h-8 rounded-lg bg-[#00BFA6] flex items-center justify-center text-white font-black text-lg shadow-sm">Z</div>
                 <div>
                   <span className="text-base font-black tracking-tight text-gray-900 block leading-none">zenik</span>
-                  <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider leading-none">studio</span>
+                  <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider leading-none">tech</span>
                 </div>
               </div>
 
@@ -146,7 +146,7 @@ export function SignUp({ user, onLogin }: SignUpProps) {
                 </div>
                 <div className="leading-none">
                   <span className="text-base font-black tracking-tight text-zinc-950 block">zenik</span>
-                  <span className="text-[9px] text-gray-400 font-bold tracking-widest uppercase block">studio</span>
+                  <span className="text-[9px] text-gray-400 font-bold tracking-widest uppercase block">tech</span>
                 </div>
               </div>
 

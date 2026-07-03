@@ -19,10 +19,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const service = getServiceDetail(slug) || getIndividualServiceDetail(slug);
   if (!service) return {};
   return {
-    title: `${service.title} | Zenik Studio`,
+    title: `${service.title} | Zenik Tech`,
     description: service.description,
     openGraph: {
-      title: `${service.title} | Zenik Studio`,
+      title: `${service.title} | Zenik Tech`,
       description: service.description,
       images: [{ url: service.image }],
     },

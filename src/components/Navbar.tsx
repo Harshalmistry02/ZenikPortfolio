@@ -92,7 +92,7 @@ export function Navbar({ user, onLogout }: NavbarProps) {
     >
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2 group" aria-label="Zenik Studio Home">
+          <Link href="/" className="flex items-center gap-2 group" aria-label="Zenik Tech Home">
             <div className="w-8 h-8 rounded-lg bg-[#00BFA6] flex items-center justify-center text-white font-black text-lg shadow-sm group-hover:scale-105 transition-transform">
               Z
             </div>
@@ -101,7 +101,7 @@ export function Navbar({ user, onLogout }: NavbarProps) {
                 zenik
               </span>
               <span className="text-[8px] font-bold text-gray-400 tracking-[0.2em] uppercase block">
-                studio
+                tech
               </span>
             </div>
           </Link>

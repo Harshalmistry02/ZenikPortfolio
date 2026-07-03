@@ -21,37 +21,37 @@ export function About() {
       name: "James Carter",
       role: "CEO & Co-Founder",
       image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=300&auto=format&fit=crop&q=80",
-      socials: { linkedin: "#", twitter: "#", mail: "james@zenik.studio" }
+      socials: { linkedin: "#", twitter: "#", mail: "james@zenik.tech" }
     },
     {
       name: "Sophia Nguyen",
       role: "CTO & Co-Founder",
       image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&auto=format&fit=crop&q=80",
-      socials: { linkedin: "#", twitter: "#", mail: "sophia@zenik.studio" }
+      socials: { linkedin: "#", twitter: "#", mail: "sophia@zenik.tech" }
     },
     {
       name: "Daniel Foster",
       role: "Head of Design",
       image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&auto=format&fit=crop&q=80",
-      socials: { linkedin: "#", dribbble: "#", mail: "daniel@zenik.studio" }
+      socials: { linkedin: "#", dribbble: "#", mail: "daniel@zenik.tech" }
     },
     {
       name: "Emily Roberts",
       role: "Head of Product",
       image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&auto=format&fit=crop&q=80",
-      socials: { linkedin: "#", twitter: "#", mail: "emily@zenik.studio" }
+      socials: { linkedin: "#", twitter: "#", mail: "emily@zenik.tech" }
     },
     {
       name: "Arjun Patel",
       role: "Engineering Lead",
       image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&auto=format&fit=crop&q=80",
-      socials: { linkedin: "#", github: "#", mail: "arjun@zenik.studio" }
+      socials: { linkedin: "#", github: "#", mail: "arjun@zenik.tech" }
     },
     {
       name: "Olivia Bennett",
       role: "Strategy Director",
       image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=300&auto=format&fit=crop&q=80",
-      socials: { linkedin: "#", twitter: "#", mail: "olivia@zenik.studio" }
+      socials: { linkedin: "#", twitter: "#", mail: "olivia@zenik.tech" }
     }
   ];
 
@@ -244,7 +244,7 @@ export function About() {
 
               <div className="space-y-4 text-gray-500 text-sm sm:text-base leading-relaxed font-normal">
                 <p>
-                  <span className="font-semibold text-gray-700">Zenik Studio is a UK & USA based digital product agency.</span> We partner with ambitious startups and enterprises to design, build and scale modern web, mobile and cybersecurity solutions.
+                  <span className="font-semibold text-gray-700">Zenik Tech is a UK & USA based digital product agency.</span> We partner with ambitious startups and enterprises to design, build and scale modern web, mobile and cybersecurity solutions.
                 </p>
                 <p>
                   <span className="font-semibold text-gray-700">Our mission is simple:</span> to solve real problems with beautiful, functional technology that drives growth and creates lasting impact.
@@ -270,7 +270,7 @@ export function About() {
                 <img
                   className="w-full h-full object-cover select-none transition-transform duration-500 group-hover:scale-105"
                   src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=900&auto=format&fit=crop&q=80"
-                  alt="Zenik Studio Main Team"
+                  alt="Zenik Tech Main Team"
                   referrerPolicy="no-referrer"
                 />
               </div>
@@ -301,7 +301,7 @@ export function About() {
                       <span className="text-3xl font-black text-[#00BFA6] tracking-tighter leading-none select-none">Z</span>
                       <div className="text-left font-sans leading-none">
                         <div className="text-[11px] font-black tracking-tight text-[#0D0F14] uppercase">zenik</div>
-                        <div className="text-[8px] font-bold text-gray-400 font-mono tracking-wider">studio</div>
+                        <div className="text-[8px] font-bold text-gray-400 font-mono tracking-wider">tech</div>
                       </div>
                     </div>
 
@@ -399,89 +399,7 @@ export function About() {
         </div>
       </section>
 
-      {/* 4. MEET THE TEAM GALLERY - IMPROVED */}
-      <section className="py-20 lg:py-24 bg-white relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-          <div className="max-w-2xl text-left space-y-3 mb-16">
-            <div className="flex items-center space-x-1 justify-start text-teal-400 font-bold text-xs uppercase tracking-widest pl-1 select-none">
-              <span className="text-[#00BFA6] mr-1 font-black">//</span>
-              <span className="text-teal-600 tracking-wider font-extrabold uppercase text-[11px]">Meet the Team</span>
-              <span className="text-[#00BFA6] ml-1 font-black">//</span>
-            </div>
-
-            <ScriptHeading
-              as="h2"
-              text="Meet the Team"
-              highlightMode="last"
-              className="font-script text-4xl sm:text-5xl font-bold text-[#0D0F14] tracking-tight leading-[0.98]"
-              accentColorClassName="text-[#F4A24D]"
-            />
-            <div className="w-12 h-1.5 bg-[#00BFA6] rounded-full mt-4"></div>
-          </div>
-
-          {/* 3-column Profile collection (2 rows) - CHANGED from 6 columns */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {team.map((t, idx) => (
-              <div
-                key={idx}
-                className="group flex flex-col items-center text-center space-y-4 bg-[#FCFAF7]/30 p-5 pb-6 rounded-[28px] border border-transparent hover:border-gray-200 hover:bg-white hover:shadow-[0_20px_50px_rgba(0,191,166,0.08)] hover:scale-[1.02] transition-all duration-300"
-                style={{ animationDelay: `${idx * 100}ms` }}
-              >
-                {/* Round-box styled portrait with teal border glow on hover */}
-                <div className="w-full aspect-[4/5] rounded-[24px] overflow-hidden bg-gray-100 border-2 border-gray-100/60 relative group-hover:border-[#00BFA6] group-hover:shadow-[0_0_25px_rgba(0,191,166,0.25)] transition-all duration-300">
-                  <img
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    src={t.image}
-                    alt={t.name}
-                    referrerPolicy="no-referrer"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent mix-blend-overlay"></div>
-
-                  {/* Quick view social links on hover */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
-                    <div className="flex items-center space-x-3">
-                      <a href="#linkedin" className="w-8 h-8 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center text-[#00BFA6] hover:bg-[#00BFA6] hover:text-white transition-all duration-200 transform hover:scale-110" title="Linkedin Profile">
-                        <Linkedin size={16} strokeWidth={2.5} />
-                      </a>
-                      <a href="#twitter" className="w-8 h-8 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center text-[#00BFA6] hover:bg-[#00BFA6] hover:text-white transition-all duration-200 transform hover:scale-110" title="Platform Link">
-                        <Twitter size={16} strokeWidth={2.5} />
-                      </a>
-                      <a href={`mailto:${t.socials.mail}`} className="w-8 h-8 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center text-[#00BFA6] hover:bg-[#00BFA6] hover:text-white transition-all duration-200 transform hover:scale-110" title="Direct Email">
-                        <Mail size={16} strokeWidth={2.5} />
-                      </a>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Identity info */}
-                <div className="w-full space-y-1.5">
-                  <h4 className="text-sm sm:text-base font-black text-[#0D0F14] tracking-tight leading-tight">
-                    {t.name}
-                  </h4>
-                  <p className="text-xs text-[#00BFA6] font-bold uppercase tracking-wide leading-none">
-                    {t.role}
-                  </p>
-                </div>
-
-              </div>
-            ))}
-          </div>
-
-          {/* "View full team" link */}
-          <div className="mt-12 text-center">
-            <Link
-              href="/team"
-              className="inline-flex items-center justify-center text-[#00BFA6] hover:text-[#0D0F14] font-bold text-sm transition-colors duration-300 group"
-            >
-              <span>View Full Team</span>
-              <span className="ml-2 transform group-hover:translate-x-1 transition-transform duration-300">→</span>
-            </Link>
-          </div>
-
-        </div>
-      </section>
 
       {/* 5. OUR JOURNEY HORIZONTAL TIMELINE - IMPROVED */}
       <section className="py-20 lg:py-24 bg-[#FAF9F5]/45 border-y border-gray-100 relative">

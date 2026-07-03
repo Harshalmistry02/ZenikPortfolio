@@ -232,7 +232,7 @@ function detectIntent(input: string): IntentMatch {
 
   // Credentials / about
   const aboutKeywords = [
-    "who are you", "about", "about you", "company", "zenik", "studio",
+    "who are you", "about", "about you", "company", "zenik", "tech",
     "london", "new york", "uk", "usa", "experience", "clients",
     "portfolio", "work", "team", "credentials", "certified", "iso",
     "gdpr", "retention", "projects delivered",
@@ -338,7 +338,7 @@ export function generateResponse(input: string): ChatResponse {
     // ── Contact ───────────────────────────────────────────────────────────────
     case "contact":
       return {
-        text: `I'd love to connect you with our team! Here's how to reach us:\n\n📞 **Call:** +44 20 7946 0958 *(UK, Mon–Fri 9–6)*\n📧 **Email:** hello@zenik.studio\n📅 **Book a call:** Available in our contact page\n\n⏱️ We respond to all serious inquiries **within 2 hours** during business hours.\n\nOr tell me more about your project — I'll prepare the context for our team!`,
+        text: `I'd love to connect you with our team! Here's how to reach us:\n\n📞 **Call:** +44 20 7946 0958 *(UK, Mon–Fri 9–6)*\n📧 **Email:** hello@zenik.tech\n📅 **Book a call:** Available in our contact page\n\n⏱️ We respond to all serious inquiries **within 2 hours** during business hours.\n\nOr tell me more about your project — I'll prepare the context for our team!`,
         suggestions: ["Start a project", "Tell me about my project", "View our services", "Our process"],
         action: "contact",
       };
@@ -346,7 +346,7 @@ export function generateResponse(input: string): ChatResponse {
     // ── Project start / ready to hire ─────────────────────────────────────────
     case "project_start":
       return {
-        text: `Exciting! Let's get your project moving 🚀\n\nHere's the fastest way to start:\n\n📞 **Call:** +44 20 7946 0958 *(UK)*\n📧 **Email:** hello@zenik.studio\n📅 **Book a consultation** — a quick 30-min call to map out your project\n\n💬 Or tell me more about your idea and I'll help you prepare a brief for our team. What are you building?`,
+        text: `Exciting! Let's get your project moving 🚀\n\nHere's the fastest way to start:\n\n📞 **Call:** +44 20 7946 0958 *(UK)*\n📧 **Email:** hello@zenik.tech\n📅 **Book a consultation** — a quick 30-min call to map out your project\n\n💬 Or tell me more about your idea and I'll help you prepare a brief for our team. What are you building?`,
         suggestions: ["Book a consultation", "I need a website", "Mobile app idea", "Tell me about the process"],
         action: "contact",
       };
@@ -362,7 +362,7 @@ export function generateResponse(input: string): ChatResponse {
     // ── About / credentials ───────────────────────────────────────────────────
     case "about":
       return {
-        text: `**Zenik Studio** is a UK & USA-based custom software development and digital product agency.\n\n🌍 **Offices:** London (UK) & New York (USA)\n📦 **Projects Delivered:** 95+\n⭐ **Client Retention:** 99.2%\n🔒 **Certified:** ISO 27001, GDPR Compliant\n🏭 **Industries:** Fintech, EdTech, Healthcare, E-commerce, SaaS\n\nWe specialise in designing and building secure, high-performance digital products that drive real business growth — from MVPs to enterprise platforms.`,
+        text: `**Zenik Tech** is a UK & USA-based custom software development and digital product agency.\n\n🌍 **Offices:** London (UK) & New York (USA)\n📦 **Projects Delivered:** 95+\n⭐ **Client Retention:** 99.2%\n🔒 **Certified:** ISO 27001, GDPR Compliant\n🏭 **Industries:** Fintech, EdTech, Healthcare, E-commerce, SaaS\n\nWe specialise in designing and building secure, high-performance digital products that drive real business growth — from MVPs to enterprise platforms.`,
         suggestions: ["View our services", "Contact the team", "Our process", "Pricing & budgets"],
         action: "none",
       };

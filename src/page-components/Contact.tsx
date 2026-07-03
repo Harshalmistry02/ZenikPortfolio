@@ -101,8 +101,8 @@ export function Contact() {
     {
       icon: <Mail className="w-5 h-5 text-[#00BFA6]" />,
       label: "Email",
-      value: "hello@zenik.studio",
-      href: "mailto:hello@zenik.studio",
+      value: "hello@zenik.tech",
+      href: "mailto:hello@zenik.tech",
     },
     {
       icon: <Phone className="w-5 h-5 text-[#00BFA6]" />,
@@ -206,7 +206,7 @@ export function Contact() {
               <div className="relative rounded-[32px] overflow-hidden border border-gray-100 shadow-2xl aspect-[4/3]">
                 <img
                   src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&auto=format&fit=crop&q=80"
-                  alt="Zenik Studio team collaborating"
+                  alt="Zenik Tech team collaborating"
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0D0F14]/40 to-transparent" />

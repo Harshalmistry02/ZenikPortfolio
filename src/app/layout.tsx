@@ -33,13 +33,13 @@ export const metadata: Metadata = {
   },
   description:
     "We design and build secure, high-performance custom web applications, mobile apps, and automated systems that drive real business growth. Partner with Zenik.",
-  keywords: ["web development", "mobile apps", "UI/UX design", "AI", "Next.js", "React", "Zenik Studio", "Zenik"],
-  authors: [{ name: "Zenik", url: "https://zenik.studio" }],
-  metadataBase: new URL("https://zenik.studio"),
+  keywords: ["web development", "mobile apps", "UI/UX design", "AI", "Next.js", "React", "Zenik Tech", "Zenik"],
+  authors: [{ name: "Zenik", url: "https://zenik.tech" }],
+  metadataBase: new URL("https://zenik.tech"),
   openGraph: {
     title: "Zenik | Custom Software Development & Digital Product Agency",
     description: "We design and build secure, high-performance custom web applications, mobile apps, and automated systems that drive real business growth. Partner with Zenik.",
-    url: "https://zenik.studio",
+    url: "https://zenik.tech",
     siteName: "Zenik",
     locale: "en_GB",
     type: "website",

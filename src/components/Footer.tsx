@@ -90,8 +90,8 @@ export function Footer() {
             <h3 className="font-bold text-white mb-4">Contact Info</h3>
             <ul className="space-y-3">
               <li>
-                <a href="mailto:hello@zenik.studio" className="hover:text-white transition-colors">
-                  hello@zenik.studio
+                <a href="mailto:hello@zenik.tech" className="hover:text-white transition-colors">
+                  hello@zenik.tech
                 </a>
               </li>
               <li>
@@ -114,7 +114,7 @@ export function Footer() {
 
         {/* Footer Bottom */}
         <div className="pt-8 flex flex-col md:flex-row items-center justify-between text-xs">
-          <p>© 2026 Zenik Studio. All rights reserved.</p>
+          <p>© 2026 Zenik Tech. All rights reserved.</p>
           <div className="flex items-center space-x-6 mt-4 md:mt-0">
             <Link href="/about" className="hover:text-white transition-colors">Privacy Policy</Link>
             <Link href="/about" className="hover:text-white transition-colors">Terms</Link>
