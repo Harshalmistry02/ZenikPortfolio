@@ -96,7 +96,7 @@ function ContactCard() {
       </div>
       <div className="p-2 space-y-0.5">
         <a
-          href="tel:+442079460958"
+          href="tel:+918320558105"
           className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-white transition-colors group border border-transparent hover:border-gray-100"
         >
           <div className="w-7 h-7 rounded-lg bg-[#00BFA6]/10 flex items-center justify-center shrink-0">
@@ -104,12 +104,12 @@ function ContactCard() {
           </div>
           <div className="min-w-0 flex-1">
             <p className="text-[10px] text-gray-400 leading-none font-medium">Call us</p>
-            <p className="text-[12px] font-bold text-[#0D0F14] mt-0.5">+44 20 7946 0958</p>
+            <p className="text-[12px] font-bold text-[#0D0F14] mt-0.5">+91 8320558105</p>
           </div>
           <ChevronRight size={13} className="text-gray-300 group-hover:text-[#00BFA6] transition-colors" />
         </a>
         <a
-          href="mailto:hello@zenik.tech"
+          href="mailto:kheniharsh7@gmail.com"
           className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-white transition-colors group border border-transparent hover:border-gray-100"
         >
           <div className="w-7 h-7 rounded-lg bg-[#F4A24D]/10 flex items-center justify-center shrink-0">
@@ -117,7 +117,7 @@ function ContactCard() {
           </div>
           <div className="min-w-0 flex-1">
             <p className="text-[10px] text-gray-400 leading-none font-medium">Email</p>
-            <p className="text-[12px] font-bold text-[#0D0F14] mt-0.5">hello@zenik.tech</p>
+            <p className="text-[12px] font-bold text-[#0D0F14] mt-0.5">kheniharsh7@gmail.com</p>
           </div>
           <ChevronRight size={13} className="text-gray-300 group-hover:text-[#F4A24D] transition-colors" />
         </a>

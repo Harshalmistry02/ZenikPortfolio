@@ -101,14 +101,26 @@ export function Contact() {
     {
       icon: <Mail className="w-5 h-5 text-[#00BFA6]" />,
       label: "Email",
-      value: "hello@zenik.tech",
-      href: "mailto:hello@zenik.tech",
+      value: "kheniharsh7@gmail.com",
+      href: "mailto:kheniharsh7@gmail.com",
+    },
+    {
+      icon: <Mail className="w-5 h-5 text-[#00BFA6]" />,
+      label: "Email",
+      value: "jayrajsingh1510@gmail.com",
+      href: "mailto:jayrajsingh1510@gmail.com",
     },
     {
       icon: <Phone className="w-5 h-5 text-[#00BFA6]" />,
       label: "Phone",
-      value: "+44 20 7946 0958",
-      href: "tel:+442079460958",
+      value: "+91 8320558105",
+      href: "tel:+918320558105",
+    },
+    {
+      icon: <Phone className="w-5 h-5 text-[#00BFA6]" />,
+      label: "Phone",
+      value: "+91 8733887789",
+      href: "tel:+918733887789",
     },
     {
       icon: <Clock className="w-5 h-5 text-[#00BFA6]" />,
@@ -180,7 +192,7 @@ export function Contact() {
                   <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
                 </a>
                 <a
-                  href="tel:+442079460958"
+                  href="tel:+918320558105"
                   className="inline-flex items-center justify-center gap-2 border-2 border-gray-200 hover:border-[#00BFA6] text-gray-700 hover:text-[#00BFA6] px-7 py-3.5 rounded-full font-bold text-sm transition-all duration-300"
                 >
                   <Phone size={15} />
@@ -565,7 +577,7 @@ export function Contact() {
                   <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
                 <a
-                  href="tel:+442079460958"
+                  href="tel:+918320558105"
                   className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-bold text-sm transition-all duration-300 hover:-translate-y-0.5"
                   style={{ color: '#ffffff', border: '2px solid rgba(255,255,255,0.5)' }}
                 >

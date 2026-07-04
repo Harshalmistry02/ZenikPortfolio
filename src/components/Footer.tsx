@@ -90,13 +90,23 @@ export function Footer() {
             <h3 className="font-bold text-white mb-4">Contact Info</h3>
             <ul className="space-y-3">
               <li>
-                <a href="mailto:hello@zenik.tech" className="hover:text-white transition-colors">
-                  hello@zenik.tech
+                <a href="mailto:kheniharsh7@gmail.com" className="hover:text-white transition-colors">
+                  kheniharsh7@gmail.com
                 </a>
               </li>
               <li>
-                <a href="tel:+442079460958" className="hover:text-white transition-colors">
-                  +44 20 7946 0958
+                <a href="mailto:jayrajsingh1510@gmail.com" className="hover:text-white transition-colors">
+                  jayrajsingh1510@gmail.com
+                </a>
+              </li>
+              <li>
+                <a href="tel:+918320558105" className="hover:text-white transition-colors">
+                  +91 8320558105
+                </a>
+              </li>
+              <li>
+                <a href="tel:+918733887789" className="hover:text-white transition-colors">
+                  +91 8733887789
                 </a>
               </li>
               <li className="pt-2">

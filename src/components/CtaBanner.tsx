@@ -31,8 +31,8 @@ export function CtaBanner({ buttonText = "Schedule Your Consultation", linkTo = 
               <span>{buttonText}</span>
               <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
             </Link>
-            <a href="tel:+442079460958" className="text-sm text-gray-500 hover:text-[#00BFA6] transition-colors">
-              or call us directly at +44 20 7946 0958
+            <a href="tel:+918320558105" className="text-sm text-gray-500 hover:text-[#00BFA6] transition-colors">
+              or call us directly at +91 8320558105 / +91 8733887789
             </a>
           </div>
 

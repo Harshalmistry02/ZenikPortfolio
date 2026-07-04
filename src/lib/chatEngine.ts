@@ -338,7 +338,7 @@ export function generateResponse(input: string): ChatResponse {
     // ── Contact ───────────────────────────────────────────────────────────────
     case "contact":
       return {
-        text: `I'd love to connect you with our team! Here's how to reach us:\n\n📞 **Call:** +44 20 7946 0958 *(UK, Mon–Fri 9–6)*\n📧 **Email:** hello@zenik.tech\n📅 **Book a call:** Available in our contact page\n\n⏱️ We respond to all serious inquiries **within 2 hours** during business hours.\n\nOr tell me more about your project — I'll prepare the context for our team!`,
+        text: `I'd love to connect you with our team! Here's how to reach us:\n\n📞 **Call:** +91 8320558105 / +91 8733887789 *(Mon–Fri 9–6)*\n📧 **Email:** kheniharsh7@gmail.com / jayrajsingh1510@gmail.com\n📅 **Book a call:** Available in our contact page\n\n⏱️ We respond to all serious inquiries **within 2 hours** during business hours.\n\nOr tell me more about your project — I'll prepare the context for our team!`,
         suggestions: ["Start a project", "Tell me about my project", "View our services", "Our process"],
         action: "contact",
       };
@@ -346,7 +346,7 @@ export function generateResponse(input: string): ChatResponse {
     // ── Project start / ready to hire ─────────────────────────────────────────
     case "project_start":
       return {
-        text: `Exciting! Let's get your project moving 🚀\n\nHere's the fastest way to start:\n\n📞 **Call:** +44 20 7946 0958 *(UK)*\n📧 **Email:** hello@zenik.tech\n📅 **Book a consultation** — a quick 30-min call to map out your project\n\n💬 Or tell me more about your idea and I'll help you prepare a brief for our team. What are you building?`,
+        text: `Exciting! Let's get your project moving 🚀\n\nHere's the fastest way to start:\n\n📞 **Call:** +91 8320558105 / +91 8733887789\n📧 **Email:** kheniharsh7@gmail.com / jayrajsingh1510@gmail.com\n📅 **Book a consultation** — a quick 30-min call to map out your project\n\n💬 Or tell me more about your idea and I'll help you prepare a brief for our team. What are you building?`,
         suggestions: ["Book a consultation", "I need a website", "Mobile app idea", "Tell me about the process"],
         action: "contact",
       };
